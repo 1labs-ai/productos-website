@@ -72,7 +72,7 @@ export function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2"
+          className="md:hidden flex items-center justify-center min-h-[44px] min-w-[44px] -mr-2 rounded-lg hover:bg-white/5 transition-colors"
           onClick={() => setIsMobileOpen(!isMobileOpen)}
           aria-label={isMobileOpen ? "Close menu" : "Open menu"}
         >
@@ -89,23 +89,23 @@ export function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-background/95 backdrop-blur-xl border-b border-white/10"
           >
-            <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+            <div className="container mx-auto px-4 py-4 flex flex-col space-y-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-muted-foreground hover:text-foreground py-2"
+                  className="text-muted-foreground hover:text-foreground hover:bg-white/5 py-3 px-2 rounded-lg min-h-[44px] flex items-center transition-colors"
                   onClick={() => setIsMobileOpen(false)}
                 >
                   {link.label}
                 </Link>
               ))}
-              <div className="flex flex-col space-y-2 pt-4 border-t border-white/10">
-                <Button variant="outline" asChild>
+              <div className="flex flex-col space-y-3 pt-4 mt-2 border-t border-white/10">
+                <Button variant="outline" className="min-h-[44px]" asChild>
                   <Link href="/sign-in">Sign In</Link>
                 </Button>
                 <Button
-                  className="bg-gradient-to-r from-blue-500 to-violet-500 text-white"
+                  className="bg-gradient-to-r from-blue-500 to-violet-500 text-white min-h-[44px]"
                   asChild
                 >
                   <Link href="/sign-up">Get Started</Link>

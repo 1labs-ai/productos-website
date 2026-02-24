@@ -87,7 +87,7 @@ export default function AboutPage() {
       <Navbar />
       <main className="pt-24 pb-16">
         {/* Hero Section */}
-        <section className="relative py-24 overflow-hidden">
+        <section className="relative py-16 sm:py-24 overflow-hidden">
           {/* Background effects */}
           <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 via-transparent to-transparent" />
           <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-violet-500/10 rounded-full blur-[120px]" />
@@ -109,7 +109,7 @@ export default function AboutPage() {
                 <span className="text-sm text-muted-foreground">Our Story</span>
               </motion.div>
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
                 Building the future of{" "}
                 <span className="text-gradient">product development</span>
               </h1>
@@ -124,7 +124,7 @@ export default function AboutPage() {
         </section>
 
         {/* Mission Statement */}
-        <section className="py-24">
+        <section className="py-16 sm:py-24">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -132,7 +132,7 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="max-w-4xl mx-auto"
             >
-              <div className="relative p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-blue-500/10 via-violet-500/5 to-transparent border border-white/10">
+              <div className="relative p-6 sm:p-8 md:p-12 rounded-3xl bg-gradient-to-br from-blue-500/10 via-violet-500/5 to-transparent border border-white/10">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl" />
                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-violet-500/20 rounded-full blur-3xl" />
                 
@@ -152,7 +152,7 @@ export default function AboutPage() {
         </section>
 
         {/* Values Grid */}
-        <section className="py-24">
+        <section className="py-16 sm:py-24">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -160,7 +160,7 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">Our Values</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Our Values</h2>
               <p className="text-lg text-muted-foreground max-w-xl mx-auto">
                 The principles that guide everything we build.
               </p>
@@ -188,7 +188,7 @@ export default function AboutPage() {
         </section>
 
         {/* Timeline */}
-        <section className="py-24 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent">
+        <section className="py-16 sm:py-24 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -196,7 +196,7 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">Our Journey</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Our Journey</h2>
               <p className="text-lg text-muted-foreground max-w-xl mx-auto">
                 From idea to reality—and we&apos;re just getting started.
               </p>
@@ -234,7 +234,7 @@ export default function AboutPage() {
         </section>
 
         {/* Team Section */}
-        <section className="py-24">
+        <section className="py-16 sm:py-24">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -242,7 +242,7 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">Meet the Team</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Meet the Team</h2>
               <p className="text-lg text-muted-foreground max-w-xl mx-auto">
                 The people behind ProductOS.
               </p>
@@ -270,7 +270,7 @@ export default function AboutPage() {
         </section>
 
         {/* 1Labs Connection */}
-        <section className="py-24 bg-gradient-to-b from-transparent via-violet-500/5 to-transparent">
+        <section className="py-16 sm:py-24 bg-gradient-to-b from-transparent via-violet-500/5 to-transparent">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -283,7 +283,7 @@ export default function AboutPage() {
                 href="https://1labs.ai" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block text-3xl sm:text-4xl font-bold text-gradient hover:opacity-80 transition-opacity"
+                className="inline-block text-2xl sm:text-3xl md:text-4xl font-bold text-gradient hover:opacity-80 transition-opacity"
               >
                 1Labs AI
               </a>
@@ -306,7 +306,7 @@ export default function AboutPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-24">
+        <section className="py-16 sm:py-24">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -318,7 +318,7 @@ export default function AboutPage() {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-blue-500/20 rounded-full blur-[100px]" />
               
               <div className="relative z-10">
-                <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
                   Ready to ship <span className="text-gradient">10x faster</span>?
                 </h2>
                 <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">

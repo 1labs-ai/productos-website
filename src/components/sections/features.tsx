@@ -5,6 +5,7 @@ import {
   Lightbulb, Search, FileText, Palette, Code, 
   Zap, ArrowRight 
 } from "lucide-react";
+import { fadeInUp, staggerContainer, staggerItem, transitions } from "@/lib/animations";
 
 const features = [
   {
@@ -45,27 +46,16 @@ const features = [
   },
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
-
 export function FeaturesSection() {
   return (
     <section className="py-24">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
@@ -79,31 +69,60 @@ export function FeaturesSection() {
 
         {/* Feature Grid */}
         <motion.div
-          variants={containerVariants}
+          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {features.map((feature) => (
             <motion.div
               key={feature.title}
-              variants={itemVariants}
-              className="group relative p-6 rounded-2xl bg-card border border-white/5 hover:border-white/10 transition-all duration-300"
+              variants={staggerItem}
+              whileHover={{ 
+                y: -8,
+                transition: { duration: 0.2, ease: "easeOut" }
+              }}
+              className="group relative p-6 rounded-2xl bg-card border border-white/5 hover:border-white/15 transition-colors"
             >
               {/* Glow effect on hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`} />
+              <motion.div 
+                className={`absolute inset-0 bg-gradient-to-br ${feature.color} rounded-2xl`}
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 0.08 }}
+                transition={{ duration: 0.3 }}
+              />
               
-              <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${feature.color} mb-4`}>
+              {/* Icon with bounce on hover */}
+              <motion.div 
+                className={`relative z-10 inline-flex p-3 rounded-xl bg-gradient-to-br ${feature.color} mb-4`}
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={transitions.spring}
+              >
                 <feature.icon className="w-6 h-6 text-white" />
-              </div>
+              </motion.div>
               
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-muted-foreground">{feature.description}</p>
+              <h3 className="relative z-10 text-xl font-semibold mb-2">{feature.title}</h3>
+              <p className="relative z-10 text-muted-foreground">{feature.description}</p>
               
-              <div className="mt-4 flex items-center text-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                Learn more <ArrowRight className="ml-1 w-4 h-4" />
-              </div>
+              {/* Arrow indicator */}
+              <motion.div 
+                className="relative z-10 mt-4 flex items-center text-sm text-primary"
+                initial={{ opacity: 0, x: -10 }}
+                whileHover={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity">
+                  Learn more
+                </span>
+                <motion.span
+                  className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </motion.span>
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>

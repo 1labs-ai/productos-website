@@ -168,6 +168,12 @@
 }
 
 @layer base {
+  /* Prevent horizontal overflow globally */
+  html,
+  body {
+    @apply overflow-x-hidden;
+  }
+
   * {
     @apply border-border outline-ring/50;
   }
@@ -184,6 +190,16 @@
 }
 
 @layer utilities {
+  /* Mobile utilities - prevent overflow */
+  .mobile-safe {
+    @apply overflow-x-hidden;
+  }
+  
+  /* Touch-friendly buttons - 44x44 minimum */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
   /* Cursor-style text gradients */
   .text-gradient {
     @apply bg-gradient-to-r from-blue-500 to-violet-500 bg-clip-text text-transparent;

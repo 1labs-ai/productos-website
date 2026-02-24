@@ -55,10 +55,10 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors p-2 -m-2"
                   aria-label={social.label}
                 >
-                  <social.icon size={20} />
+                  <social.icon size={20} className="touch-target" />
                 </a>
               ))}
             </div>

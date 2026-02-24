@@ -1,5 +1,5 @@
 export { HeroSection } from "./hero";
-export { SocialProofBar, SocialProofBarWithPause } from "./social-proof";
+export { SocialProofBar } from "./social-proof";
 export { FeaturesSection } from "./features";
 export { HowItWorksSection } from "./how-it-works";
 export { TestimonialsSection } from "./testimonials";

@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { fadeInUp, transitions } from "@/lib/animations";
 
 interface FAQItem {
   question: string;
@@ -46,6 +47,19 @@ const defaultFAQs: FAQItem[] = [
   },
 ];
 
+const itemVariants = {
+  hidden: { opacity: 0, y: 15, scale: 0.98 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      delay: i * 0.08,
+      ...transitions.smooth,
+    },
+  }),
+};
+
 export function FAQSection({ 
   title = "Frequently Asked Questions",
   subtitle = "Answers to common questions about ProductOS.",
@@ -55,9 +69,10 @@ export function FAQSection({
     <section className="py-24">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">{title}</h2>
@@ -69,20 +84,34 @@ export function FAQSection({
             {items.map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
+                custom={index}
+                variants={itemVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                whileHover={{ scale: 1.01, transition: { duration: 0.15 } }}
               >
                 <AccordionItem 
                   value={`item-${index}`}
-                  className="bg-card border border-white/5 rounded-xl px-6 data-[state=open]:border-white/10"
+                  className="bg-card border border-white/5 rounded-xl px-6 data-[state=open]:border-blue-500/30 data-[state=open]:bg-blue-500/5 transition-all duration-300"
                 >
-                  <AccordionTrigger className="text-left hover:no-underline py-6">
-                    <span className="font-medium">{item.question}</span>
+                  <AccordionTrigger className="text-left hover:no-underline py-6 group">
+                    <motion.span 
+                      className="font-medium group-hover:text-blue-400 transition-colors"
+                      whileHover={{ x: 4 }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      {item.question}
+                    </motion.span>
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground pb-6">
-                    {item.answer}
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {item.answer}
+                    </motion.div>
                   </AccordionContent>
                 </AccordionItem>
               </motion.div>

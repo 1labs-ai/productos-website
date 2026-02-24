@@ -135,7 +135,7 @@ export default function ContactPage() {
       <Navbar />
       <main className="pt-24 pb-16">
         {/* Hero Section */}
-        <section className="relative py-16 sm:py-24 overflow-hidden">
+        <section className="relative py-12 sm:py-16 md:py-24 overflow-hidden">
           {/* Background effects */}
           <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 via-transparent to-transparent" />
           <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-violet-500/10 rounded-full blur-[120px]" />
@@ -157,7 +157,7 @@ export default function ContactPage() {
                 <span className="text-sm text-muted-foreground">Get in Touch</span>
               </motion.div>
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
                 Let&apos;s build something{" "}
                 <span className="text-gradient">amazing</span>
               </h1>
@@ -176,7 +176,7 @@ export default function ContactPage() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
               >
-                <div className="relative p-6 sm:p-8 rounded-2xl bg-card border border-white/5 overflow-hidden">
+                <div className="relative p-5 sm:p-6 md:p-8 rounded-2xl bg-card border border-white/5 overflow-hidden">
                   {/* Subtle glow */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl" />
                   
@@ -394,7 +394,7 @@ export default function ContactPage() {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-violet-500/20 rounded-full blur-[100px]" />
               
               <div className="relative z-10">
-                <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
                   Ready to get <span className="text-gradient">started</span>?
                 </h2>
                 <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
