@@ -11,7 +11,7 @@ const values = [
   {
     icon: Target,
     title: "Mission-Driven",
-    description: "Every feature ships with purpose. We build what matters, not what&apos;s easy.",
+    description: "Every feature ships with purpose. We build what matters, not what's easy.",
   },
   {
     icon: Heart,
