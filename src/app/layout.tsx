@@ -1,34 +1,30 @@
 import type { Metadata } from "next";
-import { Inter, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/layout/navbar";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "ProductOS - Build Products Faster",
-  description: "The operating system for product development",
+  title: "ProductOS - Ship Products 10x Faster with AI",
+  description: "World's first AI-native product platform. Ship products in 3-12 days with AI agents that preserve context from ideation to deployment.",
+  keywords: ["AI", "product development", "startup", "MVP", "code generation"],
+  openGraph: {
+    title: "ProductOS - Ship Products 10x Faster with AI",
+    description: "World's first AI-native product platform.",
+    url: "https://productos.dev",
+    siteName: "ProductOS",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" className="dark">
-      <body
-        className={`${inter.variable} ${geistMono.variable} font-sans antialiased`}
-      >
-        <Navbar />
+      <body className={`${inter.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>
