@@ -1,17 +1,20 @@
 # ProductOS Design System
 
-> The official design language for ProductOS across all surfaces.
+> The official design language for ProductOS across all surfaces: Website, Build, Design, Develop.
 
 ## Table of Contents
 
 1. [Design Philosophy](#design-philosophy)
-2. [Colors](#colors)
-3. [Typography](#typography)
-4. [Spacing & Layout](#spacing--layout)
-5. [Components](#components)
-6. [Animations & Transitions](#animations--transitions)
-7. [Icons](#icons)
-8. [Patterns & Best Practices](#patterns--best-practices)
+2. [Brand Assets](#brand-assets)
+3. [Colors](#colors)
+4. [Typography](#typography)
+5. [Spacing & Layout](#spacing--layout)
+6. [Components](#components)
+7. [Navigation](#navigation)
+8. [Animations & Transitions](#animations--transitions)
+9. [Icons](#icons)
+10. [Patterns & Best Practices](#patterns--best-practices)
+11. [Implementation Checklist](#implementation-checklist)
 
 ---
 
@@ -42,6 +45,103 @@ ProductOS follows a **dark-first, minimal, premium** design language that commun
 - ❌ Rounded pills everywhere
 - ❌ Excessive shadows
 - ❌ Multiple accent colors competing
+
+---
+
+## Brand Assets
+
+### Logo - Origami Mark
+
+The ProductOS logo is an origami-inspired triangle with three folded sections representing the product development journey.
+
+#### SVG Source (Dark Background)
+
+```svg
+<svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main triangle (lightest) -->
+  <path d="M4 32 L18 4 L32 32 Z" fill="#E5E5E5"/>
+  <!-- Left fold (medium) -->
+  <path d="M18 4 L4 32 L18 32 Z" fill="#B3B3B3"/>
+  <!-- Right fold overlay (darkest) -->
+  <path d="M18 4 L18 32 L32 4 Z" fill="#808080"/>
+</svg>
+```
+
+#### SVG Source (Light Background)
+
+```svg
+<svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main triangle (darkest) -->
+  <path d="M4 32 L18 4 L32 32 Z" fill="#1a1a1a"/>
+  <!-- Left fold (medium) -->
+  <path d="M18 4 L4 32 L18 32 Z" fill="#4a4a4a"/>
+  <!-- Right fold overlay (lightest) -->
+  <path d="M18 4 L18 32 L32 4 Z" fill="#7a7a7a"/>
+</svg>
+```
+
+#### Logo Sizes
+
+| Context | Size | Usage |
+|---------|------|-------|
+| Favicon | 32x32, 16x16 | Browser tabs |
+| Navbar | 28px | Site header |
+| Footer | 24px | Site footer |
+| App Icon | 512x512 | App stores, PWA |
+| OG Image | 120px | Social sharing |
+
+### Wordmark
+
+**Font:** Inter, weight 600 (Semibold)
+**Letter Spacing:** -0.02em
+**Color:** `#fafafa` (dark bg) / `#0a0a0a` (light bg)
+
+```tsx
+<span className="font-semibold text-lg tracking-tight">ProductOS</span>
+```
+
+### Logo + Wordmark Lockup
+
+Always maintain consistent spacing between mark and wordmark:
+
+```tsx
+<div className="flex items-center gap-2.5">
+  <Logo size={28} />
+  <span className="font-semibold text-lg tracking-tight">ProductOS</span>
+</div>
+```
+
+### OG Image (Social Sharing)
+
+**Dimensions:** 1200x630px
+**Background:** `#09090b` (near black)
+**Layout:** Centered logo (120px) + wordmark (96px font)
+
+```html
+<!-- OG Image Template -->
+<div style="
+  width: 1200px;
+  height: 630px;
+  background: #09090b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+">
+  <div style="display: flex; align-items: center; gap: 24px;">
+    <!-- Logo SVG at 120px -->
+    <!-- Wordmark at 96px, font-weight 600, color #fafafa -->
+  </div>
+</div>
+```
+
+### Favicon Files
+
+| File | Size | Format |
+|------|------|--------|
+| `/favicon.ico` | 256x256 | ICO (multi-size) |
+| `/icon.svg` | Any | SVG (scalable) |
+| `/apple-touch-icon.png` | 180x180 | PNG |
+| `/og-image.png` | 1200x630 | PNG |
 
 ---
 
@@ -345,6 +445,99 @@ Sharp, angular corners to match the origami logo aesthetic:
 
 ---
 
+## Navigation
+
+### Navbar Structure
+
+```tsx
+// Desktop Navigation
+<nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">
+  <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+    {/* Logo */}
+    {/* Nav Links */}
+    {/* Theme Toggle + Auth Buttons */}
+  </div>
+</nav>
+```
+
+### Nav Link Styling
+
+```tsx
+// Standard nav link
+<a className="relative px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group">
+  Link Text
+  <span className="absolute inset-x-2 -bottom-px h-px bg-gradient-to-r from-primary/0 via-primary/70 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity" />
+</a>
+```
+
+### Dropdown Menu
+
+```tsx
+// Dropdown container
+<div className="absolute top-full left-0 mt-2 w-64 rounded-lg border border-border bg-background/95 backdrop-blur-lg shadow-lg overflow-hidden">
+  <div className="p-2">
+    {/* Dropdown items */}
+  </div>
+</div>
+
+// Dropdown item
+<a className="flex items-start gap-3 px-3 py-2.5 rounded-md text-sm hover:bg-muted transition-colors">
+  <Icon className="size-5 mt-0.5 text-muted-foreground" />
+  <div>
+    <div className="font-medium text-foreground">Item Label</div>
+    <div className="text-xs text-muted-foreground">Description</div>
+  </div>
+</a>
+```
+
+### Theme Toggle
+
+Three-state toggle: Light / System / Dark
+
+```tsx
+<div className="flex items-center gap-0.5 p-1 rounded-full bg-muted/50 border border-border/50">
+  <button className={cn(
+    "size-6 rounded-full flex items-center justify-center transition-all",
+    isActive ? "bg-background text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
+  )}>
+    <Icon className="size-3.5" />
+  </button>
+</div>
+```
+
+### Footer Structure
+
+```tsx
+<footer className="border-t border-border py-12 px-4">
+  <div className="max-w-6xl mx-auto">
+    {/* 5-column grid: Brand + 4 link groups */}
+    <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+      {/* Brand column */}
+      {/* Product links */}
+      {/* Resources links */}
+      {/* Company links */}
+      {/* Legal links */}
+    </div>
+    
+    {/* Bottom bar */}
+    <div className="flex items-center justify-between pt-8 border-t border-border">
+      <p className="text-sm text-muted-foreground">© 2026 ProductOS</p>
+      <ThemeToggle />
+    </div>
+  </div>
+</footer>
+```
+
+### Footer Link Styling
+
+```tsx
+<a className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+  Link Text
+</a>
+```
+
+---
+
 ## Animations & Transitions
 
 ### Standard Transitions
@@ -606,12 +799,85 @@ Following Tailwind defaults:
 
 ---
 
+---
+
+## Implementation Checklist
+
+Use this checklist when implementing the design system on a new surface.
+
+### Setup
+
+- [ ] Install fonts: Inter, JetBrains Mono
+- [ ] Configure Tailwind with custom colors
+- [ ] Add CSS variables for theming
+- [ ] Set up dark/light mode toggle
+
+### Brand
+
+- [ ] Add logo SVG (both color variants)
+- [ ] Add favicon files (ico, svg, apple-touch-icon)
+- [ ] Add OG image (1200x630)
+- [ ] Configure meta tags
+
+### Layout
+
+- [ ] Fixed navbar with backdrop blur
+- [ ] Footer with 5-column grid
+- [ ] Standard container widths (max-w-4xl, max-w-6xl)
+- [ ] Consistent section padding (py-24)
+
+### Components
+
+- [ ] Button variants (primary, secondary, ghost)
+- [ ] Card styles (standard, elevated, highlighted)
+- [ ] Input styles with focus states
+- [ ] Badge variants
+- [ ] Theme toggle
+
+### Typography
+
+- [ ] Headline hierarchy (display, h1-h4)
+- [ ] Two-tone headline pattern
+- [ ] Body text scales
+- [ ] Code/monospace styling
+
+### Interactions
+
+- [ ] Hover states on all interactive elements
+- [ ] Focus-visible ring on keyboard navigation
+- [ ] Smooth transitions (200ms default)
+- [ ] Framer Motion for scroll animations
+
+### Accessibility
+
+- [ ] Color contrast meets WCAG AA
+- [ ] Touch targets 44x44px minimum
+- [ ] ARIA labels on icons-only buttons
+- [ ] Keyboard navigation support
+
+---
+
+## Surfaces
+
+This design system applies to:
+
+| Surface | URL | Status |
+|---------|-----|--------|
+| Website | www.productos.dev | ✅ Implemented |
+| Build App | build.productos.dev | 🔄 In Progress |
+| Design App | design.productos.dev | 🔄 Needs Update |
+| Develop App | develop.productos.dev | 🔄 Needs Update |
+| Documentation | docs.productos.dev | 📋 Planned |
+
+---
+
 ## Version History
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 2.0.0 | Feb 25, 2026 | Added brand assets, navigation patterns, implementation checklist |
 | 1.0.0 | Feb 25, 2025 | Initial design system documentation |
 
 ---
 
-*Built with ❤️ by 1Labs AI*
+*ProductOS Design System — Built by 1Labs AI*
