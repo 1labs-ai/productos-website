@@ -67,7 +67,7 @@ export function AnimatedLogo({ size = 28, className = "", animate = true }: Anim
       >
         <path d="M4 32 L18 4 L32 32 Z" fill="currentColor" fillOpacity={0.35} />
         <path d="M18 4 L4 32 L18 32 Z" fill="currentColor" fillOpacity={0.65} />
-        <path d="M18 4 L18 32 L32 32 Z" fill="currentColor" />
+        <path d="M18 4 L18 32 L32 4 Z" fill="currentColor" />
       </svg>
     )
   }
@@ -104,7 +104,7 @@ export function AnimatedLogo({ size = 28, className = "", animate = true }: Anim
       />
       {/* Right fold - rotates in from right */}
       <motion.path 
-        d="M18 4 L18 32 L32 32 Z" 
+        d="M18 4 L18 32 L32 4 Z" 
         fill="currentColor"
         variants={rightVariants}
         style={{ transformOrigin: "left center" }}
