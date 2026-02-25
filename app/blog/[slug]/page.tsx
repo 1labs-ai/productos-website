@@ -181,7 +181,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 alt={post.author.name || "Author"}
                 width={48}
                 height={48}
-                className="rounded-full"
+                className="rounded-full object-cover"
               />
             ) : (
               <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center">

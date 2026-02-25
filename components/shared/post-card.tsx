@@ -121,7 +121,7 @@ export function PostCard({
                   alt={author.name}
                   width={20}
                   height={20}
-                  className="rounded-full"
+                  className="rounded-full object-cover"
                 />
               ) : (
                 <User className="size-3.5" />
