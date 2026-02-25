@@ -60,6 +60,27 @@
   --border: hsl(0 0% 0% / 8%);
   --input: hsl(0 0% 0% / 8%);
   --ring: hsl(0 0% 9%);
+  
+  /* Semantic Colors */
+  --success: hsl(142 76% 36%);
+  --success-foreground: hsl(0 0% 100%);
+  --warning: hsl(38 92% 50%);
+  --warning-foreground: hsl(0 0% 9%);
+  --info: hsl(217 91% 60%);
+  --info-foreground: hsl(0 0% 100%);
+  
+  /* ProductOS Stage Colors - Light Mode */
+  --stage-ideate: hsl(199 89% 48%);      /* Sky Blue */
+  --stage-discover: hsl(258 90% 66%);    /* Violet */
+  --stage-define: hsl(168 76% 42%);      /* Teal */
+  --stage-design: hsl(271 91% 65%);      /* Purple */
+  --stage-develop: hsl(38 92% 50%);      /* Amber */
+  
+  --stage-ideate-bg: hsl(199 89% 95%);
+  --stage-discover-bg: hsl(258 90% 95%);
+  --stage-define-bg: hsl(168 76% 95%);
+  --stage-design-bg: hsl(271 91% 95%);
+  --stage-develop-bg: hsl(38 92% 95%);
 }
 
 /* ============================================
@@ -84,6 +105,27 @@
   --border: hsl(0 0% 100% / 8%);
   --input: hsl(0 0% 100% / 10%);
   --ring: hsl(0 0% 95%);
+  
+  /* Semantic Colors - Dark Mode */
+  --success: hsl(142 70% 45%);
+  --success-foreground: hsl(0 0% 100%);
+  --warning: hsl(38 92% 55%);
+  --warning-foreground: hsl(0 0% 9%);
+  --info: hsl(217 91% 65%);
+  --info-foreground: hsl(0 0% 100%);
+  
+  /* ProductOS Stage Colors - Dark Mode */
+  --stage-ideate: hsl(199 89% 55%);
+  --stage-discover: hsl(258 90% 70%);
+  --stage-define: hsl(168 76% 50%);
+  --stage-design: hsl(271 91% 70%);
+  --stage-develop: hsl(38 92% 55%);
+  
+  --stage-ideate-bg: hsl(199 50% 15%);
+  --stage-discover-bg: hsl(258 50% 15%);
+  --stage-define-bg: hsl(168 50% 15%);
+  --stage-design-bg: hsl(271 50% 15%);
+  --stage-develop-bg: hsl(38 50% 15%);
 }
 
 /* ============================================
