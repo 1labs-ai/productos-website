@@ -39,7 +39,7 @@ const plans = [
   {
     name: "Enterprise",
     description: "For teams at scale",
-    price: { monthly: 0, yearly: 0 },
+    price: { monthly: 99, yearly: 79 },
     priceLabel: "Custom",
     features: [
       "Everything in Pro",
@@ -58,15 +58,12 @@ const plans = [
 function BorderBeam() {
   return (
     <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
-      {/* Animated border beam */}
       <div
-        className="absolute w-32 h-32 bg-white/30 blur-2xl border-beam"
+        className="absolute w-24 h-24 bg-white/20 blur-xl border-beam"
         style={{
           offsetPath: "rect(0 100% 100% 0 round 16px)",
         }}
       />
-      {/* Subtle glow effect on the border */}
-      <div className="absolute inset-0 rounded-2xl border border-white/20" />
     </div>
   )
 }
@@ -92,31 +89,47 @@ export function Pricing() {
             Start free, scale as you ship. No hidden fees.
           </p>
 
-          {/* Billing Toggle */}
-          <div className="inline-flex items-center gap-3 p-1 rounded-full bg-zinc-900 border border-zinc-800">
+          {/* Billing Toggle with animation */}
+          <div className="inline-flex items-center p-1 rounded-full bg-zinc-900 border border-zinc-800">
             <button
               onClick={() => setBillingCycle("monthly")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                billingCycle === "monthly" ? "bg-white text-zinc-950" : "text-zinc-400 hover:text-white"
+              className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors ${
+                billingCycle === "monthly" ? "text-white" : "text-zinc-400"
               }`}
             >
-              Monthly
+              {billingCycle === "monthly" && (
+                <motion.div
+                  layoutId="billing-toggle"
+                  className="absolute inset-0 bg-zinc-800 rounded-full"
+                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                />
+              )}
+              <span className="relative z-10">Monthly</span>
             </button>
             <button
               onClick={() => setBillingCycle("yearly")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                billingCycle === "yearly" ? "bg-white text-zinc-950" : "text-zinc-400 hover:text-white"
+              className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors ${
+                billingCycle === "yearly" ? "text-white" : "text-zinc-400"
               }`}
             >
-              Yearly
-              <span className="ml-2 text-xs text-emerald-500">Save 20%</span>
+              {billingCycle === "yearly" && (
+                <motion.div
+                  layoutId="billing-toggle"
+                  className="absolute inset-0 bg-zinc-800 rounded-full"
+                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                />
+              )}
+              <span className="relative z-10">Yearly</span>
+              <span className="relative z-10 ml-2 px-2 py-0.5 text-xs bg-emerald-500/20 text-emerald-400 rounded-full">
+                -20%
+              </span>
             </button>
           </div>
         </motion.div>
 
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
@@ -126,64 +139,63 @@ export function Pricing() {
               key={plan.name}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 * index }}
-              className={`relative p-6 rounded-2xl ${
+              transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+              className={`relative p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02] ${
                 plan.highlighted
-                  ? "bg-white text-zinc-950"
-                  : "bg-zinc-900 border border-zinc-800 text-white"
+                  ? "bg-zinc-900 border-zinc-700"
+                  : "bg-zinc-900/50 border-zinc-800 hover:border-zinc-600"
               }`}
             >
               {plan.highlighted && <BorderBeam />}
 
-              <div className="relative z-10">
-                <h3 className={`text-xl font-semibold mb-2 ${plan.highlighted ? "text-zinc-950" : "text-white"}`}>
-                  {plan.name}
-                </h3>
-                <p className={`text-sm mb-6 ${plan.highlighted ? "text-zinc-600" : "text-zinc-400"}`}>
-                  {plan.description}
-                </p>
+              {plan.highlighted && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-white text-zinc-950 text-xs font-medium rounded-full">
+                  Most Popular
+                </div>
+              )}
 
-                <div className="mb-6">
+              <div className="mb-6">
+                <h3 className="text-xl font-semibold text-white mb-2">{plan.name}</h3>
+                <p className="text-zinc-400 text-sm">{plan.description}</p>
+              </div>
+
+              <div className="mb-6">
+                <div className="flex items-baseline gap-1">
                   {plan.priceLabel ? (
-                    <span className={`text-4xl font-bold ${plan.highlighted ? "text-zinc-950" : "text-white"}`}>
-                      {plan.priceLabel}
-                    </span>
+                    <span className="text-4xl font-bold text-white">{plan.priceLabel}</span>
                   ) : (
                     <>
-                      <span className={`text-4xl font-bold ${plan.highlighted ? "text-zinc-950" : "text-white"}`}>
-                        ${billingCycle === "monthly" ? plan.price.monthly : plan.price.yearly}
-                      </span>
-                      {plan.price.monthly > 0 && (
-                        <span className={`text-sm ${plan.highlighted ? "text-zinc-600" : "text-zinc-400"}`}>
-                          /month
-                        </span>
-                      )}
+                      <span className="text-4xl font-bold text-white">${plan.price[billingCycle]}</span>
+                      {plan.price.monthly > 0 && <span className="text-zinc-400 text-sm">/month</span>}
                     </>
                   )}
                 </div>
-
-                <ul className="space-y-3 mb-6">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-3 text-sm">
-                      <Check className={`w-4 h-4 ${plan.highlighted ? "text-zinc-950" : "text-zinc-400"}`} />
-                      <span className={plan.highlighted ? "text-zinc-700" : "text-zinc-300"}>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Button
-                  className={`w-full rounded-full ${
-                    plan.highlighted
-                      ? "bg-zinc-950 text-white hover:bg-zinc-800"
-                      : "bg-zinc-800 text-white hover:bg-zinc-700"
-                  }`}
-                  asChild
-                >
-                  <a href={plan.name === "Enterprise" ? "mailto:hello@1labs.ai" : "https://build.productos.dev/sign-up"}>
-                    {plan.cta}
-                  </a>
-                </Button>
+                {billingCycle === "yearly" && plan.price.yearly > 0 && !plan.priceLabel && (
+                  <p className="text-xs text-zinc-500 mt-1">Billed annually (${plan.price.yearly * 12}/year)</p>
+                )}
               </div>
+
+              <ul className="space-y-3 mb-8">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-center gap-3 text-sm text-zinc-300">
+                    <Check className="w-4 h-4 text-emerald-500 shrink-0" strokeWidth={1.5} />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+
+              <Button
+                className={`w-full rounded-full ${
+                  plan.highlighted
+                    ? "shimmer-btn bg-white text-zinc-950 hover:bg-zinc-200"
+                    : "bg-zinc-800 text-white hover:bg-zinc-700 border border-zinc-700"
+                }`}
+                asChild
+              >
+                <a href={plan.name === "Enterprise" ? "mailto:hello@1labs.ai" : "https://build.productos.dev/sign-up"}>
+                  {plan.cta}
+                </a>
+              </Button>
             </motion.div>
           ))}
         </motion.div>
