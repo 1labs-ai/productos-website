@@ -6,7 +6,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import { GeometricBackground } from "@/components/geometric-background"
+// import { GeometricBackground } from "@/components/geometric-background"
 import { OrganizationSchema, SoftwareApplicationSchema, WebSiteSchema } from "@/components/structured-data"
 import "./globals.css"
 
@@ -125,7 +125,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <GeometricBackground variant="subtle" opacity={0.015} />
+          {/* Geometric background removed */}
           <Navbar />
           <main className="min-h-screen bg-background pt-16">
             {children}
