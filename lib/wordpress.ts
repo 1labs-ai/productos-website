@@ -41,6 +41,7 @@ export interface WordPressPost {
   excerpt: string;
   content: string;
   date: string;
+  modified: string;
   author?: BlogAuthor;
   categories: BlogCategory[];
   tags?: BlogTag[];
@@ -107,6 +108,7 @@ interface WPPostRaw {
   id: number;
   slug: string;
   date: string;
+  modified: string;
   title: WPRendered;
   excerpt: WPRendered;
   content: WPRendered;
@@ -209,6 +211,7 @@ function transformToWordPressPost(raw: WPPostRaw): WordPressPost {
     excerpt: stripHtml(raw.excerpt.rendered),
     content: raw.content.rendered,
     date: raw.date,
+    modified: raw.modified,
     author: extractAuthor(raw._embedded),
     categories: extractCategories(raw._embedded),
     tags: extractTags(raw._embedded),

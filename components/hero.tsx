@@ -174,7 +174,7 @@ export function Hero() {
                 className={`w-full h-full object-cover ${!videoError ? 'md:hidden' : ''}`}
                 onError={(e) => {
                   // Final fallback - show dashboard screenshot
-                  (e.target as HTMLImageElement).src = '/product/dashboard.png'
+                  (e.target as HTMLImageElement).src = '/product/dashboard.webp'
                 }}
               />
               
