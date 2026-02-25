@@ -1,53 +1,52 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function FinalCTA() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
-
   return (
-    <section className="py-24 px-4">
-      <motion.div
-        ref={ref}
-        initial={{ opacity: 0, y: 40 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="max-w-4xl mx-auto text-center"
-      >
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
-          Ready to ship your product?
-        </h2>
-        <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-          Join 200+ founders already building with ProductOS. From idea to production in days, not months.
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button
-            size="lg"
-            className="shimmer-btn bg-white text-zinc-950 hover:bg-zinc-200 rounded-sm px-8 h-14 text-base font-medium shadow-lg shadow-white/20"
-            asChild
-          >
-            <a href="https://build.productos.dev/sign-up">
-              Start Building Free
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </a>
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="rounded-sm px-8 h-14 text-base font-medium border-border text-foreground/80 hover:bg-card hover:text-white hover:border-border bg-transparent"
-            asChild
-          >
-            <a href="mailto:hello@1labs.ai">Talk to Sales</a>
-          </Button>
-        </div>
-
-        <p className="mt-8 text-sm text-muted-foreground">Free tier available. Pro starts at $49/month.</p>
-      </motion.div>
+    <section className="py-20 px-4">
+      <div className="max-w-3xl mx-auto text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            Ready to ship your next product?
+          </h2>
+          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
+            Join hundreds of founders building and launching products in days, not months.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-4">
+            <Button
+              size="lg"
+              className="bg-foreground text-background hover:bg-foreground/90 rounded-sm px-6 h-11"
+              asChild
+            >
+              <a href="https://build.productos.dev/sign-up">
+                Get Started Free
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </a>
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="rounded-sm px-6 h-11 border-border hover:bg-secondary"
+              asChild
+            >
+              <a href="#pricing">View Pricing</a>
+            </Button>
+          </div>
+          
+          <p className="text-sm text-muted-foreground">
+            No credit card required
+          </p>
+        </motion.div>
+      </div>
     </section>
   )
 }

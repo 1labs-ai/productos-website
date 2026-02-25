@@ -1,126 +1,109 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState } from "react"
 import { motion } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Moon, Sun } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const navItems = [
-  { label: "Features", href: "#features" },
+  { label: "Product", href: "#features" },
   { label: "Pricing", href: "#pricing" },
+  { label: "Enterprise", href: "/enterprise" },
   { label: "Docs", href: "https://docs.productos.dev" },
   { label: "Blog", href: "/blog" },
 ]
 
 export function Navbar() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const navRef = useRef<HTMLDivElement>(null)
 
   return (
     <motion.header
-      initial={{ y: -100, opacity: 0 }}
+      initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-3xl"
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border"
     >
-      <nav
-        ref={navRef}
-        className="relative flex items-center justify-between px-4 py-3 rounded-full bg-card/60 backdrop-blur-md border border-border"
-      >
-        {/* ProductOS Logo */}
-        <a href="#" className="flex items-center gap-2">
-          <span 
-            className="text-xl font-bold tracking-tight"
-            style={{
-              background: "linear-gradient(180deg, #a1a1aa 0%, #52525b 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            ProductOS
-          </span>
-        </a>
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-14">
+          {/* Logo */}
+          <a href="/" className="flex items-center">
+            <span className="text-lg font-semibold text-foreground">
+              ProductOS
+            </span>
+          </a>
 
-        {/* Desktop Nav Items */}
-        <div className="hidden md:flex items-center gap-1 relative">
-          {navItems.map((item, index) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="relative px-4 py-2 text-sm text-muted-foreground hover:text-white transition-colors"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
+          {/* Center Nav Items */}
+          <div className="hidden md:flex items-center gap-1">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+
+          {/* Right Side */}
+          <div className="hidden md:flex items-center gap-3">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="text-muted-foreground hover:text-foreground"
+              asChild
             >
-              {hoveredIndex === index && (
-                <motion.div
-                  layoutId="navbar-hover"
-                  className="absolute inset-0 bg-secondary rounded-full"
-                  initial={false}
-                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                />
-              )}
-              <span className="relative z-10">{item.label}</span>
-            </a>
-          ))}
-        </div>
+              <a href="https://build.productos.dev/sign-in">Sign In</a>
+            </Button>
+            <Button 
+              size="sm" 
+              variant="outline"
+              className="rounded-sm border-border hover:bg-secondary"
+              asChild
+            >
+              <a href="https://build.productos.dev/sign-up">Get Started</a>
+            </Button>
+          </div>
 
-        {/* CTA Buttons */}
-        <div className="hidden md:flex items-center gap-3">
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            className="text-muted-foreground hover:text-white hover:bg-secondary"
-            asChild
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 text-muted-foreground hover:text-foreground"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
           >
-            <a href="https://build.productos.dev/sign-in">Sign In</a>
-          </Button>
-          <Button 
-            size="sm" 
-            className="shimmer-btn bg-white text-zinc-950 hover:bg-zinc-200 rounded-sm px-4"
-            asChild
-          >
-            <a href="https://build.productos.dev/sign-up">Get Started</a>
-          </Button>
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 text-muted-foreground hover:text-white"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
       </nav>
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          className="absolute top-full left-0 right-0 mt-2 p-4 rounded-lg bg-card/95 backdrop-blur-md border border-border"
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          className="md:hidden bg-background border-b border-border"
         >
-          <div className="flex flex-col gap-2">
+          <div className="px-4 py-4 space-y-2">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="px-4 py-3 text-sm text-muted-foreground hover:text-white hover:bg-secondary rounded-lg transition-colors"
+                className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary rounded-sm transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}
               </a>
             ))}
-            <hr className="border-border my-2" />
-            <Button variant="ghost" className="justify-start text-muted-foreground hover:text-white" asChild>
-              <a href="https://build.productos.dev/sign-in">Sign In</a>
-            </Button>
-            <Button className="shimmer-btn bg-white text-zinc-950 hover:bg-zinc-200 rounded-sm" asChild>
-              <a href="https://build.productos.dev/sign-up">Get Started</a>
-            </Button>
+            <hr className="border-border my-3" />
+            <div className="flex flex-col gap-2">
+              <Button variant="ghost" className="justify-start" asChild>
+                <a href="https://build.productos.dev/sign-in">Sign In</a>
+              </Button>
+              <Button variant="outline" className="rounded-sm" asChild>
+                <a href="https://build.productos.dev/sign-up">Get Started</a>
+              </Button>
+            </div>
           </div>
         </motion.div>
       )}

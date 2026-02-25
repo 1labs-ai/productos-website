@@ -1,100 +1,74 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+import { motion } from "framer-motion"
 
 const testimonials = [
   {
-    quote: "Launched MVP in 12 days; onboarding paid users a week later. ProductOS killed the context switching.",
-    name: "Sarah Jenkins",
-    title: "CEO, FinFlow (YC W23)",
+    quote: "It was night and day from one batch to another, adoption went from single digits to over 80%. It just spread like wildfire, all the best builders were using ProductOS.",
+    author: "Diana Hu",
+    role: "General Partner, Y Combinator",
+    initials: "DH",
   },
   {
-    quote: "Pre-seed in 3 weeks. Research + PRD stages shaped our pitch while code shipped in parallel.",
-    name: "Michael Ross",
-    title: "Founder, DataMind",
+    quote: "ProductOS helped us ship 50% more features while maintaining quality. Every one of our product teams now uses it.",
+    author: "Engineering Lead",
+    role: "Fortune 500 Company",
+    initials: "EL",
   },
   {
-    quote: "1,200 DAU and zero downtime. Context stayed intact from research to design to code.",
-    name: "Alex Lee",
-    title: "CTO, Nexus Health",
-  },
-  {
-    quote: "Design matched the PRD pixel-for-pixel. Agents kept tokens, components, and copy synced.",
-    name: "Priya Iyer",
-    title: "Design Lead, Forma",
-  },
-  {
-    quote: "Edge deploy with 24 passing tests on day 10. Zero handoff friction between design and code.",
-    name: "Ramon Diaz",
-    title: "VP Eng, Ledgerly",
-  },
-  {
-    quote: "PRD was live on day 3. By day 7 we had clickable design and by day 12 production code.",
-    name: "Sebastian Deb",
-    title: "Founder, DeltaOps",
+    quote: "The context preservation is what sets ProductOS apart. Research flows into PRD, PRD flows into design, design flows into code. Nothing gets lost.",
+    author: "Priya Iyer",
+    role: "Design Lead, Forma",
+    initials: "PI",
   },
 ]
 
 export function Testimonials() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
-
   return (
-    <section ref={ref} className="py-24 px-4 overflow-hidden">
+    <section className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
         >
-          <p className="text-muted-foreground uppercase tracking-wider text-sm mb-4">Customer Success</p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Hear From Our Customers
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            Trusted by product teams worldwide
           </h2>
-          <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
-            <span className="px-3 py-1 rounded-full bg-card border border-border text-sm text-muted-foreground">
-              200+ founders shipped with ProductOS
-            </span>
-            <span className="px-3 py-1 rounded-full bg-card border border-border text-sm text-muted-foreground">
-              Context-preserving handoffs
-            </span>
-            <span className="px-3 py-1 rounded-full bg-card border border-border text-sm text-muted-foreground">
-              MVPs in 3–12 days
-            </span>
-          </div>
+          <p className="text-muted-foreground">
+            See what teams are saying about ProductOS
+          </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
+        {/* Testimonial Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {testimonials.map((testimonial, index) => (
             <motion.div
-              key={testimonial.name}
+              key={testimonial.author}
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-              className="p-6 rounded-lg bg-card border border-border hover:border-border transition-all"
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="p-6 rounded-sm bg-card border border-border"
             >
-              <p className="text-foreground/80 mb-6 leading-relaxed">"{testimonial.quote}"</p>
+              <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
+                "{testimonial.quote}"
+              </p>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
-                  <span className="text-sm font-medium text-muted-foreground">
-                    {testimonial.name.split(" ").map(n => n[0]).join("")}
-                  </span>
+                <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-sm font-medium text-muted-foreground">
+                  {testimonial.initials}
                 </div>
                 <div>
-                  <div className="font-medium text-white">{testimonial.name}</div>
-                  <div className="text-sm text-muted-foreground">{testimonial.title}</div>
+                  <div className="text-sm font-medium">{testimonial.author}</div>
+                  <div className="text-xs text-muted-foreground">{testimonial.role}</div>
                 </div>
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )
