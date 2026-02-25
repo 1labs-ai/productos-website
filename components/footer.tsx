@@ -8,7 +8,7 @@ import { AnimatedLogo, type AnimatedLogoRef } from "@/components/animated-logo"
 
 const footerLinks = {
   Product: [
-    { label: "Features", href: "/features" },
+    { label: "Features", href: "/#features" },
     { label: "Pricing", href: "/pricing" },
     { label: "Enterprise", href: "/enterprise" },
     { label: "Changelog", href: "/changelog" },
@@ -16,18 +16,18 @@ const footerLinks = {
   Resources: [
     { label: "Documentation", href: "https://docs.productos.dev" },
     { label: "Blog", href: "/blog" },
-    { label: "Templates", href: "#" },
-    { label: "API Reference", href: "#" },
+    { label: "Templates", href: "https://docs.productos.dev/templates" },
+    { label: "API Reference", href: "https://docs.productos.dev/api" },
   ],
   Company: [
     { label: "About", href: "/about" },
-    { label: "Careers", href: "#" },
+    { label: "Careers", href: "mailto:founders@productos.dev?subject=Careers" },
     { label: "Contact", href: "/contact" },
   ],
   Legal: [
     { label: "Privacy", href: "/privacy" },
     { label: "Terms", href: "/terms" },
-    { label: "Security", href: "#" },
+    { label: "Security", href: "https://docs.productos.dev/security" },
   ],
 }
 

@@ -10,8 +10,8 @@ import { cn } from "@/lib/utils"
 import { AnimatedLogo, type AnimatedLogoRef } from "@/components/animated-logo"
 
 const navItems = [
-  { label: "Product", href: "#features" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "Product", href: "/#features" },
+  { label: "Pricing", href: "/pricing" },
   { label: "Enterprise", href: "/enterprise" },
   { label: "Docs", href: "https://docs.productos.dev" },
   { label: "Blog", href: "/blog" },
