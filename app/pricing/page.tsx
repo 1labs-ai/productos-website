@@ -412,6 +412,73 @@ export default function PricingPage() {
         </div>
       </section>
 
+      {/* AI Credits Section */}
+      <section className="py-24 px-4">
+        <div className="max-w-4xl mx-auto">
+          <AnimatedSection className="text-center mb-12">
+            <p className="text-sm text-emerald-400 font-medium uppercase tracking-wider mb-4">CREDITS</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              AI Credits That Never Expire
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Need more power? Purchase AI credits that never expire. Use them whenever you need extra generation power—no monthly limits or pressure to use them quickly.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { credits: 300, price: 25, popular: true },
+              { credits: 1000, price: 75, popular: false },
+              { credits: 3000, price: 200, popular: false },
+            ].map((pack) => (
+              <AnimatedScale key={pack.credits}>
+                <div className={`relative p-6 rounded-lg border transition-all duration-300 hover:scale-[1.02] ${
+                  pack.popular ? "bg-card border-emerald-500/50" : "bg-card/50 border-border/50"
+                }`}>
+                  {pack.popular && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-emerald-500 text-white text-xs font-medium rounded-full">
+                      Most Popular
+                    </div>
+                  )}
+                  <h3 className="text-2xl font-bold text-foreground mb-2">{pack.credits.toLocaleString()} Credits</h3>
+                  <p className="text-3xl font-bold text-foreground mb-4">${pack.price}<span className="text-sm text-muted-foreground font-normal"> one-time</span></p>
+                  <ul className="space-y-2 text-sm text-muted-foreground mb-6">
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-emerald-500" />
+                      Credits never expire
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-emerald-500" />
+                      15 credits per stage action
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-emerald-500" />
+                      Works across all ProductOS surfaces
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-emerald-500" />
+                      Auto-used when monthly limit reached
+                    </li>
+                  </ul>
+                  <Button className="w-full bg-secondary text-foreground hover:bg-secondary/80 border border-border" asChild>
+                    <a href="https://build.productos.dev/sign-up">
+                      Buy Credits
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </a>
+                  </Button>
+                </div>
+              </AnimatedScale>
+            ))}
+          </div>
+
+          <AnimatedSection className="text-center mt-8">
+            <p className="text-sm text-muted-foreground">
+              Credits provide AI usage but do not unlock Pro features. <Link href="mailto:enterprise@productos.dev" className="text-foreground hover:underline">Contact us</Link> for custom credit packages.
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="py-24 px-4">
         <div className="max-w-6xl mx-auto">
