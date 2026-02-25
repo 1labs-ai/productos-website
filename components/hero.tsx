@@ -1,4 +1,5 @@
 "use client"
+// Force rebuild - styling update 2026-02-25
 
 import { motion } from "framer-motion"
 import { ArrowRight, Sparkles } from "lucide-react"
