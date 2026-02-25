@@ -79,6 +79,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.productos.dev',
   },
+  verification: {
+    google: 'EtWoauwhaTFvxCkiAAntsExFtgIZNETAGdzfHiO9p8s',
+  },
   other: {
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'black-translucent',
