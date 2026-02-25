@@ -99,7 +99,7 @@ export function Navbar() {
             <Button 
               size="sm" 
               variant="outline"
-              className="rounded-sm border-border hover:bg-secondary"
+              className="rounded-lg border-border hover:bg-secondary"
               asChild
             >
               <a href="https://build.productos.dev/sign-up">Get Started</a>
@@ -145,7 +145,7 @@ export function Navbar() {
               <Button variant="ghost" className="justify-start" asChild>
                 <a href="https://build.productos.dev/sign-in">Sign In</a>
               </Button>
-              <Button variant="outline" className="rounded-sm" asChild>
+              <Button variant="outline" className="rounded-lg" asChild>
                 <a href="https://build.productos.dev/sign-up">Get Started</a>
               </Button>
             </div>

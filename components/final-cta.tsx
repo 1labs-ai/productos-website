@@ -24,7 +24,7 @@ export function FinalCTA() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-4">
             <Button
               size="lg"
-              className="bg-foreground text-background hover:bg-foreground/90 rounded-sm px-6 h-11"
+              className="bg-foreground text-background hover:bg-foreground/90 rounded-lg px-6 h-11"
               asChild
             >
               <a href="https://build.productos.dev/sign-up">
@@ -35,7 +35,7 @@ export function FinalCTA() {
             <Button
               variant="outline"
               size="lg"
-              className="rounded-sm px-6 h-11 border-border hover:bg-secondary"
+              className="rounded-lg px-6 h-11 border-border hover:bg-secondary"
               asChild
             >
               <a href="#pricing">View Pricing</a>
