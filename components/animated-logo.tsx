@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, useAnimation } from "framer-motion"
-import { useEffect, useImperativeHandle, forwardRef } from "react"
+import { useEffect, useImperativeHandle, forwardRef, useRef } from "react"
 
 interface AnimatedLogoProps {
   size?: number
@@ -15,54 +15,63 @@ export interface AnimatedLogoRef {
 
 export const AnimatedLogo = forwardRef<AnimatedLogoRef, AnimatedLogoProps>(
   ({ size = 28, className = "", animate = true }, ref) => {
-    const controls = useAnimation()
+    const backControls = useAnimation()
+    const leftControls = useAnimation()
+    const rightControls = useAnimation()
+    const isAnimating = useRef(false)
 
-    // Animation sequence: unfolds like origami paper
-    const backVariants = {
-      hidden: { opacity: 0, scaleY: 0 },
-      visible: { 
-        opacity: 1, 
-        scaleY: 1,
-        transition: { duration: 0.5, ease: "easeOut", delay: 0.1 }
-      }
-    }
-
-    const leftVariants = {
-      hidden: { opacity: 0, rotateY: 90 },
-      visible: { 
-        opacity: 1, 
-        rotateY: 0,
-        transition: { duration: 0.4, ease: "easeOut", delay: 0.6 }
-      }
-    }
-
-    const rightVariants = {
-      hidden: { opacity: 0, rotateY: -90 },
-      visible: { 
-        opacity: 1, 
-        rotateY: 0,
-        transition: { duration: 0.4, ease: "easeOut", delay: 1.0 }
-      }
-    }
-
-    // Play animation on mount
+    // Play initial animation on mount
     useEffect(() => {
       if (animate) {
-        controls.start("visible")
+        const playInitial = async () => {
+          // Start all at hidden
+          backControls.set({ opacity: 0, scaleY: 0 })
+          leftControls.set({ opacity: 0, rotateY: 90 })
+          rightControls.set({ opacity: 0, rotateY: -90 })
+          
+          // Sequence the animation
+          await backControls.start({ 
+            opacity: 0.35, 
+            scaleY: 1, 
+            transition: { duration: 0.5, ease: "easeOut", delay: 0.1 } 
+          })
+          leftControls.start({ 
+            opacity: 0.65, 
+            rotateY: 0, 
+            transition: { duration: 0.4, ease: "easeOut" } 
+          })
+          await new Promise(r => setTimeout(r, 400))
+          rightControls.start({ 
+            opacity: 1, 
+            rotateY: 0, 
+            transition: { duration: 0.4, ease: "easeOut" } 
+          })
+        }
+        playInitial()
       }
-    }, [animate, controls])
+    }, [animate, backControls, leftControls, rightControls])
 
-    // Expose replay method to parent - subtle animation without hiding
+    // Expose replay method - subtle fold effect
     useImperativeHandle(ref, () => ({
       replay: async () => {
-        if (!animate) return
-        // Quick subtle fold effect without fully hiding
-        await controls.start({
-          opacity: 0.6,
-          scale: 0.95,
-          transition: { duration: 0.15 }
-        })
-        controls.start("visible")
+        if (!animate || isAnimating.current) return
+        isAnimating.current = true
+        
+        // Quick subtle fold - don't fully hide
+        await Promise.all([
+          backControls.start({ opacity: 0.15, scaleY: 0.7, transition: { duration: 0.15 } }),
+          leftControls.start({ opacity: 0.3, rotateY: 30, transition: { duration: 0.15 } }),
+          rightControls.start({ opacity: 0.5, rotateY: -30, transition: { duration: 0.15 } }),
+        ])
+        
+        // Unfold back
+        backControls.start({ opacity: 0.35, scaleY: 1, transition: { duration: 0.4, ease: "easeOut" } })
+        await new Promise(r => setTimeout(r, 150))
+        leftControls.start({ opacity: 0.65, rotateY: 0, transition: { duration: 0.35, ease: "easeOut" } })
+        await new Promise(r => setTimeout(r, 150))
+        await rightControls.start({ opacity: 1, rotateY: 0, transition: { duration: 0.35, ease: "easeOut" } })
+        
+        isAnimating.current = false
       }
     }))
 
@@ -86,40 +95,39 @@ export const AnimatedLogo = forwardRef<AnimatedLogoRef, AnimatedLogoProps>(
 
     // Animated version
     return (
-      <motion.svg
+      <svg
         width={size}
         height={size}
         viewBox="0 0 36 36"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={className}
-        initial="hidden"
-        animate={controls}
       >
         {/* Back face - grows up from bottom first */}
         <motion.path 
           d="M4 32 L18 4 L32 32 Z" 
           fill="currentColor" 
-          fillOpacity={0.35}
-          variants={backVariants}
+          initial={{ opacity: 0, scaleY: 0 }}
+          animate={backControls}
           style={{ transformOrigin: "center bottom" }}
         />
         {/* Left fold - rotates in from left */}
         <motion.path 
           d="M18 4 L4 32 L18 32 Z" 
           fill="currentColor" 
-          fillOpacity={0.65}
-          variants={leftVariants}
+          initial={{ opacity: 0, rotateY: 90 }}
+          animate={leftControls}
           style={{ transformOrigin: "right center" }}
         />
         {/* Right fold - rotates in from right */}
         <motion.path 
           d="M18 4 L18 32 L32 4 Z" 
           fill="currentColor"
-          variants={rightVariants}
+          initial={{ opacity: 0, rotateY: -90 }}
+          animate={rightControls}
           style={{ transformOrigin: "left center" }}
         />
-      </motion.svg>
+      </svg>
     )
   }
 )
