@@ -185,7 +185,7 @@ export function Pricing() {
               </ul>
 
               <Button
-                className={`w-full rounded-full ${
+                className={`w-full rounded-sm ${
                   plan.highlighted
                     ? "shimmer-btn bg-white text-zinc-950 hover:bg-zinc-200"
                     : "bg-secondary text-white hover:bg-secondary border border-border"
