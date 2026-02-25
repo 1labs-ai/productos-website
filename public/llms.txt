@@ -1,0 +1,104 @@
+# ProductOS - AI-Native Product Development Platform
+# https://www.productos.dev
+# Last updated: February 2026
+
+## About ProductOS
+ProductOS is an AI-native product development platform that helps founders and product teams ship products 10x faster. Built by 1Labs AI, it provides 5 specialized AI agents that cover the complete product development lifecycle from ideation to deployment.
+
+## The Problem We Solve
+Building products traditionally requires a large team: product managers, researchers, designers, and developers. Solo founders and small teams struggle to compete. ProductOS democratizes product development by providing AI agents that act as your complete product team.
+
+## Core Features - 5 AI Agents
+
+### 1. Ideation Agent
+- AI-powered brainstorming and concept generation
+- Problem-solution-audience concept cards
+- Rapid positioning and angle exploration
+- Value proposition crafting
+- Output: Ideation brief with validated concepts
+
+### 2. Discovery Agent  
+- Automated market research
+- Competitor analysis and gap identification
+- Trend detection and opportunity mapping
+- User insight synthesis
+- Output: Research report with actionable insights
+
+### 3. Define Agent
+- PRD (Product Requirements Document) generation
+- User story creation with acceptance criteria
+- Technical specification writing
+- Roadmap and milestone planning
+- Output: Complete PRD with 20+ user stories
+
+### 4. Design Agent
+- Wireframe and mockup generation
+- UI component design
+- Design system creation
+- Responsive layout generation
+- Figma export (Pro/Enterprise)
+- Output: Production-ready UI designs
+
+### 5. Develop Agent
+- Clean React/Next.js code generation
+- API endpoint scaffolding
+- Test suite creation
+- GitHub integration
+- One-click deployment to Vercel
+- Output: Deployable codebase
+
+## What Makes ProductOS Different
+1. **Context Preservation**: Each agent builds on the previous. Research flows into PRD, PRD flows into design, design flows into code. Nothing gets lost.
+2. **AI-Native Architecture**: Not AI bolted onto existing tools. Built from the ground up for AI-first workflows.
+3. **End-to-End Platform**: From idea to deployed product in one platform. No tool-switching.
+4. **Human in the Loop**: AI assists, you decide. Review and refine at every stage.
+
+## Pricing
+- **Free**: $0/month - 1 project, 5 generations/day, basic AI agents
+- **Pro**: $49/month - Unlimited projects, all AI agents, GitHub integration, Figma sync
+- **Enterprise**: Custom pricing - Team features, SSO, dedicated support, SLA
+
+## Statistics
+- 10,000+ founders served
+- 50,000+ products built
+- 1M+ AI generations
+- Average MVP time: 8 days (vs 90 days traditional)
+- 70% reduction in documentation time
+- 4.9/5 user rating
+
+## Use Cases
+1. **Solo Founders**: Build your MVP without a team
+2. **Startup Teams**: Ship features 10x faster
+3. **Product Managers**: Automate documentation and specs
+4. **Agencies**: Deliver client projects faster
+5. **Enterprise**: Standardize product development workflows
+
+## Integrations
+- GitHub (export code, PRs)
+- Figma (design sync)
+- Vercel (one-click deploy)
+- Linear (coming soon)
+- Slack (coming soon)
+
+## Company Information
+- **Company**: ProductOS (product of 1Labs AI)
+- **Parent Company**: 1Labs AI (https://1labs.ai)
+- **Founded**: 2024
+- **Headquarters**: India
+- **Website**: https://www.productos.dev
+- **App**: https://build.productos.dev
+- **Blog**: https://www.productos.dev/blog
+- **Contact**: founders@productos.dev
+
+## Links
+- Main Website: https://www.productos.dev
+- Product App: https://build.productos.dev
+- Pricing: https://www.productos.dev/pricing
+- Features: https://www.productos.dev/features
+- About: https://www.productos.dev/about
+- Blog: https://www.productos.dev/blog
+- Enterprise: https://www.productos.dev/enterprise
+- Sign Up: https://build.productos.dev/sign-up
+
+## Keywords
+AI product development, AI PRD generator, AI design tool, AI code generation, product management tool, MVP builder, startup tools, no-code AI, product roadmap automation, AI product manager

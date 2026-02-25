@@ -1,0 +1,32 @@
+# ProductOS robots.txt
+# https://www.productos.dev
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://www.productos.dev/sitemap.xml
+
+# Block internal routes
+Disallow: /api/
+Disallow: /_next/
+Disallow: /*.json$
+
+# Allow all AI crawlers for GEO
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
