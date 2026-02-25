@@ -82,9 +82,9 @@ export default function PricingPage() {
             {plans.map((plan) => (
               <div
                 key={plan.name}
-                className={\`p-6 rounded-xl border \${
+                className={`p-6 rounded-xl border ${
                   plan.popular ? "border-foreground" : "border-border/50"
-                } bg-card\`}
+                } bg-card`}
               >
                 {plan.popular && (
                   <div className="text-xs font-medium text-foreground mb-4">
