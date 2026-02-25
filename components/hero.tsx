@@ -103,7 +103,7 @@ export function Hero() {
         >
           <Button
             size="lg"
-            className="shimmer-btn bg-white text-zinc-950 hover:bg-zinc-200 rounded-md px-8 h-12 text-base font-medium shadow-lg shadow-white/10"
+            className="shimmer-btn bg-white text-zinc-950 hover:bg-zinc-200 rounded-sm px-8 h-12 text-base font-medium shadow-lg shadow-white/10"
             asChild
           >
             <a href="https://build.productos.dev/sign-up">
@@ -114,7 +114,7 @@ export function Hero() {
           <Button
             variant="outline"
             size="lg"
-            className="rounded-md px-8 h-12 text-base font-medium border-border text-foreground/80 hover:bg-card hover:text-white hover:border-border bg-transparent"
+            className="rounded-sm px-8 h-12 text-base font-medium border-border text-foreground/80 hover:bg-card hover:text-white hover:border-border bg-transparent"
             asChild
           >
             <a href="https://build.productos.dev/pricing">View Pricing</a>
