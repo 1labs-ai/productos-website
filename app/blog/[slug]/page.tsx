@@ -3,7 +3,9 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowLeft, Calendar, User } from "lucide-react"
+import DOMPurify from "isomorphic-dompurify"
 import { getPostBySlug, getAllPosts, type WordPressPost } from "@/lib/wordpress"
+import { ArticleSchema, BreadcrumbSchema } from "@/components/structured-data"
 
 // ISR: Revalidate every hour
 export const revalidate = 3600
@@ -91,8 +93,41 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     post.content.replace(/<[^>]*>/g, "").split(/\s+/).length / 200
   ))
 
+  // Sanitize WordPress HTML to prevent XSS attacks
+  const sanitizedContent = DOMPurify.sanitize(post.content, {
+    ALLOWED_TAGS: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'a', 'img', 'ul', 'ol', 'li', 'strong', 'em', 'b', 'i', 'code', 'pre', 'blockquote', 'figure', 'figcaption', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'br', 'hr', 'span', 'div'],
+    ALLOWED_ATTR: ['href', 'src', 'alt', 'class', 'id', 'target', 'rel', 'width', 'height', 'loading'],
+    ALLOW_DATA_ATTR: false,
+    ADD_ATTR: ['target'], // Allow target for links
+  })
+
+  // Clean excerpt for structured data
+  const cleanExcerpt = post.excerpt
+    .replace(/<[^>]*>/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 160)
+
   return (
-    <article className="pb-16">
+    <>
+      {/* Structured Data for SEO */}
+      <ArticleSchema
+        title={post.title}
+        description={cleanExcerpt}
+        image={post.featuredImage?.url}
+        datePublished={post.date}
+        dateModified={post.modified}
+        authorName={post.author?.name}
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://www.productos.dev' },
+          { name: 'Blog', url: 'https://www.productos.dev/blog' },
+          { name: post.title, url: `https://www.productos.dev/blog/${slug}` },
+        ]}
+      />
+      
+      <article className="pb-16">
         {/* Hero Section with Featured Image */}
         {post.featuredImage && (
           <div className="relative w-full h-[40vh] sm:h-[50vh] lg:h-[60vh] max-h-[600px] mb-8">
@@ -166,10 +201,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           </div>
 
-          {/* Post Content */}
+          {/* Post Content - Sanitized for XSS protection */}
           <div
             className="prose-content"
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            dangerouslySetInnerHTML={{ __html: sanitizedContent }}
           />
 
           {/* Tags */}
@@ -200,5 +235,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </div>
       </article>
+    </>
   )
 }
