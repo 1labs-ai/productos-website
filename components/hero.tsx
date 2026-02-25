@@ -24,13 +24,13 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 mb-8"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-card/80 backdrop-blur-sm border border-border/50 mb-8"
         >
           <Sparkles className="size-3.5 text-amber-500" />
-          <span className="text-sm font-medium text-foreground/80">The AI-native way to build products</span>
+          <span className="text-sm font-medium text-foreground/80">AI-Native Product Development Platform</span>
         </motion.div>
 
-        {/* Headline - New Brand Tagline */}
+        {/* Headline - Balanced: Authentic + YC-aligned */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -38,9 +38,9 @@ export function Hero() {
           className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6"
           style={{ lineHeight: 1.05, letterSpacing: '-0.025em' }}
         >
-          <span className="text-foreground">Five Stages.</span>
+          <span className="text-foreground">Build What Matters.</span>
           <br />
-          <span className="text-foreground/60">Zero Context Lost.</span>
+          <span className="text-foreground/60">Ship What Works.</span>
         </motion.h1>
 
         {/* Subheadline */}
@@ -50,8 +50,8 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          From idea to production in days, not months. AI agents that work together, 
-          keeping context intact at every stage.
+          From product vision to production deployment — AI agents that work together, 
+          so nothing gets lost in translation.
         </motion.p>
 
         {/* CTAs */}
@@ -63,7 +63,7 @@ export function Hero() {
         >
           <Button
             size="lg"
-            className="bg-foreground text-background hover:bg-foreground/90 rounded-lg px-8 h-12 text-base font-medium shadow-lg shadow-foreground/10"
+            className="bg-foreground text-background hover:bg-foreground/90 rounded-md px-8 h-12 text-base font-medium shadow-lg shadow-foreground/10"
             asChild
           >
             <a href="https://build.productos.dev/sign-up">
@@ -74,14 +74,14 @@ export function Hero() {
           <Button
             variant="outline"
             size="lg"
-            className="rounded-lg px-8 h-12 text-base font-medium border-border/50 hover:bg-card hover:border-border"
+            className="rounded-md px-8 h-12 text-base font-medium border-border/50 hover:bg-card hover:border-border"
             asChild
           >
             <a href="#stages">See How It Works</a>
           </Button>
         </motion.div>
 
-        {/* Stats - Refined */}
+        {/* Stats - Balanced messaging */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -94,13 +94,13 @@ export function Hero() {
           </div>
           <div className="w-px h-10 bg-border" />
           <div className="text-center">
-            <div className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">3-12</div>
-            <div className="text-sm text-muted-foreground mt-1">Days to ship</div>
+            <div className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">1</div>
+            <div className="text-sm text-muted-foreground mt-1">Unified Workflow</div>
           </div>
           <div className="w-px h-10 bg-border" />
           <div className="text-center">
             <div className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">0</div>
-            <div className="text-sm text-muted-foreground mt-1">Context lost</div>
+            <div className="text-sm text-muted-foreground mt-1">Handoffs</div>
           </div>
         </motion.div>
       </div>

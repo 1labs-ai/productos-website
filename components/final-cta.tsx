@@ -13,7 +13,7 @@ export function FinalCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="relative p-8 sm:p-12 rounded-2xl bg-card border border-border overflow-hidden"
+          className="relative p-8 sm:p-12 rounded-lg bg-card border border-border overflow-hidden"
         >
           {/* Background gradient */}
           <div 
@@ -25,7 +25,7 @@ export function FinalCTA() {
           
           <div className="relative z-10 text-center">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted/50 border border-border/50 mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-muted/50 border border-border/50 mb-6">
               <Zap className="size-3.5 text-amber-500" />
               <span className="text-sm font-medium text-foreground/80">Ship in days, not months</span>
             </div>
@@ -41,7 +41,7 @@ export function FinalCTA() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
                 size="lg"
-                className="bg-foreground text-background hover:bg-foreground/90 rounded-lg px-8 h-12 text-base font-medium shadow-lg shadow-foreground/10"
+                className="bg-foreground text-background hover:bg-foreground/90 rounded-md px-8 h-12 text-base font-medium shadow-lg shadow-foreground/10"
                 asChild
               >
                 <a href="https://build.productos.dev/sign-up">
@@ -52,7 +52,7 @@ export function FinalCTA() {
               <Button
                 variant="outline"
                 size="lg"
-                className="rounded-lg px-8 h-12 text-base font-medium border-border/50 hover:bg-muted hover:border-border"
+                className="rounded-md px-8 h-12 text-base font-medium border-border/50 hover:bg-muted hover:border-border"
                 asChild
               >
                 <a href="mailto:hello@1labs.ai">Talk to Us</a>

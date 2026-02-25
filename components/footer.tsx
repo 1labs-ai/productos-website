@@ -1,5 +1,7 @@
 "use client"
 
+import { Logo } from "@/components/logo"
+
 const footerLinks = {
   Product: [
     { label: "Features", href: "#features" },
@@ -32,8 +34,11 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <span className="font-semibold text-lg tracking-tight">ProductOS</span>
-            <p className="text-sm text-muted-foreground mt-2">
+            <div className="flex items-center gap-2.5 mb-2">
+              <Logo size={24} className="shrink-0" />
+              <span className="font-semibold text-lg tracking-tight">ProductOS</span>
+            </div>
+            <p className="text-sm text-muted-foreground">
               Ship products 10x faster with AI.
             </p>
           </div>
