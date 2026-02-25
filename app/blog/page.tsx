@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
 }
 
-export const revalidate = 3600 // ISR: Revalidate every hour
+export const revalidate = 60 // ISR: Revalidate every minute (temp for testing)
 
 export default async function BlogPage() {
   const { posts } = await getPosts({ perPage: 12 })
