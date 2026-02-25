@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { AnimatedSection, AnimatedScale } from "@/components/ui/animated-section";
 import { SectionHeader, CTASection } from "@/components/shared";
-import { Check, X, HelpCircle, Zap, ArrowRight } from "lucide-react";
+import { Check, X, HelpCircle, Zap, ArrowRight, Users } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -11,156 +11,217 @@ import { motion } from "framer-motion";
 export default function PricingPage() {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
 
-  const plans = [
+  const individualPlans = [
     {
       name: "Free",
       price: { monthly: 0, yearly: 0 },
       description: "For individuals getting started",
       features: [
         { name: "1 project", included: true },
-        { name: "Basic AI agents", included: true },
-        { name: "5 generations/day", included: true },
+        { name: "50 AI credits/month", included: true },
+        { name: "3 stage actions/month", included: true },
+        { name: "GPT-4o mini model", included: true },
         { name: "Community support", included: true },
-        { name: "Public templates", included: true },
-        { name: "Advanced AI agents", included: false },
-        { name: "Custom templates", included: false },
-        { name: "API access", included: false },
       ],
       cta: "Get Started",
       ctaLink: "https://build.productos.dev/sign-up",
       highlighted: false,
     },
     {
-      name: "Pro",
-      price: { monthly: 49, yearly: 39 },
-      description: "For founders shipping fast",
+      name: "Starter",
+      price: { monthly: 15, yearly: 12 },
+      description: "For growing product builders",
       features: [
-        { name: "Unlimited projects", included: true },
-        { name: "All AI agents", included: true },
-        { name: "Unlimited generations", included: true },
-        { name: "Priority support", included: true },
-        { name: "Custom domains", included: true },
-        { name: "GitHub integration", included: true },
-        { name: "Export to code", included: true },
-        { name: "Figma sync", included: true },
+        { name: "5 projects", included: true },
+        { name: "300 AI credits/month", included: true },
+        { name: "20 stage actions/month", included: true },
+        { name: "GPT-4o model", included: true },
+        { name: "PRD generation", included: true },
+        { name: "Basic roadmap builder", included: true },
+        { name: "Email support", included: true },
       ],
       cta: "Start Free Trial",
-      ctaLink: "https://build.productos.dev/sign-up",
+      ctaLink: "https://build.productos.dev/sign-up?plan=starter",
+      highlighted: false,
+    },
+    {
+      name: "Pro",
+      price: { monthly: 29, yearly: 24 },
+      description: "Full power for serious makers",
+      features: [
+        { name: "Unlimited projects", included: true },
+        { name: "1,000 AI credits/month", included: true },
+        { name: "66 stage actions/month", included: true },
+        { name: "All AI models", included: true },
+        { name: "Full PRD & roadmap", included: true },
+        { name: "Research agent", included: true },
+        { name: "Code generation", included: true },
+        { name: "Priority support", included: true },
+      ],
+      cta: "Start Free Trial",
+      ctaLink: "https://build.productos.dev/sign-up?plan=pro",
+      highlighted: true,
+    },
+    {
+      name: "Max",
+      price: { monthly: 59, yearly: 49 },
+      description: "Power users, priority access",
+      features: [
+        { name: "Everything in Pro", included: true },
+        { name: "3,000 AI credits/month", included: true },
+        { name: "200 stage actions/month", included: true },
+        { name: "Priority model access", included: true },
+        { name: "Dedicated support", included: true },
+        { name: "Early access to features", included: true },
+      ],
+      cta: "Start Free Trial",
+      ctaLink: "https://build.productos.dev/sign-up?plan=max",
+      highlighted: false,
+    },
+  ];
+
+  const businessPlans = [
+    {
+      name: "Team",
+      price: { monthly: 29, yearly: 24 },
+      priceLabel: "/user",
+      description: "For collaborative teams",
+      features: [
+        { name: "Everything in Pro", included: true },
+        { name: "2,000 AI credits/user/month", included: true },
+        { name: "133 stage actions/user/month", included: true },
+        { name: "Team collaboration", included: true },
+        { name: "Shared workspaces", included: true },
+        { name: "Admin controls", included: true },
+        { name: "Usage analytics", included: true },
+        { name: "SLA guarantee", included: true },
+      ],
+      cta: "Start Team Trial",
+      ctaLink: "https://build.productos.dev/sign-up?plan=team",
       highlighted: true,
     },
     {
       name: "Enterprise",
-      price: { monthly: 99, yearly: 79 },
+      price: { monthly: 0, yearly: 0 },
       priceLabel: "Custom",
-      description: "For teams at scale",
+      description: "Custom solutions at scale",
       features: [
-        { name: "Everything in Pro", included: true },
-        { name: "Unlimited team members", included: true },
-        { name: "SSO & SAML", included: true },
-        { name: "Dedicated support", included: true },
-        { name: "SLA guarantee", included: true },
+        { name: "Everything in Team", included: true },
+        { name: "Unlimited AI credits", included: true },
+        { name: "SSO / SAML", included: true },
         { name: "Custom integrations", included: true },
+        { name: "Dedicated account manager", included: true },
+        { name: "SLA guarantees", included: true },
         { name: "On-premise option", included: true },
         { name: "Custom contracts", included: true },
       ],
       cta: "Contact Sales",
-      ctaLink: "mailto:founders@productos.dev",
+      ctaLink: "mailto:enterprise@productos.dev",
       highlighted: false,
     },
   ];
 
   const faqs = [
     {
-      question: "Can I switch plans at any time?",
-      answer: "Yes! You can upgrade or downgrade your plan at any time. When upgrading, you'll get immediate access to new features. When downgrading, you'll retain access until the end of your billing period.",
+      question: "Is there a free plan?",
+      answer: "Yes! Our Free plan includes 1 project, 50 AI credits per month, and access to GPT-4o mini. It's perfect for individuals just getting started with product development.",
     },
     {
       question: "What payment methods do you accept?",
-      answer: "We accept all major credit cards (Visa, Mastercard, American Express) and process payments securely through Stripe. For Enterprise plans, we also offer invoice billing.",
+      answer: "We accept all major credit cards (Visa, Mastercard, American Express) through our secure payment processor Stripe.",
     },
     {
-      question: "Is there a free trial for Pro?",
-      answer: "Yes! We offer a 14-day free trial of Pro with full access to all features. No credit card required to start.",
+      question: "Can I change my plan later?",
+      answer: "Yes! You can upgrade or downgrade your plan at any time. Upgrades take effect immediately, and downgrades apply at the end of your billing cycle.",
     },
     {
-      question: "What happens to my projects if I downgrade?",
-      answer: "Your projects remain accessible. On the Free plan, you can view all projects but only actively work on one at a time. You can always upgrade again to continue work on multiple projects.",
+      question: "What happens if I exceed my credits?",
+      answer: "You can purchase additional credits or upgrade to a higher plan. We'll notify you when you're approaching your limit.",
     },
     {
-      question: "Do you offer discounts for startups?",
-      answer: "Yes! We offer 50% off for startups that are less than 2 years old and have raised less than $5M. Contact us to apply.",
+      question: "Do you offer refunds?",
+      answer: "We offer a 14-day money-back guarantee for new subscribers. Contact support if you're not satisfied.",
     },
     {
-      question: "What's included in Priority Support?",
-      answer: "Priority Support includes faster response times (within 4 hours), direct access to our team via Slack or email, and personalized onboarding sessions.",
+      question: "Is there a free trial?",
+      answer: "Yes! All paid plans include a 14-day free trial so you can explore all features before committing. You can also start with our free plan to try the basics.",
     },
   ];
 
   return (
     <>
-        {/* Hero */}
-        <section className="py-24 px-4">
-          <div className="max-w-6xl mx-auto">
-            <AnimatedSection className="text-center mb-12">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
-                Simple, transparent pricing
-              </h1>
-              <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-                Start free, scale as you ship. No hidden fees.
-              </p>
+      {/* Hero */}
+      <section className="py-24 px-4">
+        <div className="max-w-7xl mx-auto">
+          <AnimatedSection className="text-center mb-12">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Simple, Transparent Pricing
+            </h1>
+            <p className="text-muted-foreground max-w-2xl mx-auto mb-4">
+              From solo creators to enterprise teams. Pick the plan that fits your product development needs.
+            </p>
+            <p className="text-sm text-emerald-400 mb-8">
+              Your credits work across Design, Develop, and Build — seamless cross-surface workflow
+            </p>
 
-              {/* Billing Toggle */}
-              <div className="inline-flex items-center p-1 rounded-full bg-card border border-border">
-                <button
-                  onClick={() => setBillingCycle("monthly")}
-                  className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors ${
-                    billingCycle === "monthly" ? "text-foreground" : "text-muted-foreground"
-                  }`}
-                >
-                  {billingCycle === "monthly" && (
-                    <motion.div
-                      layoutId="pricing-billing-toggle"
-                      className="absolute inset-0 bg-secondary rounded-full"
-                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative z-10">Monthly</span>
-                </button>
-                <button
-                  onClick={() => setBillingCycle("yearly")}
-                  className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors ${
-                    billingCycle === "yearly" ? "text-foreground" : "text-muted-foreground"
-                  }`}
-                >
-                  {billingCycle === "yearly" && (
-                    <motion.div
-                      layoutId="pricing-billing-toggle"
-                      className="absolute inset-0 bg-secondary rounded-full"
-                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative z-10">Yearly</span>
-                  <span className="relative z-10 ml-2 px-2 py-0.5 text-xs bg-emerald-500/20 text-emerald-400 rounded-full">
-                    -20%
-                  </span>
-                </button>
-              </div>
+            {/* Billing Toggle */}
+            <div className="inline-flex items-center p-1 rounded-full bg-card border border-border">
+              <button
+                onClick={() => setBillingCycle("monthly")}
+                className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors ${
+                  billingCycle === "monthly" ? "text-foreground" : "text-muted-foreground"
+                }`}
+              >
+                {billingCycle === "monthly" && (
+                  <motion.div
+                    layoutId="pricing-billing-toggle"
+                    className="absolute inset-0 bg-secondary rounded-full"
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">Monthly</span>
+              </button>
+              <button
+                onClick={() => setBillingCycle("yearly")}
+                className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors ${
+                  billingCycle === "yearly" ? "text-foreground" : "text-muted-foreground"
+                }`}
+              >
+                {billingCycle === "yearly" && (
+                  <motion.div
+                    layoutId="pricing-billing-toggle"
+                    className="absolute inset-0 bg-secondary rounded-full"
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">Yearly</span>
+                <span className="relative z-10 ml-2 px-2 py-0.5 text-xs bg-emerald-500/20 text-emerald-400 rounded-full">
+                  Save 20%
+                </span>
+              </button>
+            </div>
+          </AnimatedSection>
+
+          {/* Individual Plans */}
+          <div className="mb-16">
+            <AnimatedSection className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-foreground mb-2">Individual Plans</h2>
+              <p className="text-muted-foreground">For Solo Creators & Builders</p>
             </AnimatedSection>
 
-            {/* Pricing Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {plans.map((plan, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {individualPlans.map((plan, index) => (
                 <AnimatedScale key={plan.name} delay={index * 0.1}>
                   <div
                     className={`relative p-6 rounded-lg border transition-all duration-300 hover:scale-[1.02] h-full flex flex-col ${
                       plan.highlighted
-                        ? "bg-card border-border"
+                        ? "bg-card border-emerald-500/50"
                         : "bg-card/50 border-border/50 hover:border-border"
                     }`}
                   >
                     {plan.highlighted && (
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-white text-zinc-950 text-xs font-medium rounded-full">
-                        Most Popular
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-emerald-500 text-white text-xs font-medium rounded-full">
+                        Popular
                       </div>
                     )}
 
@@ -171,20 +232,18 @@ export default function PricingPage() {
 
                     <div className="mb-6">
                       <div className="flex items-baseline gap-1">
-                        {plan.priceLabel ? (
-                          <span className="text-4xl font-bold text-foreground">{plan.priceLabel}</span>
+                        {plan.price.monthly === 0 ? (
+                          <span className="text-4xl font-bold text-foreground">Free</span>
                         ) : (
                           <>
                             <span className="text-4xl font-bold text-foreground">
                               ${plan.price[billingCycle]}
                             </span>
-                            {plan.price.monthly > 0 && (
-                              <span className="text-muted-foreground text-sm">/month</span>
-                            )}
+                            <span className="text-muted-foreground text-sm">/ mo</span>
                           </>
                         )}
                       </div>
-                      {billingCycle === "yearly" && plan.price.yearly > 0 && !plan.priceLabel && (
+                      {billingCycle === "yearly" && plan.price.yearly > 0 && (
                         <p className="text-xs text-muted-foreground mt-1">
                           Billed annually (${plan.price.yearly * 12}/year)
                         </p>
@@ -194,17 +253,8 @@ export default function PricingPage() {
                     <ul className="space-y-3 mb-8 flex-grow">
                       {plan.features.map((feature) => (
                         <li key={feature.name} className="flex items-center gap-3 text-sm">
-                          {feature.included ? (
-                            <>
-                              <Check className="w-4 h-4 text-emerald-500 shrink-0" strokeWidth={1.5} />
-                              <span className="text-foreground/80">{feature.name}</span>
-                            </>
-                          ) : (
-                            <>
-                              <X className="w-4 h-4 text-muted-foreground/50 shrink-0" strokeWidth={1.5} />
-                              <span className="text-muted-foreground/50">{feature.name}</span>
-                            </>
-                          )}
+                          <Check className="w-4 h-4 text-emerald-500 shrink-0" strokeWidth={1.5} />
+                          <span className="text-foreground/80">{feature.name}</span>
                         </li>
                       ))}
                     </ul>
@@ -212,7 +262,84 @@ export default function PricingPage() {
                     <Button
                       className={`w-full rounded-lg ${
                         plan.highlighted
-                          ? "bg-white text-zinc-950 hover:bg-zinc-200"
+                          ? "bg-emerald-500 text-white hover:bg-emerald-600"
+                          : "bg-secondary text-foreground hover:bg-secondary/80 border border-border"
+                      }`}
+                      asChild
+                    >
+                      <a href={plan.ctaLink}>
+                        {plan.cta}
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </a>
+                    </Button>
+                  </div>
+                </AnimatedScale>
+              ))}
+            </div>
+          </div>
+
+          {/* Business Plans */}
+          <div className="mb-16">
+            <AnimatedSection className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-foreground mb-2">Business Plans</h2>
+              <p className="text-muted-foreground">For Teams & Organizations</p>
+            </AnimatedSection>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              {businessPlans.map((plan, index) => (
+                <AnimatedScale key={plan.name} delay={index * 0.1}>
+                  <div
+                    className={`relative p-6 rounded-lg border transition-all duration-300 hover:scale-[1.02] h-full flex flex-col ${
+                      plan.highlighted
+                        ? "bg-card border-emerald-500/50"
+                        : "bg-card/50 border-border/50 hover:border-border"
+                    }`}
+                  >
+                    {plan.highlighted && (
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-emerald-500 text-white text-xs font-medium rounded-full flex items-center gap-1">
+                        <Users className="w-3 h-3" />
+                        Teams
+                      </div>
+                    )}
+
+                    <div className="mb-6">
+                      <h3 className="text-xl font-semibold text-foreground mb-2">{plan.name}</h3>
+                      <p className="text-muted-foreground text-sm">{plan.description}</p>
+                    </div>
+
+                    <div className="mb-6">
+                      <div className="flex items-baseline gap-1">
+                        {plan.priceLabel === "Custom" ? (
+                          <span className="text-4xl font-bold text-foreground">Custom</span>
+                        ) : (
+                          <>
+                            <span className="text-4xl font-bold text-foreground">
+                              ${plan.price[billingCycle]}
+                            </span>
+                            <span className="text-muted-foreground text-sm">{plan.priceLabel} / mo</span>
+                          </>
+                        )}
+                      </div>
+                      {billingCycle === "yearly" && plan.price.yearly > 0 && (
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Billed annually per user
+                        </p>
+                      )}
+                    </div>
+
+                    <ul className="space-y-3 mb-8 flex-grow">
+                      {plan.features.map((feature) => (
+                        <li key={feature.name} className="flex items-center gap-3 text-sm">
+                          <Check className="w-4 h-4 text-emerald-500 shrink-0" strokeWidth={1.5} />
+                          <span className="text-foreground/80">{feature.name}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Button
+                      className={`w-full rounded-lg ${
+                        plan.highlighted
+                          ? "bg-emerald-500 text-white hover:bg-emerald-600"
                           : "bg-secondary text-foreground hover:bg-secondary/80 border border-border"
                       }`}
                       asChild
@@ -227,100 +354,123 @@ export default function PricingPage() {
               ))}
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Feature Comparison */}
-        <section className="py-24 px-4">
-          <div className="max-w-6xl mx-auto">
-            <SectionHeader
-              title="Compare plans"
-              description="See which plan is right for you"
-            />
+      {/* Feature Comparison */}
+      <section className="py-24 px-4 bg-card/30">
+        <div className="max-w-7xl mx-auto">
+          <SectionHeader
+            title="Compare Plans"
+            description="See what's included in each plan"
+          />
 
-            <AnimatedSection>
-              <div className="overflow-x-auto">
-                <table className="w-full max-w-4xl mx-auto">
-                  <thead>
-                    <tr className="border-b border-border">
-                      <th className="text-left py-4 px-4 text-muted-foreground font-medium">Feature</th>
-                      <th className="text-center py-4 px-4 font-semibold text-foreground">Free</th>
-                      <th className="text-center py-4 px-4 font-semibold text-foreground">Pro</th>
-                      <th className="text-center py-4 px-4 font-semibold text-foreground">Enterprise</th>
+          <AnimatedSection>
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-4 px-4 text-muted-foreground font-medium">Feature</th>
+                    <th className="text-center py-4 px-4 font-semibold text-foreground">Free</th>
+                    <th className="text-center py-4 px-4 font-semibold text-foreground">Starter</th>
+                    <th className="text-center py-4 px-4 font-semibold text-foreground bg-emerald-500/10">Pro</th>
+                    <th className="text-center py-4 px-4 font-semibold text-foreground">Max</th>
+                    <th className="text-center py-4 px-4 font-semibold text-foreground">Team</th>
+                    <th className="text-center py-4 px-4 font-semibold text-foreground">Enterprise</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { feature: "Monthly Price", free: "Free", starter: "$15/mo", pro: "$29/mo", max: "$59/mo", team: "$29/user/mo", enterprise: "Custom" },
+                    { feature: "Yearly Price", free: "Free", starter: "$12/mo", pro: "$24/mo", max: "$49/mo", team: "$24/user/mo", enterprise: "Custom" },
+                    { feature: "Projects", free: "1", starter: "5", pro: "Unlimited", max: "Unlimited", team: "Unlimited", enterprise: "Unlimited" },
+                    { feature: "AI Credits/month", free: "50", starter: "300", pro: "1,000", max: "3,000", team: "2,000/user", enterprise: "Unlimited" },
+                    { feature: "Stage Actions/month", free: "3", starter: "20", pro: "66", max: "200", team: "133/user", enterprise: "Unlimited" },
+                    { feature: "AI Models", free: "GPT-4o mini", starter: "GPT-4o", pro: "All models", max: "All + Priority", team: "All models", enterprise: "All + Custom" },
+                    { feature: "PRD Generation", free: "—", starter: "✓", pro: "✓", max: "✓", team: "✓", enterprise: "✓" },
+                    { feature: "Roadmap Builder", free: "—", starter: "Basic", pro: "Full", max: "Full", team: "Full", enterprise: "Full" },
+                    { feature: "Research Agent", free: "—", starter: "—", pro: "✓", max: "✓", team: "✓", enterprise: "✓" },
+                    { feature: "Code Generation", free: "—", starter: "—", pro: "✓", max: "✓", team: "✓", enterprise: "✓" },
+                    { feature: "Team Collaboration", free: "—", starter: "—", pro: "—", max: "—", team: "✓", enterprise: "✓" },
+                    { feature: "SSO / SAML", free: "—", starter: "—", pro: "—", max: "—", team: "—", enterprise: "✓" },
+                    { feature: "Support", free: "Community", starter: "Email", pro: "Priority", max: "Dedicated", team: "Dedicated", enterprise: "Dedicated + SLA" },
+                  ].map((row) => (
+                    <tr key={row.feature} className="border-b border-border/50">
+                      <td className="py-4 px-4 text-foreground font-medium">{row.feature}</td>
+                      <td className="py-4 px-4 text-center text-muted-foreground">{row.free}</td>
+                      <td className="py-4 px-4 text-center text-muted-foreground">{row.starter}</td>
+                      <td className="py-4 px-4 text-center text-foreground bg-emerald-500/5">{row.pro}</td>
+                      <td className="py-4 px-4 text-center text-foreground">{row.max}</td>
+                      <td className="py-4 px-4 text-center text-foreground">{row.team}</td>
+                      <td className="py-4 px-4 text-center text-foreground">{row.enterprise}</td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    {[
-                      { feature: "Projects", free: "1", pro: "Unlimited", enterprise: "Unlimited" },
-                      { feature: "AI Generations/day", free: "5", pro: "Unlimited", enterprise: "Unlimited" },
-                      { feature: "Team Members", free: "1", pro: "1", enterprise: "Unlimited" },
-                      { feature: "Export Formats", free: "PDF", pro: "All", enterprise: "All + Custom" },
-                      { feature: "Support", free: "Community", pro: "Priority", enterprise: "Dedicated" },
-                      { feature: "API Access", free: "—", pro: "✓", enterprise: "✓" },
-                      { feature: "Custom Integrations", free: "—", pro: "—", enterprise: "✓" },
-                      { feature: "SSO", free: "—", pro: "—", enterprise: "✓" },
-                    ].map((row) => (
-                      <tr key={row.feature} className="border-b border-border/50">
-                        <td className="py-4 px-4 text-foreground">{row.feature}</td>
-                        <td className="py-4 px-4 text-center text-muted-foreground">{row.free}</td>
-                        <td className="py-4 px-4 text-center text-foreground">{row.pro}</td>
-                        <td className="py-4 px-4 text-center text-foreground">{row.enterprise}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </AnimatedSection>
-          </div>
-        </section>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
 
-        {/* FAQ */}
-        <section className="py-24 px-4">
-          <div className="max-w-6xl mx-auto">
-            <AnimatedSection className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                Frequently asked questions
-              </h2>
-              <p className="text-muted-foreground">
-                Can&apos;t find what you&apos;re looking for?{" "}
-                <Link href="mailto:founders@productos.dev" className="text-foreground hover:underline">
-                  Contact us
-                </Link>
-              </p>
-            </AnimatedSection>
+      {/* FAQ */}
+      <section className="py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <AnimatedSection className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-muted-foreground">
+              Everything you need to know about our pricing
+            </p>
+          </AnimatedSection>
 
-            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              {faqs.map((faq, index) => (
-                <AnimatedSection key={faq.question} delay={index * 0.05}>
-                  <div className="p-6 rounded-lg bg-card border border-border/50 hover:border-border transition-all">
-                    <div className="flex gap-3">
-                      <HelpCircle className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
-                      <div>
-                        <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
-                        <p className="text-muted-foreground text-sm">{faq.answer}</p>
-                      </div>
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {faqs.map((faq, index) => (
+              <AnimatedSection key={faq.question} delay={index * 0.05}>
+                <div className="p-6 rounded-lg bg-card border border-border/50 hover:border-border transition-all">
+                  <div className="flex gap-3">
+                    <HelpCircle className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
+                      <p className="text-muted-foreground text-sm">{faq.answer}</p>
                     </div>
                   </div>
-                </AnimatedSection>
-              ))}
-            </div>
+                </div>
+              </AnimatedSection>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* CTA */}
-        <CTASection
-          badge={{ icon: Zap, text: "Start Building" }}
-          title="Ready to start building?"
-          description="Join thousands of founders who are building their products with ProductOS. Start for free, no credit card required."
-          primaryAction={{
-            label: "Get Started Free",
-            href: "https://build.productos.dev/sign-up",
-            icon: ArrowRight,
-          }}
-          secondaryAction={{
-            label: "Talk to Sales",
-            href: "mailto:founders@productos.dev",
-          }}
-        />
+      {/* Credits Explanation */}
+      <section className="py-16 px-4 bg-card/30">
+        <div className="max-w-4xl mx-auto text-center">
+          <AnimatedSection>
+            <p className="text-muted-foreground mb-2">
+              <span className="text-foreground font-medium">15 credits per stage action.</span> Every credit powers your journey from concept to code.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Start in Design or Develop, continue your journey in Build — seamless cross-surface workflow
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <CTASection
+        badge={{ icon: Zap, text: "Start Building" }}
+        title="Ready to build your product?"
+        description="Join thousands of founders who are building their products with ProductOS. Start for free, no credit card required."
+        primaryAction={{
+          label: "Get Started Free",
+          href: "https://build.productos.dev/sign-up",
+          icon: ArrowRight,
+        }}
+        secondaryAction={{
+          label: "Talk to Sales",
+          href: "mailto:enterprise@productos.dev",
+        }}
+      />
     </>
   );
 }

@@ -2,8 +2,9 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef, useState } from "react"
-import { Check } from "lucide-react"
+import { Check, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 const plans = [
   {
@@ -12,45 +13,61 @@ const plans = [
     price: { monthly: 0, yearly: 0 },
     features: [
       "1 project",
-      "Basic AI agents",
-      "5 generations/day",
+      "50 AI credits/month",
+      "GPT-4o mini model",
       "Community support",
-      "Public templates",
     ],
     cta: "Get Started",
+    ctaLink: "https://build.productos.dev/sign-up",
+    highlighted: false,
+  },
+  {
+    name: "Starter",
+    description: "For growing product builders",
+    price: { monthly: 15, yearly: 12 },
+    features: [
+      "5 projects",
+      "300 AI credits/month",
+      "GPT-4o model",
+      "PRD generation",
+      "Email support",
+    ],
+    cta: "Start Free Trial",
+    ctaLink: "https://build.productos.dev/sign-up?plan=starter",
     highlighted: false,
   },
   {
     name: "Pro",
-    description: "For founders shipping fast",
-    price: { monthly: 49, yearly: 39 },
+    description: "Full power for serious makers",
+    price: { monthly: 29, yearly: 24 },
     features: [
       "Unlimited projects",
-      "All AI agents",
-      "Unlimited generations",
+      "1,000 AI credits/month",
+      "All AI models",
+      "Full PRD & roadmap",
+      "Research agent",
+      "Code generation",
       "Priority support",
-      "Custom domains",
-      "GitHub integration",
-      "Export to code",
     ],
     cta: "Start Free Trial",
+    ctaLink: "https://build.productos.dev/sign-up?plan=pro",
     highlighted: true,
   },
   {
-    name: "Enterprise",
-    description: "For teams at scale",
-    price: { monthly: 99, yearly: 79 },
-    priceLabel: "Custom",
+    name: "Team",
+    description: "For collaborative teams",
+    price: { monthly: 29, yearly: 24 },
+    priceLabel: "/user",
     features: [
       "Everything in Pro",
-      "Dedicated support",
+      "2,000 AI credits/user",
+      "Team collaboration",
+      "Shared workspaces",
+      "Admin controls",
       "SLA guarantee",
-      "SSO & SAML",
-      "Custom integrations",
-      "On-premise option",
-      "Custom contracts",
     ],
-    cta: "Contact Sales",
+    cta: "Start Team Trial",
+    ctaLink: "https://build.productos.dev/sign-up?plan=team",
     highlighted: false,
   },
 ]
@@ -75,7 +92,7 @@ export function Pricing() {
 
   return (
     <section id="pricing" className="py-24 px-4">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -85,8 +102,11 @@ export function Pricing() {
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Simple, transparent pricing
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-            Start free, scale as you ship. No hidden fees.
+          <p className="text-muted-foreground max-w-2xl mx-auto mb-2">
+            From solo creators to enterprise teams. Pick the plan that fits.
+          </p>
+          <p className="text-sm text-emerald-400 mb-8">
+            Credits work across Design, Develop, and Build
           </p>
 
           {/* Billing Toggle with animation */}
@@ -132,7 +152,7 @@ export function Pricing() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {plans.map((plan, index) => (
             <motion.div
@@ -142,15 +162,15 @@ export function Pricing() {
               transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
               className={`relative p-6 rounded-lg border transition-all duration-300 hover:scale-[1.02] ${
                 plan.highlighted
-                  ? "bg-card border-border"
+                  ? "bg-card border-emerald-500/50"
                   : "bg-card/50 border-border hover:border-border"
               }`}
             >
               {plan.highlighted && <BorderBeam />}
 
               {plan.highlighted && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-white text-zinc-950 text-xs font-medium rounded-full">
-                  Most Popular
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-emerald-500 text-white text-xs font-medium rounded-full">
+                  Popular
                 </div>
               )}
 
@@ -161,17 +181,19 @@ export function Pricing() {
 
               <div className="mb-6">
                 <div className="flex items-baseline gap-1">
-                  {plan.priceLabel ? (
-                    <span className="text-4xl font-bold text-foreground">{plan.priceLabel}</span>
+                  {plan.price.monthly === 0 ? (
+                    <span className="text-4xl font-bold text-foreground">Free</span>
                   ) : (
                     <>
                       <span className="text-4xl font-bold text-foreground">${plan.price[billingCycle]}</span>
-                      {plan.price.monthly > 0 && <span className="text-muted-foreground text-sm">/month</span>}
+                      <span className="text-muted-foreground text-sm">{plan.priceLabel || ""}/mo</span>
                     </>
                   )}
                 </div>
-                {billingCycle === "yearly" && plan.price.yearly > 0 && !plan.priceLabel && (
-                  <p className="text-xs text-muted-foreground mt-1">Billed annually (${plan.price.yearly * 12}/year)</p>
+                {billingCycle === "yearly" && plan.price.yearly > 0 && (
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Billed annually
+                  </p>
                 )}
               </div>
 
@@ -187,17 +209,31 @@ export function Pricing() {
               <Button
                 className={`w-full rounded-lg ${
                   plan.highlighted
-                    ? "shimmer-btn bg-white text-zinc-950 hover:bg-zinc-200"
+                    ? "shimmer-btn bg-emerald-500 text-white hover:bg-emerald-600"
                     : "bg-secondary text-foreground hover:bg-secondary border border-border"
                 }`}
                 asChild
               >
-                <a href={plan.name === "Enterprise" ? "mailto:founders@productos.dev" : "https://build.productos.dev/sign-up"}>
+                <a href={plan.ctaLink}>
                   {plan.cta}
+                  <ArrowRight className="w-4 h-4 ml-2" />
                 </a>
               </Button>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* View all plans link */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="text-center mt-8"
+        >
+          <Link href="/pricing" className="text-muted-foreground hover:text-foreground text-sm inline-flex items-center gap-1 transition-colors">
+            View all plans & compare features
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </motion.div>
       </div>
     </section>
