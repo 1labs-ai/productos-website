@@ -22,7 +22,7 @@ export function ImpactStats() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Ship 6–10x faster than traditional development
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -44,7 +44,7 @@ export function ImpactStats() {
               transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
               className="text-center p-8 rounded-lg bg-card border border-border"
             >
-              <div className="text-5xl sm:text-6xl font-bold text-white mb-2">{stat.value}</div>
+              <div className="text-5xl sm:text-6xl font-bold text-foreground mb-2">{stat.value}</div>
               <div className="text-muted-foreground">{stat.label}</div>
             </motion.div>
           ))}

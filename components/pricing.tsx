@@ -82,7 +82,7 @@ export function Pricing() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Simple, transparent pricing
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
@@ -94,7 +94,7 @@ export function Pricing() {
             <button
               onClick={() => setBillingCycle("monthly")}
               className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors ${
-                billingCycle === "monthly" ? "text-white" : "text-muted-foreground"
+                billingCycle === "monthly" ? "text-foreground" : "text-muted-foreground"
               }`}
             >
               {billingCycle === "monthly" && (
@@ -109,7 +109,7 @@ export function Pricing() {
             <button
               onClick={() => setBillingCycle("yearly")}
               className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors ${
-                billingCycle === "yearly" ? "text-white" : "text-muted-foreground"
+                billingCycle === "yearly" ? "text-foreground" : "text-muted-foreground"
               }`}
             >
               {billingCycle === "yearly" && (
@@ -155,17 +155,17 @@ export function Pricing() {
               )}
 
               <div className="mb-6">
-                <h3 className="text-xl font-semibold text-white mb-2">{plan.name}</h3>
+                <h3 className="text-xl font-semibold text-foreground mb-2">{plan.name}</h3>
                 <p className="text-muted-foreground text-sm">{plan.description}</p>
               </div>
 
               <div className="mb-6">
                 <div className="flex items-baseline gap-1">
                   {plan.priceLabel ? (
-                    <span className="text-4xl font-bold text-white">{plan.priceLabel}</span>
+                    <span className="text-4xl font-bold text-foreground">{plan.priceLabel}</span>
                   ) : (
                     <>
-                      <span className="text-4xl font-bold text-white">${plan.price[billingCycle]}</span>
+                      <span className="text-4xl font-bold text-foreground">${plan.price[billingCycle]}</span>
                       {plan.price.monthly > 0 && <span className="text-muted-foreground text-sm">/month</span>}
                     </>
                   )}
@@ -188,7 +188,7 @@ export function Pricing() {
                 className={`w-full rounded-lg ${
                   plan.highlighted
                     ? "shimmer-btn bg-white text-zinc-950 hover:bg-zinc-200"
-                    : "bg-secondary text-white hover:bg-secondary border border-border"
+                    : "bg-secondary text-foreground hover:bg-secondary border border-border"
                 }`}
                 asChild
               >

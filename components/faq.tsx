@@ -45,7 +45,7 @@ function FAQItem({ faq, index, isInView }: { faq: typeof faqs[0]; index: number;
         onClick={() => setIsOpen(!isOpen)}
         className="w-full py-6 flex items-center justify-between text-left"
       >
-        <span className="font-medium text-white pr-4">{faq.question}</span>
+        <span className="font-medium text-foreground pr-4">{faq.question}</span>
         <ChevronDown
           className={`w-5 h-5 text-muted-foreground transition-transform ${isOpen ? "rotate-180" : ""}`}
         />
@@ -76,7 +76,7 @@ export function FAQ() {
           className="text-center mb-16"
         >
           <p className="text-muted-foreground uppercase tracking-wider text-sm mb-4">FAQ</p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Frequently Asked Questions
           </h2>
           <p className="text-muted-foreground">

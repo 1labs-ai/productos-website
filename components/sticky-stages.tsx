@@ -111,7 +111,7 @@ export function StickyStages() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
             Five Stages.<br />
             <span className="text-muted-foreground">Zero Context Lost.</span>
           </h2>
@@ -137,7 +137,7 @@ export function StickyStages() {
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 activeStage === stage.id
                   ? "bg-white text-zinc-950"
-                  : "bg-card text-muted-foreground hover:text-white border border-border"
+                  : "bg-card text-muted-foreground hover:text-foreground border border-border"
               }`}
             >
               {stage.name}
@@ -170,7 +170,7 @@ export function StickyStages() {
                     <Icon className="w-5 h-5 text-muted-foreground" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <div className="font-semibold text-white">{stage.name}</div>
+                    <div className="font-semibold text-foreground">{stage.name}</div>
                     <div className="text-xs text-muted-foreground">{stage.agent}</div>
                   </div>
                 </button>
@@ -190,7 +190,7 @@ export function StickyStages() {
                   <currentStage.icon className="w-5 h-5 text-muted-foreground" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <div className="font-semibold text-white">{currentStage.name}</div>
+                  <div className="font-semibold text-foreground">{currentStage.name}</div>
                   <div className="text-xs text-muted-foreground">{currentStage.agent}</div>
                 </div>
               </div>
@@ -213,7 +213,7 @@ export function StickyStages() {
               </div>
 
               {/* Title */}
-              <h3 className="text-2xl font-bold text-white mb-1">
+              <h3 className="text-2xl font-bold text-foreground mb-1">
                 {currentStage.card.title}: <span className="italic text-muted-foreground">{currentStage.card.subtitle}</span>
               </h3>
 
@@ -256,7 +256,7 @@ export function StickyStages() {
               {currentStage.card.score && (
                 <div className="p-4 rounded-sm bg-secondary/50 mb-4">
                   <div className="text-xs text-muted-foreground uppercase tracking-wider mb-2">{currentStage.card.scoreLabel}</div>
-                  <div className="text-3xl font-bold text-white">{currentStage.card.score}</div>
+                  <div className="text-3xl font-bold text-foreground">{currentStage.card.score}</div>
                   <p className="text-sm text-muted-foreground mt-2">{currentStage.card.insight}</p>
                 </div>
               )}
@@ -329,7 +329,7 @@ export function StickyStages() {
                   </div>
                   <div className="p-4 rounded-sm bg-secondary/50">
                     <div className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Deploy</div>
-                    <div className="text-2xl font-bold text-white">{currentStage.card.deploy}</div>
+                    <div className="text-2xl font-bold text-foreground">{currentStage.card.deploy}</div>
                   </div>
                 </div>
               )}

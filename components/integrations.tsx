@@ -26,7 +26,7 @@ export function Integrations() {
           className="text-center mb-16"
         >
           <p className="text-muted-foreground uppercase tracking-wider text-sm mb-4">Integrations</p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Seamless Integrations
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -51,7 +51,7 @@ export function Integrations() {
               <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mx-auto mb-3 group-hover:bg-secondary transition-colors">
                 <span className="text-lg font-bold text-muted-foreground">{integration.name[0]}</span>
               </div>
-              <div className="font-medium text-white text-sm">{integration.name}</div>
+              <div className="font-medium text-foreground text-sm">{integration.name}</div>
               <div className="text-xs text-muted-foreground mt-1">{integration.description}</div>
             </motion.div>
           ))}
