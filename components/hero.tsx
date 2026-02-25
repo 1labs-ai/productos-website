@@ -183,12 +183,12 @@ export function Hero() {
               </div>
               
               {/* Video/GIF Container */}
-              <div className="relative aspect-[16/10] bg-[#fafafa]">
+              <div className="relative aspect-[1360/656] bg-[#fafafa]">
                 {/* Video for desktop (hidden on error) */}
                 {!videoError && (
                   <video
                     ref={videoRef}
-                    className="w-full h-full object-contain hidden md:block"
+                    className="w-full h-full object-cover hidden md:block"
                     poster={demoPosterSrc}
                     muted
                     loop
@@ -205,7 +205,7 @@ export function Hero() {
                 <img
                   src={videoError ? demoGifSrc : demoPosterSrc}
                   alt="ProductOS demo - 5-stage AI product development workflow"
-                  className={`w-full h-full object-contain ${!videoError ? 'md:hidden' : ''}`}
+                  className={`w-full h-full object-cover ${!videoError ? 'md:hidden' : ''}`}
                   onError={(e) => {
                     // Final fallback - show dashboard screenshot
                     (e.target as HTMLImageElement).src = '/product/dashboard.webp'
