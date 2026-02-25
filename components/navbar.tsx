@@ -97,18 +97,12 @@ export function Navbar() {
     >
       <nav className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo - matching develop.productos.dev exactly */}
-          <a href="/" className="flex items-center gap-2.5 group">
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="flex items-center gap-2.5"
-            >
-              <AnimatedLogo size={28} className="shrink-0" animate={isHomepage} />
-              <span className="font-semibold text-lg leading-none tracking-tight">
-                ProductOS
-              </span>
-            </motion.div>
+          {/* Logo - no grow animation, logo animates on hover */}
+          <a href="/" className="flex items-center gap-2.5">
+            <AnimatedLogo size={28} className="shrink-0" />
+            <span className="font-semibold text-lg leading-none tracking-tight">
+              ProductOS
+            </span>
           </a>
 
           {/* Center Nav Items */}
