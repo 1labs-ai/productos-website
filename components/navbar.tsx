@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useRef } from "react"
 import { usePathname } from "next/navigation"
-import { motion } from "framer-motion"
-import { Menu, X, Sun, Moon, Monitor } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Menu, X, Sun, Moon, Monitor, ChevronDown, BookOpen, FileText, Newspaper } from "lucide-react"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -13,9 +13,85 @@ const navItems = [
   { label: "Product", href: "/#features" },
   { label: "Pricing", href: "/pricing" },
   { label: "Enterprise", href: "/enterprise" },
-  { label: "Docs", href: "https://docs.productos.dev" },
-  { label: "Blog", href: "/blog" },
+  { 
+    label: "Resources", 
+    dropdown: [
+      { label: "Documentation", href: "https://docs.productos.dev", icon: BookOpen, description: "Guides and API reference" },
+      { label: "Blog", href: "/blog", icon: Newspaper, description: "Latest articles and insights" },
+      { label: "Changelog", href: "/changelog", icon: FileText, description: "Product updates and releases" },
+    ]
+  },
 ]
+
+// Resources dropdown component
+function ResourcesDropdown({ item }: { item: { label: string; dropdown: Array<{ label: string; href: string; icon: any; description: string }> } }) {
+  const [isOpen, setIsOpen] = useState(false)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    setIsOpen(true)
+  }
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => setIsOpen(false), 150)
+  }
+
+  return (
+    <div 
+      className="relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <button
+        className={cn(
+          "relative flex items-center gap-1 px-4 py-2 text-sm font-medium text-muted-foreground",
+          "transition-colors hover:text-foreground",
+          "group"
+        )}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {item.label}
+        <ChevronDown className={cn(
+          "size-3.5 transition-transform duration-200",
+          isOpen && "rotate-180"
+        )} />
+        <span className="absolute inset-x-2 -bottom-px h-px bg-gradient-to-r from-primary/0 via-primary/70 to-primary/0 opacity-0 transition-opacity group-hover:opacity-100" />
+      </button>
+      
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 8, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 8, scale: 0.96 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="absolute top-full left-0 mt-2 w-64 rounded-lg border border-border bg-background/95 backdrop-blur-lg shadow-lg overflow-hidden"
+          >
+            <div className="p-2">
+              {item.dropdown.map((subItem) => {
+                const Icon = subItem.icon
+                return (
+                  <a
+                    key={subItem.label}
+                    href={subItem.href}
+                    className="flex items-start gap-3 px-3 py-2.5 rounded-md text-sm transition-colors hover:bg-muted group/item"
+                  >
+                    <Icon className="size-5 mt-0.5 text-muted-foreground group-hover/item:text-foreground transition-colors" />
+                    <div>
+                      <div className="font-medium text-foreground">{subItem.label}</div>
+                      <div className="text-xs text-muted-foreground">{subItem.description}</div>
+                    </div>
+                  </a>
+                )
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
 
 // Theme toggle matching develop.productos.dev exactly
 function ThemeToggle() {
@@ -113,18 +189,22 @@ export function Navbar() {
           {/* Center Nav Items */}
           <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className={cn(
-                  "relative px-4 py-2 text-sm font-medium text-muted-foreground",
-                  "transition-colors hover:text-foreground",
-                  "group"
-                )}
-              >
-                {item.label}
-                <span className="absolute inset-x-2 -bottom-px h-px bg-gradient-to-r from-primary/0 via-primary/70 to-primary/0 opacity-0 transition-opacity group-hover:opacity-100" />
-              </a>
+              'dropdown' in item ? (
+                <ResourcesDropdown key={item.label} item={item} />
+              ) : (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className={cn(
+                    "relative px-4 py-2 text-sm font-medium text-muted-foreground",
+                    "transition-colors hover:text-foreground",
+                    "group"
+                  )}
+                >
+                  {item.label}
+                  <span className="absolute inset-x-2 -bottom-px h-px bg-gradient-to-r from-primary/0 via-primary/70 to-primary/0 opacity-0 transition-opacity group-hover:opacity-100" />
+                </a>
+              )
             ))}
           </div>
 
