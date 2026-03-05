@@ -84,10 +84,11 @@ function CoverSlide() {
       <h1 className="text-5xl sm:text-7xl font-bold tracking-tight text-foreground mb-4">
         ProductOS
       </h1>
-      <p className="text-xl sm:text-2xl text-muted-foreground mb-8 max-w-2xl">
-        The AI-native platform for building products.
-        <br />
-        From idea to launch in days, not months.
+      <p className="text-2xl sm:text-3xl text-foreground/90 font-medium mb-4">
+        Cursor for Product Managers
+      </p>
+      <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-2xl">
+        From idea to deployed product in days, not months.
       </p>
       <div className="flex items-center gap-2 text-sm text-muted-foreground/60">
         <span>Built by</span>
@@ -122,9 +123,9 @@ function ProblemSlide() {
       detail: "Prohibitive for most founders",
     },
     {
-      stat: "5-10",
-      label: "people needed",
-      detail: "PM, designer, developers, DevOps",
+      stat: "5+",
+      label: "tools stitched together",
+      detail: "Notion, Figma, Jira, GitHub, Copilot",
     },
   ];
 
@@ -138,12 +139,10 @@ function ProblemSlide() {
       </div>
 
       <div className="flex-1 flex flex-col justify-center">
-        <p className="text-xl text-muted-foreground mb-12 max-w-3xl">
-          Building a product is <span className="text-foreground font-semibold">too expensive</span>,{" "}
-          <span className="text-foreground font-semibold">too slow</span>, and requires{" "}
-          <span className="text-foreground font-semibold">too many specialists</span>.
+        <p className="text-xl text-muted-foreground mb-8 max-w-3xl">
+          Developers got <span className="text-foreground font-semibold">Cursor</span> — AI-powered coding that 10x'd their productivity.
           <br /><br />
-          Solo founders and small teams are locked out.
+          <span className="text-foreground font-semibold">Product Managers and Founders?</span> Still juggling 5+ disconnected tools with manual handoffs at every step.
         </p>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
@@ -178,14 +177,29 @@ function SolutionSlide() {
           ProductOS: Your AI Product Team
         </h3>
 
-        <p className="text-xl text-muted-foreground mb-12 max-w-3xl">
-          One platform that handles <span className="text-foreground font-semibold">requirements</span>,{" "}
-          <span className="text-foreground font-semibold">design</span>,{" "}
-          <span className="text-foreground font-semibold">code</span>, and{" "}
-          <span className="text-foreground font-semibold">mobile apps</span>.
+        <p className="text-xl text-muted-foreground mb-8 max-w-3xl">
+          What Cursor is for developers, we are for Product Managers and Founders.
           <br /><br />
-          AI agents do the heavy lifting. You focus on vision.
+          One platform that replaces Notion + Figma + Jira + GitHub + Copilot with AI-orchestrated product development.
         </p>
+
+        {/* 4D Framework */}
+        <div className="flex items-center justify-center gap-4 mb-10">
+          {[
+            { label: "Discover", desc: "Research & Insights" },
+            { label: "Define", desc: "PRDs & Specs" },
+            { label: "Design", desc: "UI Generation" },
+            { label: "Develop", desc: "Code & Deploy" },
+          ].map((step, i) => (
+            <div key={step.label} className="flex items-center">
+              <div className="text-center">
+                <div className="text-xl font-bold text-green-400 mb-1">{step.label}</div>
+                <div className="text-xs text-muted-foreground">{step.desc}</div>
+              </div>
+              {i < 3 && <div className="mx-4 text-muted-foreground/50">→</div>}
+            </div>
+          ))}
+        </div>
 
         <div className="grid grid-cols-3 gap-8">
           <div className="text-center">
@@ -483,10 +497,10 @@ function TractionSlide() {
 
 function CompetitionSlide() {
   const competitors = [
-    { name: "Lovable", focus: "Code only", weakness: "No PRD, no design, no mobile" },
-    { name: "Bolt.new", focus: "Code only", weakness: "No product workflow" },
-    { name: "v0.dev", focus: "UI only", weakness: "Components, not products" },
-    { name: "Cursor", focus: "IDE", weakness: "Requires coding skills" },
+    { name: "Lovable/Bolt", focus: "Code generation", weakness: "No research, no PRD, no design system" },
+    { name: "v0.dev", focus: "UI components", weakness: "Components, not complete products" },
+    { name: "Cursor", focus: "Developer IDE", weakness: "Requires coding skills, not for PMs" },
+    { name: "Notion + Figma + Jira", focus: "Separate tools", weakness: "Manual handoffs, no AI orchestration" },
   ];
 
   return (
@@ -510,7 +524,7 @@ function CompetitionSlide() {
                       <div className="font-medium text-foreground">{c.name}</div>
                       <div className="text-sm text-muted-foreground">{c.focus}</div>
                     </div>
-                    <div className="text-xs text-red-400 max-w-32 text-right">{c.weakness}</div>
+                    <div className="text-xs text-red-400 max-w-36 text-right">{c.weakness}</div>
                   </div>
                 </div>
               ))}
@@ -518,36 +532,40 @@ function CompetitionSlide() {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-foreground mb-4">ProductOS Advantage</h3>
+            <h3 className="text-xl font-semibold text-foreground mb-4">ProductOS: Full Stack for PMs</h3>
             <div className="p-6 rounded-xl bg-green-500/5 border border-green-500/30 h-[calc(100%-2rem)]">
-              <div className="text-2xl font-bold text-foreground mb-4">
-                Full Product Lifecycle
+              <div className="text-xl font-bold text-foreground mb-4">
+                4D Framework — Discover to Deploy
               </div>
-              <ul className="space-y-3 text-muted-foreground">
+              <ul className="space-y-2.5 text-muted-foreground text-sm">
                 <li className="flex items-center gap-2">
                   <span className="text-green-400">✓</span>
-                  Requirements & PRDs (Build)
+                  Multi-model Research Agent (GPT-4, Claude, Gemini)
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-green-400">✓</span>
-                  UI Design & Mockups (Design)
+                  Upload interviews → "What should we build?"
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-green-400">✓</span>
-                  Working Code & Preview (Develop)
+                  PRD Agent generates full specs
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-green-400">✓</span>
-                  Mobile Apps & QR Preview (Mobile)
+                  Design Agent creates UI from prompts
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-green-400">✓</span>
-                  Shared context across all surfaces
+                  Code Agent builds production Next.js
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-green-400">✓</span>
+                  Mobile Agent with QR preview
                 </li>
               </ul>
-              <div className="mt-6 pt-4 border-t border-green-500/20">
+              <div className="mt-4 pt-3 border-t border-green-500/20">
                 <div className="text-sm text-muted-foreground">
-                  <span className="text-foreground font-medium">Only ProductOS</span> covers the full journey from idea to shipped product.
+                  <span className="text-foreground font-medium">One AI-orchestrated platform</span> replaces the chaos of 5+ tools.
                 </div>
               </div>
             </div>
@@ -569,79 +587,64 @@ function TeamSlide() {
       </div>
 
       <div className="flex-1 flex flex-col justify-center">
-        <div className="grid grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {/* Founder Card */}
-          <div className="p-8 rounded-xl bg-card border border-border/50 col-span-2 lg:col-span-1">
+        <div className="grid grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {/* CEO Card */}
+          <div className="p-6 rounded-xl bg-card border border-border/50">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-500/20 to-purple-500/20 border border-border/50 flex items-center justify-center">
-                <span className="text-2xl font-bold text-foreground">HP</span>
+              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-amber-500/20 to-purple-500/20 border border-border/50 flex items-center justify-center">
+                <span className="text-xl font-bold text-foreground">HP</span>
               </div>
               <div>
-                <div className="text-xl font-bold text-foreground">Heemang Parmar</div>
-                <div className="text-muted-foreground">Founder & CEO</div>
+                <div className="text-lg font-bold text-foreground">Heemang Parmar</div>
+                <div className="text-sm text-muted-foreground">Co-Founder & CEO</div>
               </div>
             </div>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <ul className="space-y-1.5 text-sm text-muted-foreground">
               <li>• IIM Lucknow MBA + CS Engineering</li>
-              <li>• Founder, Virusha Group</li>
-              <li>• 10+ years in product & technology</li>
-              <li>• Built and scaled multiple ventures</li>
+              <li>• 10+ years product & technology</li>
+              <li>• 150+ products shipped</li>
+              <li>• Architected ProductOS, 60%+ initial code</li>
             </ul>
-            <div className="flex gap-2 mt-4">
-              <a
-                href="https://linkedin.com/in/heemangparmar"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-              >
-                LinkedIn ↗
-              </a>
-              <a
-                href="https://twitter.com/heemangparmar"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Twitter ↗
-              </a>
+            <div className="flex gap-3 mt-4">
+              <a href="https://linkedin.com/in/heemangparmar" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-foreground transition-colors">LinkedIn ↗</a>
+              <a href="https://twitter.com/heemangparmar" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Twitter ↗</a>
             </div>
           </div>
 
-          {/* Company Card */}
-          <div className="p-8 rounded-xl bg-muted/30 border border-border/50 col-span-2 lg:col-span-1">
+          {/* CTO Card */}
+          <div className="p-6 rounded-xl bg-card border border-border/50">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500/20 to-green-500/20 border border-border/50 flex items-center justify-center">
-                <Building2 className="size-8 text-foreground/60" />
+              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500/20 to-green-500/20 border border-border/50 flex items-center justify-center">
+                <span className="text-xl font-bold text-foreground">SS</span>
               </div>
               <div>
-                <div className="text-xl font-bold text-foreground">1Labs AI</div>
-                <div className="text-muted-foreground">Parent Company</div>
+                <div className="text-lg font-bold text-foreground">Shreyash Singh</div>
+                <div className="text-sm text-muted-foreground">Co-Founder & CTO</div>
               </div>
             </div>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>• AI-first product studio</li>
-              <li>• Part of Virusha Group</li>
-              <li>• Focus: AI agents & automation</li>
-              <li>• ProductOS is flagship product</li>
+            <ul className="space-y-1.5 text-sm text-muted-foreground">
+              <li>• B.Tech AI & Data Science</li>
+              <li>• 10x hackathon winner</li>
+              <li>• AI Agents, RAG, LLM fine-tuning expert</li>
+              <li>• Built multi-agent system architecture</li>
             </ul>
-            <div className="flex gap-2 mt-4">
-              <a
-                href="https://1labs.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-              >
-                1labs.ai ↗
-              </a>
+            <div className="flex gap-3 mt-4">
+              <a href="https://linkedin.com/in/shreyash-singh-ai" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-foreground transition-colors">LinkedIn ↗</a>
             </div>
           </div>
         </div>
 
-        <div className="mt-8 text-center">
+        {/* Proven collaboration */}
+        <div className="mt-6 p-4 rounded-lg bg-muted/30 border border-border/50 max-w-4xl mx-auto text-center">
+          <p className="text-sm text-muted-foreground">
+            <span className="text-foreground font-medium">Proven together:</span> Built Delve AI (AlphaSense competitor) for a $20M ARR healthcare client in 5 months — just the two of us.
+          </p>
+        </div>
+
+        {/* Company */}
+        <div className="mt-6 text-center">
           <p className="text-muted-foreground">
-            Growing team of <span className="text-foreground">AI engineers</span>,{" "}
-            <span className="text-foreground">product designers</span>, and{" "}
-            <span className="text-foreground">growth specialists</span>.
+            <span className="text-foreground font-medium">1Labs AI</span> — Part of Virusha Group • AI-first product studio • ProductOS is the flagship product
           </p>
         </div>
       </div>
@@ -793,33 +796,35 @@ export default function PitchDeckPage() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      {/* Header */}
-      <header className="flex items-center justify-between px-6 py-4 border-b border-border/50 print:hidden">
-        <div className="flex items-center gap-3">
-          <Logo className="size-8" />
-          <span className="font-semibold text-foreground">ProductOS Pitch Deck</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => window.print()}
-            className="gap-2"
-          >
-            <Download className="size-4" />
-            Export PDF
-          </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={toggleFullscreen}
-            className="gap-2"
-          >
-            <Maximize2 className="size-4" />
-            {isFullscreen ? "Exit" : "Present"}
-          </Button>
-        </div>
-      </header>
+      {/* Header - Hidden in presenter mode */}
+      {!isFullscreen && (
+        <header className="flex items-center justify-between px-6 py-4 border-b border-border/50 print:hidden">
+          <div className="flex items-center gap-3">
+            <Logo className="size-8" />
+            <span className="font-semibold text-foreground">ProductOS Pitch Deck</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => window.print()}
+              className="gap-2"
+            >
+              <Download className="size-4" />
+              Export PDF
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={toggleFullscreen}
+              className="gap-2"
+            >
+              <Maximize2 className="size-4" />
+              Present
+            </Button>
+          </div>
+        </header>
+      )}
 
       {/* Slide Container */}
       <div className="flex-1 relative overflow-hidden">

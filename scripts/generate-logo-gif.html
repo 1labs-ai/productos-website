@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * { margin: 0; padding: 0; }
+    body { 
+      width: 300px; 
+      height: 300px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      background: transparent;
+    }
+    svg { width: 200px; height: 200px; }
+    .back { opacity: 0; transform: scaleY(0); transform-origin: center bottom; }
+    .left { opacity: 0; transform: rotateY(90deg); transform-origin: right center; }
+    .right { opacity: 0; transform: rotateY(-90deg); transform-origin: left center; }
+    
+    .animate .back {
+      animation: backUnfold 0.5s ease-out 0.1s forwards;
+    }
+    .animate .left {
+      animation: leftUnfold 0.4s ease-out 0.6s forwards;
+    }
+    .animate .right {
+      animation: rightUnfold 0.4s ease-out 1s forwards;
+    }
+    
+    @keyframes backUnfold {
+      to { opacity: 0.35; transform: scaleY(1); }
+    }
+    @keyframes leftUnfold {
+      to { opacity: 0.65; transform: rotateY(0deg); }
+    }
+    @keyframes rightUnfold {
+      to { opacity: 1; transform: rotateY(0deg); }
+    }
+  </style>
+</head>
+<body>
+  <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="animate">
+    <path class="back" d="M4 32 L18 4 L32 32 Z" fill="#000"/>
+    <path class="left" d="M18 4 L4 32 L18 32 Z" fill="#000"/>
+    <path class="right" d="M18 4 L18 32 L32 4 Z" fill="#000"/>
+  </svg>
+</body>
+</html>
