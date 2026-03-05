@@ -584,10 +584,9 @@ function TeamSlide() {
           <div className="p-6 rounded-xl bg-card border border-border/50">
             <div className="flex items-center gap-4 mb-4">
               <img 
-                src="/team/heemang.jpg" 
+                src="/team/heemang.png" 
                 alt="Heemang Parmar"
                 className="w-16 h-16 rounded-full object-cover border-2 border-border/50"
-                onError={(e) => { e.currentTarget.src = '/placeholder-user.jpg' }}
               />
               <div>
                 <div className="text-lg font-bold text-foreground">Heemang Parmar</div>
@@ -610,10 +609,9 @@ function TeamSlide() {
           <div className="p-6 rounded-xl bg-card border border-border/50">
             <div className="flex items-center gap-4 mb-4">
               <img 
-                src="/team/shreyash.jpg" 
+                src="/team/shreyash.png" 
                 alt="Shreyash Singh"
                 className="w-16 h-16 rounded-full object-cover border-2 border-border/50"
-                onError={(e) => { e.currentTarget.src = '/placeholder-user.jpg' }}
               />
               <div>
                 <div className="text-lg font-bold text-foreground">Shreyash Singh</div>
