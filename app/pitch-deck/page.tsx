@@ -828,6 +828,14 @@ export default function PitchDeckPage() {
 
       {/* Slide Container */}
       <div className="flex-1 relative overflow-hidden">
+        {/* Logo watermark - top right on all slides except cover */}
+        {currentSlide !== 0 && (
+          <div className="absolute top-6 right-8 z-10 flex items-center gap-2 opacity-60">
+            <Logo className="size-8" />
+            <span className="text-sm font-medium text-foreground/80">ProductOS</span>
+          </div>
+        )}
+
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
