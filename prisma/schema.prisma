@@ -7,6 +7,35 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Allowed viewers (pre-approved emails)
+model AllowedViewer {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  company   String?
+  addedAt   DateTime @default(now())
+  hasViewed Boolean  @default(false)
+  viewedAt  DateTime?
+  
+  // Link to actual viewer data when they view
+  viewer    PitchDeckViewer? @relation(fields: [viewerId], references: [id])
+  viewerId  String?
+  
+  @@index([email])
+}
+
+// OTP codes for email verification
+model OTPCode {
+  id        String   @id @default(cuid())
+  email     String
+  code      String   // 6-digit code
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  
+  @@index([email, code])
+}
+
 // Pitch Deck Viewers
 model PitchDeckViewer {
   id        String   @id @default(cuid())
@@ -25,7 +54,8 @@ model PitchDeckViewer {
   updatedAt DateTime @updatedAt
   
   // Relations
-  sessions  PitchDeckSession[]
+  sessions       PitchDeckSession[]
+  allowedViewer  AllowedViewer[]
   
   @@index([email])
   @@index([createdAt])

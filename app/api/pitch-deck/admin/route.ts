@@ -1,21 +1,40 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
+import { cookies } from 'next/headers'
 
 // Simple admin password protection
-const ADMIN_PASSWORD = process.env.PITCH_DECK_ADMIN_PASSWORD || 'productos-admin-2026'
+const ADMIN_PASSWORD = process.env.PITCH_DECK_ADMIN_PASSWORD || 'ProductOS2026!'
 
 export async function GET(request: NextRequest) {
   try {
-    // Check admin password from header or query
+    // Check admin password from header, query, or cookie
     const authHeader = request.headers.get('x-admin-password')
     const { searchParams } = new URL(request.url)
     const queryPassword = searchParams.get('password')
     
-    if (authHeader !== ADMIN_PASSWORD && queryPassword !== ADMIN_PASSWORD) {
+    const cookieStore = await cookies()
+    const adminCookie = cookieStore.get('pitch_admin_auth')?.value
+    
+    const isAuthenticated = 
+      authHeader === ADMIN_PASSWORD || 
+      queryPassword === ADMIN_PASSWORD ||
+      adminCookie === 'authenticated'
+    
+    if (!isAuthenticated) {
       return NextResponse.json(
         { error: 'Unauthorized' },
         { status: 401 }
       )
+    }
+    
+    // If password was correct, set the cookie for future requests
+    if (queryPassword === ADMIN_PASSWORD && adminCookie !== 'authenticated') {
+      cookieStore.set('pitch_admin_auth', 'authenticated', {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+        maxAge: 60 * 60 * 24 * 7, // 7 days
+      })
     }
 
     // Get all viewers with session counts and analytics
