@@ -11,6 +11,7 @@ import { OrganizationSchema, SoftwareApplicationSchema, WebSiteSchema } from "@/
 import "./globals.css"
 
 const GA_MEASUREMENT_ID = "G-XEFK3N9Y95"
+const GOOGLE_ADS_ID = "AW-17995076533"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -115,6 +116,7 @@ export default function RootLayout({
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${GA_MEASUREMENT_ID}');
+            gtag('config', '${GOOGLE_ADS_ID}');
           `}
         </Script>
         {/* Structured Data for SEO & GEO */}
