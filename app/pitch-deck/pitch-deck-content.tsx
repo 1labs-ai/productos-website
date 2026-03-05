@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronLeft,
   ChevronRight,
-  Download,
   Maximize2,
   Building2,
   Rocket,
@@ -878,15 +877,6 @@ export function PitchDeckContent() {
             <span className="font-semibold text-foreground">ProductOS Pitch Deck</span>
           </div>
           <div className="flex items-center gap-2">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => window.print()}
-              className="gap-2"
-            >
-              <Download className="size-4" />
-              Export PDF
-            </Button>
             <Button
               variant="ghost"
               size="sm"
