@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
 import { AnimatedLogo, type AnimatedLogoRef } from "@/components/animated-logo"
 
 const navItems = [
-  { label: "Product", href: "/#features" },
+  { label: "Product", href: "/#stages" },
   { label: "Blog", href: "/blog" },
 ]
 
