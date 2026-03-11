@@ -183,8 +183,8 @@ export function Hero() {
                 {!videoLoaded && !videoError && (
                   <div className="aspect-[16/9] flex items-center justify-center bg-black">
                     <div className="flex flex-col items-center gap-3">
-                      <div className="w-10 h-10 border-2 border-zinc-700 border-t-zinc-400 rounded-full animate-spin" />
-                      <span className="text-sm text-zinc-500">Loading video...</span>
+                      <div className="w-10 h-10 border-2 border-muted-foreground/30 border-t-muted-foreground rounded-full animate-spin" />
+                      <span className="text-sm text-muted-foreground">Loading video...</span>
                     </div>
                   </div>
                 )}
