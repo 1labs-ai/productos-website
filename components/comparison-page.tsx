@@ -201,14 +201,14 @@ export function ComparisonPage({ competitor, features, summary, verdict }: Compa
         <div className="text-center p-8 rounded-xl bg-gradient-to-b from-card to-muted/30 border border-border">
           <h2 className="text-2xl font-bold mb-4">Ready to try ProductOS?</h2>
           <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
-            Experience the complete AI product development platform. From idea to launch in days, not months.
+            Join our private beta and experience the complete AI product development platform.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="https://build.productos.dev/sign-up"
+              href="/early-access"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
             >
-              Start Building Free
+              Request Early Access
               <ArrowRight className="size-4" />
             </a>
             <Link
@@ -219,7 +219,7 @@ export function ComparisonPage({ competitor, features, summary, verdict }: Compa
             </Link>
           </div>
           <p className="text-xs text-muted-foreground mt-4">
-            The official ProductOS by 1Labs AI • productos.dev
+            Private beta • Limited spots available
           </p>
         </div>
       </div>

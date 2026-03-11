@@ -111,8 +111,8 @@ export function Hero() {
             className="bg-foreground text-background hover:bg-foreground/90 rounded-md px-8 h-12 text-base font-medium shadow-lg shadow-foreground/10"
             asChild
           >
-            <a href="https://build.productos.dev/sign-up">
-              Start Building Free
+            <a href="/early-access">
+              Request Early Access
               <ArrowRight className="ml-2 size-4" />
             </a>
           </Button>

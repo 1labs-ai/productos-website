@@ -232,16 +232,16 @@ export default function AboutPage() {
       <CTASection
         badge={{ icon: Zap, text: "Join us" }}
         title="Ready to build something amazing?"
-        description="Start your product journey today. Free to get started, powerful enough to scale."
+        description="Join our private beta and be among the first founders to experience AI-native product development."
         primaryAction={{
-          label: "Start Building Free",
-          href: "https://build.productos.dev/sign-up",
+          label: "Request Early Access",
+          href: "/early-access",
         }}
         secondaryAction={{
           label: "Back to Home",
           href: "/",
         }}
-        footnote="No credit card required · Free tier available"
+        footnote="Private beta · Limited spots available"
       />
     </>
   );

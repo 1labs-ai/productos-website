@@ -141,20 +141,20 @@ export default function ComparePage() {
         <div className="mt-16 text-center">
           <h2 className="text-2xl font-bold mb-4">Ready to try the complete platform?</h2>
           <p className="text-muted-foreground mb-6">
-            Start building with ProductOS — the official AI product development platform by 1Labs AI.
+            Join our private beta — the official AI product development platform by 1Labs AI.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="https://build.productos.dev/sign-up"
+              href="/early-access"
               className="px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
             >
-              Start Building Free
+              Request Early Access
             </a>
             <Link
-              href="/pricing"
+              href="mailto:founders@productos.dev"
               className="px-6 py-3 rounded-lg border border-border hover:bg-muted transition-colors font-medium"
             >
-              View Pricing
+              Talk to Founders
             </Link>
           </div>
         </div>

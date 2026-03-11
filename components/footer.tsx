@@ -9,7 +9,7 @@ import { AnimatedLogo, type AnimatedLogoRef } from "@/components/animated-logo"
 const footerLinks = {
   Product: [
     { label: "Features", href: "/#features" },
-    { label: "Pricing", href: "/pricing" },
+    { label: "Early Access", href: "/early-access" },
     { label: "Enterprise", href: "/enterprise" },
     { label: "Changelog", href: "/changelog" },
   ],

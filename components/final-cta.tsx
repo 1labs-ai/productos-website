@@ -44,8 +44,8 @@ export function FinalCTA() {
                 className="bg-foreground text-background hover:bg-foreground/90 rounded-md px-8 h-12 text-base font-medium shadow-lg shadow-foreground/10"
                 asChild
               >
-                <a href="https://build.productos.dev/sign-up">
-                  Start Building Free
+                <a href="/early-access">
+                  Request Early Access
                   <ArrowRight className="ml-2 size-4" />
                 </a>
               </Button>
@@ -60,7 +60,7 @@ export function FinalCTA() {
             </div>
             
             <p className="text-sm text-muted-foreground mt-6">
-              No credit card required · Free tier available
+              Private beta · Limited spots available
             </p>
           </div>
         </motion.div>

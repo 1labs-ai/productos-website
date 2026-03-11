@@ -15,7 +15,6 @@ type NavItem =
 
 const navItems: NavItem[] = [
   { label: "Product", href: "/#features" },
-  { label: "Pricing", href: "/pricing" },
   { label: "Enterprise", href: "/enterprise" },
   { 
     label: "Resources", 
@@ -215,14 +214,6 @@ export function Navbar() {
           {/* Right Side */}
           <div className="hidden md:flex items-center gap-3">
             <ThemeToggle />
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              asChild
-            >
-              <a href="https://build.productos.dev/sign-in">Sign In</a>
-            </Button>
             <motion.div
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -232,7 +223,7 @@ export function Navbar() {
                 className="bg-primary hover:bg-primary/90 shadow-sm"
                 asChild
               >
-                <a href="https://build.productos.dev/sign-up">Sign Up</a>
+                <a href="/early-access">Request Invite</a>
               </Button>
             </motion.div>
           </div>
@@ -273,11 +264,8 @@ export function Navbar() {
               <ThemeToggle />
             </div>
             <div className="flex flex-col gap-2 pt-2">
-              <Button variant="ghost" className="justify-start" asChild>
-                <a href="https://build.productos.dev/sign-in">Sign In</a>
-              </Button>
               <Button className="bg-primary hover:bg-primary/90" asChild>
-                <a href="https://build.productos.dev/sign-up">Sign Up</a>
+                <a href="/early-access">Request Invite</a>
               </Button>
             </div>
           </div>

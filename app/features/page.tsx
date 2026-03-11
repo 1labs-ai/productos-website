@@ -195,8 +195,8 @@ export default function FeaturesPage() {
             className="bg-foreground text-background hover:bg-foreground/90 rounded-md px-8 h-12 text-base font-medium"
             asChild
           >
-            <a href="https://build.productos.dev/sign-up">
-              Try the Agents
+            <a href="/early-access">
+              Request Early Access
               <ArrowRight className="ml-2 size-4" />
             </a>
           </Button>
@@ -638,14 +638,14 @@ export default function FeaturesPage() {
       {/* CTA Section */}
       <CTASection
         title="Ready to Meet Your AI Team?"
-        description="Start building your product today with the most advanced AI agents in the industry."
+        description="Join our private beta and be among the first to build with AI-native product development."
         primaryAction={{
-          label: "Get Started Free",
-          href: "https://build.productos.dev/sign-up",
+          label: "Request Early Access",
+          href: "/early-access",
         }}
         secondaryAction={{
-          label: "View Pricing",
-          href: "/pricing",
+          label: "Talk to Founders",
+          href: "mailto:founders@productos.dev",
         }}
       />
     </>
