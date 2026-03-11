@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'Heemang from ProductOS <heemang@mail.1labs.ai>',
+          from: 'Heemang from ProductOS <heemang@mail.productos.build>',
           to: [email],
           reply_to: 'heemang@productos.dev',
           subject: `Your ProductOS Application is In Review`,
@@ -106,7 +106,7 @@ export async function POST(request: NextRequest) {
         },
         body: JSON.stringify({
           from: 'ProductOS <contact@mail.1labs.ai>',
-          to: ['heemang@productos.build'],
+          to: ['heemang@productos.dev'],
           subject: `[Early Access] New Request from ${name}`,
           html: `
             <h2>New Early Access Request</h2>
