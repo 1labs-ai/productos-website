@@ -14,7 +14,7 @@ const navItems = [
   { label: "Blog", href: "/blog" },
 ]
 
-// Theme toggle matching develop.productos.dev exactly
+// Simple theme toggle - shows only current mode icon, cycles on click
 function ThemeToggle() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
@@ -25,58 +25,43 @@ function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="flex h-8 w-[88px] rounded-full bg-muted/50 border border-border/50 animate-pulse" />
+      <div className="size-8 rounded-full bg-muted/50 border border-border/50 animate-pulse" />
     )
   }
 
-  const themeOptions = [
-    { value: "light", icon: Sun, label: "Light theme" },
-    { value: "system", icon: Monitor, label: "System theme" },
-    { value: "dark", icon: Moon, label: "Dark theme" },
-  ] as const
+  // Cycle through themes: light → system → dark → light
+  const cycleTheme = () => {
+    if (theme === "light") setTheme("system")
+    else if (theme === "system") setTheme("dark")
+    else setTheme("light")
+  }
+
+  // Get current icon
+  const getIcon = () => {
+    if (theme === "light") return Sun
+    if (theme === "dark") return Moon
+    return Monitor
+  }
+
+  const Icon = getIcon()
+  const label = theme === "light" ? "Light" : theme === "dark" ? "Dark" : "System"
 
   return (
-    <div
+    <button
+      onClick={cycleTheme}
       className={cn(
-        "relative flex items-center gap-0.5 p-1 rounded-full",
+        "flex items-center justify-center",
+        "size-8 rounded-full",
         "bg-muted/50 border border-border/50",
-        "transition-colors duration-200"
+        "text-muted-foreground hover:text-foreground hover:bg-muted",
+        "transition-all duration-200",
+        "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       )}
-      role="radiogroup"
-      aria-label="Theme selection"
+      aria-label={`Current theme: ${label}. Click to change.`}
+      title={`${label} theme`}
     >
-      {themeOptions.map((option) => {
-        const Icon = option.icon
-        const isActive = theme === option.value
-
-        return (
-          <button
-            key={option.value}
-            onClick={() => setTheme(option.value)}
-            className={cn(
-              "relative flex items-center justify-center",
-              "size-6 rounded-full",
-              "transition-all duration-200 ease-out",
-              "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
-              isActive
-                ? "bg-background text-foreground shadow-sm"
-                : "text-muted-foreground hover:text-foreground hover:bg-background/50"
-            )}
-            role="radio"
-            aria-checked={isActive}
-            aria-label={option.label}
-            title={option.label}
-          >
-            <Icon
-              className={cn(
-                "size-3.5 transition-transform duration-200",
-                isActive && "scale-110"
-              )}
-            />
-          </button>
-        )
-      })}
-    </div>
+      <Icon className="size-4" />
+    </button>
   )
 }
 
