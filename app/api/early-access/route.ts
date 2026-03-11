@@ -105,7 +105,7 @@ export async function POST(request: NextRequest) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'ProductOS <contact@mail.1labs.ai>',
+          from: 'ProductOS <notifications@mail.productos.build>',
           to: ['heemang@productos.dev'],
           subject: `[Early Access] New Request from ${name}`,
           html: `
