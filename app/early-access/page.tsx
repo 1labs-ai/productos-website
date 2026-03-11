@@ -364,7 +364,7 @@ export default function EarlyAccessPage() {
                 <>
                   <div className="text-center mb-8">
                     <h2 className="text-2xl font-bold mb-2 text-foreground">Request Your Invite</h2>
-                    <p className="text-muted-foreground">Join {batchInfo.claimedSeats} founders already on the waitlist</p>
+                    <p className="text-muted-foreground">Join {batchInfo.claimedSeats} design partners already on the waitlist</p>
                   </div>
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="grid sm:grid-cols-2 gap-4">
