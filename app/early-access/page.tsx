@@ -202,6 +202,7 @@ export default function EarlyAccessPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    linkedin: "",
     company: "",
     role: "",
     useCase: "",
@@ -390,6 +391,18 @@ export default function EarlyAccessPage() {
                           className="bg-background/50 border-border focus:border-primary"
                         />
                       </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium mb-2 text-foreground">LinkedIn Profile *</label>
+                      <Input
+                        type="url"
+                        placeholder="https://linkedin.com/in/yourprofile"
+                        value={formData.linkedin}
+                        onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })}
+                        required
+                        className="bg-background/50 border-border focus:border-primary"
+                      />
                     </div>
 
                     <div className="grid sm:grid-cols-2 gap-4">
