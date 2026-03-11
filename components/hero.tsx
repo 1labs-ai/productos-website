@@ -258,18 +258,18 @@ export function Hero() {
           className="flex items-center justify-center gap-12 sm:gap-20"
         >
           <div className="text-center">
-            <div className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">5</div>
-            <div className="text-sm text-muted-foreground mt-1">AI Agents</div>
+            <div className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">10x</div>
+            <div className="text-sm text-muted-foreground mt-1">Faster Shipping</div>
           </div>
           <div className="w-px h-10 bg-border" />
           <div className="text-center">
-            <div className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">1</div>
-            <div className="text-sm text-muted-foreground mt-1">Unified Workflow</div>
+            <div className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">80%</div>
+            <div className="text-sm text-muted-foreground mt-1">Less Dev Cost</div>
           </div>
           <div className="w-px h-10 bg-border" />
           <div className="text-center">
-            <div className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">0</div>
-            <div className="text-sm text-muted-foreground mt-1">Handoffs</div>
+            <div className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">60s</div>
+            <div className="text-sm text-muted-foreground mt-1">Idea to Code</div>
           </div>
         </motion.div>
       </div>
