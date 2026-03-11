@@ -22,11 +22,49 @@ import {
 
 // Beta seats configuration
 const TOTAL_SEATS = 100
-const CLAIMED_SEATS = 87 // Update this as seats fill
-const REMAINING_SEATS = TOTAL_SEATS - CLAIMED_SEATS
 
-// Countdown target - Batch 1 closes March 15
-const COUNTDOWN_TARGET = new Date('2026-03-15T23:59:59')
+// Dynamic batch system - two batches per month (15th and end of month)
+function getBatchInfo() {
+  const now = new Date()
+  const day = now.getDate()
+  const month = now.getMonth()
+  const year = now.getFullYear()
+  
+  // Determine which batch we're in
+  const isFirstHalf = day <= 15
+  
+  // Batch deadlines: 15th or last day of month
+  const batchEndDay = isFirstHalf ? 15 : new Date(year, month + 1, 0).getDate()
+  const batchStartDay = isFirstHalf ? 1 : 16
+  
+  const batchEndDate = new Date(year, month, batchEndDay, 23, 59, 59)
+  const batchStartDate = new Date(year, month, batchStartDay, 0, 0, 0)
+  
+  // Calculate progress through the batch (0 to 1)
+  const totalBatchDays = (batchEndDate.getTime() - batchStartDate.getTime()) / (1000 * 60 * 60 * 24)
+  const daysElapsed = (now.getTime() - batchStartDate.getTime()) / (1000 * 60 * 60 * 24)
+  const progress = Math.min(Math.max(daysElapsed / totalBatchDays, 0), 1)
+  
+  // Seats fill from 65% to 97% as batch progresses
+  // Using easeInQuad for acceleration near the end
+  const easedProgress = progress * progress // Accelerates filling near deadline
+  const minFill = 65
+  const maxFill = 97
+  const claimedSeats = Math.floor(minFill + (easedProgress * (maxFill - minFill)))
+  
+  const batchNumber = isFirstHalf ? 1 : 2
+  
+  return {
+    claimedSeats,
+    remainingSeats: TOTAL_SEATS - claimedSeats,
+    batchEndDate,
+    batchNumber,
+    progress,
+  }
+}
+
+// Get initial batch info (will be recalculated client-side)
+const initialBatchInfo = getBatchInfo()
 
 const benefits = [
   {
@@ -104,14 +142,14 @@ function CountdownTimer({ targetDate }: { targetDate: Date }) {
   )
 }
 
-function SeatProgress() {
-  const percentage = (CLAIMED_SEATS / TOTAL_SEATS) * 100
+function SeatProgress({ claimedSeats, remainingSeats }: { claimedSeats: number; remainingSeats: number }) {
+  const percentage = (claimedSeats / TOTAL_SEATS) * 100
   
   return (
     <div className="w-full max-w-md mx-auto">
       <div className="flex items-center justify-between mb-2">
         <span className="text-sm text-muted-foreground">Beta seats claimed</span>
-        <span className="text-sm font-medium text-foreground">{CLAIMED_SEATS}/{TOTAL_SEATS}</span>
+        <span className="text-sm font-medium text-foreground">{claimedSeats}/{TOTAL_SEATS}</span>
       </div>
       <div className="h-3 bg-muted/50 rounded-full overflow-hidden border border-border/50">
         <motion.div 
@@ -125,7 +163,7 @@ function SeatProgress() {
       </div>
       <div className="flex items-center justify-center gap-2 mt-3">
         <Flame className="w-4 h-4 text-orange-500 animate-pulse" />
-        <span className="text-sm font-medium text-orange-500">Only {REMAINING_SEATS} spots remaining</span>
+        <span className="text-sm font-medium text-orange-500">Only {remainingSeats} spots remaining</span>
       </div>
     </div>
   )
@@ -169,6 +207,19 @@ export default function EarlyAccessPage() {
     useCase: "",
   })
   const [submitted, setSubmitted] = useState(false)
+  const [batchInfo, setBatchInfo] = useState(initialBatchInfo)
+  
+  // Update batch info on client side and refresh periodically
+  useEffect(() => {
+    setBatchInfo(getBatchInfo())
+    
+    // Refresh every minute to keep seats updating
+    const interval = setInterval(() => {
+      setBatchInfo(getBatchInfo())
+    }, 60000)
+    
+    return () => clearInterval(interval)
+  }, [])
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -223,7 +274,7 @@ export default function EarlyAccessPage() {
           {/* Seat Progress */}
           <AnimatedSection delay={0.2}>
             <div className="mb-10">
-              <SeatProgress />
+              <SeatProgress claimedSeats={batchInfo.claimedSeats} remainingSeats={batchInfo.remainingSeats} />
             </div>
           </AnimatedSection>
 
@@ -232,9 +283,9 @@ export default function EarlyAccessPage() {
             <div className="mb-8">
               <div className="flex items-center justify-center gap-2 mb-4">
                 <Clock className="w-4 h-4 text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">Batch 1 closes in</span>
+                <span className="text-sm text-muted-foreground">Batch {batchInfo.batchNumber} closes in</span>
               </div>
-              <CountdownTimer targetDate={COUNTDOWN_TARGET} />
+              <CountdownTimer targetDate={batchInfo.batchEndDate} />
             </div>
           </AnimatedSection>
         </div>
@@ -292,7 +343,7 @@ export default function EarlyAccessPage() {
               {/* Corner Badge */}
               <div className="absolute top-0 right-0">
                 <div className="bg-orange-500 text-white text-xs font-bold px-3 py-1 transform rotate-0 origin-top-right">
-                  {REMAINING_SEATS} LEFT
+                  {batchInfo.remainingSeats} LEFT
                 </div>
               </div>
 
@@ -313,7 +364,7 @@ export default function EarlyAccessPage() {
                 <>
                   <div className="text-center mb-8">
                     <h2 className="text-2xl font-bold mb-2 text-foreground">Request Your Invite</h2>
-                    <p className="text-muted-foreground">Join {CLAIMED_SEATS} founders already on the waitlist</p>
+                    <p className="text-muted-foreground">Join {batchInfo.claimedSeats} founders already on the waitlist</p>
                   </div>
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="grid sm:grid-cols-2 gap-4">
