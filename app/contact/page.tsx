@@ -23,8 +23,8 @@ import {
 const contactOptions = [
   {
     icon: Building,
-    title: "Sales",
-    description: "Talk to our sales team about Enterprise plans",
+    title: "Investors",
+    description: "Interested in investing? Let's talk about the opportunity",
     action: "Schedule a call",
     href: "https://cal.com/productos/30min",
     external: true,
@@ -81,7 +81,7 @@ export default function ContactPage() {
         badge={{ icon: MessageSquare, text: "Get in Touch" }}
         title="Let's"
         titleHighlight="talk"
-        description="Have questions about ProductOS? Want to explore Enterprise options? We'd love to hear from you."
+        description="Have questions about ProductOS? Interested in investing? We'd love to hear from you."
         className="min-h-0 pt-32 pb-16"
       />
 
@@ -190,7 +190,7 @@ export default function ContactPage() {
                         className="w-full px-4 py-2 rounded-lg bg-background/50 border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 text-foreground"
                       >
                         <option value="general">General Inquiry</option>
-                        <option value="sales">Sales / Enterprise</option>
+                        <option value="investor">Investor Inquiry</option>
                         <option value="support">Technical Support</option>
                         <option value="partnership">Partnership</option>
                         <option value="press">Press / Media</option>
