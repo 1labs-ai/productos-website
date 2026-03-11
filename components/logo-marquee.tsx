@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 
-const logos = ["Stripe", "Vercel", "Linear", "Notion", "Figma", "Supabase"]
+const logos = ["Google", "Microsoft", "Booking", "HDFC", "Amazon"]
 
 export function LogoMarquee() {
   return (
