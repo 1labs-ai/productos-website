@@ -175,12 +175,6 @@ export function Hero() {
                   <div className="w-3 h-3 rounded-full bg-[#febc2e] shadow-inner" />
                   <div className="w-3 h-3 rounded-full bg-[#28c840] shadow-inner" />
                 </div>
-                <div className="flex-1 flex justify-center">
-                  <div className="px-4 py-1.5 rounded-lg bg-background/60 backdrop-blur-sm text-xs text-muted-foreground font-medium">
-                    build.productos.dev
-                  </div>
-                </div>
-                <div className="w-[52px]" /> {/* Spacer for symmetry */}
               </div>
               
               {/* Video/GIF Container */}
