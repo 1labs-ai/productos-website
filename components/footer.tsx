@@ -11,13 +11,10 @@ const footerLinks = {
     { label: "Features", href: "/#features" },
     { label: "Early Access", href: "/early-access" },
     { label: "Enterprise", href: "/enterprise" },
-    { label: "Changelog", href: "/changelog" },
   ],
   Resources: [
-    { label: "Documentation", href: "https://docs.productos.dev" },
     { label: "Blog", href: "/blog" },
-    { label: "Templates", href: "https://docs.productos.dev/templates" },
-    { label: "API Reference", href: "https://docs.productos.dev/api" },
+    { label: "Compare", href: "/compare" },
   ],
   Company: [
     { label: "About", href: "/about" },
@@ -27,7 +24,6 @@ const footerLinks = {
   Legal: [
     { label: "Privacy", href: "/privacy" },
     { label: "Terms", href: "/terms" },
-    { label: "Security", href: "https://docs.productos.dev/security" },
   ],
 }
 
