@@ -13,6 +13,7 @@ export function Hero() {
 
   // Check if demo video exists (will fail gracefully if not)
   const demoVideoSrc = "/demo/productos-demo.mp4"
+  const demoVideoMobileSrc = "/demo/productos-demo-mobile.mp4"
   const demoPosterSrc = "/demo/productos-demo-poster.jpg"
   const demoGifSrc = "/demo/productos-demo.gif"
 
@@ -201,16 +202,26 @@ export function Hero() {
                   </video>
                 )}
                 
-                {/* GIF fallback for mobile or video error */}
-                <img
-                  src={videoError ? demoGifSrc : demoPosterSrc}
-                  alt="ProductOS demo - 5-stage AI product development workflow"
-                  className={`w-full h-full object-cover ${!videoError ? 'md:hidden' : ''}`}
-                  onError={(e) => {
-                    // Final fallback - show dashboard screenshot
-                    (e.target as HTMLImageElement).src = '/product/dashboard.webp'
-                  }}
-                />
+                {/* Mobile video */}
+                <video
+                  className={`w-full h-full object-cover md:hidden ${videoError ? 'hidden' : ''}`}
+                  poster={demoPosterSrc}
+                  muted
+                  loop
+                  playsInline
+                  autoPlay
+                >
+                  <source src={demoVideoMobileSrc} type="video/mp4" />
+                </video>
+                
+                {/* Fallback image for video error */}
+                {videoError && (
+                  <img
+                    src="/product/dashboard.webp"
+                    alt="ProductOS demo - 5-stage AI product development workflow"
+                    className="w-full h-full object-cover"
+                  />
+                )}
                 
                 {/* Play/Pause overlay for desktop */}
                 {!videoError && videoLoaded && (
