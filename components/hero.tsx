@@ -268,8 +268,8 @@ export function Hero() {
           </div>
           <div className="w-px h-10 bg-border" />
           <div className="text-center">
-            <div className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">60s</div>
-            <div className="text-sm text-muted-foreground mt-1">Idea to Code</div>
+            <div className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">Zero</div>
+            <div className="text-sm text-muted-foreground mt-1">Code Required</div>
           </div>
         </motion.div>
       </div>
