@@ -214,7 +214,7 @@ export default function AboutPage() {
             className="text-center mt-12"
           >
             <p className="text-muted-foreground">
-              Built with ❤️ in India
+              Built with ❤️ for PMs and Founders
             </p>
           </motion.div>
         </div>
