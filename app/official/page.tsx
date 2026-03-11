@@ -4,18 +4,17 @@ import { CheckCircle, AlertTriangle, ExternalLink, Shield } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Official ProductOS Website Verification | productos.dev',
-  description: 'Verify you are on the official ProductOS website. ProductOS is the AI-native product development platform created by 1Labs AI. Official domain: productos.dev',
+  description: 'Verify you are on the official ProductOS website. ProductOS is the AI-native product development platform. Official domain: productos.dev',
   keywords: [
     'official ProductOS',
     'ProductOS verification',
     'real ProductOS',
     'authentic ProductOS',
-    'ProductOS by 1Labs AI',
     'productos.dev official'
   ],
   openGraph: {
     title: 'Official ProductOS Website | productos.dev',
-    description: 'This is the official ProductOS website by 1Labs AI. Verify authenticity.',
+    description: 'This is the official ProductOS website. Verify authenticity.',
     type: 'website',
   },
   alternates: {
@@ -51,10 +50,7 @@ export default function OfficialPage() {
             Official ProductOS Website
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            You are on the authentic ProductOS platform developed by{' '}
-            <a href="https://1labs.ai" className="text-foreground underline underline-offset-4 hover:text-primary">
-              1Labs AI
-            </a>
+            You are on the authentic ProductOS platform.
           </p>
         </div>
 
@@ -68,8 +64,7 @@ export default function OfficialPage() {
               </h2>
               <p className="text-emerald-800 dark:text-emerald-200">
                 This website (<strong>productos.dev</strong>) is the official home of ProductOS, 
-                the AI-native product development platform. We are a product of{' '}
-                <strong>1Labs AI</strong>, a subsidiary of <strong>Virusha Group</strong>.
+                the AI-native product development platform.
               </p>
             </div>
           </div>

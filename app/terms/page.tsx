@@ -163,7 +163,7 @@ export default function TermsPage() {
                   <section id="intellectual-property" className="mb-12 scroll-mt-24">
                     <h2 className="text-2xl font-bold mb-4 text-foreground">5. Intellectual Property</h2>
                     <p className="text-muted-foreground mb-4">
-                      ProductOS and its original content, features, and functionality are owned by 1Labs AI and are 
+                      ProductOS and its original content, features, and functionality are owned by ProductOS Inc. and are 
                       protected by international copyright, trademark, patent, trade secret, and other intellectual 
                       property laws.
                     </p>

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     'Rork alternative',
     'AI mobile app builder comparison',
     'ProductOS mobile',
-    'ProductOS by 1Labs AI',
+    'ProductOS',
     'mobile app generator'
   ],
   openGraph: {

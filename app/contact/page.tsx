@@ -49,7 +49,7 @@ const contactOptions = [
 
 const socialLinks = [
   { icon: Twitter, label: "Twitter", href: "https://twitter.com/productos_dev" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/company/1labs-ai" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/company/productos-dev" },
 ]
 
 export default function ContactPage() {
@@ -247,7 +247,7 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="text-primary hover:underline"
               >
-                calendly.com/heemang-1labs
+                Schedule a call
               </a>
             </AnimatedSection>
             <AnimatedSection delay={0.2}>

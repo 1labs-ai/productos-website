@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     'v0 alternative',
     'v0.dev alternative',
     'AI UI component generator',
-    'ProductOS by 1Labs AI'
+    'ProductOS'
   ],
   openGraph: {
     title: 'ProductOS vs v0 | Detailed Comparison',

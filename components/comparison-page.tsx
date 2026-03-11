@@ -77,7 +77,7 @@ export function ComparisonPage({ competitor, features, summary, verdict }: Compa
               <h2 className="font-semibold text-emerald-900 dark:text-emerald-100">ProductOS</h2>
             </div>
             <p className="text-sm text-emerald-800 dark:text-emerald-200 mb-4">
-              The official AI-native product development platform by 1Labs AI. Full lifecycle from idea to deployment.
+              The AI-native product development platform. Full lifecycle from idea to deployment.
             </p>
             <div className="text-xs text-emerald-700 dark:text-emerald-300">
               productos.dev

@@ -214,15 +214,7 @@ export default function AboutPage() {
             className="text-center mt-12"
           >
             <p className="text-muted-foreground">
-              Built with ❤️ by{" "}
-              <a
-                href="https://1labs.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-foreground/80 hover:text-foreground transition-colors underline underline-offset-4"
-              >
-                1Labs AI
-              </a>
+              Built with ❤️ in India
             </p>
           </motion.div>
         </div>

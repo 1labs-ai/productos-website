@@ -4,7 +4,7 @@ import { ArrowRight, CheckCircle, Zap } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'ProductOS Comparisons | How We Compare to Alternatives',
-  description: 'Compare ProductOS to other AI development tools. See how ProductOS by 1Labs AI stacks up against Lovable, Bolt.new, v0, Cursor, and more.',
+  description: 'Compare ProductOS to other AI development tools. See how ProductOS stacks up against Lovable, Bolt.new, v0, Cursor, and more.',
   keywords: [
     'ProductOS vs Lovable',
     'ProductOS vs Bolt',
@@ -76,7 +76,7 @@ export default function ComparePage() {
             How ProductOS Compares
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            We believe in transparency. See how <strong>ProductOS by 1Labs AI</strong> stacks up 
+            We believe in transparency. See how <strong>ProductOS</strong> stacks up 
             against other AI development tools.
           </p>
         </div>
@@ -141,7 +141,7 @@ export default function ComparePage() {
         <div className="mt-16 text-center">
           <h2 className="text-2xl font-bold mb-4">Ready to try the complete platform?</h2>
           <p className="text-muted-foreground mb-6">
-            Join our private beta — the official AI product development platform by 1Labs AI.
+            Join our private beta — the AI-native product development platform.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a

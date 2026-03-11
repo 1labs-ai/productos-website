@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     'Bolt.new alternative',
     'Bolt alternative',
     'AI code sandbox comparison',
-    'ProductOS by 1Labs AI'
+    'ProductOS'
   ],
   openGraph: {
     title: 'ProductOS vs Bolt.new | Detailed Comparison',

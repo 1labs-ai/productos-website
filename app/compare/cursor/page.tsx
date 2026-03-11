@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     'Cursor alternative',
     'Cursor AI comparison',
     'no-code vs IDE',
-    'ProductOS by 1Labs AI',
+    'ProductOS',
     'AI coding assistant'
   ],
   openGraph: {

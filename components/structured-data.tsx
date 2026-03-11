@@ -32,9 +32,8 @@ export function OrganizationSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "ProductOS",
-    "legalName": "ProductOS by 1Labs AI",
+    "legalName": "ProductOS",
     "alternateName": [
-      "ProductOS by 1Labs AI",
       "ProductOS AI",
       "ProductOS Platform",
       "productos.dev"
@@ -47,24 +46,14 @@ export function OrganizationSchema() {
       "height": 512
     },
     "image": "https://www.productos.dev/og-image.png",
-    "description": "ProductOS is the OFFICIAL AI-native product development platform by 1Labs AI. Ship products 10x faster with 5 specialized AI agents for ideation, research, PRD, design, and code generation. The authentic ProductOS at productos.dev.",
+    "description": "ProductOS is the AI-native product development platform. Ship products 10x faster with 5 specialized AI agents for ideation, research, PRD, design, and code generation.",
     "slogan": "Ship Products 10x Faster with AI",
     "sameAs": [
       "https://twitter.com/productos_dev",
       "https://linkedin.com/company/productos",
-      "https://github.com/productos",
-      "https://1labs.ai"
+      "https://github.com/productos"
     ],
     "foundingDate": "2024",
-    "parentOrganization": {
-      "@type": "Organization",
-      "name": "1Labs AI",
-      "url": "https://1labs.ai",
-      "parentOrganization": {
-        "@type": "Organization",
-        "name": "Virusha Group"
-      }
-    },
     "brand": {
       "@type": "Brand",
       "name": "ProductOS",
@@ -156,8 +145,8 @@ export function SoftwareApplicationSchema() {
     "softwareVersion": "1.0",
     "author": {
       "@type": "Organization",
-      "name": "1Labs AI",
-      "url": "https://1labs.ai"
+      "name": "ProductOS",
+      "url": "https://productos.dev"
     }
   }
   

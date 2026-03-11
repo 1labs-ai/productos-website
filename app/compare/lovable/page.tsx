@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     'Lovable alternative',
     'Lovable comparison',
     'AI code generator comparison',
-    'ProductOS by 1Labs AI',
+    'ProductOS',
     'better than Lovable'
   ],
   openGraph: {
