@@ -11,7 +11,6 @@ import { AnimatedLogo, type AnimatedLogoRef } from "@/components/animated-logo"
 
 const navItems = [
   { label: "Product", href: "/#features" },
-  { label: "Enterprise", href: "/enterprise" },
   { label: "Blog", href: "/blog" },
 ]
 
