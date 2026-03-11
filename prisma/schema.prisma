@@ -113,3 +113,32 @@ model PitchDeckAccessToken {
   
   @@index([token])
 }
+
+// Early Access / Beta Waitlist
+model EarlyAccessRequest {
+  id          String    @id @default(cuid())
+  
+  // Required fields
+  name        String
+  email       String    @unique
+  
+  // Optional fields
+  company     String?
+  role        String?   // founder, product, engineer, designer, other
+  useCase     String?   // What they want to build
+  
+  // Status tracking
+  status      String    @default("pending") // pending, approved, rejected, invited
+  invitedAt   DateTime?
+  
+  // Metadata
+  source      String?   // Where they came from (utm_source, referral, etc.)
+  ipAddress   String?
+  userAgent   String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  @@index([email])
+  @@index([status])
+  @@index([createdAt])
+}
