@@ -120,7 +120,7 @@ export default function LinearInspiredHomepage() {
             </motion.div>
           </motion.div>
 
-          {/* Product Screenshot with Gradient Glow - Linear Style */}
+          {/* Product Dashboard UI - Built with HTML/CSS for maximum sharpness */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -128,50 +128,191 @@ export default function LinearInspiredHomepage() {
             style={{ y: heroY }}
             className="relative"
           >
-            {/* Multi-layer gradient glow behind screenshot */}
+            {/* Gradient glow behind dashboard - Linear style */}
             <div 
-              className="absolute -inset-x-20 -inset-y-10 pointer-events-none"
+              className="absolute -inset-x-10 -top-10 -bottom-20 pointer-events-none"
               style={{
                 background: `
-                  radial-gradient(ellipse 40% 30% at 50% 40%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
-                  radial-gradient(ellipse 60% 40% at 30% 60%, rgba(78, 81, 102, 0.1) 0%, transparent 50%),
-                  radial-gradient(ellipse 50% 35% at 70% 50%, rgba(88, 91, 112, 0.1) 0%, transparent 50%)
+                  radial-gradient(ellipse 80% 50% at 50% 100%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 20% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 40%),
+                  radial-gradient(ellipse 60% 40% at 80% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 40%)
                 `
               }}
             />
             
-            {/* Softer edge glow */}
+            {/* Dashboard container */}
             <div 
-              className="absolute -inset-1 rounded-xl opacity-50 pointer-events-none"
-              style={{
-                background: "linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 40%)",
-              }}
-            />
-            
-            {/* Screenshot container - crisp rendering */}
-            <div 
-              className="relative rounded-xl overflow-hidden border border-white/[0.06]"
+              className="relative rounded-xl overflow-hidden border border-white/[0.08] bg-[#0a0a0b]"
               style={{
                 boxShadow: `
-                  0 0 0 1px rgba(255, 255, 255, 0.02),
-                  0 4px 6px -1px rgba(0, 0, 0, 0.1),
-                  0 25px 50px -12px rgba(0, 0, 0, 0.4),
-                  0 50px 100px -24px rgba(0, 0, 0, 0.3)
+                  0 0 0 1px rgba(255, 255, 255, 0.03),
+                  0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                  0 50px 100px -20px rgba(0, 0, 0, 0.4)
                 `
               }}
             >
-              <Image
-                src="/product/dashboard-dark.png"
-                alt="ProductOS Dashboard - AI-native product development from idea to launch"
-                width={1366}
-                height={768}
-                className="w-full h-auto"
-                style={{ imageRendering: 'crisp-edges' }}
-                quality={100}
-                priority
-                unoptimized
-              />
+              {/* Dashboard UI built with HTML/CSS */}
+              <div className="flex min-h-[500px] sm:min-h-[550px] lg:min-h-[600px]">
+                {/* Sidebar */}
+                <div className="w-56 lg:w-64 border-r border-white/[0.06] bg-[#0f0f10] flex-shrink-0 hidden sm:flex flex-col">
+                  {/* Logo */}
+                  <div className="p-4 border-b border-white/[0.06]">
+                    <div className="flex items-center gap-2.5">
+                      <svg viewBox="0 0 36 36" fill="none" className="w-7 h-7">
+                        <path d="M4 32 L18 4 L32 32 Z" fill="#E5E5E5"/>
+                        <path d="M18 4 L4 32 L18 32 Z" fill="#B3B3B3"/>
+                        <path d="M18 4 L18 32 L32 4 Z" fill="#808080"/>
+                      </svg>
+                      <div>
+                        <div className="font-semibold text-sm text-white">ProductOS</div>
+                        <div className="text-[10px] text-white/40">Workspace</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Create button */}
+                  <div className="p-3">
+                    <div className="flex items-center gap-2">
+                      <button className="flex-1 h-9 rounded-lg bg-white text-black text-sm font-medium">
+                        Create New
+                      </button>
+                      <button className="h-9 w-9 rounded-lg border border-white/10 flex items-center justify-center">
+                        <Search className="w-4 h-4 text-white/50" />
+                      </button>
+                    </div>
+                  </div>
+                  
+                  {/* Stages */}
+                  <div className="px-3 py-2">
+                    <div className="text-[10px] uppercase tracking-wider text-white/30 font-medium mb-2 px-2">Stages</div>
+                    <nav className="space-y-0.5">
+                      {[
+                        { name: "Ideate", icon: Lightbulb, color: "text-sky-400" },
+                        { name: "Discover", icon: Search, color: "text-violet-400" },
+                        { name: "Define", icon: FileText, color: "text-teal-400" },
+                        { name: "Design", icon: Palette, color: "text-purple-400" },
+                        { name: "Develop", icon: Code, color: "text-amber-400" },
+                      ].map((stage) => (
+                        <div 
+                          key={stage.name}
+                          className="flex items-center gap-3 px-2 py-2 rounded-md text-sm text-white/60 hover:bg-white/[0.04] transition-colors"
+                        >
+                          <stage.icon className={`w-4 h-4 ${stage.color}`} />
+                          <span>{stage.name}</span>
+                        </div>
+                      ))}
+                    </nav>
+                  </div>
+                  
+                  {/* Theme toggle */}
+                  <div className="mt-auto p-3 border-t border-white/[0.06]">
+                    <div className="flex items-center justify-between px-2 mb-3">
+                      <span className="text-xs text-white/40">Theme</span>
+                      <div className="flex items-center gap-1 p-1 rounded-full bg-white/[0.04]">
+                        <div className="w-5 h-5 rounded-full flex items-center justify-center text-white/30">
+                          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd"/></svg>
+                        </div>
+                        <div className="w-5 h-5 rounded-full flex items-center justify-center text-white/30">
+                          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.321A1 1 0 0113 17H7a1 1 0 01-.293-1.956l.804-.32.122-.49H5a2 2 0 01-2-2V5zm14 0H3v8h14V5z" clipRule="evenodd"/></svg>
+                        </div>
+                        <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-white">
+                          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Credits */}
+                    <div className="px-2 py-2 rounded-lg bg-white/[0.02] border border-white/[0.04]">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-[10px] uppercase tracking-wider text-white/30 font-medium">Credits</span>
+                        <span className="text-sm font-semibold text-white">50</span>
+                      </div>
+                      <div className="h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
+                        <div className="h-full w-1/2 rounded-full bg-gradient-to-r from-sky-500 to-violet-500" />
+                      </div>
+                    </div>
+                    
+                    {/* User */}
+                    <div className="flex items-center gap-2.5 mt-3 px-2">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-xs font-bold text-white">
+                        A
+                      </div>
+                      <div>
+                        <div className="text-sm text-white font-medium">Ariv</div>
+                        <div className="text-[10px] text-white/40">ariv@1labs.ai</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Main content */}
+                <div className="flex-1 flex flex-col">
+                  {/* Content area */}
+                  <div className="flex-1 flex flex-col items-center justify-center p-8 lg:p-12">
+                    <h2 
+                      className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-4"
+                      style={{ 
+                        background: 'linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.5) 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        letterSpacing: '-0.02em'
+                      }}
+                    >
+                      What would you like to build?
+                    </h2>
+                    <p className="text-white/50 text-sm sm:text-base mb-8">
+                      AI-native product development from idea to launch
+                    </p>
+                    
+                    {/* Quick action buttons */}
+                    <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
+                      {[
+                        { icon: "🔍", label: "Research a market" },
+                        { icon: "📝", label: "Write a PRD" },
+                        { icon: "🗺️", label: "Create roadmap" },
+                        { icon: "⚔️", label: "Analyze competitors" },
+                      ].map((action) => (
+                        <button 
+                          key={action.label}
+                          className="flex items-center gap-2 px-3 py-2 rounded-lg border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] transition-colors text-sm text-white/80"
+                        >
+                          <span>{action.icon}</span>
+                          <span>{action.label}</span>
+                        </button>
+                      ))}
+                    </div>
+                    
+                    {/* Input area */}
+                    <div className="w-full max-w-2xl">
+                      <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
+                        <div className="text-white/30 text-sm mb-12">Describe your product idea...</div>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <button className="flex items-center gap-1.5 px-2 py-1 rounded-md hover:bg-white/[0.05] text-white/50 text-sm">
+                              <Sparkles className="w-3.5 h-3.5" />
+                              <span>Claude Sonnet 4.6</span>
+                              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                            </button>
+                          </div>
+                          <button className="px-4 py-2 rounded-lg bg-white/10 text-white/50 text-sm font-medium flex items-center gap-2">
+                            Send
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+            
+            {/* Bottom gradient fade */}
+            <div 
+              className="absolute -bottom-20 left-0 right-0 h-40 pointer-events-none"
+              style={{
+                background: 'linear-gradient(to bottom, transparent 0%, hsl(var(--background)) 80%)'
+              }}
+            />
           </motion.div>
         </div>
       </section>
