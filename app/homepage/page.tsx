@@ -42,14 +42,78 @@ function AnimatedSection({ children, className, delay = 0 }: { children: React.R
   )
 }
 
-// Company logos for social proof
+// Company logos for social proof - SVG paths for real brand logos
 const companies = [
-  { name: "Microsoft", logo: "M" },
-  { name: "Google", logo: "G" },
-  { name: "Meta", logo: "f" },
-  { name: "OpenAI", logo: "◐" },
-  { name: "Stripe", logo: "S" },
-  { name: "Vercel", logo: "▲" },
+  { 
+    name: "Vercel", 
+    logo: (
+      <svg className="h-5 w-auto" viewBox="0 0 76 65" fill="currentColor">
+        <path d="M37.5274 0L75.0548 65H0L37.5274 0Z"/>
+      </svg>
+    )
+  },
+  { 
+    name: "OpenAI", 
+    logo: (
+      <svg className="h-5 w-auto" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.5963 3.8558L13.1038 8.364l2.0201-1.1638a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.4046-.6813zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/>
+      </svg>
+    )
+  },
+  { 
+    name: "Coinbase", 
+    logo: (
+      <svg className="h-5 w-auto" viewBox="0 0 100 100" fill="currentColor">
+        <path d="M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 78c-15.5 0-28-12.5-28-28s12.5-28 28-28c13 0 24 8.8 27.2 21H61.5c-2.5-5.5-8-9-14.5-9-8.8 0-16 7.2-16 16s7.2 16 16 16c6.5 0 12-3.5 14.5-9h15.7c-3.2 12.2-14.2 21-27.2 21z"/>
+      </svg>
+    )
+  },
+  { 
+    name: "Stripe", 
+    logo: (
+      <svg className="h-5 w-auto" viewBox="0 0 60 25" fill="currentColor">
+        <path d="M59.64 14.28h-8.06c.19 1.93 1.6 2.55 3.2 2.55 1.64 0 2.96-.37 4.05-.95v3.32a8.33 8.33 0 0 1-4.56 1.1c-4.01 0-6.83-2.5-6.83-7.48 0-4.19 2.39-7.52 6.3-7.52 3.92 0 5.96 3.28 5.96 7.5 0 .4-.02.96-.06 1.48zm-5.92-5.62c-1.03 0-2.17.73-2.17 2.58h4.25c0-1.85-1.07-2.58-2.08-2.58zM40.95 20.3c-1.44 0-2.32-.6-2.9-1.04l-.02 4.63-4.12.87V5.57h3.76l.08 1.02a4.7 4.7 0 0 1 3.23-1.29c2.9 0 5.62 2.6 5.62 7.4 0 5.23-2.7 7.6-5.65 7.6zM40 8.95c-.95 0-1.54.34-1.97.81l.02 6.12c.4.44.98.78 1.95.78 1.52 0 2.54-1.65 2.54-3.87 0-2.15-1.04-3.84-2.54-3.84zM28.24 5.57h4.13v14.44h-4.13V5.57zm0-5.13L32.37 0v3.77l-4.13.88V.44zm-4.32 9.35v10.22H19.8V5.57h3.7l.12 1.22c1-1.77 3.07-1.41 3.62-1.22v3.79c-.52-.17-2.29-.43-3.32.43zm-8.55 4.72c0 2.43 2.6 1.68 3.12 1.46v3.36c-.55.3-1.54.54-2.89.54a4.15 4.15 0 0 1-4.27-4.24l.01-13.17 4.02-.86v3.54h3.14V9.1h-3.13v5.41zm-4.91.7c0 3.05-2.84 5.22-6.14 5.22-2.47 0-4.74-.86-5.74-1.97l1.52-2.93c1.38 1.08 3.44 1.66 4.7 1.66.96 0 1.47-.32 1.47-.81 0-1.6-7.06-.67-7.06-5.52 0-3.05 2.58-5.17 5.9-5.17 2.14 0 4.04.64 5.33 1.67l-1.6 2.88c-1.18-.82-3-1.3-4.02-1.3-.9 0-1.4.31-1.4.76 0 1.5 7.04.54 7.04 5.51z"/>
+      </svg>
+    )
+  },
+  { 
+    name: "Linear", 
+    logo: (
+      <svg className="h-5 w-auto" viewBox="0 0 100 100" fill="currentColor">
+        <path d="M1.22 61.5a2.4 2.4 0 0 1-.03-3.4L59.61.69a2.4 2.4 0 0 1 3.44.04l36.22 37.84a2.4 2.4 0 0 1 .03 3.4L40.88 99.4a2.4 2.4 0 0 1-3.44-.04L1.22 61.52zM19.7 51.08 48.88 80.8l31.32-30.72L51 19.36 19.7 51.08z"/>
+      </svg>
+    )
+  },
+  { 
+    name: "Notion", 
+    logo: (
+      <svg className="h-5 w-auto" viewBox="0 0 100 100" fill="currentColor">
+        <path d="M6.017 4.313l55.333-4.087c6.797-.583 8.543-.19 12.817 2.917l17.663 12.443c2.913 2.14 3.883 2.723 3.883 5.053v68.243c0 4.277-1.553 6.807-6.99 7.193L24.467 99.967c-4.08.193-6.023-.39-8.16-3.113L3.3 79.94c-2.333-3.113-3.3-5.443-3.3-8.167V11.113c0-3.497 1.553-6.413 6.017-6.8z"/>
+        <path fill="var(--background, white)" d="M61.35 15.813L25.403 18.49c-3.107.193-3.883.583-5.633 1.943L8.897 29.403c-.777.583-.583 1.167.583 1.167l37.107-2.333c3.107-.193 4.857.39 4.857 2.917v49.5c0 1.167.39 1.75 1.167 1.557 1.167-.193 2.14-.39 3.5-.97l2.527-1.363c1.167-.583 1.553-1.363 1.553-3.113V25.173c0-3.107.39-4.857-1.553-6.417l-4.083-2.943z"/>
+        <path fill="var(--background, white)" d="M22.103 34.063V88.3c0 2.917 1.553 4.083 4.857 3.887l48.013-2.917c3.303-.193 3.883-1.943 3.883-4.47V35.037c0-2.527-.777-3.887-3.107-3.693l-50.153 3.107c-2.527.193-3.493 1.167-3.493 3.612z"/>
+      </svg>
+    )
+  },
+  { 
+    name: "Figma", 
+    logo: (
+      <svg className="h-5 w-auto" viewBox="0 0 38 57" fill="currentColor">
+        <path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z"/>
+        <path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0z"/>
+        <path d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19z"/>
+        <path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z"/>
+        <path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z"/>
+      </svg>
+    )
+  },
+  { 
+    name: "Ramp", 
+    logo: (
+      <svg className="h-5 w-auto" viewBox="0 0 80 24" fill="currentColor">
+        <path d="M10.5 0L0 24h6l1.8-4.5h9L15 24h6L10.5 0zm0 8.5l2.5 6h-5l2.5-6zM32 6c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 13c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zM56 6c-2.5 0-4.5 1-6 2.5V6h-5v18h5v-9c0-2.2 1.8-4 4-4s4 1.8 4 4v9h5v-9c0-5-3-9-7-9zm19 0c-2.5 0-4.5 1-6 2.5V6h-5v18h5v-9c0-2.2 1.8-4 4-4s4 1.8 4 4v9h5v-9c0-5-3-9-7-9z"/>
+      </svg>
+    )
+  },
 ]
 
 export default function LinearInspiredHomepage() {
@@ -65,14 +129,14 @@ export default function LinearInspiredHomepage() {
     <main className="min-h-screen bg-background">
       {/* Hero Section - Linear Style */}
       <section ref={heroRef} className="relative pt-28 sm:pt-32 pb-24">
-        {/* GRADIENT GLOW BACKGROUND - Linear style, covers full section */}
+        {/* GRADIENT GLOW BACKGROUND - Subtle grey like Linear */}
         <div 
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0 pointer-events-none dark:opacity-100 opacity-50"
           style={{
             background: `
-              radial-gradient(ellipse 80% 60% at 50% 100%, rgba(124, 58, 237, 0.25) 0%, transparent 50%),
-              radial-gradient(ellipse 60% 50% at 70% 90%, rgba(99, 102, 241, 0.2) 0%, transparent 40%),
-              radial-gradient(ellipse 60% 50% at 30% 90%, rgba(168, 85, 247, 0.2) 0%, transparent 40%)
+              radial-gradient(ellipse 80% 50% at 50% 100%, rgba(120, 120, 120, 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse 60% 40% at 70% 95%, rgba(100, 100, 100, 0.1) 0%, transparent 40%),
+              radial-gradient(ellipse 60% 40% at 30% 95%, rgba(140, 140, 140, 0.1) 0%, transparent 40%)
             `
           }}
         />
@@ -155,13 +219,15 @@ export default function LinearInspiredHomepage() {
           <p className="text-center text-sm text-muted-foreground mb-8">
             Trusted by founders and teams from
           </p>
-          <div className="flex items-center justify-center gap-12 sm:gap-16 flex-wrap">
+          <div className="flex items-center justify-center gap-10 sm:gap-12 lg:gap-16 flex-wrap">
             {companies.map((company) => (
               <div 
                 key={company.name} 
-                className="text-2xl font-bold text-muted-foreground/40 hover:text-muted-foreground/60 transition-colors"
+                className="text-muted-foreground/40 hover:text-muted-foreground/70 transition-colors flex items-center gap-2"
+                title={company.name}
               >
                 {company.logo}
+                <span className="text-sm font-medium hidden sm:inline">{company.name}</span>
               </div>
             ))}
           </div>
