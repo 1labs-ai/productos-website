@@ -17,11 +17,23 @@ import {
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-// Agent data
+// Agent data - 5 ProductOS agents
 const agents = [
   {
-    id: "research",
-    name: "Research Agent",
+    id: "ideation",
+    name: "Ideation Agent",
+    icon: Sparkles,
+    color: "amber",
+    bgColor: "bg-amber-500/10",
+    textColor: "text-amber-500",
+    borderColor: "border-amber-500/20",
+    status: "Refining your idea...",
+    result: "Vision crystallized. 3 unique value props identified.",
+    metric: "Ready for discovery"
+  },
+  {
+    id: "discovery",
+    name: "Discovery Agent",
     icon: Search,
     color: "sky",
     bgColor: "bg-sky-500/10",
@@ -32,8 +44,8 @@ const agents = [
     metric: "Opportunity Score: 8.4/10"
   },
   {
-    id: "prd",
-    name: "PRD Agent", 
+    id: "define",
+    name: "Define Agent", 
     icon: FileText,
     color: "teal",
     bgColor: "bg-teal-500/10",
@@ -56,13 +68,13 @@ const agents = [
     metric: "Figma sync ready"
   },
   {
-    id: "code",
-    name: "Code Agent",
+    id: "develop",
+    name: "Develop Agent",
     icon: Code,
-    color: "amber",
-    bgColor: "bg-amber-500/10",
-    textColor: "text-amber-500",
-    borderColor: "border-amber-500/20",
+    color: "emerald",
+    bgColor: "bg-emerald-500/10",
+    textColor: "text-emerald-500",
+    borderColor: "border-emerald-500/20",
     status: "Generating code...",
     result: "Next.js app with 24 passing tests.",
     metric: "Deploy ready"
@@ -167,7 +179,7 @@ export function AgentWorkflowDemo({ className }: AgentWorkflowDemoProps) {
       {/* FIXED HEIGHT CONTAINER */}
       <div className="flex flex-col lg:flex-row h-[520px]">
         {/* Left: Chat Input Panel - Matches build.productos.dev */}
-        <div className="lg:w-[420px] border-b lg:border-b-0 lg:border-r border-border/30 dark:border-white/10 flex flex-col">
+        <div className="lg:w-[460px] border-b lg:border-b-0 lg:border-r border-border/30 dark:border-white/10 flex flex-col">
           {/* Chat Area */}
           <div className="flex-1 p-6 flex flex-col">
             {/* User Avatar & Label */}
@@ -218,10 +230,10 @@ export function AgentWorkflowDemo({ className }: AgentWorkflowDemoProps) {
                   </button>
                   
                   {/* Model Selector */}
-                  <div className="flex items-center gap-1.5 px-2 py-1 rounded-md hover:bg-muted/50 dark:hover:bg-white/5 cursor-pointer transition-colors">
-                    <Sparkles className="size-3.5 text-muted-foreground" />
-                    <span className="text-sm text-muted-foreground">Claude Sonnet 4.6</span>
-                    <ChevronDown className="size-3 text-muted-foreground" />
+                  <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-muted/50 dark:bg-white/5 hover:bg-muted dark:hover:bg-white/10 cursor-pointer transition-colors shrink-0">
+                    <Sparkles className="size-3.5 text-muted-foreground shrink-0" />
+                    <span className="text-sm text-muted-foreground whitespace-nowrap">Claude Sonnet 4.6</span>
+                    <ChevronDown className="size-3 text-muted-foreground shrink-0" />
                   </div>
                 </div>
                 
@@ -268,8 +280,8 @@ export function AgentWorkflowDemo({ className }: AgentWorkflowDemoProps) {
           </div>
           
           {/* Agent Cards - Fixed height container */}
-          <div className="flex-1 p-4 overflow-hidden">
-            <div className="space-y-2.5 h-full">
+          <div className="flex-1 p-3 overflow-hidden">
+            <div className="space-y-2 h-full">
               {agents.map((agent, index) => {
                 const state = getAgentState(agent.id, index)
                 const Icon = agent.icon
@@ -278,7 +290,7 @@ export function AgentWorkflowDemo({ className }: AgentWorkflowDemoProps) {
                   <div
                     key={agent.id}
                     className={cn(
-                      "p-3 rounded-xl border transition-all duration-300 h-[72px] flex items-center",
+                      "p-2.5 rounded-xl border transition-all duration-300 h-[64px] flex items-center",
                       state === "complete" && "bg-card dark:bg-white/[0.03] border-emerald-500/30",
                       state === "active" && cn(agent.bgColor, agent.borderColor, "border"),
                       state === "pending" && "bg-card/30 dark:bg-white/[0.01] border-border/10 dark:border-white/5 opacity-50"
@@ -286,17 +298,17 @@ export function AgentWorkflowDemo({ className }: AgentWorkflowDemoProps) {
                   >
                     {/* Agent Icon */}
                     <div className={cn(
-                      "w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mr-3",
+                      "w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mr-3",
                       state === "complete" && "bg-emerald-500/10",
                       state === "active" && agent.bgColor,
                       state === "pending" && "bg-muted/30 dark:bg-white/5"
                     )}>
                       {state === "active" ? (
-                        <Loader2 className={cn("size-5 animate-spin", agent.textColor)} />
+                        <Loader2 className={cn("size-4 animate-spin", agent.textColor)} />
                       ) : state === "complete" ? (
-                        <Check className="size-5 text-emerald-500" />
+                        <Check className="size-4 text-emerald-500" />
                       ) : (
-                        <Icon className="size-5 text-muted-foreground/50" />
+                        <Icon className="size-4 text-muted-foreground/50" />
                       )}
                     </div>
                     
