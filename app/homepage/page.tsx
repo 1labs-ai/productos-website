@@ -190,32 +190,67 @@ export default function LinearInspiredHomepage() {
             </h2>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {[
               {
-                icon: Brain,
                 title: "Built for AI workflows",
-                description: "Designed for humans and agents to work together. Context flows seamlessly between stages."
+                description: "Designed for humans and agents to work together. Context flows seamlessly between stages.",
+                illustration: (
+                  <svg className="w-full h-32 mb-6" viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="40" cy="40" r="16" stroke="currentColor" strokeWidth="1.5" className="text-foreground/20"/>
+                    <circle cx="100" cy="40" r="16" stroke="currentColor" strokeWidth="1.5" className="text-foreground/20"/>
+                    <circle cx="160" cy="40" r="16" stroke="currentColor" strokeWidth="1.5" className="text-foreground/20"/>
+                    <path d="M56 40h28M116 40h28" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" className="text-foreground/30"/>
+                    <circle cx="40" cy="40" r="6" fill="currentColor" className="text-foreground/40"/>
+                    <circle cx="100" cy="40" r="6" fill="currentColor" className="text-foreground/40"/>
+                    <circle cx="160" cy="40" r="6" fill="currentColor" className="text-foreground/40"/>
+                  </svg>
+                )
               },
               {
-                icon: Zap,
                 title: "10x faster shipping",
-                description: "What used to take months now takes days. Ship production-ready products in 3-12 days."
+                description: "What used to take months now takes days. Ship production-ready products in 3-12 days.",
+                illustration: (
+                  <svg className="w-full h-32 mb-6" viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 60L60 30L100 45L140 20L180 35" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="text-foreground/30"/>
+                    <circle cx="60" cy="30" r="4" fill="currentColor" className="text-foreground/40"/>
+                    <circle cx="100" cy="45" r="4" fill="currentColor" className="text-foreground/40"/>
+                    <circle cx="140" cy="20" r="4" fill="currentColor" className="text-foreground/40"/>
+                    <circle cx="180" cy="35" r="4" fill="currentColor" className="text-foreground/40"/>
+                    <path d="M170 25l10 10l-10 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-foreground/50"/>
+                  </svg>
+                )
               },
               {
-                icon: Users,
                 title: "Made for founders",
-                description: "No dev team required. Solo founders and small teams can build like a full product org."
+                description: "No dev team required. Solo founders and small teams can build like a full product org.",
+                illustration: (
+                  <svg className="w-full h-32 mb-6" viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="35" r="14" stroke="currentColor" strokeWidth="1.5" className="text-foreground/20"/>
+                    <circle cx="60" cy="55" r="10" stroke="currentColor" strokeWidth="1.5" className="text-foreground/20"/>
+                    <circle cx="140" cy="55" r="10" stroke="currentColor" strokeWidth="1.5" className="text-foreground/20"/>
+                    <path d="M100 49v6M75 55h-5M125 55h5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="text-foreground/30"/>
+                    <circle cx="100" cy="35" r="5" fill="currentColor" className="text-foreground/40"/>
+                  </svg>
+                )
               }
             ].map((prop, i) => (
               <AnimatedSection key={prop.title} delay={i * 0.1}>
-                <div className="p-6 rounded-xl bg-card/50 border border-border/30 hover:border-border/60 transition-colors">
-                  <div className="w-10 h-10 rounded-lg bg-muted/50 flex items-center justify-center mb-4">
-                    <prop.icon className="size-5 text-foreground/60" />
+                <motion.div 
+                  className="group p-8 rounded-2xl bg-card/30 border border-border/20 cursor-pointer"
+                  whileHover={{ 
+                    y: -4, 
+                    borderColor: 'rgba(255,255,255,0.15)',
+                    boxShadow: '0 20px 40px -20px rgba(0,0,0,0.3)'
+                  }}
+                  transition={{ duration: 0.2, ease: 'easeOut' }}
+                >
+                  <div className="opacity-60 group-hover:opacity-80 transition-opacity duration-300">
+                    {prop.illustration}
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">{prop.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{prop.description}</p>
-                </div>
+                  <h3 className="text-lg font-semibold text-foreground mb-3">{prop.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed text-sm">{prop.description}</p>
+                </motion.div>
               </AnimatedSection>
             ))}
           </div>
