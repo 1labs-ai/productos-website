@@ -78,7 +78,7 @@ export default function LinearInspiredHomepage() {
         />
         
         {/* Content container with Linear-style spacing */}
-        <div className="relative z-10 max-w-[1436px] mx-auto px-8">
+        <div className="relative z-10 max-w-[1436px] mx-auto px-6 lg:px-[50px]">
           {/* Main Headline - Left Aligned like Linear */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -151,7 +151,7 @@ export default function LinearInspiredHomepage() {
 
       {/* Logo Cloud */}
       <section className="py-16 border-y border-border/30">
-        <div className="max-w-[1436px] mx-auto px-8">
+        <div className="max-w-[1436px] mx-auto px-6 lg:px-[50px]">
           <p className="text-center text-sm text-muted-foreground mb-8">
             Trusted by founders and teams from
           </p>
@@ -170,7 +170,7 @@ export default function LinearInspiredHomepage() {
 
       {/* Value Props - Linear style */}
       <section className="py-24">
-        <div className="max-w-[1436px] mx-auto px-8">
+        <div className="max-w-[1436px] mx-auto px-6 lg:px-[50px]">
           <AnimatedSection>
             <p className="text-sm font-medium text-muted-foreground mb-4 uppercase tracking-wider">
               A new way to build products
@@ -217,7 +217,7 @@ export default function LinearInspiredHomepage() {
 
       {/* Feature Section 1 - Self-driving operations */}
       <section id="features" className="py-24 bg-card/30">
-        <div className="max-w-[1436px] mx-auto px-8">
+        <div className="max-w-[1436px] mx-auto px-6 lg:px-[50px]">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection>
               <p className="text-sm font-medium text-amber-500 mb-4 uppercase tracking-wider">
@@ -288,7 +288,7 @@ export default function LinearInspiredHomepage() {
 
       {/* Feature Section 2 - Define product direction */}
       <section className="py-24">
-        <div className="max-w-[1436px] mx-auto px-8">
+        <div className="max-w-[1436px] mx-auto px-6 lg:px-[50px]">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection delay={0.2} className="order-2 lg:order-1">
               {/* Timeline/Roadmap mockup */}
@@ -351,7 +351,7 @@ export default function LinearInspiredHomepage() {
 
       {/* Feature Section 3 - Deploy anywhere */}
       <section className="py-24 bg-card/30">
-        <div className="max-w-[1436px] mx-auto px-8">
+        <div className="max-w-[1436px] mx-auto px-6 lg:px-[50px]">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection>
               <p className="text-sm font-medium text-emerald-400 mb-4 uppercase tracking-wider">
@@ -414,7 +414,7 @@ export async function Dashboard() {
 
       {/* Stats Section */}
       <section className="py-24">
-        <div className="max-w-[1436px] mx-auto px-8">
+        <div className="max-w-[1436px] mx-auto px-6 lg:px-[50px]">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-medium mb-4" style={{ lineHeight: 1, letterSpacing: '-0.022em' }}>
               Built for speed.<br />
@@ -444,7 +444,7 @@ export async function Dashboard() {
 
       {/* Testimonials */}
       <section className="py-24 bg-card/30">
-        <div className="max-w-[1436px] mx-auto px-8">
+        <div className="max-w-[1436px] mx-auto px-6 lg:px-[50px]">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ letterSpacing: '-0.02em' }}>
               What founders are saying
@@ -489,7 +489,7 @@ export async function Dashboard() {
 
       {/* Final CTA */}
       <section className="py-32">
-        <div className="max-w-[1436px] mx-auto px-8">
+        <div className="max-w-[1436px] mx-auto px-6 lg:px-[50px]">
         <div className="max-w-4xl mx-auto text-center">
           <AnimatedSection>
             <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-medium mb-6" style={{ lineHeight: 1, letterSpacing: '-0.022em' }}>

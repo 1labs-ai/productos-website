@@ -82,7 +82,7 @@ export function Footer() {
   return (
     <footer className={cn(
       "border-t border-border py-12",
-      isHomepage ? "px-8 lg:px-[77px]" : "px-4"
+      isHomepage ? "px-6 lg:px-[50px]" : "px-4"
     )}>
       <div className={cn(
         "mx-auto",
