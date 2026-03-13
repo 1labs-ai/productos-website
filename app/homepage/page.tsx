@@ -25,6 +25,7 @@ import { cn } from "@/lib/utils"
 import { InteractiveDashboard } from "@/components/homepage/interactive-dashboard"
 import { WorkflowNodesIcon, GrowthGraphIcon, NetworkHubIcon } from "@/components/animated-icons"
 import { IsometricAgentsVisual } from "@/components/isometric-agents-visual"
+import { AgentCubesIllustration, SpeedBarsIllustration, LayeredCubeIllustration } from "@/components/linear-illustrations"
 
 // Section animation wrapper
 function AnimatedSection({ children, className, delay = 0 }: { children: React.ReactNode, className?: string, delay?: number }) {
@@ -209,8 +210,8 @@ export default function LinearInspiredHomepage() {
                   <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
                 </div>
                 
-                {/* Isometric agents visual - matching reference design */}
-                <IsometricAgentsVisual className="mb-4 relative z-10" />
+                {/* Linear-style agent cubes illustration */}
+                <AgentCubesIllustration className="mb-4 relative z-10 h-48" />
                 
                 <h3 className="text-lg font-semibold text-foreground mb-3 relative z-10 group-hover:text-foreground transition-colors duration-300">Agents that collaborate</h3>
                 <p className="text-muted-foreground leading-relaxed text-sm relative z-10 group-hover:text-muted-foreground/80 transition-colors duration-300">Each agent specializes in one stage. Context flows automatically from ideation to production code.</p>
@@ -237,8 +238,8 @@ export default function LinearInspiredHomepage() {
                   <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
                 </div>
                 
-                {/* Animated illustration */}
-                <GrowthGraphIcon className="mb-6 relative z-10" />
+                {/* Linear-style speed bars illustration */}
+                <SpeedBarsIllustration className="mb-4 relative z-10 h-48" />
                 
                 <h3 className="text-lg font-semibold text-foreground mb-3 relative z-10 group-hover:text-foreground transition-colors duration-300">Ship in days, not months</h3>
                 <p className="text-muted-foreground leading-relaxed text-sm relative z-10 group-hover:text-muted-foreground/80 transition-colors duration-300">Go from conversation to deployed product in 3-12 days. Real code, real tests, real infrastructure.</p>
@@ -265,8 +266,8 @@ export default function LinearInspiredHomepage() {
                   <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
                 </div>
                 
-                {/* Animated illustration */}
-                <NetworkHubIcon className="mb-6 relative z-10" />
+                {/* Linear-style layered cube illustration */}
+                <LayeredCubeIllustration className="mb-4 relative z-10 h-48" />
                 
                 <h3 className="text-lg font-semibold text-foreground mb-3 relative z-10 group-hover:text-foreground transition-colors duration-300">Built for founders</h3>
                 <p className="text-muted-foreground leading-relaxed text-sm relative z-10 group-hover:text-muted-foreground/80 transition-colors duration-300">No dev team needed. Build like you have a full product org — PM, researcher, designer, and engineers.</p>
