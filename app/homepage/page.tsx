@@ -76,8 +76,8 @@ export default function LinearInspiredHomepage() {
           }}
         />
         
-        {/* Content container with consistent padding */}
-        <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+        {/* Content container with Linear-style spacing */}
+        <div className="relative z-10 max-w-[1280px] mx-auto px-8 sm:px-12 lg:px-20">
           {/* Main Headline - Left Aligned like Linear */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -248,57 +248,80 @@ export default function LinearInspiredHomepage() {
                 
                 {/* Main content - Theme aware */}
                 <div className="flex-1 flex flex-col bg-background dark:bg-[#0a0a0b]">
+                  {/* Top bar */}
+                  <div className="flex items-center justify-between px-6 py-3 border-b border-border/50 dark:border-white/[0.06]">
+                    <div className="flex items-center gap-4">
+                      <span className="text-sm font-medium text-foreground dark:text-white">Dashboard</span>
+                      <span className="text-xs text-muted-foreground dark:text-white/40">3 active projects</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1 px-2 py-1 rounded-md bg-emerald-500/10 text-emerald-500 text-xs">
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        <span>AI Active</span>
+                      </div>
+                    </div>
+                  </div>
+                  
                   {/* Content area */}
-                  <div className="flex-1 flex flex-col items-center justify-center p-8 lg:p-12">
-                    <h2 
-                      className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-4 text-foreground dark:text-transparent"
-                      style={{ 
-                        letterSpacing: '-0.02em'
-                      }}
-                    >
-                      <span className="dark:bg-gradient-to-b dark:from-white/95 dark:to-white/50 dark:bg-clip-text">
-                        What would you like to build?
-                      </span>
-                    </h2>
-                    <p className="text-muted-foreground dark:text-white/50 text-sm sm:text-base mb-8">
-                      AI-native product development from idea to launch
-                    </p>
-                    
-                    {/* Quick action buttons */}
-                    <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
-                      {[
-                        { icon: "🔍", label: "Research a market" },
-                        { icon: "📝", label: "Write a PRD" },
-                        { icon: "🗺️", label: "Create roadmap" },
-                        { icon: "⚔️", label: "Analyze competitors" },
-                      ].map((action) => (
-                        <button 
-                          key={action.label}
-                          className="flex items-center gap-2 px-3 py-2 rounded-lg border border-border dark:border-white/10 bg-muted/30 dark:bg-white/[0.02] hover:bg-muted dark:hover:bg-white/[0.05] transition-colors text-sm text-foreground/80 dark:text-white/80"
-                        >
-                          <span>{action.icon}</span>
-                          <span>{action.label}</span>
-                        </button>
-                      ))}
+                  <div className="flex-1 p-6 lg:p-8 overflow-hidden">
+                    {/* Recent Projects Grid */}
+                    <div className="mb-6">
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="text-sm font-medium text-foreground dark:text-white/80">Recent Projects</h3>
+                        <button className="text-xs text-muted-foreground dark:text-white/40 hover:text-foreground dark:hover:text-white/60">View all</button>
+                      </div>
+                      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
+                        {[
+                          { name: "Analytics Dashboard", stage: "Design", color: "purple", progress: 65 },
+                          { name: "Mobile App Redesign", stage: "Develop", color: "amber", progress: 40 },
+                          { name: "AI Chat Widget", stage: "Define", color: "teal", progress: 85 },
+                        ].map((project) => (
+                          <div 
+                            key={project.name}
+                            className="p-3 rounded-lg border border-border/50 dark:border-white/[0.06] bg-muted/20 dark:bg-white/[0.02] hover:bg-muted/40 dark:hover:bg-white/[0.04] transition-colors"
+                          >
+                            <div className="flex items-center justify-between mb-2">
+                              <span className="text-sm font-medium text-foreground dark:text-white/90">{project.name}</span>
+                              <span className={`text-[10px] px-1.5 py-0.5 rounded ${
+                                project.color === 'purple' ? 'bg-purple-500/10 text-purple-400' :
+                                project.color === 'amber' ? 'bg-amber-500/10 text-amber-400' :
+                                'bg-teal-500/10 text-teal-400'
+                              }`}>{project.stage}</span>
+                            </div>
+                            <div className="h-1 rounded-full bg-muted dark:bg-white/[0.06] overflow-hidden">
+                              <div 
+                                className={`h-full rounded-full ${
+                                  project.color === 'purple' ? 'bg-purple-500' :
+                                  project.color === 'amber' ? 'bg-amber-500' :
+                                  'bg-teal-500'
+                                }`}
+                                style={{ width: `${project.progress}%` }}
+                              />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                     
-                    {/* Input area */}
-                    <div className="w-full max-w-2xl">
-                      <div className="rounded-xl border border-border dark:border-white/10 bg-muted/30 dark:bg-white/[0.02] p-4">
-                        <div className="text-muted-foreground/50 dark:text-white/30 text-sm mb-12">Describe your product idea...</div>
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <button className="flex items-center gap-1.5 px-2 py-1 rounded-md hover:bg-muted dark:hover:bg-white/[0.05] text-muted-foreground dark:text-white/50 text-sm">
-                              <Sparkles className="w-3.5 h-3.5" />
-                              <span>Claude Sonnet 4.6</span>
-                              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-                            </button>
-                          </div>
-                          <button className="px-4 py-2 rounded-lg bg-muted dark:bg-white/10 text-muted-foreground dark:text-white/50 text-sm font-medium flex items-center gap-2">
-                            Send
-                            <ArrowRight className="w-3.5 h-3.5" />
+                    {/* New Project Input */}
+                    <div className="rounded-xl border border-border dark:border-white/10 bg-muted/30 dark:bg-white/[0.02] p-4">
+                      <div className="flex items-center gap-3 mb-3">
+                        <Sparkles className="w-5 h-5 text-violet-400" />
+                        <h2 className="text-lg font-semibold text-foreground dark:text-white">Start a new project</h2>
+                      </div>
+                      <div className="text-muted-foreground/60 dark:text-white/40 text-sm mb-10">Describe your product idea and AI agents will help you build it...</div>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <button className="flex items-center gap-1.5 px-2 py-1 rounded-md hover:bg-muted dark:hover:bg-white/[0.05] text-muted-foreground dark:text-white/50 text-sm">
+                            <Sparkles className="w-3.5 h-3.5" />
+                            <span>Claude Sonnet 4.6</span>
+                            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                           </button>
                         </div>
+                        <button className="px-4 py-2 rounded-lg bg-foreground dark:bg-white text-background dark:text-black text-sm font-medium flex items-center gap-2 hover:opacity-90 transition-opacity">
+                          Send
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -310,8 +333,8 @@ export default function LinearInspiredHomepage() {
       </section>
 
       {/* Logo Cloud */}
-      <section className="py-16 px-4 border-y border-border/30">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-16 border-y border-border/30">
+        <div className="max-w-[1280px] mx-auto px-8 sm:px-12 lg:px-20">
           <p className="text-center text-sm text-muted-foreground mb-8">
             Trusted by founders and teams from
           </p>
@@ -329,8 +352,8 @@ export default function LinearInspiredHomepage() {
       </section>
 
       {/* Value Props - Linear style */}
-      <section className="py-24 px-4">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-24">
+        <div className="max-w-[1280px] mx-auto px-8 sm:px-12 lg:px-20">
           <AnimatedSection>
             <p className="text-sm font-medium text-muted-foreground mb-4 uppercase tracking-wider">
               A new way to build products
@@ -376,8 +399,8 @@ export default function LinearInspiredHomepage() {
       </section>
 
       {/* Feature Section 1 - Self-driving operations */}
-      <section id="features" className="py-24 px-4 bg-card/30">
-        <div className="max-w-6xl mx-auto">
+      <section id="features" className="py-24 bg-card/30">
+        <div className="max-w-[1280px] mx-auto px-8 sm:px-12 lg:px-20">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection>
               <p className="text-sm font-medium text-amber-500 mb-4 uppercase tracking-wider">
@@ -447,8 +470,8 @@ export default function LinearInspiredHomepage() {
       </section>
 
       {/* Feature Section 2 - Define product direction */}
-      <section className="py-24 px-4">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-24">
+        <div className="max-w-[1280px] mx-auto px-8 sm:px-12 lg:px-20">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection delay={0.2} className="order-2 lg:order-1">
               {/* Timeline/Roadmap mockup */}
@@ -510,8 +533,8 @@ export default function LinearInspiredHomepage() {
       </section>
 
       {/* Feature Section 3 - Deploy anywhere */}
-      <section className="py-24 px-4 bg-card/30">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-24 bg-card/30">
+        <div className="max-w-[1280px] mx-auto px-8 sm:px-12 lg:px-20">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection>
               <p className="text-sm font-medium text-emerald-400 mb-4 uppercase tracking-wider">
@@ -573,8 +596,8 @@ export async function Dashboard() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-24 px-4">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-24">
+        <div className="max-w-[1280px] mx-auto px-8 sm:px-12 lg:px-20">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style={{ letterSpacing: '-0.02em' }}>
               Built for speed.<br />
@@ -603,8 +626,8 @@ export async function Dashboard() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 px-4 bg-card/30">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-24 bg-card/30">
+        <div className="max-w-[1280px] mx-auto px-8 sm:px-12 lg:px-20">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ letterSpacing: '-0.02em' }}>
               What founders are saying
@@ -648,7 +671,8 @@ export async function Dashboard() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-32 px-4">
+      <section className="py-32">
+        <div className="max-w-[1280px] mx-auto px-8 sm:px-12 lg:px-20">
         <div className="max-w-4xl mx-auto text-center">
           <AnimatedSection>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6" style={{ letterSpacing: '-0.02em' }}>
@@ -681,6 +705,7 @@ export async function Dashboard() {
               </Button>
             </div>
           </AnimatedSection>
+        </div>
         </div>
       </section>
     </main>
