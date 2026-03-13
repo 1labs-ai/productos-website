@@ -571,3 +571,13 @@ html, body {
 .prose-content .wp-block-gallery img {
   @apply my-0 w-full h-auto object-cover;
 }
+
+/* Blinking cursor animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}

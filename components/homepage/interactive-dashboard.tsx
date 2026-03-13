@@ -186,16 +186,20 @@ function StartingScreen({ onStartProject }: { onStartProject: (idea: string) => 
       <div className="w-full max-w-2xl">
         <div className="rounded-xl border border-border/50 dark:border-white/[0.1] bg-muted/20 dark:bg-white/[0.02] p-3">
           <div className="relative">
+            <div className="w-full h-16 text-sm text-foreground dark:text-white">
+              {idea}
+              {/* Blinking cursor - shows during typing and after completion */}
+              {(isTyping || typingComplete) && (
+                <span className="animate-blink text-foreground dark:text-white font-normal">|</span>
+              )}
+            </div>
             <textarea
               value={idea}
               onChange={handleInputChange}
               placeholder="Describe your product idea..."
-              className="w-full h-16 bg-transparent text-sm text-foreground dark:text-white placeholder:text-muted-foreground/50 resize-none outline-none"
+              className="absolute inset-0 w-full h-16 bg-transparent text-sm text-transparent caret-transparent resize-none outline-none"
+              style={{ caretColor: 'transparent' }}
             />
-            {/* Blinking cursor when typing */}
-            {isTyping && (
-              <span className="absolute text-sm text-foreground dark:text-white animate-pulse">|</span>
-            )}
           </div>
           <div className="flex items-center justify-between pt-2 border-t border-border/30 dark:border-white/[0.06]">
             <div className="flex items-center gap-2">
@@ -216,9 +220,9 @@ function StartingScreen({ onStartProject }: { onStartProject: (idea: string) => 
               <button 
                 onClick={() => idea.trim() && onStartProject(idea)}
                 className={cn(
-                  "flex items-center gap-2 px-3 py-1.5 rounded-md transition-colors text-sm font-medium",
+                  "flex items-center gap-2 px-3 py-1.5 rounded-md transition-all text-sm font-medium",
                   typingComplete 
-                    ? "bg-foreground dark:bg-white text-background dark:text-black hover:opacity-90" 
+                    ? "bg-foreground dark:bg-white text-background dark:text-black hover:opacity-90 animate-[pulse_2s_ease-in-out_infinite]" 
                     : "bg-muted dark:bg-white/[0.08] text-foreground dark:text-white hover:bg-muted/80 dark:hover:bg-white/[0.12]"
                 )}
               >
