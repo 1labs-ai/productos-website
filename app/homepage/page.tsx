@@ -100,13 +100,13 @@ export default function LinearInspiredHomepage() {
                 className="block text-4xl sm:text-5xl lg:text-[64px] font-medium text-foreground"
                 style={{ lineHeight: 1, letterSpacing: '-0.022em' }}
               >
-                The product development
+                From idea to production
               </span>
               <span 
                 className="block text-4xl sm:text-5xl lg:text-[64px] font-medium text-foreground/40"
                 style={{ lineHeight: 1, letterSpacing: '-0.022em' }}
               >
-                system for founders and agents
+                in days, not months
               </span>
             </h1>
 
@@ -181,12 +181,12 @@ export default function LinearInspiredHomepage() {
         <div className="max-w-[1436px] mx-auto px-6 lg:px-[50px]">
           <AnimatedSection>
             <p className="text-sm font-medium text-muted-foreground mb-4 uppercase tracking-wider">
-              A new way to build products
+              Your AI product team
             </p>
             <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-medium max-w-4xl mb-16" style={{ lineHeight: 1, letterSpacing: '-0.022em' }}>
-              <span className="text-foreground">Purpose-built for the AI era.</span>{" "}
+              <span className="text-foreground">Five agents. One workflow.</span>{" "}
               <span className="text-muted-foreground">
-                Five specialized agents work together to take you from idea to production.
+                Ideate, research, document, design, and code — orchestrated by AI.
               </span>
             </h2>
           </AnimatedSection>
@@ -211,8 +211,8 @@ export default function LinearInspiredHomepage() {
                 {/* Animated illustration */}
                 <WorkflowNodesIcon className="mb-6 relative z-10" />
                 
-                <h3 className="text-lg font-semibold text-foreground mb-3 relative z-10 group-hover:text-foreground transition-colors duration-300">Built for AI workflows</h3>
-                <p className="text-muted-foreground leading-relaxed text-sm relative z-10 group-hover:text-muted-foreground/80 transition-colors duration-300">Designed for humans and agents to work together. Context flows seamlessly between stages.</p>
+                <h3 className="text-lg font-semibold text-foreground mb-3 relative z-10 group-hover:text-foreground transition-colors duration-300">Agents that collaborate</h3>
+                <p className="text-muted-foreground leading-relaxed text-sm relative z-10 group-hover:text-muted-foreground/80 transition-colors duration-300">Each agent specializes in one stage. Context flows automatically from ideation to production code.</p>
                 
                 {/* Border glow on hover */}
                 <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-foreground/10 transition-colors duration-300" />
@@ -239,8 +239,8 @@ export default function LinearInspiredHomepage() {
                 {/* Animated illustration */}
                 <GrowthGraphIcon className="mb-6 relative z-10" />
                 
-                <h3 className="text-lg font-semibold text-foreground mb-3 relative z-10 group-hover:text-foreground transition-colors duration-300">10x faster shipping</h3>
-                <p className="text-muted-foreground leading-relaxed text-sm relative z-10 group-hover:text-muted-foreground/80 transition-colors duration-300">What used to take months now takes days. Ship production-ready products in 3-12 days.</p>
+                <h3 className="text-lg font-semibold text-foreground mb-3 relative z-10 group-hover:text-foreground transition-colors duration-300">Ship in days, not months</h3>
+                <p className="text-muted-foreground leading-relaxed text-sm relative z-10 group-hover:text-muted-foreground/80 transition-colors duration-300">Go from conversation to deployed product in 3-12 days. Real code, real tests, real infrastructure.</p>
                 
                 {/* Border glow on hover */}
                 <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-foreground/10 transition-colors duration-300" />
@@ -267,8 +267,8 @@ export default function LinearInspiredHomepage() {
                 {/* Animated illustration */}
                 <NetworkHubIcon className="mb-6 relative z-10" />
                 
-                <h3 className="text-lg font-semibold text-foreground mb-3 relative z-10 group-hover:text-foreground transition-colors duration-300">Made for founders</h3>
-                <p className="text-muted-foreground leading-relaxed text-sm relative z-10 group-hover:text-muted-foreground/80 transition-colors duration-300">No dev team required. Solo founders and small teams can build like a full product org.</p>
+                <h3 className="text-lg font-semibold text-foreground mb-3 relative z-10 group-hover:text-foreground transition-colors duration-300">Built for founders</h3>
+                <p className="text-muted-foreground leading-relaxed text-sm relative z-10 group-hover:text-muted-foreground/80 transition-colors duration-300">No dev team needed. Build like you have a full product org — PM, researcher, designer, and engineers.</p>
                 
                 {/* Border glow on hover */}
                 <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-foreground/10 transition-colors duration-300" />
@@ -285,15 +285,15 @@ export default function LinearInspiredHomepage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection>
               <p className="text-sm font-medium text-amber-500 mb-4 uppercase tracking-wider">
-                AI-Powered Workflow
+                Describe it. Build it.
               </p>
               <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-medium mb-6" style={{ lineHeight: 1, letterSpacing: '-0.022em' }}>
-                Make product development<br />
-                <span className="text-muted-foreground">self-driving</span>
+                Talk to ProductOS<br />
+                <span className="text-muted-foreground">like a co-founder</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Turn conversations into products. AI agents analyze your input, conduct research, 
-                write documentation, generate designs, and ship production code — all automatically.
+                Describe your product idea in plain language. ProductOS researches the market, 
+                writes your PRD, generates UI designs, and ships production code — automatically.
               </p>
               <Button variant="ghost" className="text-foreground hover:text-foreground p-0 h-auto font-medium">
                 Learn more <ArrowRight className="ml-2 size-4" />
@@ -395,15 +395,15 @@ export default function LinearInspiredHomepage() {
 
             <AnimatedSection className="order-1 lg:order-2">
               <p className="text-sm font-medium text-purple-400 mb-4 uppercase tracking-wider">
-                End-to-end Visibility
+                Five stages. Zero chaos.
               </p>
               <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-medium mb-6" style={{ lineHeight: 1, letterSpacing: '-0.022em' }}>
-                Define the<br />
-                <span className="text-muted-foreground">product direction</span>
+                Watch your product<br />
+                <span className="text-muted-foreground">come to life</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Track progress across all five stages. Know exactly where your product stands, 
-                what's being worked on, and when you'll ship.
+                Follow every stage: Ideate → Discover → Define → Design → Develop. 
+                See exactly where your project stands and when it ships.
               </p>
               <Button variant="ghost" className="text-foreground hover:text-foreground p-0 h-auto font-medium">
                 Learn more <ArrowRight className="ml-2 size-4" />
@@ -419,15 +419,15 @@ export default function LinearInspiredHomepage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection>
               <p className="text-sm font-medium text-emerald-400 mb-4 uppercase tracking-wider">
-                Production Ready
+                Real code. Real products.
               </p>
               <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-medium mb-6" style={{ lineHeight: 1, letterSpacing: '-0.022em' }}>
-                Ship production code,<br />
-                <span className="text-muted-foreground">not prototypes</span>
+                Production-ready<br />
+                <span className="text-muted-foreground">from day one</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Every project ships with real code, real tests, and real deployments. 
-                Push to Vercel, Netlify, or your own infrastructure with one click.
+                No prototypes. No throwaway code. ProductOS generates tested, deployable code 
+                that goes straight to Vercel, Netlify, or your own infrastructure.
               </p>
               <Button variant="ghost" className="text-foreground hover:text-foreground p-0 h-auto font-medium">
                 Learn more <ArrowRight className="ml-2 size-4" />
@@ -481,8 +481,8 @@ export async function Dashboard() {
         <div className="max-w-[1436px] mx-auto px-6 lg:px-[50px]">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-medium mb-4" style={{ lineHeight: 1, letterSpacing: '-0.022em' }}>
-              Built for speed.<br />
-              <span className="text-muted-foreground">Measured in days, not months.</span>
+              The numbers speak.<br />
+              <span className="text-muted-foreground">ProductOS delivers.</span>
             </h2>
           </AnimatedSection>
 
@@ -511,20 +511,20 @@ export async function Dashboard() {
         <div className="max-w-[1436px] mx-auto px-6 lg:px-[50px]">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ letterSpacing: '-0.02em' }}>
-              What founders are saying
+              Founders shipping faster
             </h2>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
-                quote: "ProductOS let me ship my MVP in 5 days instead of 3 months. The AI agents actually understand product context.",
+                quote: "I went from idea to live product in 6 days. ProductOS handled research, PRD, designs, and code. I just guided it.",
                 author: "Sarah Chen",
                 role: "Founder, DataFlow",
                 avatar: "S"
               },
               {
-                quote: "Finally, a tool that thinks like a product team. From research to code, everything stays connected.",
+                quote: "It's like having a product team on demand. The agents actually build on each other's work — research informs the PRD, PRD shapes the design.",
                 author: "Marcus Johnson",
                 role: "Solo Founder",
                 avatar: "M"
@@ -557,11 +557,11 @@ export async function Dashboard() {
         <div className="max-w-4xl mx-auto text-center">
           <AnimatedSection>
             <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-medium mb-6" style={{ lineHeight: 1, letterSpacing: '-0.022em' }}>
-              <span className="text-foreground">Built for the future.</span><br />
-              <span className="text-muted-foreground">Available today.</span>
+              <span className="text-foreground">Your next product</span><br />
+              <span className="text-muted-foreground">starts here.</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Join the founders shipping products 10x faster with AI-native workflows.
+              Join founders building with ProductOS. Describe your idea, and watch five AI agents bring it to life.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
