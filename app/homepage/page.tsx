@@ -322,18 +322,18 @@ export default function LinearInspiredHomepage() {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start mb-12">
             <AnimatedSection>
               <p className="text-sm font-medium text-purple-400 mb-4 uppercase tracking-wider">
-                Five stages. Zero chaos.
+                Project Intelligence
               </p>
               <h2 className="text-3xl sm:text-4xl lg:text-[56px] font-medium" style={{ lineHeight: 1.05, letterSpacing: '-0.022em' }}>
-                Always know where<br />
-                <span className="text-muted-foreground">you stand</span>
+                See what your agents<br />
+                <span className="text-muted-foreground">have built</span>
               </h2>
             </AnimatedSection>
 
             <AnimatedSection delay={0.1}>
               <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed mb-6">
-                Track every stage from Ideate to Develop. See deliverables, progress, and ship dates — all in one view. 
-                No guesswork, no status meetings.
+                Every deliverable, every insight, every line of code — tracked in real-time. 
+                Know exactly what's ready and when you ship.
               </p>
               <div className="flex items-center gap-4">
                 <span className="text-sm text-muted-foreground/60">2.0</span>
