@@ -1,139 +1,279 @@
 "use client"
 
-// Isometric Agents Collaboration Visual - Based on Gemini reference
-// Animated flow path with isometric cubes
+// Isometric Agents Visual - Exact match to reference design
+// 5 cubes connected by glowing road-style paths
 export function IsometricAgentsVisual({ className = "" }: { className?: string }) {
   return (
     <div className={`relative w-full flex items-center justify-center ${className}`}>
       <svg 
-        viewBox="0 0 400 300" 
+        viewBox="0 0 700 400" 
         fill="none" 
         xmlns="http://www.w3.org/2000/svg" 
-        className="w-full h-full max-h-40"
+        className="w-full h-full"
+        style={{ maxHeight: '280px' }}
       >
-        {/* Background connection paths */}
-        <path 
-          d="M60 180 L140 140 L240 180 L320 140" 
-          stroke="rgba(255,255,255,0.1)" 
-          strokeWidth="2" 
-        />
-        <path 
-          d="M140 140 L200 100 L280 140" 
-          stroke="rgba(255,255,255,0.1)" 
-          strokeWidth="2" 
-        />
-
-        {/* Animated flowing path */}
-        <path 
-          d="M60 180 L140 140 L200 100 L280 140 L320 140"
-          stroke="url(#gradient-flow)" 
-          strokeWidth="2" 
-          strokeDasharray="10 150"
-          className="animate-flow"
-        />
-
-        {/* Cube 1 - Left (small) */}
-        <g transform="translate(40, 160)">
-          <path d="M0 10 L20 0 L40 10 L20 20 Z" fill="#121212" stroke="rgba(255,255,255,0.3)" />
-          <path d="M0 10 L0 25 L20 35 L20 20 Z" fill="#0F0F0F" stroke="rgba(255,255,255,0.3)" />
-          <path d="M20 20 L20 35 L40 25 L40 10 Z" fill="#0A0A0A" stroke="rgba(255,255,255,0.3)" />
-        </g>
-
-        {/* Cube 2 - Center Top (larger) */}
-        <g transform="translate(125, 115)">
-          <path d="M0 12 L25 0 L50 12 L25 24 Z" fill="#121212" stroke="rgba(255,255,255,0.5)" />
-          <path d="M0 12 L0 32 L25 44 L25 24 Z" fill="#0F0F0F" stroke="rgba(255,255,255,0.5)" />
-          <path d="M25 24 L25 44 L50 32 L50 12 Z" fill="#0A0A0A" stroke="rgba(255,255,255,0.5)" />
-        </g>
-
-        {/* Cube 3 - Center (main, largest) */}
-        <g transform="translate(175, 75)">
-          <path d="M0 15 L30 0 L60 15 L30 30 Z" fill="#121212" stroke="rgba(255,255,255,0.6)" />
-          <path d="M0 15 L0 40 L30 55 L30 30 Z" fill="#0F0F0F" stroke="rgba(255,255,255,0.6)" />
-          <path d="M30 30 L30 55 L60 40 L60 15 Z" fill="#0A0A0A" stroke="rgba(255,255,255,0.6)" />
-        </g>
-
-        {/* Cube 4 - Right Top */}
-        <g transform="translate(255, 115)">
-          <path d="M0 12 L25 0 L50 12 L25 24 Z" fill="#121212" stroke="rgba(255,255,255,0.5)" />
-          <path d="M0 12 L0 32 L25 44 L25 24 Z" fill="#0F0F0F" stroke="rgba(255,255,255,0.5)" />
-          <path d="M25 24 L25 44 L50 32 L50 12 Z" fill="#0A0A0A" stroke="rgba(255,255,255,0.5)" />
-        </g>
-
-        {/* Cube 5 - Right (small) */}
-        <g transform="translate(300, 160)">
-          <path d="M0 10 L20 0 L40 10 L20 20 Z" fill="#121212" stroke="rgba(255,255,255,0.3)" />
-          <path d="M0 10 L0 25 L20 35 L20 20 Z" fill="#0F0F0F" stroke="rgba(255,255,255,0.3)" />
-          <path d="M20 20 L20 35 L40 25 L40 10 Z" fill="#0A0A0A" stroke="rgba(255,255,255,0.3)" />
-        </g>
-
-        {/* Icons above cubes */}
-        
-        {/* Brain icon - above cube 1 */}
-        <g transform="translate(45, 125)" stroke="rgba(255,255,255,0.5)" strokeWidth="1" fill="none">
-          <path d="M15 5 C10 5 7 9 7 13 C7 15 8 17 8 17 C6 18 5 20 5 22 C5 25 7 27 10 27 L20 27 C23 27 25 25 25 22 C25 20 24 18 22 17 C22 17 23 15 23 13 C23 9 20 5 15 5" />
-          <path d="M10 12 Q15 10 20 12 M10 18 Q15 16 20 18" strokeWidth="0.75" />
-        </g>
-
-        {/* Flowchart icon - above cube 2 */}
-        <g transform="translate(140, 75)" stroke="rgba(255,255,255,0.5)" strokeWidth="1" fill="none">
-          <rect x="5" y="2" width="12" height="7" rx="1" />
-          <line x1="11" y1="9" x2="11" y2="14" />
-          <line x1="11" y1="14" x2="5" y2="20" />
-          <line x1="11" y1="14" x2="17" y2="20" />
-          <rect x="0" y="20" width="10" height="6" rx="1" />
-          <rect x="12" y="20" width="10" height="6" rx="1" />
-        </g>
-
-        {/* Code icon - above center cube */}
-        <g transform="translate(190, 35)" stroke="rgba(255,255,255,0.6)" strokeWidth="1" fill="none">
-          <rect x="0" y="0" width="35" height="28" rx="2" />
-          <line x1="0" y1="8" x2="35" y2="8" strokeOpacity="0.4" />
-          <circle cx="5" cy="4" r="1.5" fill="rgba(255,255,255,0.4)" stroke="none" />
-          <circle cx="10" cy="4" r="1.5" fill="rgba(255,255,255,0.4)" stroke="none" />
-          <circle cx="15" cy="4" r="1.5" fill="rgba(255,255,255,0.4)" stroke="none" />
-          <text x="9" y="21" fontSize="10" fill="rgba(255,255,255,0.6)" fontFamily="monospace">&lt;/&gt;</text>
-        </g>
-
-        {/* Database + Search icon - above cube 4 */}
-        <g transform="translate(260, 75)" stroke="rgba(255,255,255,0.5)" strokeWidth="1" fill="none">
-          <ellipse cx="10" cy="6" rx="8" ry="3" />
-          <path d="M2 6 L2 18 C2 20 5 22 10 22 C15 22 18 20 18 18 L18 6" />
-          <ellipse cx="10" cy="12" rx="8" ry="2" strokeOpacity="0.4" />
-          <circle cx="25" cy="12" r="5" />
-          <line x1="29" y1="16" x2="34" y2="21" strokeWidth="1.5" strokeLinecap="round" />
-        </g>
-
-        {/* Rocket icon - above cube 5 */}
-        <g transform="translate(308, 120)" stroke="rgba(255,255,255,0.5)" strokeWidth="1" fill="none">
-          <path d="M12 2 L12 25 L8 30 L16 30 L12 25" />
-          <path d="M6 25 L12 2 L18 25" />
-          <path d="M6 25 L2 30 L6 28" />
-          <path d="M18 25 L22 30 L18 28" />
-          <circle cx="12" cy="14" r="2.5" />
-        </g>
-
         <defs>
-          <linearGradient id="gradient-flow" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="transparent" />
-            <stop offset="50%" stopColor="white" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="transparent" />
+          {/* Glow filter for paths */}
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+          
+          {/* Animated gradient for flow effect */}
+          <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="rgba(255,255,255,0)" />
+            <stop offset="40%" stopColor="rgba(255,255,255,0.6)" />
+            <stop offset="60%" stopColor="rgba(255,255,255,0.6)" />
+            <stop offset="100%" stopColor="rgba(255,255,255,0)" />
           </linearGradient>
         </defs>
 
-        <style>{`
-          .animate-flow {
-            animation: flowAnimation 3s linear infinite;
-          }
-          @keyframes flowAnimation {
-            from {
-              stroke-dashoffset: 160;
-            }
-            to {
-              stroke-dashoffset: 0;
-            }
-          }
-        `}</style>
+        {/* ========== ROAD-STYLE CONNECTING PATHS ========== */}
+        
+        {/* Path 1: Brain to Flowchart - curves up */}
+        <g filter="url(#glow)">
+          <path 
+            d="M115 255 Q130 255 145 245 Q160 235 180 225 L220 205 Q240 195 260 180"
+            stroke="rgba(255,255,255,0.25)" 
+            strokeWidth="8" 
+            fill="none"
+            strokeLinecap="round"
+          />
+          <path 
+            d="M115 255 Q130 255 145 245 Q160 235 180 225 L220 205 Q240 195 260 180"
+            stroke="rgba(255,255,255,0.15)" 
+            strokeWidth="12" 
+            fill="none"
+            strokeLinecap="round"
+          />
+          {/* Center glow line */}
+          <path 
+            d="M115 255 Q130 255 145 245 Q160 235 180 225 L220 205 Q240 195 260 180"
+            stroke="rgba(255,255,255,0.5)" 
+            strokeWidth="2" 
+            fill="none"
+            strokeLinecap="round"
+          />
+        </g>
+
+        {/* Path 2: Flowchart down to Code (center) */}
+        <g filter="url(#glow)">
+          <path 
+            d="M310 200 Q325 210 335 225 L345 250 Q355 270 370 285 L395 305"
+            stroke="rgba(255,255,255,0.25)" 
+            strokeWidth="8" 
+            fill="none"
+            strokeLinecap="round"
+          />
+          <path 
+            d="M310 200 Q325 210 335 225 L345 250 Q355 270 370 285 L395 305"
+            stroke="rgba(255,255,255,0.15)" 
+            strokeWidth="12" 
+            fill="none"
+            strokeLinecap="round"
+          />
+          <path 
+            d="M310 200 Q325 210 335 225 L345 250 Q355 270 370 285 L395 305"
+            stroke="rgba(255,255,255,0.5)" 
+            strokeWidth="2" 
+            fill="none"
+            strokeLinecap="round"
+          />
+        </g>
+
+        {/* Path 3: Code to Search cube */}
+        <g filter="url(#glow)">
+          <path 
+            d="M450 330 L480 345 Q500 355 520 355 L540 355 Q560 355 575 340"
+            stroke="rgba(255,255,255,0.25)" 
+            strokeWidth="8" 
+            fill="none"
+            strokeLinecap="round"
+          />
+          <path 
+            d="M450 330 L480 345 Q500 355 520 355 L540 355 Q560 355 575 340"
+            stroke="rgba(255,255,255,0.15)" 
+            strokeWidth="12" 
+            fill="none"
+            strokeLinecap="round"
+          />
+          <path 
+            d="M450 330 L480 345 Q500 355 520 355 L540 355 Q560 355 575 340"
+            stroke="rgba(255,255,255,0.5)" 
+            strokeWidth="2" 
+            fill="none"
+            strokeLinecap="round"
+          />
+        </g>
+
+        {/* Path 4: Search to Rocket */}
+        <g filter="url(#glow)">
+          <path 
+            d="M615 300 Q630 285 640 265 Q650 245 660 225 L670 200"
+            stroke="rgba(255,255,255,0.25)" 
+            strokeWidth="8" 
+            fill="none"
+            strokeLinecap="round"
+          />
+          <path 
+            d="M615 300 Q630 285 640 265 Q650 245 660 225 L670 200"
+            stroke="rgba(255,255,255,0.15)" 
+            strokeWidth="12" 
+            fill="none"
+            strokeLinecap="round"
+          />
+          <path 
+            d="M615 300 Q630 285 640 265 Q650 245 660 225 L670 200"
+            stroke="rgba(255,255,255,0.5)" 
+            strokeWidth="2" 
+            fill="none"
+            strokeLinecap="round"
+          />
+        </g>
+
+        {/* ========== CUBE 1: BRAIN (Left) ========== */}
+        <g>
+          {/* Cube faces */}
+          <path d="M55 230 L90 210 L125 230 L90 250 Z" fill="#0a0a0a" stroke="rgba(255,255,255,0.35)" strokeWidth="1.2"/>
+          <path d="M55 230 L55 280 L90 300 L90 250 Z" fill="#080808" stroke="rgba(255,255,255,0.25)" strokeWidth="1.2"/>
+          <path d="M90 250 L90 300 L125 280 L125 230 Z" fill="#0c0c0c" stroke="rgba(255,255,255,0.3)" strokeWidth="1.2"/>
+          
+          {/* Brain icon with waves */}
+          <g transform="translate(15, 185)">
+            {/* Left waves */}
+            <path d="M15 25 Q5 20 15 12" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" fill="none"/>
+            <path d="M22 30 Q8 22 22 10" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" fill="none"/>
+            
+            {/* Brain */}
+            <path d="M55 15 C45 15 38 22 38 30 C38 35 40 38 40 38 C36 40 33 44 33 49 C33 55 38 60 45 60 L65 60 C72 60 77 55 77 49 C77 44 74 40 70 38 C70 38 72 35 72 30 C72 22 65 15 55 15" 
+                  stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" fill="none"/>
+            <path d="M45 28 Q55 24 65 28 M45 42 Q55 38 65 42" stroke="rgba(255,255,255,0.35)" strokeWidth="1" fill="none"/>
+            
+            {/* Right waves */}
+            <path d="M95 25 Q105 20 95 12" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" fill="none"/>
+            <path d="M88 30 Q102 22 88 10" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" fill="none"/>
+          </g>
+        </g>
+
+        {/* ========== CUBE 2: FLOWCHART (Upper middle-left, tall) ========== */}
+        <g>
+          {/* Cube faces - taller */}
+          <path d="M240 140 L285 115 L330 140 L285 165 Z" fill="#0a0a0a" stroke="rgba(255,255,255,0.4)" strokeWidth="1.2"/>
+          <path d="M240 140 L240 210 L285 235 L285 165 Z" fill="#080808" stroke="rgba(255,255,255,0.3)" strokeWidth="1.2"/>
+          <path d="M285 165 L285 235 L330 210 L330 140 Z" fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" strokeWidth="1.2"/>
+          
+          {/* Flowchart icon */}
+          <g transform="translate(255, 55)">
+            <rect x="15" y="5" width="25" height="14" rx="2" stroke="rgba(255,255,255,0.5)" strokeWidth="1.2" fill="none"/>
+            <line x1="27.5" y1="19" x2="27.5" y2="30" stroke="rgba(255,255,255,0.4)" strokeWidth="1.2"/>
+            <line x1="27.5" y1="30" x2="12" y2="42" stroke="rgba(255,255,255,0.4)" strokeWidth="1.2"/>
+            <line x1="27.5" y1="30" x2="43" y2="42" stroke="rgba(255,255,255,0.4)" strokeWidth="1.2"/>
+            <rect x="2" y="42" width="20" height="12" rx="2" stroke="rgba(255,255,255,0.5)" strokeWidth="1.2" fill="none"/>
+            <rect x="33" y="42" width="20" height="12" rx="2" stroke="rgba(255,255,255,0.5)" strokeWidth="1.2" fill="none"/>
+          </g>
+        </g>
+
+        {/* ========== CUBE 3: CODE (Center, LARGEST) ========== */}
+        <g>
+          {/* Cube faces - largest */}
+          <path d="M365 260 L420 225 L475 260 L420 295 Z" fill="#0a0a0a" stroke="rgba(255,255,255,0.45)" strokeWidth="1.5"/>
+          <path d="M365 260 L365 355 L420 390 L420 295 Z" fill="#080808" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5"/>
+          <path d="M420 295 L420 390 L475 355 L475 260 Z" fill="#0c0c0c" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5"/>
+          
+          {/* Code window icon */}
+          <g transform="translate(378, 165)">
+            <rect x="5" y="5" width="70" height="50" rx="4" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" fill="none"/>
+            <line x1="5" y1="18" x2="75" y2="18" stroke="rgba(255,255,255,0.3)" strokeWidth="1"/>
+            {/* Window dots */}
+            <circle cx="14" cy="11.5" r="2.5" fill="rgba(255,255,255,0.4)"/>
+            <circle cx="22" cy="11.5" r="2.5" fill="rgba(255,255,255,0.4)"/>
+            <circle cx="30" cy="11.5" r="2.5" fill="rgba(255,255,255,0.4)"/>
+            {/* Code text */}
+            <text x="23" y="42" fontSize="18" fill="rgba(255,255,255,0.55)" fontFamily="monospace" fontWeight="500">&lt;/&gt;</text>
+          </g>
+        </g>
+
+        {/* ========== CUBE 4: SEARCH/DB (Lower right) ========== */}
+        <g>
+          {/* Cube faces */}
+          <path d="M555 295 L595 272 L635 295 L595 318 Z" fill="#0a0a0a" stroke="rgba(255,255,255,0.35)" strokeWidth="1.2"/>
+          <path d="M555 295 L555 360 L595 383 L595 318 Z" fill="#080808" stroke="rgba(255,255,255,0.25)" strokeWidth="1.2"/>
+          <path d="M595 318 L595 383 L635 360 L635 295 Z" fill="#0c0c0c" stroke="rgba(255,255,255,0.3)" strokeWidth="1.2"/>
+          
+          {/* Database + Search icon */}
+          <g transform="translate(555, 220)">
+            {/* Database */}
+            <ellipse cx="22" cy="12" rx="16" ry="6" stroke="rgba(255,255,255,0.4)" strokeWidth="1.2" fill="none"/>
+            <path d="M6 12 L6 35 C6 39 13 44 22 44 C31 44 38 39 38 35 L38 12" stroke="rgba(255,255,255,0.4)" strokeWidth="1.2" fill="none"/>
+            <ellipse cx="22" cy="24" rx="16" ry="4" stroke="rgba(255,255,255,0.25)" strokeWidth="0.8" fill="none"/>
+            
+            {/* Magnifying glass */}
+            <circle cx="58" cy="25" r="12" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" fill="none"/>
+            <line x1="67" y1="34" x2="78" y2="45" stroke="rgba(255,255,255,0.5)" strokeWidth="2.5" strokeLinecap="round"/>
+          </g>
+        </g>
+
+        {/* ========== CUBE 5: ROCKET (Right) ========== */}
+        <g>
+          {/* Cube faces */}
+          <path d="M605 155 L650 130 L695 155 L650 180 Z" fill="#0a0a0a" stroke="rgba(255,255,255,0.4)" strokeWidth="1.2"/>
+          <path d="M605 155 L605 225 L650 250 L650 180 Z" fill="#080808" stroke="rgba(255,255,255,0.3)" strokeWidth="1.2"/>
+          <path d="M650 180 L650 250 L695 225 L695 155 Z" fill="#0c0c0c" stroke="rgba(255,255,255,0.35)" strokeWidth="1.2"/>
+          
+          {/* Rocket icon with smoke */}
+          <g transform="translate(620, 40)">
+            {/* Rocket body */}
+            <path d="M30 20 L30 70 L22 82 L38 82 L30 70" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" fill="none"/>
+            <path d="M18 70 L30 20 L42 70" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" fill="none"/>
+            {/* Fins */}
+            <path d="M18 70 L8 82 L18 78" stroke="rgba(255,255,255,0.4)" strokeWidth="1.2" fill="none"/>
+            <path d="M42 70 L52 82 L42 78" stroke="rgba(255,255,255,0.4)" strokeWidth="1.2" fill="none"/>
+            {/* Window */}
+            <circle cx="30" cy="45" r="5" stroke="rgba(255,255,255,0.4)" strokeWidth="1" fill="none"/>
+            
+            {/* Smoke clouds */}
+            <ellipse cx="30" cy="95" rx="18" ry="8" stroke="rgba(255,255,255,0.25)" strokeWidth="1" fill="none"/>
+            <ellipse cx="22" cy="102" rx="12" ry="6" stroke="rgba(255,255,255,0.18)" strokeWidth="1" fill="none"/>
+            <ellipse cx="40" cy="100" rx="10" ry="5" stroke="rgba(255,255,255,0.15)" strokeWidth="1" fill="none"/>
+            <ellipse cx="30" cy="108" rx="22" ry="10" stroke="rgba(255,255,255,0.12)" strokeWidth="1" fill="none"/>
+          </g>
+        </g>
+
+        {/* ========== ANIMATED FLOW PARTICLES ========== */}
+        <circle r="4" fill="rgba(255,255,255,0.7)">
+          <animateMotion 
+            dur="4s" 
+            repeatCount="indefinite"
+            path="M115 255 Q130 255 145 245 Q160 235 180 225 L220 205 Q240 195 260 180"
+          />
+        </circle>
+        <circle r="3" fill="rgba(255,255,255,0.5)">
+          <animateMotion 
+            dur="4s" 
+            repeatCount="indefinite"
+            begin="1s"
+            path="M310 200 Q325 210 335 225 L345 250 Q355 270 370 285 L395 305"
+          />
+        </circle>
+        <circle r="3" fill="rgba(255,255,255,0.5)">
+          <animateMotion 
+            dur="4s" 
+            repeatCount="indefinite"
+            begin="2s"
+            path="M450 330 L480 345 Q500 355 520 355 L540 355 Q560 355 575 340"
+          />
+        </circle>
+        <circle r="4" fill="rgba(255,255,255,0.7)">
+          <animateMotion 
+            dur="4s" 
+            repeatCount="indefinite"
+            begin="3s"
+            path="M615 300 Q630 285 640 265 Q650 245 660 225 L670 200"
+          />
+        </circle>
       </svg>
     </div>
   )
