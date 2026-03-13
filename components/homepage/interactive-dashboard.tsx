@@ -26,7 +26,16 @@ import {
   Zap,
   Globe,
   Shield,
-  Smartphone
+  Smartphone,
+  CreditCard,
+  Calendar,
+  Mail,
+  PieChart,
+  Home,
+  Bot,
+  Send,
+  Mic,
+  Video
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { motion, AnimatePresence } from "framer-motion"
@@ -101,13 +110,13 @@ function AnimatedNumber({ value, duration = 1000 }: { value: number, duration?: 
 function MiniChart({ data, color }: { data: number[], color: string }) {
   const max = Math.max(...data)
   return (
-    <div className="flex items-end gap-0.5 h-8">
+    <div className="flex items-end gap-0.5 h-6">
       {data.map((value, i) => (
         <motion.div
           key={i}
           initial={{ height: 0 }}
           animate={{ height: `${(value / max) * 100}%` }}
-          transition={{ delay: i * 0.05, duration: 0.3 }}
+          transition={{ delay: i * 0.03, duration: 0.2 }}
           className={cn("w-1 rounded-full", color)}
         />
       ))}
@@ -115,8 +124,84 @@ function MiniChart({ data, color }: { data: number[], color: string }) {
   )
 }
 
+// Mini Product Preview Component (for Develop stage)
+function ProductPreview() {
+  return (
+    <div className="h-full flex flex-col bg-[#0c0c0d] rounded-lg overflow-hidden border border-white/[0.08]">
+      {/* App header */}
+      <div className="flex items-center justify-between px-3 py-2 border-b border-white/[0.06] bg-white/[0.02]">
+        <div className="flex items-center gap-2">
+          <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+            <Bot className="w-3.5 h-3.5 text-white" />
+          </div>
+          <span className="text-xs font-semibold text-white">VoiceAI Studio</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-6 h-6 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500" />
+        </div>
+      </div>
+
+      {/* Main content */}
+      <div className="flex-1 p-3 flex flex-col gap-2">
+        {/* Voice cards */}
+        <div className="grid grid-cols-3 gap-1.5">
+          {[
+            { name: "Emma", accent: "US English", color: "from-pink-500 to-rose-500" },
+            { name: "James", accent: "British", color: "from-blue-500 to-indigo-500" },
+            { name: "Aria", accent: "Australian", color: "from-violet-500 to-purple-500" },
+          ].map((voice, i) => (
+            <motion.div
+              key={voice.name}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3 + i * 0.1 }}
+              className="p-2 rounded-lg bg-white/[0.03] border border-white/[0.06]"
+            >
+              <div className={cn("w-6 h-6 rounded-full bg-gradient-to-br mb-1.5", voice.color)} />
+              <div className="text-[10px] font-medium text-white">{voice.name}</div>
+              <div className="text-[8px] text-white/40">{voice.accent}</div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Waveform */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          className="flex-1 rounded-lg bg-white/[0.02] border border-white/[0.06] p-2 flex items-center justify-center"
+        >
+          <div className="flex items-center gap-0.5 h-8">
+            {[...Array(24)].map((_, i) => (
+              <motion.div
+                key={i}
+                animate={{ 
+                  height: [4, Math.random() * 20 + 8, 4],
+                }}
+                transition={{
+                  duration: 0.5,
+                  repeat: Infinity,
+                  delay: i * 0.05,
+                }}
+                className="w-1 bg-gradient-to-t from-violet-500 to-purple-400 rounded-full"
+              />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Input */}
+        <div className="flex items-center gap-2 p-2 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+          <Mic className="w-3.5 h-3.5 text-violet-400" />
+          <span className="flex-1 text-[10px] text-white/40">Type or speak your text...</span>
+          <Send className="w-3.5 h-3.5 text-violet-400" />
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export function InteractiveDashboard() {
-  const [activeStage, setActiveStage] = useState<Stage>("design") // Default to Design (most visual)
+  const [activeStage, setActiveStage] = useState<Stage>("design")
   const [ideateStep, setIdeateStep] = useState(0)
   const currentStage = stages.find(s => s.id === activeStage)!
   const colors = stageColors[currentStage.color as keyof typeof stageColors]
@@ -126,8 +211,8 @@ export function InteractiveDashboard() {
     if (activeStage === "ideate") {
       setIdeateStep(0)
       const timer1 = setTimeout(() => setIdeateStep(1), 500)
-      const timer2 = setTimeout(() => setIdeateStep(2), 3000)
-      const timer3 = setTimeout(() => setIdeateStep(3), 5500)
+      const timer2 = setTimeout(() => setIdeateStep(2), 2500)
+      const timer3 = setTimeout(() => setIdeateStep(3), 4500)
       return () => {
         clearTimeout(timer1)
         clearTimeout(timer2)
@@ -135,6 +220,10 @@ export function InteractiveDashboard() {
       }
     }
   }, [activeStage])
+
+  // Project name used across stages
+  const projectName = "VoiceAI Studio"
+  const projectIdea = "Create an AI voice cloning platform where creators can generate realistic voiceovers in multiple languages and accents"
 
   return (
     <div 
@@ -168,7 +257,10 @@ export function InteractiveDashboard() {
           {/* Create button */}
           <div className="p-3">
             <div className="flex items-center gap-2">
-              <button className="flex-1 h-9 rounded-lg bg-foreground dark:bg-white text-background dark:text-black text-sm font-medium hover:opacity-90 transition-opacity">
+              <button 
+                onClick={() => setActiveStage("ideate")}
+                className="flex-1 h-9 rounded-lg bg-foreground dark:bg-white text-background dark:text-black text-sm font-medium hover:opacity-90 transition-opacity"
+              >
                 Create New
               </button>
               <button className="h-9 w-9 rounded-lg border border-border dark:border-white/10 flex items-center justify-center hover:bg-muted dark:hover:bg-white/[0.04] transition-colors">
@@ -189,7 +281,7 @@ export function InteractiveDashboard() {
                     key={stage.id}
                     onClick={() => setActiveStage(stage.id)}
                     className={cn(
-                      "w-full flex items-center gap-3 px-2 py-2 rounded-md text-sm transition-all duration-200",
+                      "w-full flex items-center gap-3 px-2 py-2 rounded-md text-sm transition-all duration-200 cursor-pointer",
                       isActive 
                         ? `${stageColor.bg} ${stageColor.text} font-medium` 
                         : "text-foreground/70 dark:text-white/60 hover:bg-muted dark:hover:bg-white/[0.04]"
@@ -240,7 +332,7 @@ export function InteractiveDashboard() {
               <span className={cn("px-2 py-1 rounded-md text-xs font-medium", colors.bg, colors.text)}>
                 {currentStage.name}
               </span>
-              <span className="text-sm font-medium text-foreground dark:text-white hidden sm:inline">Analytics Dashboard</span>
+              <span className="text-sm font-medium text-foreground dark:text-white hidden sm:inline">{projectName}</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-1 px-2 py-1 rounded-md bg-emerald-500/10 text-emerald-500 text-xs">
@@ -273,12 +365,12 @@ export function InteractiveDashboard() {
                           animate={{ opacity: ideateStep >= 1 ? 1 : 0, x: ideateStep >= 1 ? 0 : 20 }}
                           className="flex items-start gap-3 justify-end"
                         >
-                          <div className="max-w-[80%] p-3 rounded-xl bg-sky-500/10 border border-sky-500/20">
+                          <div className="max-w-[85%] p-3 rounded-xl bg-sky-500/10 border border-sky-500/20">
                             <p className="text-sm text-foreground dark:text-white">
                               {ideateStep >= 1 && (
                                 <TypingText 
-                                  text="Build me an AI-powered analytics dashboard that helps SaaS founders track key metrics and get AI insights on growth opportunities"
-                                  speed={20}
+                                  text={projectIdea}
+                                  speed={18}
                                 />
                               )}
                             </p>
@@ -301,8 +393,8 @@ export function InteractiveDashboard() {
                             {ideateStep >= 2 && (
                               <div className="space-y-3 text-sm">
                                 <TypingText 
-                                  text="Great idea! I'll help you build this. Here's my initial analysis:"
-                                  speed={15}
+                                  text="This is a brilliant idea with huge market potential! Here's my analysis:"
+                                  speed={12}
                                   className="text-foreground dark:text-white"
                                 />
                                 {ideateStep >= 3 && (
@@ -313,18 +405,23 @@ export function InteractiveDashboard() {
                                   >
                                     <div className="flex items-center gap-2 text-emerald-400">
                                       <Check className="w-4 h-4" />
-                                      <span>Market validated - $4.2B TAM</span>
+                                      <span>$2.4B market by 2027 (Voice AI)</span>
                                     </div>
                                     <div className="flex items-center gap-2 text-emerald-400">
                                       <Check className="w-4 h-4" />
-                                      <span>12 competitors analyzed</span>
+                                      <span>Creator economy = 50M+ users</span>
                                     </div>
                                     <div className="flex items-center gap-2 text-sky-400">
                                       <Zap className="w-4 h-4" />
-                                      <span>Unique angle: AI predictions for SMBs</span>
+                                      <span>Differentiator: Multi-language + accent control</span>
                                     </div>
                                     <div className="mt-3 p-2 rounded-lg bg-sky-500/10 border border-sky-500/20">
-                                      <span className="text-sky-400 text-xs font-medium">→ Ready to proceed to Discovery</span>
+                                      <button 
+                                        onClick={() => setActiveStage("discover")}
+                                        className="text-sky-400 text-xs font-medium flex items-center gap-1 hover:gap-2 transition-all"
+                                      >
+                                        → Proceed to Discovery <ChevronRight className="w-3 h-3" />
+                                      </button>
                                     </div>
                                   </motion.div>
                                 )}
@@ -341,7 +438,7 @@ export function InteractiveDashboard() {
                           placeholder="Refine your idea..." 
                           className="flex-1 bg-transparent text-sm text-foreground dark:text-white placeholder:text-muted-foreground/50 outline-none"
                         />
-                        <button className="px-3 py-1.5 rounded-md bg-sky-500 text-white text-sm font-medium flex items-center gap-1">
+                        <button className="px-3 py-1.5 rounded-md bg-sky-500 hover:bg-sky-600 text-white text-sm font-medium flex items-center gap-1 transition-colors">
                           <ArrowRight className="w-3.5 h-3.5" />
                         </button>
                       </div>
@@ -357,9 +454,9 @@ export function InteractiveDashboard() {
                       {/* Market Stats */}
                       <div className="grid grid-cols-3 gap-3">
                         {[
-                          { label: "TAM", value: 4200000000, prefix: "$", suffix: "B", color: "violet" },
-                          { label: "Competitors", value: 12, prefix: "", suffix: "", color: "sky" },
-                          { label: "Opportunity Score", value: 8.4, prefix: "", suffix: "/10", color: "emerald" },
+                          { label: "TAM", value: 2.4, prefix: "$", suffix: "B", color: "violet" },
+                          { label: "Competitors", value: 8, prefix: "", suffix: "", color: "sky" },
+                          { label: "Opportunity", value: 9.1, prefix: "", suffix: "/10", color: "emerald" },
                         ].map((stat, i) => (
                           <motion.div
                             key={stat.label}
@@ -370,9 +467,7 @@ export function InteractiveDashboard() {
                           >
                             <div className="text-[10px] uppercase tracking-wider text-muted-foreground dark:text-white/40 mb-1">{stat.label}</div>
                             <div className={cn("text-xl font-bold", `text-${stat.color}-400`)}>
-                              {stat.prefix}{typeof stat.value === 'number' && stat.value > 1000 ? (
-                                <AnimatedNumber value={stat.value / 1000000000} />
-                              ) : stat.value}{stat.suffix}
+                              {stat.prefix}<AnimatedNumber value={stat.value * 10} />{stat.value % 1 !== 0 ? `.${Math.round((stat.value % 1) * 10)}` : ''}{stat.suffix}
                             </div>
                           </motion.div>
                         ))}
@@ -386,9 +481,9 @@ export function InteractiveDashboard() {
                         </div>
                         <div className="space-y-2">
                           {[
-                            { name: "Mixpanel", price: "$25/mo", users: "26K", gap: "No AI insights" },
-                            { name: "Amplitude", price: "$49/mo", users: "45K", gap: "Complex setup" },
-                            { name: "PostHog", price: "Free tier", users: "18K", gap: "Limited predictions" },
+                            { name: "ElevenLabs", price: "$22/mo", users: "1M+", gap: "No accent control" },
+                            { name: "Murf.ai", price: "$29/mo", users: "500K", gap: "Limited languages" },
+                            { name: "Play.ht", price: "$39/mo", users: "300K", gap: "No voice cloning" },
                           ].map((comp, i) => (
                             <motion.div
                               key={comp.name}
@@ -399,7 +494,7 @@ export function InteractiveDashboard() {
                             >
                               <span className="font-medium text-foreground dark:text-white">{comp.name}</span>
                               <span className="text-muted-foreground">{comp.price}</span>
-                              <span className="text-muted-foreground">{comp.users} users</span>
+                              <span className="text-muted-foreground">{comp.users}</span>
                               <span className="text-amber-400">{comp.gap}</span>
                             </motion.div>
                           ))}
@@ -411,9 +506,9 @@ export function InteractiveDashboard() {
                     <div className="space-y-3">
                       <div className="text-xs font-medium text-muted-foreground dark:text-white/40 uppercase tracking-wider">Key Insights</div>
                       {[
-                        { icon: Target, title: "Market Gap", desc: "AI-first analytics for SMB SaaS", color: "violet" },
-                        { icon: TrendingUp, title: "Growth Vector", desc: "PLG + AI recommendations", color: "emerald" },
-                        { icon: Users, title: "ICP Match", desc: "Solo founders, small teams", color: "sky" },
+                        { icon: Target, title: "Market Gap", desc: "Multi-accent voice cloning for creators", color: "violet" },
+                        { icon: TrendingUp, title: "Growth Vector", desc: "YouTube, TikTok, podcast creators", color: "emerald" },
+                        { icon: Users, title: "ICP Match", desc: "Content creators, agencies, educators", color: "sky" },
                       ].map((insight, i) => (
                         <motion.div
                           key={insight.title}
@@ -432,6 +527,17 @@ export function InteractiveDashboard() {
                           <p className="text-xs text-muted-foreground dark:text-white/60">{insight.desc}</p>
                         </motion.div>
                       ))}
+                      
+                      {/* Next button */}
+                      <motion.button
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 1 }}
+                        onClick={() => setActiveStage("define")}
+                        className="w-full mt-2 p-2 rounded-lg bg-violet-500/10 border border-violet-500/20 text-violet-400 text-xs font-medium flex items-center justify-center gap-1 hover:bg-violet-500/20 transition-colors"
+                      >
+                        Continue to Define <ChevronRight className="w-3 h-3" />
+                      </motion.button>
                     </div>
                   </div>
                 )}
@@ -447,7 +553,6 @@ export function InteractiveDashboard() {
                         { name: "Problem Statement", status: "complete" },
                         { name: "User Personas", status: "complete" },
                         { name: "Feature List", status: "active" },
-                        { name: "Success Metrics", status: "pending" },
                         { name: "Technical Spec", status: "pending" },
                       ].map((section, i) => (
                         <motion.div
@@ -468,20 +573,32 @@ export function InteractiveDashboard() {
                           {section.status === "active" && <div className="ml-auto w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse" />}
                         </motion.div>
                       ))}
+                      
+                      {/* Next button */}
+                      <motion.button
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5 }}
+                        onClick={() => setActiveStage("design")}
+                        className="w-full mt-3 p-2 rounded-lg bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-medium flex items-center justify-center gap-1 hover:bg-teal-500/20 transition-colors"
+                      >
+                        Continue to Design <ChevronRight className="w-3 h-3" />
+                      </motion.button>
                     </div>
 
                     {/* Right - Feature List */}
                     <div className="lg:col-span-3 p-4 rounded-lg border border-border/50 dark:border-white/[0.06] bg-muted/10 dark:bg-white/[0.01]">
                       <div className="flex items-center justify-between mb-4">
                         <span className="text-sm font-medium text-foreground dark:text-white">Core Features</span>
-                        <span className="text-xs text-teal-400">8 features defined</span>
+                        <span className="text-xs text-teal-400">6 features defined</span>
                       </div>
                       <div className="space-y-2">
                         {[
-                          { name: "Real-time dashboard", priority: "P0", effort: "3d" },
-                          { name: "AI anomaly detection", priority: "P0", effort: "5d" },
-                          { name: "Slack notifications", priority: "P1", effort: "2d" },
-                          { name: "Custom report builder", priority: "P1", effort: "4d" },
+                          { name: "Voice cloning from samples", priority: "P0", effort: "5d" },
+                          { name: "Multi-language support (20+)", priority: "P0", effort: "4d" },
+                          { name: "Accent customization", priority: "P0", effort: "3d" },
+                          { name: "Real-time preview", priority: "P1", effort: "2d" },
+                          { name: "API for developers", priority: "P1", effort: "4d" },
                           { name: "Team collaboration", priority: "P2", effort: "3d" },
                         ].map((feature, i) => (
                           <motion.div
@@ -511,170 +628,169 @@ export function InteractiveDashboard() {
                   </div>
                 )}
 
-                {/* ===== DESIGN STAGE - RICH UI MOCKUPS ===== */}
+                {/* ===== DESIGN STAGE - GRID OF SCREENS ===== */}
                 {activeStage === "design" && (
-                  <div className="h-full flex flex-col gap-4">
-                    {/* Design toolbar */}
+                  <div className="h-full flex flex-col gap-3">
+                    {/* Header */}
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs text-muted-foreground">Generating:</span>
-                        <span className="text-sm font-medium text-purple-400">Dashboard Screen</span>
+                        <span className="text-xs text-muted-foreground">Generating UI for</span>
+                        <span className="text-sm font-medium text-purple-400">{projectName}</span>
                       </div>
                       <div className="flex items-center gap-2 text-xs">
-                        <span className="text-emerald-400">4/6 screens ready</span>
-                        <div className="w-16 h-1.5 rounded-full bg-muted dark:bg-white/[0.06] overflow-hidden">
-                          <motion.div 
-                            initial={{ width: 0 }}
-                            animate={{ width: "66%" }}
-                            transition={{ duration: 1 }}
-                            className="h-full bg-purple-500 rounded-full"
-                          />
-                        </div>
+                        <span className="text-emerald-400">6/6 screens ready</span>
+                        <Check className="w-3.5 h-3.5 text-emerald-400" />
                       </div>
                     </div>
 
-                    {/* Generated UI Preview */}
-                    <div className="flex-1 rounded-xl border border-purple-500/20 bg-gradient-to-br from-purple-500/5 to-transparent overflow-hidden">
-                      {/* Mini app preview */}
-                      <div className="h-full flex flex-col bg-[#0c0c0d] rounded-lg m-2 overflow-hidden border border-white/[0.06]">
-                        {/* App header */}
-                        <div className="flex items-center justify-between px-4 py-2 border-b border-white/[0.06] bg-white/[0.02]">
-                          <div className="flex items-center gap-2">
-                            <div className="w-5 h-5 rounded bg-gradient-to-br from-purple-500 to-pink-500" />
-                            <span className="text-xs font-medium text-white">SaaSMetrics</span>
-                          </div>
-                          <div className="flex items-center gap-3">
-                            <Bell className="w-3.5 h-3.5 text-white/40" />
-                            <Settings className="w-3.5 h-3.5 text-white/40" />
-                            <div className="w-5 h-5 rounded-full bg-gradient-to-br from-amber-500 to-orange-600" />
-                          </div>
-                        </div>
-
-                        {/* Dashboard content */}
-                        <div className="flex-1 p-3 grid grid-cols-4 gap-2">
-                          {/* Stat cards */}
-                          {[
-                            { label: "MRR", value: "$24.5K", change: "+12%", color: "emerald", icon: TrendingUp },
-                            { label: "Active Users", value: "1,247", change: "+8%", color: "sky", icon: Users },
-                            { label: "Churn", value: "2.1%", change: "-0.3%", color: "violet", icon: Activity },
-                            { label: "NPS", value: "72", change: "+5", color: "amber", icon: Target },
-                          ].map((stat, i) => (
-                            <motion.div
-                              key={stat.label}
-                              initial={{ opacity: 0, scale: 0.9 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              transition={{ delay: i * 0.1 }}
-                              className="p-2 rounded-lg bg-white/[0.03] border border-white/[0.06]"
-                            >
-                              <div className="flex items-center justify-between mb-1">
-                                <stat.icon className={cn("w-3 h-3", `text-${stat.color}-400`)} />
-                                <span className={cn("text-[9px]", stat.change.startsWith("+") ? "text-emerald-400" : "text-red-400")}>
-                                  {stat.change}
-                                </span>
-                              </div>
-                              <div className="text-sm font-bold text-white">{stat.value}</div>
-                              <div className="text-[9px] text-white/40">{stat.label}</div>
-                            </motion.div>
-                          ))}
-
-                          {/* Chart */}
-                          <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.5 }}
-                            className="col-span-2 row-span-2 p-3 rounded-lg bg-white/[0.03] border border-white/[0.06]"
-                          >
-                            <div className="flex items-center justify-between mb-2">
-                              <span className="text-xs text-white font-medium">Revenue Trend</span>
-                              <span className="text-[9px] text-white/40">Last 30 days</span>
-                            </div>
-                            <MiniChart 
-                              data={[20, 35, 28, 42, 38, 55, 48, 62, 58, 70, 65, 80, 75, 88, 82]}
-                              color="bg-purple-500"
-                            />
-                            <div className="flex items-center justify-between mt-2 text-[9px] text-white/40">
-                              <span>Mar 1</span>
-                              <span>Mar 15</span>
-                              <span>Mar 30</span>
-                            </div>
-                          </motion.div>
-
-                          {/* AI Insights */}
-                          <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.6 }}
-                            className="col-span-2 row-span-2 p-3 rounded-lg bg-gradient-to-br from-purple-500/10 to-pink-500/5 border border-purple-500/20"
-                          >
-                            <div className="flex items-center gap-1.5 mb-2">
-                              <Sparkles className="w-3 h-3 text-purple-400" />
-                              <span className="text-xs text-purple-400 font-medium">AI Insights</span>
-                            </div>
+                    {/* Grid of screen designs */}
+                    <div className="flex-1 grid grid-cols-2 lg:grid-cols-3 gap-3">
+                      {[
+                        { 
+                          name: "Dashboard", 
+                          icon: Home,
+                          content: (
                             <div className="space-y-1.5">
-                              {[
-                                "Revenue up 23% vs last month",
-                                "Churn predicted to drop further",
-                                "Feature X driving 40% of growth",
-                              ].map((insight, i) => (
-                                <motion.div
-                                  key={i}
-                                  initial={{ opacity: 0, x: -10 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{ delay: 0.8 + i * 0.1 }}
-                                  className="flex items-center gap-1.5 text-[10px] text-white/70"
-                                >
-                                  <ChevronRight className="w-2.5 h-2.5 text-purple-400" />
-                                  <span>{insight}</span>
-                                </motion.div>
+                              <div className="flex gap-1">
+                                <div className="flex-1 h-6 rounded bg-violet-500/20" />
+                                <div className="flex-1 h-6 rounded bg-purple-500/20" />
+                              </div>
+                              <div className="h-12 rounded bg-gradient-to-r from-violet-500/10 to-purple-500/10" />
+                              <div className="grid grid-cols-3 gap-1">
+                                <div className="h-4 rounded bg-white/[0.05]" />
+                                <div className="h-4 rounded bg-white/[0.05]" />
+                                <div className="h-4 rounded bg-white/[0.05]" />
+                              </div>
+                            </div>
+                          )
+                        },
+                        { 
+                          name: "Voice Library", 
+                          icon: Mic,
+                          content: (
+                            <div className="grid grid-cols-3 gap-1">
+                              {[...Array(6)].map((_, i) => (
+                                <div key={i} className="aspect-square rounded bg-gradient-to-br from-pink-500/20 to-violet-500/20 flex items-center justify-center">
+                                  <div className="w-3 h-3 rounded-full bg-white/20" />
+                                </div>
                               ))}
                             </div>
-                          </motion.div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Screen thumbnails */}
-                    <div className="flex items-center gap-2 overflow-x-auto pb-1">
-                      {[
-                        { name: "Dashboard", active: true },
-                        { name: "Analytics", active: false },
-                        { name: "Reports", active: false },
-                        { name: "Settings", active: false },
-                        { name: "Billing", active: false, generating: true },
-                        { name: "Team", active: false, pending: true },
-                      ].map((screen) => (
-                        <div
-                          key={screen.name}
-                          className={cn(
-                            "flex-shrink-0 w-20 h-14 rounded-md border flex items-center justify-center text-[10px]",
-                            screen.active 
-                              ? "border-purple-500 bg-purple-500/10 text-purple-400" 
-                              : screen.generating
-                              ? "border-amber-500/50 bg-amber-500/5 text-amber-400"
-                              : screen.pending
-                              ? "border-white/[0.06] bg-white/[0.02] text-white/30"
-                              : "border-white/[0.06] bg-white/[0.02] text-white/60"
-                          )}
-                        >
-                          {screen.generating ? (
-                            <div className="flex items-center gap-1">
-                              <div className="w-1 h-1 rounded-full bg-amber-400 animate-pulse" />
-                              <span>Generating</span>
+                          )
+                        },
+                        { 
+                          name: "Studio", 
+                          icon: Video,
+                          content: (
+                            <div className="space-y-1.5">
+                              <div className="h-10 rounded bg-gradient-to-r from-blue-500/10 to-cyan-500/10 flex items-center justify-center">
+                                <div className="flex gap-0.5">
+                                  {[...Array(12)].map((_, i) => (
+                                    <div key={i} className="w-0.5 h-4 rounded-full bg-cyan-400/40" style={{ height: `${Math.random() * 12 + 4}px` }} />
+                                  ))}
+                                </div>
+                              </div>
+                              <div className="flex gap-1">
+                                <div className="flex-1 h-5 rounded bg-white/[0.05]" />
+                                <div className="w-8 h-5 rounded bg-violet-500/30" />
+                              </div>
                             </div>
-                          ) : (
-                            screen.name
-                          )}
-                        </div>
+                          )
+                        },
+                        { 
+                          name: "Projects", 
+                          icon: Layers,
+                          content: (
+                            <div className="space-y-1">
+                              {[...Array(4)].map((_, i) => (
+                                <div key={i} className="flex items-center gap-1.5 p-1 rounded bg-white/[0.03]">
+                                  <div className="w-4 h-4 rounded bg-gradient-to-br from-amber-500/30 to-orange-500/30" />
+                                  <div className="flex-1 h-2 rounded bg-white/10" />
+                                </div>
+                              ))}
+                            </div>
+                          )
+                        },
+                        { 
+                          name: "Analytics", 
+                          icon: BarChart3,
+                          content: (
+                            <div className="space-y-1.5">
+                              <div className="flex items-end gap-0.5 h-10">
+                                {[40, 65, 45, 80, 55, 70, 90, 60].map((h, i) => (
+                                  <div key={i} className="flex-1 rounded-t bg-gradient-to-t from-emerald-500/30 to-emerald-400/10" style={{ height: `${h}%` }} />
+                                ))}
+                              </div>
+                              <div className="flex gap-1">
+                                <div className="flex-1 h-4 rounded bg-white/[0.05]" />
+                                <div className="flex-1 h-4 rounded bg-white/[0.05]" />
+                              </div>
+                            </div>
+                          )
+                        },
+                        { 
+                          name: "Settings", 
+                          icon: Settings,
+                          content: (
+                            <div className="space-y-1.5">
+                              {[...Array(4)].map((_, i) => (
+                                <div key={i} className="flex items-center justify-between p-1 rounded bg-white/[0.03]">
+                                  <div className="w-12 h-2 rounded bg-white/10" />
+                                  <div className="w-6 h-3 rounded-full bg-violet-500/30" />
+                                </div>
+                              ))}
+                            </div>
+                          )
+                        },
+                      ].map((screen, i) => (
+                        <motion.div
+                          key={screen.name}
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: i * 0.1 }}
+                          className="rounded-lg border border-purple-500/20 bg-gradient-to-br from-purple-500/5 to-transparent overflow-hidden group hover:border-purple-500/40 transition-colors cursor-pointer"
+                        >
+                          {/* Screen preview */}
+                          <div className="p-2 bg-[#0c0c0d]">
+                            {/* Mini header */}
+                            <div className="flex items-center gap-1.5 mb-2 pb-1.5 border-b border-white/[0.06]">
+                              <div className="flex gap-0.5">
+                                <div className="w-1.5 h-1.5 rounded-full bg-red-500/60" />
+                                <div className="w-1.5 h-1.5 rounded-full bg-yellow-500/60" />
+                                <div className="w-1.5 h-1.5 rounded-full bg-green-500/60" />
+                              </div>
+                              <div className="flex-1 h-2 rounded bg-white/[0.06] mx-2" />
+                            </div>
+                            {/* Content */}
+                            {screen.content}
+                          </div>
+                          {/* Label */}
+                          <div className="px-2 py-1.5 bg-white/[0.02] border-t border-white/[0.06] flex items-center gap-1.5">
+                            <screen.icon className="w-3 h-3 text-purple-400" />
+                            <span className="text-[10px] font-medium text-white/80">{screen.name}</span>
+                            <Check className="w-3 h-3 text-emerald-400 ml-auto" />
+                          </div>
+                        </motion.div>
                       ))}
                     </div>
+
+                    {/* Next button */}
+                    <motion.button
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.8 }}
+                      onClick={() => setActiveStage("develop")}
+                      className="w-full p-2.5 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-400 text-sm font-medium flex items-center justify-center gap-2 hover:bg-purple-500/20 transition-colors"
+                    >
+                      Generate Code <Code className="w-4 h-4" />
+                    </motion.button>
                   </div>
                 )}
 
-                {/* ===== DEVELOP STAGE - LIVE CODING ===== */}
+                {/* ===== DEVELOP STAGE - CODE + PRODUCT PREVIEW ===== */}
                 {activeStage === "develop" && (
-                  <div className="h-full grid grid-cols-1 lg:grid-cols-5 gap-4">
-                    {/* Left - Terminal & Code */}
-                    <div className="lg:col-span-3 flex flex-col gap-3">
+                  <div className="h-full grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    {/* Left - Terminal & Stats */}
+                    <div className="flex flex-col gap-3">
                       {/* Terminal */}
                       <div className="flex-1 rounded-lg bg-[#0d0d0e] border border-white/[0.06] overflow-hidden font-mono text-xs">
                         <div className="flex items-center gap-2 px-3 py-1.5 bg-white/[0.02] border-b border-white/[0.06]">
@@ -683,104 +799,91 @@ export function InteractiveDashboard() {
                             <div className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
                             <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
                           </div>
-                          <span className="text-white/40 ml-2">terminal — npm run dev</span>
+                          <span className="text-white/40 ml-2">terminal</span>
                         </div>
                         <div className="p-3 space-y-1 text-[11px]">
-                          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-emerald-400">
-                            ✓ Compiled successfully in 247ms
+                          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-white/60">
+                            $ npx create-next-app voiceai-studio
                           </motion.div>
-                          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-white/60">
-                            <span className="text-sky-400">info</span>  - Ready on http://localhost:3000
+                          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-emerald-400">
+                            ✓ Created project structure
                           </motion.div>
-                          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="text-white/60">
-                            <span className="text-sky-400">event</span> - compiled client and server in 1.2s
+                          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="text-emerald-400">
+                            ✓ Installing dependencies (47 packages)
                           </motion.div>
-                          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="text-amber-400">
-                            ○ Compiling /dashboard ...
+                          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="text-emerald-400">
+                            ✓ Generating components from designs
                           </motion.div>
                           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }} className="text-emerald-400">
-                            ✓ Compiled /dashboard in 892ms (247 modules)
+                            ✓ Adding API routes & database schema
                           </motion.div>
-                          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.1 }} className="flex items-center gap-1">
-                            <span className="text-white/40">$</span>
-                            <span className="animate-pulse text-white">_</span>
+                          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.1 }} className="text-sky-400">
+                            ℹ Running tests... 24/24 passed
+                          </motion.div>
+                          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.3 }} className="text-emerald-400">
+                            ✓ Build complete in 2.4s
+                          </motion.div>
+                          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }} className="text-white/60">
+                            $ <span className="animate-pulse">_</span>
                           </motion.div>
                         </div>
                       </div>
 
-                      {/* Live preview indicator */}
-                      <div className="flex items-center justify-between px-3 py-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
-                        <div className="flex items-center gap-2">
-                          <Globe className="w-4 h-4 text-emerald-400" />
-                          <span className="text-sm text-emerald-400">Live Preview</span>
-                        </div>
-                        <div className="flex items-center gap-3 text-xs text-emerald-400">
-                          <span>localhost:3000</span>
-                          <ChevronRight className="w-4 h-4" />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Right - Stats & Deploy */}
-                    <div className="lg:col-span-2 space-y-3">
-                      {/* Build stats */}
-                      <div className="grid grid-cols-2 gap-2">
+                      {/* Stats & Deploy */}
+                      <div className="grid grid-cols-4 gap-2">
                         {[
-                          { label: "Files", value: "47", icon: FileText },
-                          { label: "Tests", value: "24", icon: Check },
-                          { label: "Coverage", value: "94%", icon: Shield },
-                          { label: "Size", value: "142KB", icon: Layers },
+                          { label: "Files", value: "47" },
+                          { label: "Tests", value: "24" },
+                          { label: "Coverage", value: "94%" },
+                          { label: "Size", value: "142KB" },
                         ].map((stat, i) => (
                           <motion.div
                             key={stat.label}
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: i * 0.1 }}
-                            className="p-3 rounded-lg border border-border/50 dark:border-white/[0.06] bg-muted/20 dark:bg-white/[0.02]"
+                            transition={{ delay: 1.5 + i * 0.1 }}
+                            className="p-2 rounded-lg border border-border/50 dark:border-white/[0.06] bg-muted/20 dark:bg-white/[0.02] text-center"
                           >
-                            <div className="flex items-center gap-2 mb-1">
-                              <stat.icon className="w-3.5 h-3.5 text-amber-400" />
-                              <span className="text-[10px] text-muted-foreground uppercase">{stat.label}</span>
-                            </div>
-                            <div className="text-lg font-bold text-foreground dark:text-white">{stat.value}</div>
+                            <div className="text-sm font-bold text-foreground dark:text-white">{stat.value}</div>
+                            <div className="text-[9px] text-muted-foreground uppercase">{stat.label}</div>
                           </motion.div>
                         ))}
                       </div>
 
                       {/* Deploy button */}
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                      <motion.button
+                        initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.5 }}
-                        className="p-4 rounded-lg bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20"
+                        transition={{ delay: 2 }}
+                        className="w-full py-2.5 rounded-lg bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white text-sm font-medium flex items-center justify-center gap-2 transition-colors"
                       >
-                        <div className="flex items-center justify-between mb-3">
-                          <div className="flex items-center gap-2">
-                            <GitBranch className="w-4 h-4 text-amber-400" />
-                            <span className="text-sm font-medium text-amber-400">Ready to Deploy</span>
-                          </div>
-                          <span className="text-xs text-emerald-400">All checks passed</span>
-                        </div>
-                        <button className="w-full py-2 rounded-lg bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-medium flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
-                          <svg className="w-4 h-4" viewBox="0 0 76 65" fill="currentColor">
-                            <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" />
-                          </svg>
-                          Deploy to Vercel
-                        </button>
-                      </motion.div>
-
-                      {/* Tech stack */}
-                      <div className="p-3 rounded-lg border border-border/50 dark:border-white/[0.06] bg-muted/10 dark:bg-white/[0.01]">
-                        <div className="text-[10px] text-muted-foreground uppercase tracking-wider mb-2">Tech Stack</div>
-                        <div className="flex flex-wrap gap-1.5">
-                          {["Next.js 14", "TypeScript", "Tailwind", "Prisma", "Vercel"].map((tech) => (
-                            <span key={tech} className="px-2 py-1 rounded text-[10px] bg-muted/50 dark:bg-white/[0.04] text-foreground/70 dark:text-white/70">
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
+                        <svg className="w-4 h-4" viewBox="0 0 76 65" fill="currentColor">
+                          <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" />
+                        </svg>
+                        Deploy to Vercel
+                      </motion.button>
                     </div>
+
+                    {/* Right - Live Product Preview */}
+                    <motion.div
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.5 }}
+                      className="flex flex-col gap-2"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <Globe className="w-4 h-4 text-emerald-400" />
+                          <span className="text-sm font-medium text-emerald-400">Live Preview</span>
+                        </div>
+                        <span className="text-xs text-muted-foreground">localhost:3000</span>
+                      </div>
+                      
+                      {/* Product UI */}
+                      <div className="flex-1 rounded-xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 to-transparent p-1">
+                        <ProductPreview />
+                      </div>
+                    </motion.div>
                   </div>
                 )}
               </motion.div>
