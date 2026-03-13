@@ -62,12 +62,22 @@ export default function LinearInspiredHomepage() {
 
   return (
     <main className="min-h-screen bg-background">
-      {/* Hero Section - Linear Style: Left-aligned Headline + Screenshot with Glow */}
-      <section ref={heroRef} className="relative pt-28 sm:pt-32 pb-8 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background pointer-events-none" />
+      {/* Hero Section - Linear Style */}
+      <section ref={heroRef} className="relative pt-28 sm:pt-32 pb-24">
+        {/* GRADIENT GLOW BACKGROUND - Linear style, covers full section */}
+        <div 
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: `
+              radial-gradient(ellipse 80% 60% at 50% 100%, rgba(124, 58, 237, 0.25) 0%, transparent 50%),
+              radial-gradient(ellipse 60% 50% at 70% 90%, rgba(99, 102, 241, 0.2) 0%, transparent 40%),
+              radial-gradient(ellipse 60% 50% at 30% 90%, rgba(168, 85, 247, 0.2) 0%, transparent 40%)
+            `
+          }}
+        />
         
-        <div className="relative z-10 max-w-[1400px] mx-auto">
+        {/* Content container with consistent padding */}
+        <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
           {/* Main Headline - Left Aligned like Linear */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -77,14 +87,14 @@ export default function LinearInspiredHomepage() {
           >
             <h1 className="mb-8">
               <span 
-                className="block text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] font-bold text-foreground"
-                style={{ lineHeight: 1.05, letterSpacing: '-0.035em' }}
+                className="block text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-bold text-foreground"
+                style={{ lineHeight: 1.08, letterSpacing: '-0.03em' }}
               >
                 The product development
               </span>
               <span 
-                className="block text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] font-bold text-foreground/40"
-                style={{ lineHeight: 1.05, letterSpacing: '-0.035em' }}
+                className="block text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-bold text-foreground/40"
+                style={{ lineHeight: 1.08, letterSpacing: '-0.03em' }}
               >
                 system for founders and agents
               </span>
@@ -120,44 +130,13 @@ export default function LinearInspiredHomepage() {
             </motion.div>
           </motion.div>
 
-          {/* Product Dashboard UI - Built with HTML/CSS for maximum sharpness */}
+          {/* Product Dashboard UI */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            style={{ y: heroY }}
             className="relative"
           >
-            {/* LINEAR-STYLE GRADIENT GLOW - Visible purple/blue halo around the dashboard */}
-            {/* Layer 1: Large outer glow */}
-            <div 
-              className="absolute -inset-20 pointer-events-none opacity-60 dark:opacity-100"
-              style={{
-                background: `
-                  radial-gradient(ellipse 50% 40% at 50% 50%, rgba(139, 92, 246, 0.3) 0%, transparent 70%)
-                `
-              }}
-            />
-            {/* Layer 2: Bottom glow (strongest) */}
-            <div 
-              className="absolute -inset-x-20 top-1/3 -bottom-32 pointer-events-none opacity-70 dark:opacity-100"
-              style={{
-                background: `
-                  radial-gradient(ellipse 70% 50% at 50% 80%, rgba(99, 102, 241, 0.4) 0%, transparent 60%),
-                  radial-gradient(ellipse 50% 40% at 30% 70%, rgba(168, 85, 247, 0.25) 0%, transparent 50%),
-                  radial-gradient(ellipse 50% 40% at 70% 70%, rgba(59, 130, 246, 0.25) 0%, transparent 50%)
-                `
-              }}
-            />
-            {/* Layer 3: Top subtle glow */}
-            <div 
-              className="absolute -inset-x-10 -top-20 h-40 pointer-events-none opacity-50 dark:opacity-80"
-              style={{
-                background: `
-                  radial-gradient(ellipse 60% 100% at 50% 100%, rgba(139, 92, 246, 0.15) 0%, transparent 60%)
-                `
-              }}
-            />
             
             {/* Dashboard container - Theme aware */}
             <div 
@@ -171,7 +150,7 @@ export default function LinearInspiredHomepage() {
               }}
             >
               {/* Dashboard UI built with HTML/CSS - Theme aware */}
-              <div className="flex min-h-[500px] sm:min-h-[550px] lg:min-h-[600px]">
+              <div className="flex h-[450px] sm:h-[500px] lg:h-[520px]">
                 {/* Sidebar - Theme aware */}
                 <div className="w-56 lg:w-64 border-r border-border/50 dark:border-white/[0.06] bg-muted/30 dark:bg-[#0f0f10] flex-shrink-0 hidden sm:flex flex-col">
                   {/* Logo */}
@@ -326,14 +305,6 @@ export default function LinearInspiredHomepage() {
                 </div>
               </div>
             </div>
-            
-            {/* Bottom gradient fade */}
-            <div 
-              className="absolute -bottom-20 left-0 right-0 h-40 pointer-events-none"
-              style={{
-                background: 'linear-gradient(to bottom, transparent 0%, hsl(var(--background)) 80%)'
-              }}
-            />
           </motion.div>
         </div>
       </section>
