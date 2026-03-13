@@ -117,6 +117,29 @@ function AnimatedNumber({ value, duration = 1000 }: { value: number, duration?: 
 // Starting Screen Component (matches build.productos.dev)
 function StartingScreen({ onStartProject }: { onStartProject: (idea: string) => void }) {
   const [idea, setIdea] = useState("")
+  const [isTyping, setIsTyping] = useState(true)
+  const [typingComplete, setTypingComplete] = useState(false)
+  
+  const demoPrompt = "Create an AI voice cloning platform where creators can generate realistic voiceovers in multiple languages and accents."
+
+  // Auto-typing effect
+  useEffect(() => {
+    if (!isTyping) return
+    
+    let currentIndex = 0
+    const typingInterval = setInterval(() => {
+      if (currentIndex < demoPrompt.length) {
+        setIdea(demoPrompt.slice(0, currentIndex + 1))
+        currentIndex++
+      } else {
+        clearInterval(typingInterval)
+        setIsTyping(false)
+        setTypingComplete(true)
+      }
+    }, 35) // Typing speed
+
+    return () => clearInterval(typingInterval)
+  }, [isTyping])
 
   const quickActions = [
     { icon: Search, label: "Research a market", color: "bg-white/[0.06]" },
@@ -124,6 +147,12 @@ function StartingScreen({ onStartProject }: { onStartProject: (idea: string) => 
     { icon: Calendar, label: "Create roadmap", color: "bg-white/[0.06]" },
     { icon: BarChart3, label: "Analyze competitors", color: "bg-white/[0.06]" },
   ]
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setIdea(e.target.value)
+    setIsTyping(false)
+    setTypingComplete(e.target.value.length > 0)
+  }
 
   return (
     <div className="h-full flex flex-col items-center justify-center px-4 sm:px-8">
@@ -140,7 +169,11 @@ function StartingScreen({ onStartProject }: { onStartProject: (idea: string) => 
         {quickActions.map((action) => (
           <button
             key={action.label}
-            onClick={() => setIdea(action.label.toLowerCase())}
+            onClick={() => {
+              setIdea(action.label.toLowerCase())
+              setIsTyping(false)
+              setTypingComplete(true)
+            }}
             className="flex items-center gap-2 px-3 py-2 rounded-full border border-border/50 dark:border-white/[0.1] bg-muted/30 dark:bg-white/[0.04] hover:bg-muted dark:hover:bg-white/[0.08] transition-colors text-sm text-foreground dark:text-white/80"
           >
             <action.icon className="w-4 h-4 text-muted-foreground dark:text-white/50" />
@@ -152,12 +185,18 @@ function StartingScreen({ onStartProject }: { onStartProject: (idea: string) => 
       {/* Input area */}
       <div className="w-full max-w-2xl">
         <div className="rounded-xl border border-border/50 dark:border-white/[0.1] bg-muted/20 dark:bg-white/[0.02] p-3">
-          <textarea
-            value={idea}
-            onChange={(e) => setIdea(e.target.value)}
-            placeholder="Describe your product idea..."
-            className="w-full h-16 bg-transparent text-sm text-foreground dark:text-white placeholder:text-muted-foreground/50 resize-none outline-none"
-          />
+          <div className="relative">
+            <textarea
+              value={idea}
+              onChange={handleInputChange}
+              placeholder="Describe your product idea..."
+              className="w-full h-16 bg-transparent text-sm text-foreground dark:text-white placeholder:text-muted-foreground/50 resize-none outline-none"
+            />
+            {/* Blinking cursor when typing */}
+            {isTyping && (
+              <span className="absolute text-sm text-foreground dark:text-white animate-pulse">|</span>
+            )}
+          </div>
           <div className="flex items-center justify-between pt-2 border-t border-border/30 dark:border-white/[0.06]">
             <div className="flex items-center gap-2">
               <Plus className="w-4 h-4 text-muted-foreground dark:text-white/40" />
@@ -176,7 +215,12 @@ function StartingScreen({ onStartProject }: { onStartProject: (idea: string) => 
               </button>
               <button 
                 onClick={() => idea.trim() && onStartProject(idea)}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-muted dark:bg-white/[0.08] hover:bg-muted/80 dark:hover:bg-white/[0.12] transition-colors text-sm font-medium text-foreground dark:text-white"
+                className={cn(
+                  "flex items-center gap-2 px-3 py-1.5 rounded-md transition-colors text-sm font-medium",
+                  typingComplete 
+                    ? "bg-foreground dark:bg-white text-background dark:text-black hover:opacity-90" 
+                    : "bg-muted dark:bg-white/[0.08] text-foreground dark:text-white hover:bg-muted/80 dark:hover:bg-white/[0.12]"
+                )}
               >
                 Send <ArrowRight className="w-3.5 h-3.5" />
               </button>
