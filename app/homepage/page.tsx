@@ -23,6 +23,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { InteractiveDashboard } from "@/components/homepage/interactive-dashboard"
+import { ProductOSDashboard } from "@/components/homepage/productos-dashboard"
 import { WorkflowNodesIcon, GrowthGraphIcon, NetworkHubIcon } from "@/components/animated-icons"
 import { IsometricAgentsVisual } from "@/components/isometric-agents-visual"
 import { AgentCubesIllustration, SpeedBarsIllustration, LayeredCubeIllustration } from "@/components/linear-illustrations"
@@ -282,10 +283,10 @@ export default function LinearInspiredHomepage() {
       </section>
 
       {/* Feature Section 1 - Talk to ProductOS (Linear-style layout) */}
-      <section id="features" className="py-24 bg-card/30">
+      <section id="features" className="py-24 bg-card/30 dark:bg-transparent">
         <div className="max-w-[1436px] mx-auto px-6 lg:px-[50px]">
           {/* Top: Heading left, Text right - Linear style */}
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start mb-16">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start mb-12">
             <AnimatedSection>
               <h2 className="text-3xl sm:text-4xl lg:text-[56px] font-medium" style={{ lineHeight: 1.05, letterSpacing: '-0.022em' }}>
                 Talk to ProductOS<br />
@@ -307,203 +308,8 @@ export default function LinearInspiredHomepage() {
             </AnimatedSection>
           </div>
 
-          {/* Bottom: ProductOS Dashboard Mock - Linear style compound visual */}
-          <AnimatedSection delay={0.2}>
-            <div className="relative rounded-xl border border-border/50 bg-[#0a0a0a] overflow-hidden shadow-2xl">
-              <div className="flex">
-                {/* Left: Chat/Conversation Panel */}
-                <div className="w-[380px] border-r border-border/30 bg-[#111111] flex-shrink-0 hidden lg:block">
-                  {/* Chat Header */}
-                  <div className="px-4 py-3 border-b border-border/30 flex items-center gap-2">
-                    <div className="text-sm font-medium text-foreground/80">Chat with ProductOS</div>
-                  </div>
-                  
-                  {/* Chat Messages */}
-                  <div className="p-4 space-y-4 h-[340px] overflow-hidden">
-                    {/* User Message */}
-                    <div className="flex items-start gap-3">
-                      <div className="w-7 h-7 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-[10px] font-bold text-white flex-shrink-0">
-                        H
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="text-xs text-muted-foreground mb-1">You • 2:34 PM</div>
-                        <div className="p-2.5 rounded-lg bg-white/[0.05] text-sm text-foreground/80 leading-relaxed">
-                          Build me an analytics dashboard for tracking user engagement
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Research Agent */}
-                    <div className="flex items-start gap-3">
-                      <div className="w-7 h-7 rounded-full bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center flex-shrink-0">
-                        <Search className="size-3 text-white" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="text-xs text-sky-400 mb-1">Research Agent • 2:35 PM</div>
-                        <div className="p-2.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sm text-foreground/80 leading-relaxed">
-                          Found 12 competitors. Market size: $4.2B. Key differentiators identified.
-                          <div className="flex items-center gap-2 text-xs text-sky-400 mt-2">
-                            <Check className="size-3" /> Research complete
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* PRD Agent */}
-                    <div className="flex items-start gap-3">
-                      <div className="w-7 h-7 rounded-full bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center flex-shrink-0">
-                        <FileText className="size-3 text-white" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="text-xs text-teal-400 mb-1">PRD Agent • 2:38 PM</div>
-                        <div className="p-2.5 rounded-lg bg-teal-500/10 border border-teal-500/20 text-sm text-foreground/80 leading-relaxed">
-                          PRD generated with 8 user stories and success metrics.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Chat Input */}
-                  <div className="p-3 border-t border-border/30">
-                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/[0.03] border border-border/30">
-                      <span className="text-sm text-muted-foreground/50">Describe your product idea...</span>
-                      <div className="ml-auto flex items-center gap-2">
-                        <span className="text-xs text-muted-foreground/40">Claude Sonnet 4.6</span>
-                        <div className="w-6 h-6 rounded bg-foreground flex items-center justify-center">
-                          <ArrowRight className="size-3 text-background" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right: Dashboard Panel */}
-                <div className="flex-1 min-w-0">
-                  {/* Dashboard Header */}
-                  <div className="px-6 py-4 border-b border-border/30 flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center gap-2">
-                        <div className="w-6 h-6 rounded bg-gradient-to-br from-foreground/10 to-foreground/5 flex items-center justify-center">
-                          <Sparkles className="size-3 text-foreground/60" />
-                        </div>
-                        <span className="font-medium text-foreground text-sm">Analytics Dashboard</span>
-                      </div>
-                      <span className="px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-500 text-xs font-medium">In Progress</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className="text-xs text-muted-foreground">Day 3 of 7</span>
-                    </div>
-                  </div>
-
-                  {/* Stages Progress */}
-                  <div className="px-6 py-4 border-b border-border/30">
-                    <div className="flex items-center gap-2">
-                      {[
-                        { name: "Ideate", status: "complete", color: "sky" },
-                        { name: "Discover", status: "complete", color: "violet" },
-                        { name: "Define", status: "complete", color: "teal" },
-                        { name: "Design", status: "active", color: "purple" },
-                        { name: "Develop", status: "pending", color: "amber" },
-                      ].map((stage, i) => (
-                        <div key={stage.name} className="flex items-center gap-2">
-                          <div className={cn(
-                            "flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium",
-                            stage.status === "complete" && "bg-white/[0.05] text-foreground/60",
-                            stage.status === "active" && "bg-purple-500/10 text-purple-400 border border-purple-500/20",
-                            stage.status === "pending" && "bg-white/[0.02] text-muted-foreground/40"
-                          )}>
-                            {stage.status === "complete" && <Check className="size-3" />}
-                            {stage.status === "active" && <div className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />}
-                            {stage.name}
-                          </div>
-                          {i < 4 && <div className="w-8 h-px bg-border/30" />}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Dashboard Content - Kanban-style cards */}
-                  <div className="p-6">
-                    <div className="grid grid-cols-3 gap-4">
-                      {/* Todo Column */}
-                      <div>
-                        <div className="flex items-center gap-2 mb-3">
-                          <div className="w-2 h-2 rounded-full bg-muted-foreground/30" />
-                          <span className="text-xs font-medium text-muted-foreground">Todo</span>
-                          <span className="text-xs text-muted-foreground/50">3</span>
-                        </div>
-                        <div className="space-y-2">
-                          {[
-                            { title: "User authentication flow", tags: ["Auth", "Security"] },
-                            { title: "Data export feature", tags: ["Export"] },
-                            { title: "Mobile responsive", tags: ["Design"] },
-                          ].map((item) => (
-                            <div key={item.title} className="p-3 rounded-lg bg-white/[0.02] border border-border/20">
-                              <div className="text-sm text-foreground/80 mb-2">{item.title}</div>
-                              <div className="flex items-center gap-1.5">
-                                {item.tags.map((tag) => (
-                                  <span key={tag} className="px-1.5 py-0.5 rounded bg-white/[0.05] text-[10px] text-muted-foreground">{tag}</span>
-                                ))}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* In Progress Column */}
-                      <div>
-                        <div className="flex items-center gap-2 mb-3">
-                          <div className="w-2 h-2 rounded-full bg-purple-400" />
-                          <span className="text-xs font-medium text-muted-foreground">In Progress</span>
-                          <span className="text-xs text-muted-foreground/50">2</span>
-                        </div>
-                        <div className="space-y-2">
-                          {[
-                            { title: "Dashboard UI components", tags: ["Design", "UI"], agent: "Design" },
-                            { title: "Chart visualizations", tags: ["Charts"] },
-                          ].map((item) => (
-                            <div key={item.title} className="p-3 rounded-lg bg-purple-500/5 border border-purple-500/10">
-                              <div className="text-sm text-foreground/80 mb-2">{item.title}</div>
-                              <div className="flex items-center gap-1.5">
-                                {item.tags.map((tag) => (
-                                  <span key={tag} className="px-1.5 py-0.5 rounded bg-purple-500/10 text-[10px] text-purple-400">{tag}</span>
-                                ))}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Done Column */}
-                      <div>
-                        <div className="flex items-center gap-2 mb-3">
-                          <div className="w-2 h-2 rounded-full bg-emerald-400" />
-                          <span className="text-xs font-medium text-muted-foreground">Done</span>
-                          <span className="text-xs text-muted-foreground/50">5</span>
-                        </div>
-                        <div className="space-y-2">
-                          {[
-                            { title: "Market research completed", tags: ["Research"] },
-                            { title: "PRD v1 approved", tags: ["PRD"] },
-                            { title: "Tech stack selected", tags: ["Define"] },
-                          ].map((item) => (
-                            <div key={item.title} className="p-3 rounded-lg bg-white/[0.02] border border-border/20">
-                              <div className="text-sm text-foreground/60 mb-2 line-through">{item.title}</div>
-                              <div className="flex items-center gap-1.5">
-                                {item.tags.map((tag) => (
-                                  <span key={tag} className="px-1.5 py-0.5 rounded bg-emerald-500/10 text-[10px] text-emerald-400">{tag}</span>
-                                ))}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </AnimatedSection>
+          {/* Interactive ProductOS Dashboard - Exact replica of build.productos.dev */}
+          <ProductOSDashboard />
         </div>
       </section>
 
