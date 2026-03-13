@@ -86,6 +86,12 @@ export default function LinearInspiredHomepage() {
             transition={{ duration: 0.6 }}
             className="mb-10"
           >
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 dark:border-white/10 bg-card/50 dark:bg-white/[0.03] mb-6">
+              <Sparkles className="w-4 h-4 text-amber-500" />
+              <span className="text-sm text-foreground/80 dark:text-white/70">AI-Native Product Development Platform</span>
+            </div>
+            
             <h1 className="mb-8">
               <span 
                 className="block text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-bold text-foreground"
