@@ -47,6 +47,7 @@ import {
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { motion, AnimatePresence } from "framer-motion"
+import { AnimatedLogo } from "@/components/animated-logo"
 
 type Stage = "home" | "ideate" | "discover" | "define" | "design" | "develop"
 
@@ -371,11 +372,7 @@ export function InteractiveDashboard() {
           {/* Logo */}
           <div className="p-4 border-b border-border/50 dark:border-white/[0.06]">
             <div className="flex items-center gap-2.5">
-              <svg viewBox="0 0 36 36" fill="none" className="w-7 h-7">
-                <path d="M4 32 L18 4 L32 32 Z" className="fill-foreground/80 dark:fill-[#E5E5E5]"/>
-                <path d="M18 4 L4 32 L18 32 Z" className="fill-foreground/60 dark:fill-[#B3B3B3]"/>
-                <path d="M18 4 L18 32 L32 4 Z" className="fill-foreground/40 dark:fill-[#808080]"/>
-              </svg>
+              <AnimatedLogo size={28} className="text-foreground dark:text-white" />
               <div>
                 <div className="font-semibold text-sm text-foreground dark:text-white">ProductOS</div>
                 <div className="text-[10px] text-muted-foreground dark:text-white/40">Workspace</div>
@@ -565,6 +562,29 @@ export function InteractiveDashboard() {
                         </button>
                       </div>
                     </div>
+                    
+                    {/* Quick Stats Row */}
+                    {ideateStep >= 3 && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: 20 }} 
+                        animate={{ opacity: 1, y: 0 }} 
+                        className="mt-3 grid grid-cols-3 gap-2"
+                      >
+                        {[
+                          { label: "Market Size", value: "$2.4B", icon: TrendingUp, color: "emerald" },
+                          { label: "Target Users", value: "50M+", icon: Users, color: "sky" },
+                          { label: "Confidence", value: "High", icon: Zap, color: "amber" },
+                        ].map((stat, i) => (
+                          <div key={stat.label} className={cn("p-2.5 rounded-lg border bg-muted/20 dark:bg-white/[0.02]", `border-${stat.color}-500/20`)}>
+                            <div className="flex items-center gap-1.5 mb-1">
+                              <stat.icon className={cn("w-3 h-3", `text-${stat.color}-400`)} />
+                              <span className="text-[10px] text-muted-foreground dark:text-white/40 uppercase">{stat.label}</span>
+                            </div>
+                            <div className={cn("text-sm font-semibold", `text-${stat.color}-400`)}>{stat.value}</div>
+                          </div>
+                        ))}
+                      </motion.div>
+                    )}
                   </div>
                 )}
 
@@ -606,6 +626,34 @@ export function InteractiveDashboard() {
                           ))}
                         </div>
                       </div>
+                      
+                      {/* Market Trends */}
+                      <motion.div 
+                        initial={{ opacity: 0, y: 20 }} 
+                        animate={{ opacity: 1, y: 0 }} 
+                        transition={{ delay: 0.6 }}
+                        className="p-3 rounded-lg border border-border/50 dark:border-white/[0.06] bg-muted/10 dark:bg-white/[0.01]"
+                      >
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-xs font-medium text-foreground dark:text-white">Market Trends</span>
+                          <span className="text-[10px] text-emerald-400">↑ Growing</span>
+                        </div>
+                        <div className="flex items-end gap-1 h-12">
+                          {[25, 35, 30, 45, 55, 50, 65, 75, 70, 85, 90, 95].map((h, i) => (
+                            <motion.div
+                              key={i}
+                              initial={{ height: 0 }}
+                              animate={{ height: `${h}%` }}
+                              transition={{ delay: 0.7 + i * 0.05, duration: 0.3 }}
+                              className="flex-1 rounded-t bg-gradient-to-t from-violet-500/40 to-violet-400/20"
+                            />
+                          ))}
+                        </div>
+                        <div className="flex justify-between mt-1.5 text-[9px] text-muted-foreground">
+                          <span>2022</span>
+                          <span>2027 (projected)</span>
+                        </div>
+                      </motion.div>
                     </div>
                     <div className="space-y-3">
                       <div className="text-xs font-medium text-muted-foreground dark:text-white/40 uppercase tracking-wider">Key Insights</div>
@@ -651,32 +699,53 @@ export function InteractiveDashboard() {
                         Continue to Design <ChevronRight className="w-3 h-3" />
                       </motion.button>
                     </div>
-                    <div className="lg:col-span-3 p-4 rounded-lg border border-border/50 dark:border-white/[0.06] bg-muted/10 dark:bg-white/[0.01]">
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="text-sm font-medium text-foreground dark:text-white">Core Features</span>
-                        <span className="text-xs text-teal-400">6 features defined</span>
+                    <div className="lg:col-span-3 flex flex-col gap-3">
+                      <div className="p-4 rounded-lg border border-border/50 dark:border-white/[0.06] bg-muted/10 dark:bg-white/[0.01]">
+                        <div className="flex items-center justify-between mb-4">
+                          <span className="text-sm font-medium text-foreground dark:text-white">Core Features</span>
+                          <span className="text-xs text-teal-400">6 features defined</span>
+                        </div>
+                        <div className="space-y-2">
+                          {[
+                            { name: "Voice cloning from samples", priority: "P0", effort: "5d" },
+                            { name: "Multi-language support (20+)", priority: "P0", effort: "4d" },
+                            { name: "Accent customization", priority: "P0", effort: "3d" },
+                            { name: "Real-time preview", priority: "P1", effort: "2d" },
+                            { name: "API for developers", priority: "P1", effort: "4d" },
+                            { name: "Team collaboration", priority: "P2", effort: "3d" },
+                          ].map((feature, i) => (
+                            <motion.div key={feature.name} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 + i * 0.08 }} className="flex items-center justify-between p-2 rounded-md bg-muted/30 dark:bg-white/[0.02] text-sm">
+                              <div className="flex items-center gap-2">
+                                <Check className="w-3.5 h-3.5 text-teal-400" />
+                                <span className="text-foreground dark:text-white">{feature.name}</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <span className={cn("px-1.5 py-0.5 rounded text-[10px] font-medium", feature.priority === "P0" ? "bg-red-500/10 text-red-400" : feature.priority === "P1" ? "bg-amber-500/10 text-amber-400" : "bg-slate-500/10 text-slate-400")}>{feature.priority}</span>
+                                <span className="text-xs text-muted-foreground">{feature.effort}</span>
+                              </div>
+                            </motion.div>
+                          ))}
+                        </div>
                       </div>
-                      <div className="space-y-2">
+                      
+                      {/* Project Summary */}
+                      <motion.div 
+                        initial={{ opacity: 0, y: 20 }} 
+                        animate={{ opacity: 1, y: 0 }} 
+                        transition={{ delay: 0.7 }}
+                        className="grid grid-cols-3 gap-2"
+                      >
                         {[
-                          { name: "Voice cloning from samples", priority: "P0", effort: "5d" },
-                          { name: "Multi-language support (20+)", priority: "P0", effort: "4d" },
-                          { name: "Accent customization", priority: "P0", effort: "3d" },
-                          { name: "Real-time preview", priority: "P1", effort: "2d" },
-                          { name: "API for developers", priority: "P1", effort: "4d" },
-                          { name: "Team collaboration", priority: "P2", effort: "3d" },
-                        ].map((feature, i) => (
-                          <motion.div key={feature.name} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 + i * 0.08 }} className="flex items-center justify-between p-2 rounded-md bg-muted/30 dark:bg-white/[0.02] text-sm">
-                            <div className="flex items-center gap-2">
-                              <Check className="w-3.5 h-3.5 text-teal-400" />
-                              <span className="text-foreground dark:text-white">{feature.name}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <span className={cn("px-1.5 py-0.5 rounded text-[10px] font-medium", feature.priority === "P0" ? "bg-red-500/10 text-red-400" : feature.priority === "P1" ? "bg-amber-500/10 text-amber-400" : "bg-slate-500/10 text-slate-400")}>{feature.priority}</span>
-                              <span className="text-xs text-muted-foreground">{feature.effort}</span>
-                            </div>
-                          </motion.div>
+                          { label: "Total Effort", value: "21 days", color: "teal" },
+                          { label: "P0 Features", value: "3", color: "red" },
+                          { label: "MVP Ready", value: "Week 3", color: "emerald" },
+                        ].map((stat) => (
+                          <div key={stat.label} className={cn("p-2.5 rounded-lg border bg-muted/20 dark:bg-white/[0.02]", `border-${stat.color}-500/20`)}>
+                            <div className="text-[10px] text-muted-foreground dark:text-white/40 uppercase mb-0.5">{stat.label}</div>
+                            <div className={cn("text-sm font-semibold", `text-${stat.color}-400`)}>{stat.value}</div>
+                          </div>
                         ))}
-                      </div>
+                      </motion.div>
                     </div>
                   </div>
                 )}
