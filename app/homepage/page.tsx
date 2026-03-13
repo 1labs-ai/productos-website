@@ -25,6 +25,7 @@ import { cn } from "@/lib/utils"
 import { InteractiveDashboard } from "@/components/homepage/interactive-dashboard"
 import { ProductOSDashboard } from "@/components/homepage/productos-dashboard"
 import { AgentWorkflowDemo } from "@/components/homepage/agent-workflow-demo"
+import { ProjectStatusDashboard } from "@/components/homepage/project-status-dashboard"
 import { WorkflowNodesIcon, GrowthGraphIcon, NetworkHubIcon } from "@/components/animated-icons"
 import { IsometricAgentsVisual } from "@/components/isometric-agents-visual"
 import { AgentCubesIllustration, SpeedBarsIllustration, LayeredCubeIllustration } from "@/components/linear-illustrations"
@@ -314,66 +315,37 @@ export default function LinearInspiredHomepage() {
         </div>
       </section>
 
-      {/* Feature Section 2 - Define product direction */}
+      {/* Feature Section 2 - Project Status Dashboard (Linear-style layout) */}
       <section className="py-24">
         <div className="max-w-[1436px] mx-auto px-6 lg:px-[50px]">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <AnimatedSection delay={0.2} className="order-2 lg:order-1">
-              {/* Timeline/Roadmap mockup */}
-              <div className="rounded-xl border border-border/50 bg-card p-6">
-                <div className="flex items-center justify-between mb-6">
-                  <h4 className="font-semibold">Project Timeline</h4>
-                  <span className="text-xs text-muted-foreground">Day 1 → Day 7</span>
-                </div>
-                
-                <div className="space-y-4">
-                  {[
-                    { stage: "Ideate", color: "sky", days: "Day 1", status: "complete" },
-                    { stage: "Discover", color: "violet", days: "Day 1-2", status: "complete" },
-                    { stage: "Define", color: "teal", days: "Day 2-3", status: "complete" },
-                    { stage: "Design", color: "purple", days: "Day 3-5", status: "active" },
-                    { stage: "Develop", color: "amber", days: "Day 5-7", status: "pending" },
-                  ].map((item) => (
-                    <div key={item.stage} className="flex items-center gap-4">
-                      <div className={cn(
-                        "w-24 text-xs font-medium",
-                        item.status === "active" ? `text-${item.color}-400` : "text-muted-foreground"
-                      )}>
-                        {item.days}
-                      </div>
-                      <div className={cn(
-                        "flex-1 h-8 rounded-md flex items-center px-3 text-sm font-medium",
-                        item.status === "complete" && "bg-muted/50 text-foreground/60",
-                        item.status === "active" && `bg-${item.color}-500/10 text-${item.color}-400 border border-${item.color}-500/20`,
-                        item.status === "pending" && "bg-muted/30 text-muted-foreground/50"
-                      )}>
-                        {item.stage}
-                        {item.status === "complete" && <Check className="size-3.5 ml-auto" />}
-                        {item.status === "active" && <span className="ml-auto text-xs">In Progress</span>}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection className="order-1 lg:order-2">
+          {/* Top: Heading left, Text + CTA right - Linear style */}
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start mb-12">
+            <AnimatedSection>
               <p className="text-sm font-medium text-purple-400 mb-4 uppercase tracking-wider">
                 Five stages. Zero chaos.
               </p>
-              <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-medium mb-6" style={{ lineHeight: 1, letterSpacing: '-0.022em' }}>
-                Watch your product<br />
-                <span className="text-muted-foreground">come to life</span>
+              <h2 className="text-3xl sm:text-4xl lg:text-[56px] font-medium" style={{ lineHeight: 1.05, letterSpacing: '-0.022em' }}>
+                Always know where<br />
+                <span className="text-muted-foreground">you stand</span>
               </h2>
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Follow every stage: Ideate → Discover → Define → Design → Develop. 
-                See exactly where your project stands and when it ships.
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.1}>
+              <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed mb-6">
+                Track every stage from Ideate to Develop. See deliverables, progress, and ship dates — all in one view. 
+                No guesswork, no status meetings.
               </p>
-              <Button variant="ghost" className="text-foreground hover:text-foreground p-0 h-auto font-medium">
-                Learn more <ArrowRight className="ml-2 size-4" />
-              </Button>
+              <div className="flex items-center gap-4">
+                <span className="text-sm text-muted-foreground/60">2.0</span>
+                <Link href="/features" className="inline-flex items-center text-sm font-medium text-foreground hover:text-foreground/80 transition-colors">
+                  Learn more <ArrowRight className="ml-2 size-4" />
+                </Link>
+              </div>
             </AnimatedSection>
           </div>
+
+          {/* Dashboard below - full width */}
+          <ProjectStatusDashboard />
         </div>
       </section>
 
