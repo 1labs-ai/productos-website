@@ -23,6 +23,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { InteractiveDashboard } from "@/components/homepage/interactive-dashboard"
+import { WorkflowNodesIcon, GrowthGraphIcon, NetworkHubIcon } from "@/components/animated-icons"
 
 // Section animation wrapper
 function AnimatedSection({ children, className, delay = 0 }: { children: React.ReactNode, className?: string, delay?: number }) {
@@ -208,64 +209,7 @@ export default function LinearInspiredHomepage() {
                 </div>
                 
                 {/* Animated illustration */}
-                <svg className="w-full h-32 mb-6 relative z-10" viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  {/* Outer rings - pulse on hover */}
-                  <motion.circle 
-                    cx="40" cy="40" r="16" 
-                    stroke="currentColor" strokeWidth="1.5" 
-                    className="text-foreground/20"
-                    initial={{ scale: 1, opacity: 0.2 }}
-                    whileHover={{ scale: 1.1, opacity: 0.4 }}
-                    transition={{ duration: 0.4 }}
-                  />
-                  <motion.circle 
-                    cx="100" cy="40" r="16" 
-                    stroke="currentColor" strokeWidth="1.5" 
-                    className="text-foreground/20"
-                    initial={{ scale: 1, opacity: 0.2 }}
-                    whileHover={{ scale: 1.1, opacity: 0.4 }}
-                    transition={{ duration: 0.4, delay: 0.05 }}
-                  />
-                  <motion.circle 
-                    cx="160" cy="40" r="16" 
-                    stroke="currentColor" strokeWidth="1.5" 
-                    className="text-foreground/20"
-                    initial={{ scale: 1, opacity: 0.2 }}
-                    whileHover={{ scale: 1.1, opacity: 0.4 }}
-                    transition={{ duration: 0.4, delay: 0.1 }}
-                  />
-                  {/* Dashed connection lines - animate dash offset */}
-                  <motion.path 
-                    d="M56 40h28M116 40h28" 
-                    stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" 
-                    className="text-foreground/30 group-hover:text-foreground/50 transition-colors duration-300"
-                    initial={{ strokeDashoffset: 0 }}
-                    animate={{ strokeDashoffset: [0, -8] }}
-                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                  />
-                  {/* Center dots - scale up on hover */}
-                  <motion.circle 
-                    cx="40" cy="40" r="6" 
-                    fill="currentColor" 
-                    className="text-foreground/40 group-hover:text-foreground/70 transition-colors duration-300"
-                    whileHover={{ scale: 1.3 }}
-                    transition={{ duration: 0.2 }}
-                  />
-                  <motion.circle 
-                    cx="100" cy="40" r="6" 
-                    fill="currentColor" 
-                    className="text-foreground/40 group-hover:text-foreground/70 transition-colors duration-300"
-                    whileHover={{ scale: 1.3 }}
-                    transition={{ duration: 0.2, delay: 0.05 }}
-                  />
-                  <motion.circle 
-                    cx="160" cy="40" r="6" 
-                    fill="currentColor" 
-                    className="text-foreground/40 group-hover:text-foreground/70 transition-colors duration-300"
-                    whileHover={{ scale: 1.3 }}
-                    transition={{ duration: 0.2, delay: 0.1 }}
-                  />
-                </svg>
+                <WorkflowNodesIcon className="mb-6 relative z-10" />
                 
                 <h3 className="text-lg font-semibold text-foreground mb-3 relative z-10 group-hover:text-foreground transition-colors duration-300">Built for AI workflows</h3>
                 <p className="text-muted-foreground leading-relaxed text-sm relative z-10 group-hover:text-muted-foreground/80 transition-colors duration-300">Designed for humans and agents to work together. Context flows seamlessly between stages.</p>
@@ -293,55 +237,7 @@ export default function LinearInspiredHomepage() {
                 </div>
                 
                 {/* Animated illustration */}
-                <svg className="w-full h-32 mb-6 relative z-10" viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  {/* Line path - draw animation */}
-                  <motion.path 
-                    d="M20 60L60 30L100 45L140 20L180 35" 
-                    stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" 
-                    className="text-foreground/30 group-hover:text-foreground/50 transition-colors duration-300"
-                    initial={{ pathLength: 1 }}
-                    whileHover={{ pathLength: [0, 1] }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
-                  />
-                  {/* Data points - pop up on hover */}
-                  <motion.circle 
-                    cx="60" cy="30" r="4" 
-                    fill="currentColor" 
-                    className="text-foreground/40 group-hover:text-foreground/70 transition-colors duration-300"
-                    whileHover={{ scale: 1.5, y: -2 }}
-                    transition={{ duration: 0.2 }}
-                  />
-                  <motion.circle 
-                    cx="100" cy="45" r="4" 
-                    fill="currentColor" 
-                    className="text-foreground/40 group-hover:text-foreground/70 transition-colors duration-300"
-                    whileHover={{ scale: 1.5, y: -2 }}
-                    transition={{ duration: 0.2, delay: 0.05 }}
-                  />
-                  <motion.circle 
-                    cx="140" cy="20" r="4" 
-                    fill="currentColor" 
-                    className="text-foreground/40 group-hover:text-foreground/70 transition-colors duration-300"
-                    whileHover={{ scale: 1.5, y: -2 }}
-                    transition={{ duration: 0.2, delay: 0.1 }}
-                  />
-                  <motion.circle 
-                    cx="180" cy="35" r="4" 
-                    fill="currentColor" 
-                    className="text-foreground/40 group-hover:text-foreground/70 transition-colors duration-300"
-                    whileHover={{ scale: 1.5, y: -2 }}
-                    transition={{ duration: 0.2, delay: 0.15 }}
-                  />
-                  {/* Arrow - translate on hover */}
-                  <motion.path 
-                    d="M170 25l10 10l-10 10" 
-                    stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" 
-                    className="text-foreground/50 group-hover:text-foreground/80 transition-colors duration-300"
-                    initial={{ x: 0 }}
-                    whileHover={{ x: 5 }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                  />
-                </svg>
+                <GrowthGraphIcon className="mb-6 relative z-10" />
                 
                 <h3 className="text-lg font-semibold text-foreground mb-3 relative z-10 group-hover:text-foreground transition-colors duration-300">10x faster shipping</h3>
                 <p className="text-muted-foreground leading-relaxed text-sm relative z-10 group-hover:text-muted-foreground/80 transition-colors duration-300">What used to take months now takes days. Ship production-ready products in 3-12 days.</p>
@@ -369,64 +265,7 @@ export default function LinearInspiredHomepage() {
                 </div>
                 
                 {/* Animated illustration */}
-                <svg className="w-full h-32 mb-6 relative z-10" viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  {/* Outer rings - pulse animation */}
-                  <motion.circle 
-                    cx="100" cy="35" r="14" 
-                    stroke="currentColor" strokeWidth="1.5" 
-                    className="text-foreground/20"
-                    whileHover={{ scale: 1.15, opacity: 0.5 }}
-                    transition={{ duration: 0.4 }}
-                  />
-                  <motion.circle 
-                    cx="60" cy="55" r="10" 
-                    stroke="currentColor" strokeWidth="1.5" 
-                    className="text-foreground/20"
-                    whileHover={{ scale: 1.2, opacity: 0.5 }}
-                    transition={{ duration: 0.4, delay: 0.1 }}
-                  />
-                  <motion.circle 
-                    cx="140" cy="55" r="10" 
-                    stroke="currentColor" strokeWidth="1.5" 
-                    className="text-foreground/20"
-                    whileHover={{ scale: 1.2, opacity: 0.5 }}
-                    transition={{ duration: 0.4, delay: 0.1 }}
-                  />
-                  {/* Connection lines - grow on hover */}
-                  <motion.path 
-                    d="M100 49v6M75 55h-5M125 55h5" 
-                    stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" 
-                    className="text-foreground/30 group-hover:text-foreground/50 transition-colors duration-300"
-                    initial={{ pathLength: 1 }}
-                    whileHover={{ pathLength: [0, 1] }}
-                    transition={{ duration: 0.5 }}
-                  />
-                  {/* Center dot - pulse effect */}
-                  <motion.circle 
-                    cx="100" cy="35" r="5" 
-                    fill="currentColor" 
-                    className="text-foreground/40 group-hover:text-foreground/70 transition-colors duration-300"
-                    whileHover={{ scale: 1.4 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  {/* Side dots on hover */}
-                  <motion.circle 
-                    cx="60" cy="55" r="3" 
-                    fill="currentColor" 
-                    className="text-foreground/0 group-hover:text-foreground/50"
-                    initial={{ opacity: 0, scale: 0 }}
-                    whileHover={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 0.1 }}
-                  />
-                  <motion.circle 
-                    cx="140" cy="55" r="3" 
-                    fill="currentColor" 
-                    className="text-foreground/0 group-hover:text-foreground/50"
-                    initial={{ opacity: 0, scale: 0 }}
-                    whileHover={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 0.1 }}
-                  />
-                </svg>
+                <NetworkHubIcon className="mb-6 relative z-10" />
                 
                 <h3 className="text-lg font-semibold text-foreground mb-3 relative z-10 group-hover:text-foreground transition-colors duration-300">Made for founders</h3>
                 <p className="text-muted-foreground leading-relaxed text-sm relative z-10 group-hover:text-muted-foreground/80 transition-colors duration-300">No dev team required. Solo founders and small teams can build like a full product org.</p>
