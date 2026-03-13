@@ -154,20 +154,20 @@ export default function LinearInspiredHomepage() {
       {/* Logo Cloud */}
       <section className="py-12 border-y border-border/30">
         <div className="max-w-[1436px] mx-auto px-6 lg:px-[50px]">
-          <div className="flex items-center justify-center gap-10 md:gap-14 lg:gap-16">
+          <div className="flex items-center justify-center gap-12 sm:gap-16 md:gap-20 lg:gap-24">
             {companies.map((company) => (
               <div 
                 key={company.name} 
-                className="flex items-center justify-center h-6"
+                className="flex items-center justify-center"
                 title={company.name}
               >
                 <Image
                   src={company.logo}
                   alt={`${company.name} logo`}
                   width={100}
-                  height={24}
-                  className="h-6 w-auto object-contain brightness-0 invert opacity-50"
-                  style={{ maxWidth: '100px' }}
+                  height={20}
+                  className="h-5 w-auto object-contain brightness-0 invert opacity-80"
+                  style={{ maxWidth: '90px' }}
                 />
               </div>
             ))}
