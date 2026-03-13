@@ -22,6 +22,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
+import { InteractiveDashboard } from "@/components/homepage/interactive-dashboard"
 
 // Section animation wrapper
 function AnimatedSection({ children, className, delay = 0 }: { children: React.ReactNode, className?: string, delay?: number }) {
@@ -130,204 +131,14 @@ export default function LinearInspiredHomepage() {
             </motion.div>
           </motion.div>
 
-          {/* Product Dashboard UI */}
+          {/* Product Dashboard UI - Interactive */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative"
           >
-            
-            {/* Dashboard container - Theme aware */}
-            <div 
-              className="relative rounded-xl overflow-hidden border border-border/50 dark:border-white/[0.08] bg-card dark:bg-[#0a0a0b]"
-              style={{
-                boxShadow: `
-                  0 0 0 1px rgba(0, 0, 0, 0.03),
-                  0 25px 50px -12px rgba(0, 0, 0, 0.25),
-                  0 50px 100px -20px rgba(0, 0, 0, 0.2)
-                `
-              }}
-            >
-              {/* Dashboard UI built with HTML/CSS - Theme aware */}
-              <div className="flex h-[450px] sm:h-[500px] lg:h-[520px]">
-                {/* Sidebar - Theme aware */}
-                <div className="w-56 lg:w-64 border-r border-border/50 dark:border-white/[0.06] bg-muted/30 dark:bg-[#0f0f10] flex-shrink-0 hidden sm:flex flex-col">
-                  {/* Logo */}
-                  <div className="p-4 border-b border-border/50 dark:border-white/[0.06]">
-                    <div className="flex items-center gap-2.5">
-                      <svg viewBox="0 0 36 36" fill="none" className="w-7 h-7">
-                        <path d="M4 32 L18 4 L32 32 Z" className="fill-foreground/80 dark:fill-[#E5E5E5]"/>
-                        <path d="M18 4 L4 32 L18 32 Z" className="fill-foreground/60 dark:fill-[#B3B3B3]"/>
-                        <path d="M18 4 L18 32 L32 4 Z" className="fill-foreground/40 dark:fill-[#808080]"/>
-                      </svg>
-                      <div>
-                        <div className="font-semibold text-sm text-foreground dark:text-white">ProductOS</div>
-                        <div className="text-[10px] text-muted-foreground dark:text-white/40">Workspace</div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Create button */}
-                  <div className="p-3">
-                    <div className="flex items-center gap-2">
-                      <button className="flex-1 h-9 rounded-lg bg-foreground dark:bg-white text-background dark:text-black text-sm font-medium">
-                        Create New
-                      </button>
-                      <button className="h-9 w-9 rounded-lg border border-border dark:border-white/10 flex items-center justify-center">
-                        <Search className="w-4 h-4 text-muted-foreground dark:text-white/50" />
-                      </button>
-                    </div>
-                  </div>
-                  
-                  {/* Stages */}
-                  <div className="px-3 py-2">
-                    <div className="text-[10px] uppercase tracking-wider text-muted-foreground/70 dark:text-white/30 font-medium mb-2 px-2">Stages</div>
-                    <nav className="space-y-0.5">
-                      {[
-                        { name: "Ideate", icon: Lightbulb, color: "text-sky-500 dark:text-sky-400" },
-                        { name: "Discover", icon: Search, color: "text-violet-500 dark:text-violet-400" },
-                        { name: "Define", icon: FileText, color: "text-teal-500 dark:text-teal-400" },
-                        { name: "Design", icon: Palette, color: "text-purple-500 dark:text-purple-400" },
-                        { name: "Develop", icon: Code, color: "text-amber-500 dark:text-amber-400" },
-                      ].map((stage) => (
-                        <div 
-                          key={stage.name}
-                          className="flex items-center gap-3 px-2 py-2 rounded-md text-sm text-foreground/70 dark:text-white/60 hover:bg-muted dark:hover:bg-white/[0.04] transition-colors"
-                        >
-                          <stage.icon className={`w-4 h-4 ${stage.color}`} />
-                          <span>{stage.name}</span>
-                        </div>
-                      ))}
-                    </nav>
-                  </div>
-                  
-                  {/* Theme toggle */}
-                  <div className="mt-auto p-3 border-t border-border/50 dark:border-white/[0.06]">
-                    <div className="flex items-center justify-between px-2 mb-3">
-                      <span className="text-xs text-muted-foreground dark:text-white/40">Theme</span>
-                      <div className="flex items-center gap-1 p-1 rounded-full bg-muted dark:bg-white/[0.04]">
-                        <div className="w-5 h-5 rounded-full flex items-center justify-center text-muted-foreground dark:text-white/30 dark:hidden bg-background shadow-sm">
-                          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd"/></svg>
-                        </div>
-                        <div className="hidden dark:flex w-5 h-5 rounded-full items-center justify-center text-white/30">
-                          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd"/></svg>
-                        </div>
-                        <div className="w-5 h-5 rounded-full flex items-center justify-center text-muted-foreground dark:text-white/30">
-                          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.321A1 1 0 0113 17H7a1 1 0 01-.293-1.956l.804-.32.122-.49H5a2 2 0 01-2-2V5zm14 0H3v8h14V5z" clipRule="evenodd"/></svg>
-                        </div>
-                        <div className="hidden dark:flex w-5 h-5 rounded-full bg-white/10 items-center justify-center text-white">
-                          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Credits */}
-                    <div className="px-2 py-2 rounded-lg bg-muted/50 dark:bg-white/[0.02] border border-border/50 dark:border-white/[0.04]">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-[10px] uppercase tracking-wider text-muted-foreground/70 dark:text-white/30 font-medium">Credits</span>
-                        <span className="text-sm font-semibold text-foreground dark:text-white">50</span>
-                      </div>
-                      <div className="h-1.5 rounded-full bg-muted dark:bg-white/[0.06] overflow-hidden">
-                        <div className="h-full w-1/2 rounded-full bg-gradient-to-r from-sky-500 to-violet-500" />
-                      </div>
-                    </div>
-                    
-                    {/* User */}
-                    <div className="flex items-center gap-2.5 mt-3 px-2">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-xs font-bold text-white">
-                        A
-                      </div>
-                      <div>
-                        <div className="text-sm text-foreground dark:text-white font-medium">Ariv</div>
-                        <div className="text-[10px] text-muted-foreground dark:text-white/40">ariv@1labs.ai</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Main content - Theme aware */}
-                <div className="flex-1 flex flex-col bg-background dark:bg-[#0a0a0b]">
-                  {/* Top bar */}
-                  <div className="flex items-center justify-between px-6 py-3 border-b border-border/50 dark:border-white/[0.06]">
-                    <div className="flex items-center gap-4">
-                      <span className="text-sm font-medium text-foreground dark:text-white">Dashboard</span>
-                      <span className="text-xs text-muted-foreground dark:text-white/40">3 active projects</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="flex items-center gap-1 px-2 py-1 rounded-md bg-emerald-500/10 text-emerald-500 text-xs">
-                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                        <span>AI Active</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Content area */}
-                  <div className="flex-1 p-6 lg:p-8 overflow-hidden">
-                    {/* Recent Projects Grid */}
-                    <div className="mb-6">
-                      <div className="flex items-center justify-between mb-4">
-                        <h3 className="text-sm font-medium text-foreground dark:text-white/80">Recent Projects</h3>
-                        <button className="text-xs text-muted-foreground dark:text-white/40 hover:text-foreground dark:hover:text-white/60">View all</button>
-                      </div>
-                      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
-                        {[
-                          { name: "Analytics Dashboard", stage: "Design", color: "purple", progress: 65 },
-                          { name: "Mobile App Redesign", stage: "Develop", color: "amber", progress: 40 },
-                          { name: "AI Chat Widget", stage: "Define", color: "teal", progress: 85 },
-                        ].map((project) => (
-                          <div 
-                            key={project.name}
-                            className="p-3 rounded-lg border border-border/50 dark:border-white/[0.06] bg-muted/20 dark:bg-white/[0.02] hover:bg-muted/40 dark:hover:bg-white/[0.04] transition-colors"
-                          >
-                            <div className="flex items-center justify-between mb-2">
-                              <span className="text-sm font-medium text-foreground dark:text-white/90">{project.name}</span>
-                              <span className={`text-[10px] px-1.5 py-0.5 rounded ${
-                                project.color === 'purple' ? 'bg-purple-500/10 text-purple-400' :
-                                project.color === 'amber' ? 'bg-amber-500/10 text-amber-400' :
-                                'bg-teal-500/10 text-teal-400'
-                              }`}>{project.stage}</span>
-                            </div>
-                            <div className="h-1 rounded-full bg-muted dark:bg-white/[0.06] overflow-hidden">
-                              <div 
-                                className={`h-full rounded-full ${
-                                  project.color === 'purple' ? 'bg-purple-500' :
-                                  project.color === 'amber' ? 'bg-amber-500' :
-                                  'bg-teal-500'
-                                }`}
-                                style={{ width: `${project.progress}%` }}
-                              />
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    {/* New Project Input */}
-                    <div className="rounded-xl border border-border dark:border-white/10 bg-muted/30 dark:bg-white/[0.02] p-4">
-                      <div className="flex items-center gap-3 mb-3">
-                        <Sparkles className="w-5 h-5 text-violet-400" />
-                        <h2 className="text-lg font-semibold text-foreground dark:text-white">Start a new project</h2>
-                      </div>
-                      <div className="text-muted-foreground/60 dark:text-white/40 text-sm mb-10">Describe your product idea and AI agents will help you build it...</div>
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <button className="flex items-center gap-1.5 px-2 py-1 rounded-md hover:bg-muted dark:hover:bg-white/[0.05] text-muted-foreground dark:text-white/50 text-sm">
-                            <Sparkles className="w-3.5 h-3.5" />
-                            <span>Claude Sonnet 4.6</span>
-                            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-                          </button>
-                        </div>
-                        <button className="px-4 py-2 rounded-lg bg-foreground dark:bg-white text-background dark:text-black text-sm font-medium flex items-center gap-2 hover:opacity-90 transition-opacity">
-                          Send
-                          <ArrowRight className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <InteractiveDashboard />
           </motion.div>
         </div>
       </section>
