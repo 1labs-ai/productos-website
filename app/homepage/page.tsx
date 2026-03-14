@@ -207,7 +207,7 @@ export default function LinearInspiredHomepage() {
             {/* Card 1: Built for AI workflows */}
             <AnimatedSection delay={0}>
               <motion.div 
-                className="group relative p-8 rounded-2xl bg-card/30 border border-border/20 cursor-pointer overflow-hidden"
+                className="group relative p-8 rounded-2xl bg-card/30 border border-border/40 cursor-pointer overflow-hidden"
                 whileHover={{ 
                   y: -8,
                   scale: 1.02,
@@ -235,7 +235,7 @@ export default function LinearInspiredHomepage() {
             {/* Card 2: 10x faster shipping */}
             <AnimatedSection delay={0.1}>
               <motion.div 
-                className="group relative p-8 rounded-2xl bg-card/30 border border-border/20 cursor-pointer overflow-hidden"
+                className="group relative p-8 rounded-2xl bg-card/30 border border-border/40 cursor-pointer overflow-hidden"
                 whileHover={{ 
                   y: -8,
                   scale: 1.02,
@@ -263,7 +263,7 @@ export default function LinearInspiredHomepage() {
             {/* Card 3: Made for founders */}
             <AnimatedSection delay={0.2}>
               <motion.div 
-                className="group relative p-8 rounded-2xl bg-card/30 border border-border/20 cursor-pointer overflow-hidden"
+                className="group relative p-8 rounded-2xl bg-card/30 border border-border/40 cursor-pointer overflow-hidden"
                 whileHover={{ 
                   y: -8,
                   scale: 1.02,

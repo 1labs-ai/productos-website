@@ -62,7 +62,7 @@ const testimonials: Testimonial[] = [
 // Single testimonial card with fixed height
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <div className="flex-shrink-0 w-[350px] h-[220px] p-6 rounded-2xl bg-card/60 border border-border/30 flex flex-col">
+    <div className="flex-shrink-0 w-[350px] h-[220px] p-6 rounded-2xl bg-card/60 border border-border/50 flex flex-col">
       {/* Rating */}
       <div className="flex gap-0.5 mb-3">
         {[...Array(testimonial.rating)].map((_, i) => (
@@ -76,7 +76,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
       </blockquote>
 
       {/* Author */}
-      <div className="flex items-center gap-3 mt-4 pt-4 border-t border-border/20">
+      <div className="flex items-center gap-3 mt-4 pt-4 border-t border-border/40">
         <div className="w-9 h-9 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-800 flex items-center justify-center font-semibold text-sm text-white/80">
           {testimonial.author.charAt(0)}
         </div>
