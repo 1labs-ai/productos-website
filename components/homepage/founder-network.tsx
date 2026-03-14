@@ -39,16 +39,18 @@ export const FounderNetwork = ({ className }: FounderNetworkProps) => {
           </defs>
 
           {roles.map((role, i) => {
-            const x2 = 160 + role.x
-            const y2 = 160 + role.y
+            // Shorten endpoint to stop at box corner (box is 48px, offset by ~28px toward center)
+            const cornerOffset = 28
+            const endX = 160 + role.x + (role.x < 0 ? cornerOffset : -cornerOffset)
+            const endY = 160 + role.y + (role.y < 0 ? cornerOffset : -cornerOffset)
 
-            // Create a curved path
-            const cx1 = 160 + role.x * 0.5
+            // Create a curved path that ends at the box corner
+            const cx1 = 160 + role.x * 0.4
             const cy1 = 160
             const cx2 = 160
-            const cy2 = 160 + role.y * 0.5
+            const cy2 = 160 + role.y * 0.4
 
-            const path = `M 160 160 C ${cx1} ${cy1}, ${cx2} ${cy2}, ${x2} ${y2}`
+            const path = `M 160 160 C ${cx1} ${cy1}, ${cx2} ${cy2}, ${endX} ${endY}`
 
             return (
               <g key={i}>
