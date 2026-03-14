@@ -160,36 +160,56 @@ export function AgentWorkflowDemo({ className }: AgentWorkflowDemoProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      className={cn(
-        "relative rounded-2xl border border-white/[0.06] overflow-hidden",
-        "bg-[#0a0a0a]",
-        className
-      )}
-      style={{
-        boxShadow: `
-          0 0 0 1px rgba(255, 255, 255, 0.03),
-          0 25px 50px -12px rgba(0, 0, 0, 0.4),
-          0 50px 100px -20px rgba(0, 0, 0, 0.3),
-          inset 0 1px 0 0 rgba(255, 255, 255, 0.04)
-        `
-      }}
+      className={cn("relative", className)}
     >
-      {/* Glossy top highlight - Linear style */}
+      {/* Linear-style reflection gradient beneath dashboard */}
       <div 
-        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none z-10"
-      />
-      
-      {/* Subtle ambient glow overlay */}
-      <div 
-        className="absolute inset-0 pointer-events-none z-[1]"
+        className="absolute inset-x-3 inset-y-0 rounded-2xl pointer-events-none"
         style={{
           background: `
-            radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
-            radial-gradient(ellipse 60% 40% at 20% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 40%),
-            radial-gradient(ellipse 60% 40% at 80% 80%, rgba(255, 255, 255, 0.015) 0%, transparent 40%)
+            radial-gradient(52% 58% at 50% 100%, rgba(10, 10, 11, 0) 0%, rgba(10, 10, 11, 0.6) 100%),
+            linear-gradient(to bottom, rgb(10, 10, 11) 10%, rgb(45, 50, 58) 100%)
           `
         }}
       />
+      
+      {/* Main dashboard container */}
+      <div 
+        className="relative rounded-2xl overflow-hidden bg-[#09090a]"
+        style={{
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          boxShadow: `
+            rgba(0, 0, 0, 0.15) 0px 0px 0px 2px,
+            0 25px 50px -12px rgba(0, 0, 0, 0.5),
+            0 50px 100px -20px rgba(0, 0, 0, 0.4)
+          `
+        }}
+      >
+        {/* Inner frame */}
+        <div className="relative rounded-xl overflow-hidden bg-[#0a0a0a]">
+          {/* Glossy shine overlay - radial mask like Linear */}
+          <div 
+            className="absolute inset-0 pointer-events-none z-10"
+            style={{
+              background: 'linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 20%, transparent 40%)',
+              mask: 'radial-gradient(180px 180px at 10% 0%, black 0%, rgba(0,0,0,0.5) 40%, transparent 70%)',
+              WebkitMask: 'radial-gradient(180px 180px at 10% 0%, black 0%, rgba(0,0,0,0.5) 40%, transparent 70%)'
+            }}
+          />
+          
+          {/* Top edge highlight */}
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent pointer-events-none z-10" />
+          
+          {/* Subtle ambient glow */}
+          <div 
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: `
+                radial-gradient(ellipse 70% 40% at 50% 0%, rgba(255, 255, 255, 0.04) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 30% at 80% 10%, rgba(255, 255, 255, 0.025) 0%, transparent 40%)
+              `
+            }}
+          />
       
       {/* FIXED HEIGHT CONTAINER */}
       <div className="flex flex-col lg:flex-row h-[520px]">
@@ -382,6 +402,8 @@ export function AgentWorkflowDemo({ className }: AgentWorkflowDemoProps) {
               </div>
             </div>
           </div>
+        </div>
+      </div>
         </div>
       </div>
     </motion.div>

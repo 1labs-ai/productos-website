@@ -320,33 +320,55 @@ export function InteractiveDashboard() {
   }
 
   return (
-    <div 
-      className="relative rounded-2xl overflow-hidden border border-white/[0.06] bg-[#0a0a0b]"
-      style={{
-        boxShadow: `
-          0 0 0 1px rgba(255, 255, 255, 0.03),
-          0 25px 50px -12px rgba(0, 0, 0, 0.4),
-          0 50px 100px -20px rgba(0, 0, 0, 0.3),
-          inset 0 1px 0 0 rgba(255, 255, 255, 0.04)
-        `
-      }}
-    >
-      {/* Glossy top highlight - Linear style */}
+    <div className="relative">
+      {/* Linear-style reflection gradient beneath dashboard */}
       <div 
-        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none"
-      />
-      
-      {/* Subtle ambient glow overlay */}
-      <div 
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-x-3 inset-y-0 rounded-2xl pointer-events-none"
         style={{
           background: `
-            radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
-            radial-gradient(ellipse 60% 40% at 80% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 40%),
-            radial-gradient(ellipse 60% 40% at 20% 80%, rgba(255, 255, 255, 0.015) 0%, transparent 40%)
+            radial-gradient(52% 58% at 50% 100%, rgba(10, 10, 11, 0) 0%, rgba(10, 10, 11, 0.6) 100%),
+            linear-gradient(to bottom, rgb(10, 10, 11) 10%, rgb(45, 50, 58) 100%)
           `
         }}
       />
+      
+      {/* Main dashboard container */}
+      <div 
+        className="relative rounded-2xl overflow-hidden bg-[#09090a]"
+        style={{
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          boxShadow: `
+            rgba(0, 0, 0, 0.15) 0px 0px 0px 2px,
+            0 25px 50px -12px rgba(0, 0, 0, 0.5),
+            0 50px 100px -20px rgba(0, 0, 0, 0.4)
+          `
+        }}
+      >
+        {/* Inner frame with slightly lighter bg */}
+        <div className="relative rounded-xl overflow-hidden bg-[#0c0c0d]">
+          {/* Glossy shine overlay - radial mask like Linear */}
+          <div 
+            className="absolute inset-0 pointer-events-none z-10"
+            style={{
+              background: 'linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 20%, transparent 40%)',
+              mask: 'radial-gradient(180px 180px at 10% 0%, black 0%, rgba(0,0,0,0.5) 40%, transparent 70%)',
+              WebkitMask: 'radial-gradient(180px 180px at 10% 0%, black 0%, rgba(0,0,0,0.5) 40%, transparent 70%)'
+            }}
+          />
+          
+          {/* Top edge highlight */}
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent pointer-events-none z-10" />
+          
+          {/* Subtle ambient glow */}
+          <div 
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: `
+                radial-gradient(ellipse 70% 40% at 50% 0%, rgba(255, 255, 255, 0.04) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 30% at 80% 10%, rgba(255, 255, 255, 0.025) 0%, transparent 40%)
+              `
+            }}
+          />
       <div className="flex h-[520px] sm:h-[580px] lg:h-[620px]">
         {/* Sidebar */}
         <div className="w-56 lg:w-64 border-r border-white/[0.04] bg-[#0f0f10] flex-shrink-0 hidden sm:flex flex-col">
@@ -836,6 +858,8 @@ export function InteractiveDashboard() {
               </motion.div>
             </AnimatePresence>
           </div>
+        </div>
+      </div>
         </div>
       </div>
     </div>
