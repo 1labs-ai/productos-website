@@ -225,11 +225,11 @@ export default function LinearInspiredHomepage() {
             </h2>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
             {/* Card 1: Built for AI workflows */}
             <AnimatedSection delay={0}>
               <motion.div 
-                className="group relative p-8 rounded-2xl bg-card/30 border border-border/40 cursor-pointer overflow-hidden"
+                className="group relative p-5 sm:p-8 rounded-xl sm:rounded-2xl bg-card/30 border border-border/40 cursor-pointer overflow-hidden"
                 whileHover={{ 
                   y: -8,
                   scale: 1.02,
@@ -243,21 +243,21 @@ export default function LinearInspiredHomepage() {
                 </div>
                 
                 {/* Animated agent figure visualization */}
-                <AgentFigure className="mb-4 relative z-10" />
+                <AgentFigure className="mb-3 sm:mb-4 relative z-10" />
                 
-                <h3 className="text-lg font-semibold text-foreground mb-3 relative z-10 group-hover:text-foreground transition-colors duration-300">Agents that collaborate</h3>
+                <h3 className="text-base sm:text-lg font-semibold text-foreground mb-2 sm:mb-3 relative z-10 group-hover:text-foreground transition-colors duration-300">Agents that collaborate</h3>
                 <p className="text-muted-foreground leading-relaxed text-sm relative z-10 group-hover:text-muted-foreground/80 transition-colors duration-300">Each agent specializes in one stage. Context flows automatically from ideation to production code.</p>
                 
                 {/* Border glow on hover */}
-                <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-foreground/10 transition-colors duration-300" />
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-[0_0_30px_-5px_rgba(255,255,255,0.1)]" />
+                <div className="absolute inset-0 rounded-xl sm:rounded-2xl border border-transparent group-hover:border-foreground/10 transition-colors duration-300" />
+                <div className="absolute inset-0 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-[0_0_30px_-5px_rgba(255,255,255,0.1)]" />
               </motion.div>
             </AnimatedSection>
 
             {/* Card 2: 10x faster shipping */}
             <AnimatedSection delay={0.1}>
               <motion.div 
-                className="group relative p-8 rounded-2xl bg-card/30 border border-border/40 cursor-pointer overflow-hidden"
+                className="group relative p-5 sm:p-8 rounded-xl sm:rounded-2xl bg-card/30 border border-border/40 cursor-pointer overflow-hidden"
                 whileHover={{ 
                   y: -8,
                   scale: 1.02,
@@ -271,21 +271,21 @@ export default function LinearInspiredHomepage() {
                 </div>
                 
                 {/* Ship speed pipeline visualization */}
-                <ShipSpeed className="mb-4 relative z-10" />
+                <ShipSpeed className="mb-3 sm:mb-4 relative z-10" />
                 
-                <h3 className="text-lg font-semibold text-foreground mb-3 relative z-10 group-hover:text-foreground transition-colors duration-300">Ship in days, not months</h3>
+                <h3 className="text-base sm:text-lg font-semibold text-foreground mb-2 sm:mb-3 relative z-10 group-hover:text-foreground transition-colors duration-300">Ship in days, not months</h3>
                 <p className="text-muted-foreground leading-relaxed text-sm relative z-10 group-hover:text-muted-foreground/80 transition-colors duration-300">Go from conversation to deployed product in 3-12 days. Real code, real tests, real infrastructure.</p>
                 
                 {/* Border glow on hover */}
-                <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-foreground/10 transition-colors duration-300" />
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-[0_0_30px_-5px_rgba(255,255,255,0.1)]" />
+                <div className="absolute inset-0 rounded-xl sm:rounded-2xl border border-transparent group-hover:border-foreground/10 transition-colors duration-300" />
+                <div className="absolute inset-0 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-[0_0_30px_-5px_rgba(255,255,255,0.1)]" />
               </motion.div>
             </AnimatedSection>
 
             {/* Card 3: Made for founders */}
             <AnimatedSection delay={0.2}>
               <motion.div 
-                className="group relative p-8 rounded-2xl bg-card/30 border border-border/40 cursor-pointer overflow-hidden"
+                className="group relative p-5 sm:p-8 rounded-xl sm:rounded-2xl bg-card/30 border border-border/40 cursor-pointer overflow-hidden"
                 whileHover={{ 
                   y: -8,
                   scale: 1.02,
@@ -299,14 +299,14 @@ export default function LinearInspiredHomepage() {
                 </div>
                 
                 {/* Founder network visualization */}
-                <FounderNetwork className="mb-4 relative z-10" />
+                <FounderNetwork className="mb-3 sm:mb-4 relative z-10" />
                 
-                <h3 className="text-lg font-semibold text-foreground mb-3 relative z-10 group-hover:text-foreground transition-colors duration-300">Built for founders</h3>
+                <h3 className="text-base sm:text-lg font-semibold text-foreground mb-2 sm:mb-3 relative z-10 group-hover:text-foreground transition-colors duration-300">Built for founders</h3>
                 <p className="text-muted-foreground leading-relaxed text-sm relative z-10 group-hover:text-muted-foreground/80 transition-colors duration-300">No dev team needed. Build like you have a full product org — PM, researcher, designer, and engineers.</p>
                 
                 {/* Border glow on hover */}
-                <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-foreground/10 transition-colors duration-300" />
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-[0_0_30px_-5px_rgba(255,255,255,0.1)]" />
+                <div className="absolute inset-0 rounded-xl sm:rounded-2xl border border-transparent group-hover:border-foreground/10 transition-colors duration-300" />
+                <div className="absolute inset-0 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-[0_0_30px_-5px_rgba(255,255,255,0.1)]" />
               </motion.div>
             </AnimatedSection>
           </div>
