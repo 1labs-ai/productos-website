@@ -9,12 +9,13 @@ interface FounderNetworkProps {
 }
 
 export const FounderNetwork = ({ className }: FounderNetworkProps) => {
-  // Using percentage-based positions for responsiveness
+  // Using percentage-based positions for responsiveness (relative to center)
+  // Values are smaller to keep nodes inside the container
   const roles = [
-    { id: 'pm', icon: ClipboardList, label: 'PM', xPercent: -34, yPercent: -27 },
-    { id: 'research', icon: Search, label: 'Researcher', xPercent: 34, yPercent: -27 },
-    { id: 'design', icon: Palette, label: 'Designer', xPercent: -34, yPercent: 27 },
-    { id: 'eng', icon: Code2, label: 'Engineer', xPercent: 34, yPercent: 27 },
+    { id: 'pm', icon: ClipboardList, label: 'PM', xPercent: -28, yPercent: -22 },
+    { id: 'research', icon: Search, label: 'Researcher', xPercent: 28, yPercent: -22 },
+    { id: 'design', icon: Palette, label: 'Designer', xPercent: -28, yPercent: 22 },
+    { id: 'eng', icon: Code2, label: 'Engineer', xPercent: 28, yPercent: 22 },
   ]
 
   return (
