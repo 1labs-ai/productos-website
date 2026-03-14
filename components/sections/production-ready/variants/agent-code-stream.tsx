@@ -44,7 +44,7 @@ export function AgentCodeStream() {
     // Start stages
     let stageTimeout: NodeJS.Timeout
     let charIndex = 0
-    let codeInterval: NodeJS.Timer
+    let codeInterval: ReturnType<typeof setInterval> | null = null
 
     const runStages = (stageIndex: number) => {
       if (stageIndex >= stages.length) {
@@ -56,14 +56,15 @@ export function AgentCodeStream() {
 
       // Stage 1 (generating code) - type out the code
       if (stageIndex === 1) {
-        codeInterval = setInterval(() => {
+        const interval = setInterval(() => {
           if (charIndex < codeOutput.length) {
             setDisplayedCode(codeOutput.slice(0, charIndex + 1))
             charIndex++
           } else {
-            clearInterval(codeInterval)
+            clearInterval(interval)
           }
         }, 8)
+        codeInterval = interval
       }
 
       stageTimeout = setTimeout(() => {
@@ -77,7 +78,7 @@ export function AgentCodeStream() {
     return () => {
       clearTimeout(initialTimeout)
       clearTimeout(stageTimeout)
-      if (codeInterval) clearInterval(codeInterval)
+      if (codeInterval !== null) clearInterval(codeInterval)
     }
   }, [isInView])
 
