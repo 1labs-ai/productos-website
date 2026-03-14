@@ -321,41 +321,17 @@ export function InteractiveDashboard() {
 
   return (
     <div className="relative">
-      {/* Linear-style reflection surface beneath dashboard - creates "floating" effect */}
-      <div 
-        className="absolute -inset-x-4 -bottom-8 top-4 rounded-3xl pointer-events-none"
-        style={{
-          background: `
-            radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
-            linear-gradient(to bottom, transparent 0%, rgba(20, 20, 25, 0.8) 30%, rgb(18, 18, 22) 100%)
-          `,
-          filter: 'blur(1px)'
-        }}
-      />
-      
-      {/* Outer glow ring - adds depth perception */}
-      <div 
-        className="absolute -inset-1 rounded-[20px] pointer-events-none opacity-50"
-        style={{
-          background: 'linear-gradient(to bottom, rgba(255,255,255,0.03) 0%, transparent 50%)',
-        }}
-      />
-      
-      {/* Main dashboard container */}
+      {/* Main dashboard container - clean Linear-style */}
       <div 
         className="relative rounded-2xl overflow-hidden"
         style={{
-          background: 'linear-gradient(to bottom, #0d0d0f 0%, #09090a 100%)',
-          border: '1px solid rgba(255, 255, 255, 0.06)',
+          background: 'linear-gradient(to bottom, #0c0c0e 0%, #09090a 100%)',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
           boxShadow: `
-            inset 0 1px 0 0 rgba(255, 255, 255, 0.05),
-            0 0 0 1px rgba(0, 0, 0, 0.3),
-            0 2px 4px rgba(0, 0, 0, 0.2),
-            0 4px 8px rgba(0, 0, 0, 0.2),
-            0 8px 16px rgba(0, 0, 0, 0.2),
-            0 16px 32px rgba(0, 0, 0, 0.15),
-            0 32px 64px rgba(0, 0, 0, 0.1),
-            0 64px 128px rgba(0, 0, 0, 0.05)
+            inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
+            0 0 0 1px rgba(0, 0, 0, 0.2),
+            0 4px 16px rgba(0, 0, 0, 0.12),
+            0 16px 48px rgba(0, 0, 0, 0.08)
           `
         }}
       >
