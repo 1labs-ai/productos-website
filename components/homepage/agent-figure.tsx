@@ -2,154 +2,155 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { Layers, Lightbulb, Search, FileText, Palette, Code } from 'lucide-react'
 import { cn } from '@/lib/utils'
+
+const AGENTS = [
+  { id: 'product-os', name: 'Product OS', icon: Layers, pos: { x: '50%', y: '50%' }, size: 'large' as const },
+  { id: 'ideate', name: 'Ideate', icon: Lightbulb, pos: { x: '50%', y: '15%' }, size: 'small' as const },
+  { id: 'discover', name: 'Discover', icon: Search, pos: { x: '85%', y: '38%' }, size: 'small' as const },
+  { id: 'define', name: 'Define', icon: FileText, pos: { x: '72%', y: '82%' }, size: 'small' as const },
+  { id: 'design', name: 'Design', icon: Palette, pos: { x: '28%', y: '82%' }, size: 'small' as const },
+  { id: 'develop', name: 'Develop', icon: Code, pos: { x: '15%', y: '38%' }, size: 'small' as const }
+]
 
 interface AgentFigureProps {
   className?: string
 }
 
 export const AgentFigure = ({ className }: AgentFigureProps) => {
-  const [tick, setTick] = useState(0)
+  const [activeStep, setActiveStep] = useState(0)
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTick((prev) => prev + 1)
+      setActiveStep((prev) => (prev + 1) % AGENTS.length)
     }, 3000)
     return () => clearInterval(timer)
   }, [])
 
   return (
     <div className={cn("relative w-full", className)}>
-      {/* Square Card Container */}
-      <div className="relative aspect-square w-full rounded-2xl overflow-hidden flex flex-col p-4 bg-foreground/[0.02] dark:bg-white/[0.03] border border-border/30 dark:border-white/[0.05]">
+      {/* Square Container */}
+      <div className="relative aspect-square w-full rounded-3xl overflow-hidden flex items-center justify-center p-6 bg-[#0a0a0b] dark:bg-[#0a0a0b] border border-white/[0.05]">
         
         {/* Figure Label */}
-        <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground/40 dark:text-white/20 mb-auto">
+        <div className="absolute top-4 left-4 text-[8px] font-mono uppercase tracking-[0.15em] text-white/20">
           Fig 0.1
         </div>
 
-        {/* The Figure Visualization */}
-        <div className="relative flex-1 flex items-center justify-center">
+        {/* Connection Lines (SVG) */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible">
+          <defs>
+            <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="rgba(255,255,255,0.02)" />
+              <stop offset="50%" stopColor="rgba(255,255,255,0.1)" />
+              <stop offset="100%" stopColor="rgba(255,255,255,0.02)" />
+            </linearGradient>
+          </defs>
           
-          {/* SVG for Curved Lines */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 400">
-            <defs>
-              <filter id="glow">
-                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                <feMerge>
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-              </filter>
-            </defs>
-            
-            {/* Horizontal Curved Path */}
-            <motion.path
-              d="M 100 200 Q 150 180 200 200 T 300 200 T 360 180"
-              fill="none"
-              className="stroke-foreground dark:stroke-white"
-              strokeWidth="1"
-              strokeOpacity="0.15"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 2, ease: "easeInOut" }}
+          {/* Circular path connecting the 5 outer nodes */}
+          <motion.circle
+            cx="50%"
+            cy="50%"
+            r="35%"
+            fill="none"
+            stroke="url(#lineGrad)"
+            strokeWidth="1"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 1 }}
+            transition={{ duration: 2, ease: "easeInOut" }}
+          />
+
+          {/* Hub Spokes - lines from center to each outer node */}
+          {AGENTS.slice(1).map((agent, i) => (
+            <line
+              key={i}
+              x1="50%"
+              y1="50%"
+              x2={agent.pos.x}
+              y2={agent.pos.y}
+              stroke="white"
+              strokeWidth="0.5"
+              strokeOpacity="0.08"
+              strokeDasharray="2 4"
             />
+          ))}
+        </svg>
 
-            {/* Vertical Straight Path */}
-            <motion.path
-              d="M 200 120 L 200 280"
-              fill="none"
-              className="stroke-foreground dark:stroke-white"
-              strokeWidth="1"
-              strokeOpacity="0.15"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 1.5, delay: 0.5, ease: "easeInOut" }}
-            />
+        {/* Nodes */}
+        <div className="relative w-full h-full">
+          {AGENTS.map((agent, index) => {
+            const isActive = activeStep === index
+            const Icon = agent.icon
+            const isHub = agent.size === 'large'
 
-            {/* Flowing Particle on Curved Path */}
-            <motion.circle
-              r="2"
-              className="fill-foreground dark:fill-white"
-              filter="url(#glow)"
-            >
-              <animateMotion
-                dur="4s"
-                repeatCount="indefinite"
-                path="M 100 200 Q 150 180 200 200 T 300 200 T 360 180"
-              />
-            </motion.circle>
-          </svg>
+            return (
+              <motion.div
+                key={agent.id}
+                className="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center"
+                style={{ left: agent.pos.x, top: agent.pos.y }}
+              >
+                <motion.button
+                  onClick={() => setActiveStep(index)}
+                  className={cn(
+                    "relative z-10 rounded-full flex items-center justify-center transition-all duration-500",
+                    isHub ? 'w-14 h-14' : 'w-9 h-9',
+                    isActive 
+                      ? 'bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.3)]' 
+                      : 'bg-white/[0.03] text-white/40 border border-white/10 hover:border-white/30'
+                  )}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Icon size={isHub ? 24 : 14} strokeWidth={1.5} />
+                  
+                  {/* Active Pulse Ring */}
+                  {isActive && (
+                    <motion.div
+                      className="absolute inset-0 rounded-full border-2 border-white"
+                      initial={{ scale: 1, opacity: 0.5 }}
+                      animate={{ scale: 1.5, opacity: 0 }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    />
+                  )}
 
-          {/* Nodes Layer */}
-          <div className="relative w-full h-full flex items-center justify-center">
-            
-            {/* Center Node */}
-            <div className="absolute z-20">
-              <div className="relative w-14 h-14 rounded-full border border-foreground/20 dark:border-white/20 flex items-center justify-center bg-background dark:bg-[#0A0A0A]">
-                <div className="w-9 h-9 rounded-full border border-foreground/40 dark:border-white/40 flex items-center justify-center">
-                  <motion.div 
-                    className="w-2.5 h-2.5 bg-foreground dark:bg-white rounded-full shadow-[0_0_10px_rgba(0,0,0,0.3)] dark:shadow-[0_0_10px_rgba(255,255,255,0.8)]"
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  />
-                </div>
-                {/* Outer Ring Animation */}
-                <motion.div 
-                  className="absolute inset-0 rounded-full border border-foreground/10 dark:border-white/10"
-                  animate={{ scale: [1, 1.4], opacity: [0.5, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
-                />
-              </div>
-            </div>
+                  {/* Outer Ring for Hub */}
+                  {isHub && (
+                    <div className="absolute inset-[-8px] rounded-full border border-white/10" />
+                  )}
+                </motion.button>
 
-            {/* Top Node */}
-            <div className="absolute top-[20%] z-10">
-              <Node size="sm" />
-            </div>
-
-            {/* Bottom Node */}
-            <div className="absolute bottom-[20%] z-10">
-              <Node size="sm" />
-            </div>
-
-            {/* Left Node */}
-            <div className="absolute left-[15%] z-10">
-              <Node size="md" />
-            </div>
-
-            {/* Right Node */}
-            <div className="absolute right-[25%] z-10">
-              <Node size="md" />
-            </div>
-
-            {/* Far Right Node */}
-            <div className="absolute right-[5%] top-[40%] z-10">
-              <Node size="sm" />
-            </div>
-
-          </div>
+                {/* Label - shows when active */}
+                <motion.span 
+                  className={cn(
+                    "absolute -bottom-5 text-[7px] font-mono uppercase tracking-[0.15em] text-white/60 transition-all duration-500 whitespace-nowrap",
+                    isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'
+                  )}
+                >
+                  {agent.name}
+                </motion.span>
+              </motion.div>
+            )
+          })}
         </div>
+
+        {/* Flowing Particle on the circular path */}
+        <motion.div
+          className="absolute w-1 h-1 rounded-full bg-white blur-[1px] z-20"
+          style={{
+            left: '50%',
+            top: '15%',
+          }}
+          animate={{
+            rotate: 360,
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
       </div>
-    </div>
-  )
-}
-
-const Node = ({ size = 'md' }: { size?: 'sm' | 'md' }) => {
-  const dimensions = size === 'md' ? 'w-9 h-9' : 'w-7 h-7'
-  const innerSize = size === 'md' ? 'w-2 h-2' : 'w-1.5 h-1.5'
-
-  return (
-    <div className={cn(
-      "relative rounded-full border border-foreground/10 dark:border-white/10 flex items-center justify-center bg-background dark:bg-[#0A0A0A]",
-      dimensions
-    )}>
-      <div className={cn("bg-foreground/40 dark:bg-white/40 rounded-full", innerSize)} />
-      <motion.div 
-        className="absolute inset-0 rounded-full border border-foreground/5 dark:border-white/5"
-        animate={{ opacity: [0.2, 0.5, 0.2] }}
-        transition={{ duration: 4, repeat: Infinity }}
-      />
     </div>
   )
 }
