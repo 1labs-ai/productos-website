@@ -28,8 +28,9 @@ import { AgentWorkflowDemo } from "@/components/homepage/agent-workflow-demo"
 import { ProjectStatusDashboard } from "@/components/homepage/project-status-dashboard"
 import { WorkflowNodesIcon, GrowthGraphIcon, NetworkHubIcon } from "@/components/animated-icons"
 import { IsometricAgentsVisual } from "@/components/isometric-agents-visual"
-import { SpeedBarsIllustration, LayeredCubeIllustration } from "@/components/linear-illustrations"
+import { LayeredCubeIllustration } from "@/components/linear-illustrations"
 import { AgentFigure } from "@/components/homepage/agent-figure"
+import { ShipSpeed } from "@/components/homepage/ship-speed"
 import { CursorStyleIDE } from "@/components/sections/production-ready/variants/cursor-style-ide"
 import { AnimatedStats } from "@/components/homepage/animated-stats"
 import { TestimonialsFlow } from "@/components/homepage/testimonials-flow"
@@ -247,8 +248,8 @@ export default function LinearInspiredHomepage() {
                   <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
                 </div>
                 
-                {/* Linear-style speed bars illustration */}
-                <SpeedBarsIllustration className="mb-4 relative z-10 h-48" />
+                {/* Ship speed pipeline visualization */}
+                <ShipSpeed className="mb-4 relative z-10" />
                 
                 <h3 className="text-lg font-semibold text-foreground mb-3 relative z-10 group-hover:text-foreground transition-colors duration-300">Ship in days, not months</h3>
                 <p className="text-muted-foreground leading-relaxed text-sm relative z-10 group-hover:text-muted-foreground/80 transition-colors duration-300">Go from conversation to deployed product in 3-12 days. Real code, real tests, real infrastructure.</p>
