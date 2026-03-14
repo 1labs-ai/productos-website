@@ -30,8 +30,8 @@ export const AgentFigure = ({ className }: AgentFigureProps) => {
 
   return (
     <div className={cn("relative w-full flex items-center justify-center", className)}>
-      {/* Container - centered square */}
-      <div className="relative w-[320px] h-[320px] rounded-3xl overflow-visible flex items-center justify-center">
+      {/* Container - centered square, responsive */}
+      <div className="relative w-[240px] sm:w-[280px] md:w-[320px] h-[240px] sm:h-[280px] md:h-[320px] rounded-3xl overflow-visible flex items-center justify-center">
 
         {/* Connection Lines (SVG) */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible text-foreground dark:text-white">
