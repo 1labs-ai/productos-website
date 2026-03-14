@@ -152,12 +152,30 @@ export function AgentWorkflowDemo({ className }: AgentWorkflowDemoProps) {
       transition={{ duration: 0.6, delay: 0.2 }}
       className={cn("relative", className)}
     >
-      {/* Main dashboard container - theme-aware */}
-      <div className="relative rounded-2xl overflow-hidden bg-card border border-border shadow-lg">
+      {/* Main dashboard container - theme-aware with dark mode premium finish */}
+      <div 
+        className="relative rounded-2xl overflow-hidden bg-card border border-border shadow-lg dark:bg-[#09090a] dark:border-white/[0.08]"
+      >
         {/* Inner frame */}
-        <div className="relative rounded-xl overflow-hidden bg-muted/30">
+        <div className="relative rounded-xl overflow-hidden bg-muted/30 dark:bg-[#0a0a0a]">
+          {/* Dark mode glossy effects */}
+          <div 
+            className="absolute inset-0 pointer-events-none z-10 hidden dark:block"
+            style={{
+              background: `
+                radial-gradient(ellipse 300px 150px at 15% 0%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 30%, transparent 70%),
+                radial-gradient(ellipse 200px 100px at 85% 5%, rgba(255,255,255,0.04) 0%, transparent 60%)
+              `,
+            }}
+          />
+          <div 
+            className="absolute inset-0 pointer-events-none z-10 hidden dark:block"
+            style={{
+              background: 'linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 10%, transparent 25%)',
+            }}
+          />
           {/* Top edge highlight */}
-          <div className="absolute inset-x-0 top-0 h-px pointer-events-none z-10 bg-gradient-to-r from-transparent via-foreground/10 to-transparent dark:via-white/15" />
+          <div className="absolute inset-x-0 top-0 h-px pointer-events-none z-10 bg-gradient-to-r from-transparent via-black/5 to-transparent dark:via-white/20" />
       
       {/* FIXED HEIGHT CONTAINER */}
       <div className="flex flex-col lg:flex-row h-[520px]">

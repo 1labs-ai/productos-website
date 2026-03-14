@@ -136,10 +136,10 @@ function StartingScreen({ onStartProject }: { onStartProject: (idea: string) => 
 
   return (
     <div className="h-full flex flex-col items-center justify-center px-4 sm:px-8">
-      <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground text-center mb-2">
+      <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground dark:text-white text-center mb-2">
         What would you like to build?
       </h1>
-      <p className="text-sm sm:text-base text-muted-foreground text-center mb-6">
+      <p className="text-sm sm:text-base text-muted-foreground dark:text-white/50 text-center mb-6">
         AI-native product development from idea to launch
       </p>
 
@@ -152,21 +152,21 @@ function StartingScreen({ onStartProject }: { onStartProject: (idea: string) => 
               setIsTyping(false)
               setTypingComplete(true)
             }}
-            className="flex items-center gap-2 px-3 py-2 rounded-full border border-border bg-muted/30 hover:bg-muted/50 transition-colors text-sm text-muted-foreground"
+            className="flex items-center gap-2 px-3 py-2 rounded-full border border-border dark:border-white/[0.08] bg-muted/30 dark:bg-white/[0.02] hover:bg-muted/50 dark:hover:bg-white/[0.05] transition-colors text-sm text-muted-foreground dark:text-white/70"
           >
-            <action.icon className="w-4 h-4 text-muted-foreground/60" />
+            <action.icon className="w-4 h-4 text-muted-foreground/60 dark:text-white/40" />
             <span>{action.label}</span>
           </button>
         ))}
       </div>
 
       <div className="w-full max-w-2xl">
-        <div className="rounded-xl border border-border bg-muted/30 p-3">
+        <div className="rounded-xl border border-border dark:border-white/[0.08] bg-muted/30 dark:bg-white/[0.02] p-3">
           <div className="relative">
-            <div className="w-full h-16 text-sm text-foreground">
+            <div className="w-full h-16 text-sm text-foreground dark:text-white">
               {idea}
               {(isTyping || typingComplete) && (
-                <span className="animate-blink text-foreground font-normal">|</span>
+                <span className="animate-blink text-foreground dark:text-white font-normal">|</span>
               )}
             </div>
             <textarea
@@ -177,26 +177,26 @@ function StartingScreen({ onStartProject }: { onStartProject: (idea: string) => 
               style={{ caretColor: 'transparent' }}
             />
           </div>
-          <div className="flex items-center justify-between pt-2 border-t border-border/50">
+          <div className="flex items-center justify-between pt-2 border-t border-border/50 dark:border-white/[0.04]">
             <div className="flex items-center gap-2">
-              <Plus className="w-4 h-4 text-muted-foreground/50" />
-              <div className="flex items-center gap-1.5 px-2 py-1 rounded-md hover:bg-muted/50 cursor-pointer transition-colors">
-                <Sparkles className="w-4 h-4 text-muted-foreground/60" />
-                <span className="text-sm text-muted-foreground">Claude Sonnet 4.6</span>
-                <ChevronDown className="w-3 h-3 text-muted-foreground/50" />
+              <Plus className="w-4 h-4 text-muted-foreground/50 dark:text-white/30" />
+              <div className="flex items-center gap-1.5 px-2 py-1 rounded-md hover:bg-muted/50 dark:hover:bg-white/[0.03] cursor-pointer transition-colors">
+                <Sparkles className="w-4 h-4 text-muted-foreground/60 dark:text-white/40" />
+                <span className="text-sm text-muted-foreground dark:text-white/70">Claude Sonnet 4.6</span>
+                <ChevronDown className="w-3 h-3 text-muted-foreground/50 dark:text-white/30" />
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <button className="p-2 rounded-md hover:bg-muted/50 transition-colors">
-                <Settings className="w-4 h-4 text-muted-foreground/50" />
+              <button className="p-2 rounded-md hover:bg-muted/50 dark:hover:bg-white/[0.03] transition-colors">
+                <Settings className="w-4 h-4 text-muted-foreground/50 dark:text-white/30" />
               </button>
               <button 
                 onClick={() => idea.trim() && onStartProject(idea)}
                 className={cn(
                   "flex items-center gap-2 px-3 py-1.5 rounded-md transition-all text-sm font-medium",
                   typingComplete 
-                    ? "bg-foreground text-background hover:bg-foreground/90" 
-                    : "bg-muted text-foreground hover:bg-muted/80"
+                    ? "bg-foreground dark:bg-white text-background dark:text-black hover:opacity-90" 
+                    : "bg-muted dark:bg-white/[0.06] text-foreground dark:text-white hover:bg-muted/80 dark:hover:bg-white/[0.08]"
                 )}
               >
                 Send <ArrowRight className="w-3.5 h-3.5" />
@@ -321,22 +321,43 @@ export function InteractiveDashboard() {
 
   return (
     <div className="relative">
-      {/* Main dashboard container - theme-aware */}
-      <div className="relative rounded-2xl overflow-hidden bg-card border border-border shadow-lg">
+      {/* Main dashboard container - theme-aware with dark mode premium finish */}
+      <div 
+        className="relative rounded-2xl overflow-hidden bg-card border border-border shadow-lg dark:bg-[#09090a] dark:border-white/[0.08]"
+        style={{
+          boxShadow: 'var(--dashboard-shadow, 0 4px 24px rgba(0,0,0,0.08))'
+        }}
+      >
         {/* Inner frame */}
-        <div className="relative rounded-xl overflow-hidden bg-muted/30">
-          {/* Top edge highlight - only visible in dark mode */}
-          <div className="absolute inset-x-0 top-0 h-px pointer-events-none z-10 bg-gradient-to-r from-transparent via-foreground/10 to-transparent dark:via-white/15" />
+        <div className="relative rounded-xl overflow-hidden bg-muted/30 dark:bg-[#0c0c0d]">
+          {/* Dark mode glossy effects */}
+          <div 
+            className="absolute inset-0 pointer-events-none z-10 hidden dark:block"
+            style={{
+              background: `
+                radial-gradient(ellipse 300px 150px at 15% 0%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 30%, transparent 70%),
+                radial-gradient(ellipse 200px 100px at 85% 5%, rgba(255,255,255,0.04) 0%, transparent 60%)
+              `,
+            }}
+          />
+          <div 
+            className="absolute inset-0 pointer-events-none z-10 hidden dark:block"
+            style={{
+              background: 'linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 10%, transparent 25%)',
+            }}
+          />
+          {/* Top edge highlight */}
+          <div className="absolute inset-x-0 top-0 h-px pointer-events-none z-10 bg-gradient-to-r from-transparent via-black/5 to-transparent dark:via-white/20" />
           
       <div className="flex flex-col sm:flex-row h-auto sm:h-[520px] lg:h-[620px]">
         {/* Sidebar */}
-        <div className="w-full sm:w-56 lg:w-64 flex-shrink-0 flex sm:flex-col relative bg-card/50 border-b sm:border-b-0 sm:border-r border-border/50">
-          <div className="p-4 border-b border-border/50 hidden sm:block">
+        <div className="w-full sm:w-56 lg:w-64 flex-shrink-0 flex sm:flex-col relative bg-muted/50 dark:bg-[#0f0f10] border-b sm:border-b-0 sm:border-r border-border/50 dark:border-white/[0.04]">
+          <div className="p-4 border-b border-border/50 dark:border-white/[0.04] hidden sm:block">
             <div className="flex items-center gap-2.5">
-              <AnimatedLogo size={28} className="text-foreground" />
+              <AnimatedLogo size={28} className="text-foreground dark:text-white" />
               <div>
-                <div className="font-semibold text-sm text-foreground">ProductOS</div>
-                <div className="text-[10px] text-muted-foreground">Workspace</div>
+                <div className="font-semibold text-sm text-foreground dark:text-white">ProductOS</div>
+                <div className="text-[10px] text-muted-foreground dark:text-white/40">Workspace</div>
               </div>
             </div>
           </div>
@@ -345,18 +366,18 @@ export function InteractiveDashboard() {
             <div className="flex items-center gap-2">
               <button 
                 onClick={handleCreateNew}
-                className="flex-1 h-9 rounded-lg bg-foreground text-background text-sm font-medium hover:bg-foreground/90 transition-opacity"
+                className="flex-1 h-9 rounded-lg bg-foreground dark:bg-white text-background dark:text-black text-sm font-medium hover:opacity-90 transition-opacity"
               >
                 Create New
               </button>
-              <button className="h-9 w-9 rounded-lg border border-border flex items-center justify-center hover:bg-muted transition-colors">
-                <Search className="w-4 h-4 text-muted-foreground" />
+              <button className="h-9 w-9 rounded-lg border border-border dark:border-white/[0.08] flex items-center justify-center hover:bg-muted dark:hover:bg-white/[0.03] transition-colors">
+                <Search className="w-4 h-4 text-muted-foreground dark:text-white/50" />
               </button>
             </div>
           </div>
           
           <div className="px-3 py-2 flex sm:block overflow-x-auto sm:overflow-visible">
-            <div className="text-[10px] uppercase tracking-wider text-muted-foreground/60 font-medium mb-2 px-2 hidden sm:block">Stages</div>
+            <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium mb-2 px-2 hidden sm:block">Stages</div>
             <nav className="flex sm:flex-col gap-1 sm:space-y-0.5">
               {stages.map((stage) => {
                 const isActive = activeStage === stage.id
@@ -367,14 +388,14 @@ export function InteractiveDashboard() {
                     className={cn(
                       "flex items-center gap-2 sm:gap-3 px-3 sm:px-2 py-2 rounded-md text-sm transition-all duration-200 cursor-pointer whitespace-nowrap",
                       isActive 
-                        ? "bg-muted text-foreground font-medium" 
-                        : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+                        ? "bg-accent dark:bg-white/[0.06] text-foreground dark:text-white font-medium" 
+                        : "text-muted-foreground dark:text-white/50 hover:bg-muted/50 dark:hover:bg-white/[0.03] hover:text-foreground dark:hover:text-white/70"
                     )}
                   >
-                    <stage.icon className={cn("w-4 h-4", isActive ? "text-foreground/70" : "text-muted-foreground")} />
+                    <stage.icon className={cn("w-4 h-4", isActive ? "text-foreground/70 dark:text-white/70" : "text-muted-foreground dark:text-white/40")} />
                     <span>{stage.name}</span>
                     {isActive && (
-                      <div className="ml-auto w-1.5 h-1.5 rounded-full bg-foreground/50 hidden sm:block" />
+                      <div className="ml-auto w-1.5 h-1.5 rounded-full bg-foreground/50 dark:bg-white/50 hidden sm:block" />
                     )}
                   </button>
                 )
@@ -382,42 +403,42 @@ export function InteractiveDashboard() {
             </nav>
           </div>
           
-          <div className="mt-auto p-3 border-t border-border/50 hidden sm:block">
-            <div className="px-2 py-2 rounded-lg bg-muted/50 border border-border/50 mb-3">
+          <div className="mt-auto p-3 border-t border-border/50 dark:border-white/[0.04] hidden sm:block">
+            <div className="px-2 py-2 rounded-lg bg-muted/50 dark:bg-white/[0.02] border border-border/50 dark:border-white/[0.04] mb-3">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] uppercase tracking-wider text-muted-foreground/60 font-medium">Credits</span>
-                <span className="text-sm font-semibold text-foreground">50</span>
+                <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">Credits</span>
+                <span className="text-sm font-semibold text-foreground dark:text-white">50</span>
               </div>
-              <div className="h-1.5 rounded-full bg-muted overflow-hidden">
+              <div className="h-1.5 rounded-full bg-muted dark:bg-white/[0.06] overflow-hidden">
                 <div className="h-full w-1/2 rounded-full bg-gradient-to-r from-sky-500/50 to-violet-500/50" />
               </div>
             </div>
             
             <div className="flex items-center gap-2.5 px-2">
-              <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-xs font-bold text-muted-foreground">
+              <div className="w-8 h-8 rounded-full bg-muted dark:bg-white/[0.08] flex items-center justify-center text-xs font-bold text-muted-foreground dark:text-white/60">
                 A
               </div>
               <div>
-                <div className="text-sm text-foreground font-medium">Ariv</div>
-                <div className="text-[10px] text-muted-foreground">ariv@1labs.ai</div>
+                <div className="text-sm text-foreground dark:text-white font-medium">Ariv</div>
+                <div className="text-[10px] text-muted-foreground dark:text-white/40">ariv@1labs.ai</div>
               </div>
             </div>
           </div>
         </div>
         
         {/* Main content area */}
-        <div className="flex-1 flex flex-col overflow-hidden relative bg-background/50">
-          <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-border/50">
+        <div className="flex-1 flex flex-col overflow-hidden relative bg-background/50 dark:bg-[#0a0a0b]">
+          <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-border/50 dark:border-white/[0.04]">
             <div className="flex items-center gap-3">
               {activeStage !== "home" && currentStage ? (
                 <>
-                  <span className="px-2 py-1 rounded-md text-xs font-medium bg-muted text-foreground/80">
+                  <span className="px-2 py-1 rounded-md text-xs font-medium bg-muted dark:bg-white/[0.06] text-foreground/80 dark:text-white/80">
                     {currentStage.name}
                   </span>
-                  <span className="text-sm font-medium text-foreground hidden sm:inline">{projectName}</span>
+                  <span className="text-sm font-medium text-foreground dark:text-white hidden sm:inline">{projectName}</span>
                 </>
               ) : (
-                <span className="text-sm font-medium text-muted-foreground">New Project</span>
+                <span className="text-sm font-medium text-muted-foreground dark:text-white/50">New Project</span>
               )}
             </div>
             <div className="flex items-center gap-2">

@@ -73,12 +73,30 @@ export function ProjectStatusDashboard() {
       transition={{ duration: 0.6, delay: 0.2 }}
       className="relative"
     >
-      {/* Main dashboard container - theme-aware */}
-      <div className="relative rounded-2xl overflow-hidden bg-card border border-border shadow-lg">
+      {/* Main dashboard container - theme-aware with dark mode premium finish */}
+      <div 
+        className="relative rounded-2xl overflow-hidden bg-card border border-border shadow-lg dark:bg-[#09090a] dark:border-white/[0.08]"
+      >
         {/* Inner frame */}
-        <div className="relative rounded-xl overflow-hidden bg-muted/30">
+        <div className="relative rounded-xl overflow-hidden bg-muted/30 dark:bg-[#0a0a0a]">
+          {/* Dark mode glossy effects */}
+          <div 
+            className="absolute inset-0 pointer-events-none z-10 hidden dark:block"
+            style={{
+              background: `
+                radial-gradient(ellipse 300px 150px at 15% 0%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 30%, transparent 70%),
+                radial-gradient(ellipse 200px 100px at 85% 5%, rgba(255,255,255,0.04) 0%, transparent 60%)
+              `,
+            }}
+          />
+          <div 
+            className="absolute inset-0 pointer-events-none z-10 hidden dark:block"
+            style={{
+              background: 'linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 10%, transparent 25%)',
+            }}
+          />
           {/* Top edge highlight */}
-          <div className="absolute inset-x-0 top-0 h-px pointer-events-none z-10 bg-gradient-to-r from-transparent via-foreground/10 to-transparent dark:via-white/15" />
+          <div className="absolute inset-x-0 top-0 h-px pointer-events-none z-10 bg-gradient-to-r from-transparent via-black/5 to-transparent dark:via-white/20" />
           
           {/* Inner ambient glow - diffuse lighting */}
           <div 
@@ -92,24 +110,24 @@ export function ProjectStatusDashboard() {
           />
 
       {/* Header Bar */}
-      <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-4 sm:px-6 py-4 border-b border-border/50 bg-muted/20">
+      <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-4 sm:px-6 py-4 border-b border-border/50 dark:border-white/[0.06] bg-muted/20 dark:bg-white/[0.02]">
         <div className="flex items-center gap-3">
           <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-sm font-medium text-foreground">AI Voice Assistant</span>
+          <span className="text-sm font-medium text-foreground dark:text-white">AI Voice Assistant</span>
           <span className="text-xs text-emerald-600 dark:text-emerald-400 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
             Ready to ship
           </span>
         </div>
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground dark:text-white/50">
             <Clock className="size-4" />
-            <span>Est. ship: <span className="text-foreground font-medium">3 days</span></span>
+            <span>Est. ship: <span className="text-foreground dark:text-white font-medium">3 days</span></span>
           </div>
         </div>
       </div>
 
       {/* Stats Grid */}
-      <div className="relative grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 p-4 sm:p-6 border-b border-border/50">
+      <div className="relative grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 p-4 sm:p-6 border-b border-border/50 dark:border-white/[0.06]">
         {projectStats.map((stat, i) => {
           const Icon = stat.icon
           return (
@@ -119,25 +137,25 @@ export function ProjectStatusDashboard() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 + 0.3 }}
-              className="group p-3 sm:p-4 rounded-xl bg-muted/30 border border-border/50 hover:border-border hover:bg-muted/50 transition-all duration-300"
+              className="group p-3 sm:p-4 rounded-xl bg-muted/30 dark:bg-white/[0.02] border border-border/50 dark:border-white/[0.06] hover:border-border dark:hover:border-white/[0.12] hover:bg-muted/50 dark:hover:bg-white/[0.03] transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-2">
-                <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center transition-transform group-hover:scale-110">
-                  <Icon className="size-4 text-muted-foreground" />
+                <div className="w-8 h-8 rounded-lg bg-muted dark:bg-white/[0.04] flex items-center justify-center transition-transform group-hover:scale-110">
+                  <Icon className="size-4 text-muted-foreground dark:text-white/50" />
                 </div>
               </div>
-              <div className="text-xl sm:text-2xl font-bold text-foreground mb-1">{stat.value}</div>
-              <div className="text-xs text-muted-foreground">{stat.label}</div>
+              <div className="text-xl sm:text-2xl font-bold text-foreground dark:text-white mb-1">{stat.value}</div>
+              <div className="text-xs text-muted-foreground dark:text-white/40">{stat.label}</div>
             </motion.div>
           )
         })}
       </div>
 
-      <div className="relative grid lg:grid-cols-[1fr_320px] divide-y lg:divide-y-0 lg:divide-x divide-border/50">
+      <div className="relative grid lg:grid-cols-[1fr_320px] divide-y lg:divide-y-0 lg:divide-x divide-border/50 dark:divide-white/[0.06]">
         {/* Left: Key Deliverables */}
         <div className="p-4 sm:p-6">
-          <h4 className="text-sm font-medium text-foreground mb-4 flex items-center gap-2">
-            <Rocket className="size-4 text-muted-foreground" />
+          <h4 className="text-sm font-medium text-foreground dark:text-white mb-4 flex items-center gap-2">
+            <Rocket className="size-4 text-muted-foreground dark:text-white/50" />
             Key Deliverables
           </h4>
           <div className="space-y-3">
@@ -150,38 +168,38 @@ export function ProjectStatusDashboard() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 + 0.4 }}
-                  className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl bg-muted/30 hover:bg-muted/50 transition-all duration-300 border border-border/50 hover:border-border"
+                  className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl bg-muted/30 dark:bg-white/[0.02] hover:bg-muted/50 dark:hover:bg-white/[0.04] transition-all duration-300 border border-border/50 dark:border-white/[0.06] hover:border-border dark:hover:border-white/[0.1]"
                 >
                   {/* Icon */}
-                  <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105">
-                    <Icon className="size-5 text-muted-foreground" />
+                  <div className="w-10 h-10 rounded-xl bg-muted dark:bg-white/[0.04] flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105">
+                    <Icon className="size-5 text-muted-foreground dark:text-white/50" />
                   </div>
                   
                   {/* Content */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm font-medium text-foreground">{item.name}</span>
+                      <span className="text-sm font-medium text-foreground dark:text-white">{item.name}</span>
                       {item.status === "complete" && (
                         <div className="w-4 h-4 rounded-full bg-emerald-500/20 flex items-center justify-center">
-                          <Check className="size-2.5 text-emerald-500" />
+                          <Check className="size-2.5 text-emerald-500 dark:text-emerald-400" />
                         </div>
                       )}
                       {item.status === "in-progress" && item.progress && (
-                        <span className="text-xs text-muted-foreground font-medium">{item.progress}%</span>
+                        <span className="text-xs text-muted-foreground dark:text-white/50 font-medium">{item.progress}%</span>
                       )}
                     </div>
-                    <span className="text-xs text-muted-foreground">{item.description}</span>
+                    <span className="text-xs text-muted-foreground dark:text-white/40">{item.description}</span>
                   </div>
                   
                   {/* Progress bar for in-progress items */}
                   {item.status === "in-progress" && item.progress && (
-                    <div className="w-20 h-1.5 bg-muted rounded-full overflow-hidden">
+                    <div className="w-20 h-1.5 bg-muted dark:bg-white/[0.06] rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${item.progress}%` }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.6, duration: 0.8 }}
-                        className="h-full bg-foreground/30 rounded-full"
+                        className="h-full bg-foreground/30 dark:bg-white/30 rounded-full"
                       />
                     </div>
                   )}
@@ -192,9 +210,9 @@ export function ProjectStatusDashboard() {
         </div>
 
         {/* Right: Activity Feed */}
-        <div className="p-4 sm:p-6 bg-muted/10">
-          <h4 className="text-sm font-medium text-foreground mb-4 flex items-center gap-2">
-            <BarChart3 className="size-4 text-muted-foreground" />
+        <div className="p-4 sm:p-6 bg-muted/10 dark:bg-white/[0.01]">
+          <h4 className="text-sm font-medium text-foreground dark:text-white mb-4 flex items-center gap-2">
+            <BarChart3 className="size-4 text-muted-foreground dark:text-white/50" />
             Recent Activity
           </h4>
           <div className="space-y-4">
@@ -209,15 +227,15 @@ export function ProjectStatusDashboard() {
                   transition={{ delay: i * 0.1 + 0.5 }}
                   className="flex gap-3 group"
                 >
-                  <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105">
-                    <Icon className="size-4 text-muted-foreground" />
+                  <div className="w-8 h-8 rounded-lg bg-muted dark:bg-white/[0.04] flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105">
+                    <Icon className="size-4 text-muted-foreground dark:text-white/50" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm text-foreground/80">{activity.action}</p>
+                    <p className="text-sm text-foreground/80 dark:text-white/80">{activity.action}</p>
                     <div className="flex items-center gap-2 mt-0.5">
-                      <span className="text-xs text-muted-foreground">{activity.agent}</span>
-                      <span className="text-xs text-muted-foreground/40">•</span>
-                      <span className="text-xs text-muted-foreground">{activity.time}</span>
+                      <span className="text-xs text-muted-foreground dark:text-white/40">{activity.agent}</span>
+                      <span className="text-xs text-muted-foreground/40 dark:text-white/20">•</span>
+                      <span className="text-xs text-muted-foreground dark:text-white/40">{activity.time}</span>
                     </div>
                   </div>
                 </motion.div>
@@ -229,11 +247,11 @@ export function ProjectStatusDashboard() {
           <div className="mt-6 p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
-                <GitBranch className="size-5 text-emerald-500" />
+                <GitBranch className="size-5 text-emerald-500 dark:text-emerald-400" />
               </div>
               <div>
-                <div className="text-sm font-medium text-foreground">Deploy Ready</div>
-                <div className="text-xs text-muted-foreground">All tests passing • Production build ready</div>
+                <div className="text-sm font-medium text-foreground dark:text-white">Deploy Ready</div>
+                <div className="text-xs text-muted-foreground dark:text-white/40">All tests passing • Production build ready</div>
               </div>
             </div>
           </div>
