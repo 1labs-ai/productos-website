@@ -31,6 +31,7 @@ import { IsometricAgentsVisual } from "@/components/isometric-agents-visual"
 import { AgentCubesIllustration, SpeedBarsIllustration, LayeredCubeIllustration } from "@/components/linear-illustrations"
 import { CursorStyleIDE } from "@/components/sections/production-ready/variants/cursor-style-ide"
 import { AnimatedStats } from "@/components/homepage/animated-stats"
+import { TestimonialsFlow } from "@/components/homepage/testimonials-flow"
 
 // Section animation wrapper
 function AnimatedSection({ children, className, delay = 0 }: { children: React.ReactNode, className?: string, delay?: number }) {
@@ -390,50 +391,8 @@ export default function LinearInspiredHomepage() {
       {/* Stats Section - with count-up animation */}
       <AnimatedStats />
 
-      {/* Testimonials */}
-      <section className="py-24 bg-card/30">
-        <div className="max-w-[1436px] mx-auto px-6 lg:px-[50px]">
-          <AnimatedSection className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ letterSpacing: '-0.02em' }}>
-              Founders shipping faster
-            </h2>
-          </AnimatedSection>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                quote: "I went from idea to live product in 6 days. ProductOS handled research, PRD, designs, and code. I just guided it.",
-                author: "Sarah Chen",
-                role: "Founder, DataFlow",
-                avatar: "S"
-              },
-              {
-                quote: "It's like having a product team on demand. The agents actually build on each other's work — research informs the PRD, PRD shapes the design.",
-                author: "Marcus Johnson",
-                role: "Solo Founder",
-                avatar: "M"
-              }
-            ].map((testimonial, i) => (
-              <AnimatedSection key={testimonial.author} delay={i * 0.1}>
-                <div className="p-8 rounded-xl bg-card border border-border/50">
-                  <blockquote className="text-lg text-foreground/90 mb-6 leading-relaxed">
-                    "{testimonial.quote}"
-                  </blockquote>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-muted to-muted-foreground/20 flex items-center justify-center font-semibold text-foreground/60">
-                      {testimonial.avatar}
-                    </div>
-                    <div>
-                      <div className="font-medium text-foreground">{testimonial.author}</div>
-                      <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                    </div>
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Testimonials - Flowing cards */}
+      <TestimonialsFlow />
 
       {/* Final CTA */}
       <section className="py-32">
