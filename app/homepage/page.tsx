@@ -90,44 +90,51 @@ export default function LinearInspiredHomepage() {
         
         {/* Content container with Linear-style spacing */}
         <div className="relative z-10 max-w-[1436px] mx-auto px-6 lg:px-[50px]">
-          {/* Main Headline - Left Aligned like Linear */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-10"
-          >
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 dark:border-white/10 bg-card/50 dark:bg-white/[0.03] mb-6">
-              <Sparkles className="w-4 h-4 text-amber-500" />
-              <span className="text-sm text-foreground/80 dark:text-white/70">AI-Native Product Development Platform</span>
-            </div>
-            
-            <h1 className="mb-8">
-              <span 
-                className="block text-4xl sm:text-5xl lg:text-[64px] font-medium text-foreground"
-                style={{ lineHeight: 1, letterSpacing: '-0.022em' }}
-              >
-                From idea to production
-              </span>
-              <span 
-                className="block text-4xl sm:text-5xl lg:text-[64px] font-medium text-foreground/40"
-                style={{ lineHeight: 1, letterSpacing: '-0.022em' }}
-              >
-                in days, not months
-              </span>
-            </h1>
+          {/* Hero Grid - Left: Content, Right: CTAs (Linear-style) */}
+          <div className="grid lg:grid-cols-[1fr,auto] gap-8 lg:gap-16 items-start mb-12">
+            {/* Left side - Badge, Headline, Supporting text */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 dark:border-white/10 bg-card/50 dark:bg-white/[0.03] mb-6">
+                <Sparkles className="w-4 h-4 text-amber-500" />
+                <span className="text-sm text-foreground/80 dark:text-white/70">AI-Native Product Development</span>
+              </div>
+              
+              <h1 className="mb-6">
+                <span 
+                  className="block text-4xl sm:text-5xl lg:text-[64px] font-medium text-foreground"
+                  style={{ lineHeight: 1.05, letterSpacing: '-0.022em' }}
+                >
+                  From idea to production
+                </span>
+                <span 
+                  className="block text-4xl sm:text-5xl lg:text-[64px] font-medium text-foreground/40"
+                  style={{ lineHeight: 1.05, letterSpacing: '-0.022em' }}
+                >
+                  in days, not months
+                </span>
+              </h1>
 
-            {/* CTAs - Left aligned */}
+              {/* Supporting paragraph */}
+              <p className="text-lg lg:text-xl text-muted-foreground max-w-2xl">
+                Five AI agents that research, document, design, and code your product — so you can ship without a dev team.
+              </p>
+            </motion.div>
+
+            {/* Right side - CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.15 }}
-              className="flex flex-col sm:flex-row items-start gap-3"
+              className="flex flex-col gap-3 lg:pt-8"
             >
               <Button
                 size="lg"
-                className="bg-foreground text-background hover:bg-foreground/90 rounded-md px-6 h-11 text-sm font-medium"
+                className="bg-foreground text-background hover:bg-foreground/90 rounded-md px-6 h-11 text-sm font-medium w-full lg:w-auto"
                 asChild
               >
                 <Link href="/early-access">
@@ -138,7 +145,7 @@ export default function LinearInspiredHomepage() {
               <Button
                 variant="outline"
                 size="lg"
-                className="rounded-md px-6 h-11 text-sm font-medium border-border/60 hover:bg-card"
+                className="rounded-md px-6 h-11 text-sm font-medium border-border/60 hover:bg-card w-full lg:w-auto"
                 asChild
               >
                 <Link href="#features">
@@ -146,7 +153,7 @@ export default function LinearInspiredHomepage() {
                 </Link>
               </Button>
             </motion.div>
-          </motion.div>
+          </div>
 
           {/* Product Dashboard UI - Interactive */}
           <motion.div
