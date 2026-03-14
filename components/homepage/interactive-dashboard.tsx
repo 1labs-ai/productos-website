@@ -467,21 +467,21 @@ export function InteractiveDashboard() {
                 {/* IDEATE */}
                 {activeStage === "ideate" && (
                   <div className="h-full flex flex-col">
-                    <div className="flex-1 rounded-xl border border-white/[0.04] bg-white/[0.01] p-4 flex flex-col">
+                    <div className="flex-1 rounded-xl border border-border/50 dark:border-white/[0.04] bg-muted/30 dark:bg-white/[0.01] p-4 flex flex-col">
                       <div className="flex-1 space-y-4 overflow-hidden">
                         <motion.div
                           initial={{ opacity: 0, x: 20 }}
                           animate={{ opacity: ideateStep >= 1 ? 1 : 0, x: ideateStep >= 1 ? 0 : 20 }}
                           className="flex items-start gap-3 justify-end"
                         >
-                          <div className="max-w-[85%] p-3 rounded-xl bg-white/[0.04] border border-white/[0.08]">
-                            <p className="text-sm text-white/80">
+                          <div className="max-w-[85%] p-3 rounded-xl bg-muted dark:bg-white/[0.04] border border-border/50 dark:border-white/[0.08]">
+                            <p className="text-sm text-foreground/80 dark:text-white/80">
                               {ideateStep >= 1 && (
                                 <TypingText text={projectIdea} speed={18} />
                               )}
                             </p>
                           </div>
-                          <div className="w-8 h-8 rounded-full bg-white/[0.08] flex items-center justify-center text-xs font-bold text-white/60 flex-shrink-0">
+                          <div className="w-8 h-8 rounded-full bg-muted dark:bg-white/[0.08] flex items-center justify-center text-xs font-bold text-muted-foreground dark:text-white/60 flex-shrink-0">
                             H
                           </div>
                         </motion.div>
@@ -491,30 +491,30 @@ export function InteractiveDashboard() {
                           animate={{ opacity: ideateStep >= 2 ? 1 : 0, x: ideateStep >= 2 ? 0 : -20 }}
                           className="flex items-start gap-3"
                         >
-                          <div className="w-8 h-8 rounded-full bg-white/[0.06] flex items-center justify-center flex-shrink-0">
-                            <Sparkles className="w-4 h-4 text-white/60" />
+                          <div className="w-8 h-8 rounded-full bg-muted dark:bg-white/[0.06] flex items-center justify-center flex-shrink-0">
+                            <Sparkles className="w-4 h-4 text-muted-foreground dark:text-white/60" />
                           </div>
-                          <div className="max-w-[85%] p-4 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+                          <div className="max-w-[85%] p-4 rounded-xl bg-muted/50 dark:bg-white/[0.02] border border-border/50 dark:border-white/[0.04]">
                             {ideateStep >= 2 && (
                               <div className="space-y-3 text-sm">
                                 <TypingText 
                                   text="This is a brilliant idea with huge market potential! Here's my analysis:"
                                   speed={12}
-                                  className="text-white/80"
+                                  className="text-foreground/80 dark:text-white/80"
                                 />
                                 {ideateStep >= 3 && (
                                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-2 mt-3">
-                                    <div className="flex items-center gap-2 text-emerald-400">
+                                    <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
                                       <Check className="w-4 h-4" /><span>$2.4B market by 2027 (Voice AI)</span>
                                     </div>
-                                    <div className="flex items-center gap-2 text-emerald-400">
+                                    <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
                                       <Check className="w-4 h-4" /><span>Creator economy = 50M+ users</span>
                                     </div>
-                                    <div className="flex items-center gap-2 text-white/70">
+                                    <div className="flex items-center gap-2 text-foreground/70 dark:text-white/70">
                                       <Zap className="w-4 h-4" /><span>Differentiator: Multi-language + accent control</span>
                                     </div>
-                                    <div className="mt-3 p-2 rounded-lg bg-white/[0.04] border border-white/[0.08]">
-                                      <button onClick={() => setActiveStage("discover")} className="text-white/70 text-xs font-medium flex items-center gap-1 hover:gap-2 transition-all">
+                                    <div className="mt-3 p-2 rounded-lg bg-muted dark:bg-white/[0.04] border border-border/50 dark:border-white/[0.08]">
+                                      <button onClick={() => setActiveStage("discover")} className="text-foreground/70 dark:text-white/70 text-xs font-medium flex items-center gap-1 hover:gap-2 transition-all">
                                         → Proceed to Discovery <ChevronRight className="w-3 h-3" />
                                       </button>
                                     </div>
@@ -526,9 +526,9 @@ export function InteractiveDashboard() {
                         </motion.div>
                       </div>
 
-                      <div className="mt-4 flex items-center gap-2 p-3 rounded-lg border border-white/[0.06] bg-white/[0.02]">
-                        <input type="text" placeholder="Refine your idea..." className="flex-1 bg-transparent text-sm text-white placeholder:text-white/30 outline-none" />
-                        <button className="px-3 py-1.5 rounded-md bg-white/[0.1] hover:bg-white/[0.15] text-white text-sm font-medium flex items-center gap-1 transition-colors">
+                      <div className="mt-4 flex items-center gap-2 p-3 rounded-lg border border-border/50 dark:border-white/[0.06] bg-muted/50 dark:bg-white/[0.02]">
+                        <input type="text" placeholder="Refine your idea..." className="flex-1 bg-transparent text-sm text-foreground dark:text-white placeholder:text-muted-foreground dark:placeholder:text-white/30 outline-none" />
+                        <button className="px-3 py-1.5 rounded-md bg-primary/10 hover:bg-primary/20 dark:bg-white/[0.1] dark:hover:bg-white/[0.15] text-foreground dark:text-white text-sm font-medium flex items-center gap-1 transition-colors">
                           <ArrowRight className="w-3.5 h-3.5" />
                         </button>
                       </div>
@@ -545,12 +545,12 @@ export function InteractiveDashboard() {
                           { label: "Target Users", value: "50M+", icon: Users, accent: "sky" },
                           { label: "Confidence", value: "High", icon: Zap, accent: "amber" },
                         ].map((stat, i) => (
-                          <div key={stat.label} className={cn("p-2.5 rounded-lg border bg-white/[0.02]", `border-${stat.accent}-500/20`)}>
+                          <div key={stat.label} className={cn("p-2.5 rounded-lg border bg-muted/50 dark:bg-white/[0.02]", `border-${stat.accent}-500/20`)}>
                             <div className="flex items-center gap-1.5 mb-1">
-                              <stat.icon className={cn("w-3 h-3", `text-${stat.accent}-400`)} />
-                              <span className="text-[10px] text-white/40 uppercase">{stat.label}</span>
+                              <stat.icon className={cn("w-3 h-3", `text-${stat.accent}-600 dark:text-${stat.accent}-400`)} />
+                              <span className="text-[10px] text-muted-foreground dark:text-white/40 uppercase">{stat.label}</span>
                             </div>
-                            <div className={cn("text-sm font-semibold", `text-${stat.accent}-400`)}>{stat.value}</div>
+                            <div className={cn("text-sm font-semibold", `text-${stat.accent}-600 dark:text-${stat.accent}-400`)}>{stat.value}</div>
                           </div>
                         ))}
                       </motion.div>
@@ -568,18 +568,18 @@ export function InteractiveDashboard() {
                           { label: "Competitors", value: 8, prefix: "", suffix: "", accent: "sky" },
                           { label: "Opportunity", value: 9.1, prefix: "", suffix: "/10", accent: "emerald" },
                         ].map((stat, i) => (
-                          <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className={cn("p-3 rounded-lg border bg-white/[0.02]", `border-${stat.accent}-500/20`)}>
-                            <div className="text-[10px] uppercase tracking-wider text-white/40 mb-1">{stat.label}</div>
-                            <div className={cn("text-xl font-bold", `text-${stat.accent}-400`)}>
+                          <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className={cn("p-3 rounded-lg border bg-muted/50 dark:bg-white/[0.02]", `border-${stat.accent}-500/20`)}>
+                            <div className="text-[10px] uppercase tracking-wider text-muted-foreground dark:text-white/40 mb-1">{stat.label}</div>
+                            <div className={cn("text-xl font-bold", `text-${stat.accent}-600 dark:text-${stat.accent}-400`)}>
                               {stat.prefix}<AnimatedNumber value={stat.value * 10} />{stat.value % 1 !== 0 ? `.${Math.round((stat.value % 1) * 10)}` : ''}{stat.suffix}
                             </div>
                           </motion.div>
                         ))}
                       </div>
-                      <div className="p-4 rounded-lg border border-white/[0.04] bg-white/[0.01]">
+                      <div className="p-4 rounded-lg border border-border/50 dark:border-white/[0.04] bg-muted/30 dark:bg-white/[0.01]">
                         <div className="flex items-center justify-between mb-3">
-                          <span className="text-sm font-medium text-white">Competitor Analysis</span>
-                          <span className="text-[10px] text-white/50">Live Research</span>
+                          <span className="text-sm font-medium text-foreground dark:text-white">Competitor Analysis</span>
+                          <span className="text-[10px] text-muted-foreground dark:text-white/50">Live Research</span>
                         </div>
                         <div className="space-y-2">
                           {[
@@ -587,11 +587,11 @@ export function InteractiveDashboard() {
                             { name: "Murf.ai", price: "$29/mo", users: "500K", gap: "Limited languages" },
                             { name: "Play.ht", price: "$39/mo", users: "300K", gap: "No voice cloning" },
                           ].map((comp, i) => (
-                            <motion.div key={comp.name} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 + i * 0.1 }} className="flex items-center justify-between p-2 rounded-md bg-white/[0.02] text-xs">
-                              <span className="font-medium text-white">{comp.name}</span>
-                              <span className="text-white/50">{comp.price}</span>
-                              <span className="text-white/50">{comp.users}</span>
-                              <span className="text-white/60">{comp.gap}</span>
+                            <motion.div key={comp.name} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 + i * 0.1 }} className="flex items-center justify-between p-2 rounded-md bg-muted/50 dark:bg-white/[0.02] text-xs">
+                              <span className="font-medium text-foreground dark:text-white">{comp.name}</span>
+                              <span className="text-muted-foreground dark:text-white/50">{comp.price}</span>
+                              <span className="text-muted-foreground dark:text-white/50">{comp.users}</span>
+                              <span className="text-muted-foreground dark:text-white/60">{comp.gap}</span>
                             </motion.div>
                           ))}
                         </div>
@@ -601,11 +601,11 @@ export function InteractiveDashboard() {
                         initial={{ opacity: 0, y: 20 }} 
                         animate={{ opacity: 1, y: 0 }} 
                         transition={{ delay: 0.6 }}
-                        className="p-3 rounded-lg border border-white/[0.04] bg-white/[0.01]"
+                        className="p-3 rounded-lg border border-border/50 dark:border-white/[0.04] bg-muted/30 dark:bg-white/[0.01]"
                       >
                         <div className="flex items-center justify-between mb-2">
-                          <span className="text-xs font-medium text-white">Market Trends</span>
-                          <span className="text-[10px] text-emerald-400">↑ Growing</span>
+                          <span className="text-xs font-medium text-foreground dark:text-white">Market Trends</span>
+                          <span className="text-[10px] text-emerald-600 dark:text-emerald-400">↑ Growing</span>
                         </div>
                         <div className="flex items-end gap-1 h-12">
                           {[25, 35, 30, 45, 55, 50, 65, 75, 70, 85, 90, 95].map((h, i) => (
@@ -618,14 +618,14 @@ export function InteractiveDashboard() {
                             />
                           ))}
                         </div>
-                        <div className="flex justify-between mt-1.5 text-[9px] text-white/30">
+                        <div className="flex justify-between mt-1.5 text-[9px] text-muted-foreground dark:text-white/30">
                           <span>2022</span>
                           <span>2027 (projected)</span>
                         </div>
                       </motion.div>
                     </div>
                     <div className="space-y-3">
-                      <div className="text-xs font-medium text-white/40 uppercase tracking-wider">Key Insights</div>
+                      <div className="text-xs font-medium text-muted-foreground dark:text-white/40 uppercase tracking-wider">Key Insights</div>
                       {[
                         { icon: Target, title: "Market Gap", desc: "Multi-accent voice cloning for creators", accent: "violet" },
                         { icon: TrendingUp, title: "Growth Vector", desc: "YouTube, TikTok, podcast creators", accent: "emerald" },
@@ -633,13 +633,13 @@ export function InteractiveDashboard() {
                       ].map((insight, i) => (
                         <motion.div key={insight.title} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.15 }} className={cn("p-3 rounded-lg border", `bg-${insight.accent}-500/5 border-${insight.accent}-500/20`)}>
                           <div className="flex items-center gap-2 mb-1">
-                            <insight.icon className={cn("w-4 h-4", `text-${insight.accent}-400`)} />
-                            <span className={cn("text-sm font-medium", `text-${insight.accent}-400`)}>{insight.title}</span>
+                            <insight.icon className={cn("w-4 h-4", `text-${insight.accent}-600 dark:text-${insight.accent}-400`)} />
+                            <span className={cn("text-sm font-medium", `text-${insight.accent}-600 dark:text-${insight.accent}-400`)}>{insight.title}</span>
                           </div>
-                          <p className="text-xs text-white/50">{insight.desc}</p>
+                          <p className="text-xs text-muted-foreground dark:text-white/50">{insight.desc}</p>
                         </motion.div>
                       ))}
-                      <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }} onClick={() => setActiveStage("define")} className="w-full mt-2 p-2 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white/70 text-xs font-medium flex items-center justify-center gap-1 hover:bg-white/[0.06] transition-colors">
+                      <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }} onClick={() => setActiveStage("define")} className="w-full mt-2 p-2 rounded-lg bg-muted dark:bg-white/[0.04] border border-border/50 dark:border-white/[0.08] text-foreground/70 dark:text-white/70 text-xs font-medium flex items-center justify-center gap-1 hover:bg-muted/80 dark:hover:bg-white/[0.06] transition-colors">
                         Continue to Define <ChevronRight className="w-3 h-3" />
                       </motion.button>
                     </div>
@@ -650,7 +650,7 @@ export function InteractiveDashboard() {
                 {activeStage === "define" && (
                   <div className="h-full grid grid-cols-1 lg:grid-cols-5 gap-4">
                     <div className="lg:col-span-2 space-y-2">
-                      <div className="text-xs font-medium text-white/40 uppercase tracking-wider mb-2">PRD Sections</div>
+                      <div className="text-xs font-medium text-muted-foreground dark:text-white/40 uppercase tracking-wider mb-2">PRD Sections</div>
                       {[
                         { name: "Executive Summary", status: "complete" },
                         { name: "Problem Statement", status: "complete" },
@@ -658,23 +658,23 @@ export function InteractiveDashboard() {
                         { name: "Feature List", status: "active" },
                         { name: "Technical Spec", status: "pending" },
                       ].map((section, i) => (
-                        <motion.div key={section.name} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.08 }} className={cn("flex items-center gap-3 p-2 rounded-md text-sm transition-colors", section.status === "active" ? "bg-white/[0.04] text-white" : section.status === "complete" ? "text-emerald-400" : "text-white/30")}>
+                        <motion.div key={section.name} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.08 }} className={cn("flex items-center gap-3 p-2 rounded-md text-sm transition-colors", section.status === "active" ? "bg-muted dark:bg-white/[0.04] text-foreground dark:text-white" : section.status === "complete" ? "text-emerald-600 dark:text-emerald-400" : "text-muted-foreground dark:text-white/30")}>
                           {section.status === "complete" ? <Check className="w-4 h-4" /> : section.status === "active" ? <FileText className="w-4 h-4" /> : <div className="w-4 h-4 rounded-full border border-current" />}
                           <span>{section.name}</span>
                           {section.status === "active" && (
-                            <div className="ml-auto w-1.5 h-1.5 rounded-full bg-white/60 animate-pulse" />
+                            <div className="ml-auto w-1.5 h-1.5 rounded-full bg-foreground/60 dark:bg-white/60 animate-pulse" />
                           )}
                         </motion.div>
                       ))}
-                      <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} onClick={() => setActiveStage("design")} className="w-full mt-3 p-2 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white/70 text-xs font-medium flex items-center justify-center gap-1 hover:bg-white/[0.06] transition-colors">
+                      <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} onClick={() => setActiveStage("design")} className="w-full mt-3 p-2 rounded-lg bg-muted dark:bg-white/[0.04] border border-border/50 dark:border-white/[0.08] text-foreground/70 dark:text-white/70 text-xs font-medium flex items-center justify-center gap-1 hover:bg-muted/80 dark:hover:bg-white/[0.06] transition-colors">
                         Continue to Design <ChevronRight className="w-3 h-3" />
                       </motion.button>
                     </div>
                     <div className="lg:col-span-3 flex flex-col gap-3">
-                      <div className="p-4 rounded-lg border border-white/[0.04] bg-white/[0.01]">
+                      <div className="p-4 rounded-lg border border-border/50 dark:border-white/[0.04] bg-muted/30 dark:bg-white/[0.01]">
                         <div className="flex items-center justify-between mb-4">
-                          <span className="text-sm font-medium text-white">Core Features</span>
-                          <span className="text-xs text-white/50">6 features defined</span>
+                          <span className="text-sm font-medium text-foreground dark:text-white">Core Features</span>
+                          <span className="text-xs text-muted-foreground dark:text-white/50">6 features defined</span>
                         </div>
                         <div className="space-y-2">
                           {[
@@ -685,14 +685,14 @@ export function InteractiveDashboard() {
                             { name: "API for developers", priority: "P1", effort: "4d" },
                             { name: "Team collaboration", priority: "P2", effort: "3d" },
                           ].map((feature, i) => (
-                            <motion.div key={feature.name} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 + i * 0.08 }} className="flex items-center justify-between p-2 rounded-md bg-white/[0.02] text-sm">
+                            <motion.div key={feature.name} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 + i * 0.08 }} className="flex items-center justify-between p-2 rounded-md bg-muted/50 dark:bg-white/[0.02] text-sm">
                               <div className="flex items-center gap-2">
-                                <Check className="w-3.5 h-3.5 text-emerald-400" />
-                                <span className="text-white/80">{feature.name}</span>
+                                <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                                <span className="text-foreground/80 dark:text-white/80">{feature.name}</span>
                               </div>
                               <div className="flex items-center gap-2">
-                                <span className={cn("px-1.5 py-0.5 rounded text-[10px] font-medium", feature.priority === "P0" ? "bg-red-500/10 text-red-400" : feature.priority === "P1" ? "bg-white/[0.06] text-white/50" : "bg-white/[0.04] text-white/40")}>{feature.priority}</span>
-                                <span className="text-xs text-white/40">{feature.effort}</span>
+                                <span className={cn("px-1.5 py-0.5 rounded text-[10px] font-medium", feature.priority === "P0" ? "bg-red-500/10 text-red-600 dark:text-red-400" : feature.priority === "P1" ? "bg-muted dark:bg-white/[0.06] text-muted-foreground dark:text-white/50" : "bg-muted/50 dark:bg-white/[0.04] text-muted-foreground dark:text-white/40")}>{feature.priority}</span>
+                                <span className="text-xs text-muted-foreground dark:text-white/40">{feature.effort}</span>
                               </div>
                             </motion.div>
                           ))}
@@ -710,9 +710,9 @@ export function InteractiveDashboard() {
                           { label: "P0 Features", value: "3", accent: "red" },
                           { label: "MVP Ready", value: "Week 3", accent: "emerald" },
                         ].map((stat) => (
-                          <div key={stat.label} className={cn("p-2.5 rounded-lg border bg-white/[0.02]", `border-${stat.accent}-500/20`)}>
-                            <div className="text-[10px] text-white/40 uppercase mb-0.5">{stat.label}</div>
-                            <div className={cn("text-sm font-semibold", `text-${stat.accent}-400`)}>{stat.value}</div>
+                          <div key={stat.label} className={cn("p-2.5 rounded-lg border bg-muted/50 dark:bg-white/[0.02]", `border-${stat.accent}-500/20`)}>
+                            <div className="text-[10px] text-muted-foreground dark:text-white/40 uppercase mb-0.5">{stat.label}</div>
+                            <div className={cn("text-sm font-semibold", `text-${stat.accent}-600 dark:text-${stat.accent}-400`)}>{stat.value}</div>
                           </div>
                         ))}
                       </motion.div>
@@ -725,12 +725,12 @@ export function InteractiveDashboard() {
                   <div className="h-full flex flex-col gap-3">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs text-white/50">Generating UI for</span>
-                        <span className="text-sm font-medium text-white/70">{projectName}</span>
+                        <span className="text-xs text-muted-foreground dark:text-white/50">Generating UI for</span>
+                        <span className="text-sm font-medium text-foreground/70 dark:text-white/70">{projectName}</span>
                       </div>
                       <div className="flex items-center gap-2 text-xs">
-                        <span className="text-emerald-400">6/6 screens ready</span>
-                        <Check className="w-3.5 h-3.5 text-emerald-400" />
+                        <span className="text-emerald-600 dark:text-emerald-400">6/6 screens ready</span>
+                        <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                       </div>
                     </div>
 
@@ -1011,7 +1011,7 @@ export function InteractiveDashboard() {
                       </motion.div>
                     </div>
 
-                    <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} onClick={() => setActiveStage("develop")} className="w-full p-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-white/70 text-sm font-medium flex items-center justify-center gap-2 hover:bg-white/[0.06] transition-colors">
+                    <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} onClick={() => setActiveStage("develop")} className="w-full p-2.5 rounded-lg bg-muted dark:bg-white/[0.04] border border-border/50 dark:border-white/[0.08] text-foreground/70 dark:text-white/70 text-sm font-medium flex items-center justify-center gap-2 hover:bg-muted/80 dark:hover:bg-white/[0.06] transition-colors">
                       Continue to Develop <ChevronRight className="w-4 h-4" />
                     </motion.button>
                   </div>
@@ -1021,8 +1021,9 @@ export function InteractiveDashboard() {
                 {activeStage === "develop" && (
                   <div className="h-full grid grid-cols-1 lg:grid-cols-2 gap-4">
                     <div className="flex flex-col gap-3">
-                      <div className="flex-1 rounded-lg bg-[#0d0d0e] border border-white/[0.04] overflow-hidden font-mono text-xs">
-                        <div className="flex items-center gap-2 px-3 py-1.5 bg-white/[0.02] border-b border-white/[0.04]">
+                      {/* Terminal - stays dark as it represents actual terminal */}
+                      <div className="flex-1 rounded-lg bg-[#0d0d0e] border border-neutral-800 dark:border-white/[0.04] overflow-hidden font-mono text-xs">
+                        <div className="flex items-center gap-2 px-3 py-1.5 bg-neutral-900 dark:bg-white/[0.02] border-b border-neutral-800 dark:border-white/[0.04]">
                           <div className="flex items-center gap-1.5">
                             <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
                             <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
@@ -1043,9 +1044,9 @@ export function InteractiveDashboard() {
                       </div>
                       <div className="grid grid-cols-4 gap-2">
                         {[{ label: "Files", value: "47" }, { label: "Tests", value: "24" }, { label: "Coverage", value: "94%" }, { label: "Size", value: "142KB" }].map((stat, i) => (
-                          <motion.div key={stat.label} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 + i * 0.1 }} className="p-2 rounded-lg border border-white/[0.04] bg-white/[0.02] text-center">
-                            <div className="text-sm font-bold text-white">{stat.value}</div>
-                            <div className="text-[9px] text-white/40 uppercase">{stat.label}</div>
+                          <motion.div key={stat.label} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 + i * 0.1 }} className="p-2 rounded-lg border border-border/50 dark:border-white/[0.04] bg-muted/50 dark:bg-white/[0.02] text-center">
+                            <div className="text-sm font-bold text-foreground dark:text-white">{stat.value}</div>
+                            <div className="text-[9px] text-muted-foreground dark:text-white/40 uppercase">{stat.label}</div>
                           </motion.div>
                         ))}
                       </div>
@@ -1057,10 +1058,10 @@ export function InteractiveDashboard() {
                     <div className="flex flex-col gap-2">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <Globe className="w-4 h-4 text-emerald-400" />
-                          <span className="text-sm font-medium text-emerald-400">Live Preview</span>
+                          <Globe className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                          <span className="text-sm font-medium text-emerald-600 dark:text-emerald-400">Live Preview</span>
                         </div>
-                        <span className="text-xs text-white/40">localhost:3000</span>
+                        <span className="text-xs text-muted-foreground dark:text-white/40">localhost:3000</span>
                       </div>
                       <div className="flex-1 rounded-xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 to-transparent p-1">
                         <ProductPreview />
