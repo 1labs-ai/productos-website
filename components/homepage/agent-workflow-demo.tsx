@@ -182,7 +182,7 @@ export function AgentWorkflowDemo({ className }: AgentWorkflowDemoProps) {
         {/* Left: Chat Input Panel */}
         <div className="lg:w-[460px] border-b lg:border-b-0 lg:border-r border-border/30 dark:border-white/[0.06] flex flex-col flex-shrink-0">
           {/* Chat Area */}
-          <div className="flex-1 p-6 flex flex-col">
+          <div className="flex-1 p-4 sm:p-6 flex flex-col">
             {/* User Avatar & Label */}
             <div className="flex items-center gap-2.5 mb-4">
               <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center">
@@ -215,34 +215,35 @@ export function AgentWorkflowDemo({ className }: AgentWorkflowDemoProps) {
           </div>
           
           {/* Chat Input */}
-          <div className="p-4 border-t border-border/30 dark:border-white/[0.06]">
+          <div className="p-3 sm:p-4 border-t border-border/30 dark:border-white/[0.06]">
             <div className="rounded-xl border border-border/50 dark:border-white/[0.08] bg-muted/30 dark:bg-white/[0.02] overflow-hidden">
               {/* Text Area */}
-              <div className="p-4 min-h-[60px]">
+              <div className="p-3 sm:p-4 min-h-[50px] sm:min-h-[60px]">
                 <span className="text-muted-foreground dark:text-white/30 text-sm">Describe your product idea...</span>
               </div>
               
               {/* Bottom Controls */}
-              <div className="px-4 py-3 flex items-center justify-between border-t border-border/30 dark:border-white/[0.04]">
-                <div className="flex items-center gap-3">
+              <div className="px-3 sm:px-4 py-2.5 sm:py-3 flex items-center justify-between border-t border-border/30 dark:border-white/[0.04]">
+                <div className="flex items-center gap-2 sm:gap-3">
                   {/* Plus Button */}
-                  <button className="w-7 h-7 rounded-md border border-border/50 dark:border-white/[0.08] flex items-center justify-center text-muted-foreground dark:text-white/40 hover:text-foreground dark:hover:text-white/60 hover:bg-muted/50 dark:hover:bg-white/[0.04] transition-colors">
-                    <Plus className="size-4" />
+                  <button className="w-6 h-6 sm:w-7 sm:h-7 rounded-md border border-border/50 dark:border-white/[0.08] flex items-center justify-center text-muted-foreground dark:text-white/40 hover:text-foreground dark:hover:text-white/60 hover:bg-muted/50 dark:hover:bg-white/[0.04] transition-colors">
+                    <Plus className="size-3.5 sm:size-4" />
                   </button>
                   
-                  {/* Model Selector - Linear-style */}
-                  <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-muted/50 dark:bg-white/[0.04] hover:bg-muted dark:hover:bg-white/[0.06] cursor-pointer transition-colors shrink-0">
-                    <Sparkles className="size-3.5 text-muted-foreground dark:text-white/40 shrink-0" />
-                    <span className="text-sm text-muted-foreground dark:text-white/50 whitespace-nowrap">Claude Sonnet 4.6</span>
-                    <ChevronDown className="size-3 text-muted-foreground/60 dark:text-white/30 shrink-0" />
+                  {/* Model Selector - Linear-style, compact on mobile */}
+                  <div className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-lg bg-muted/50 dark:bg-white/[0.04] hover:bg-muted dark:hover:bg-white/[0.06] cursor-pointer transition-colors shrink-0">
+                    <Sparkles className="size-3 sm:size-3.5 text-muted-foreground dark:text-white/40 shrink-0" />
+                    <span className="text-xs sm:text-sm text-muted-foreground dark:text-white/50 whitespace-nowrap hidden sm:inline">Claude Sonnet 4.6</span>
+                    <span className="text-xs text-muted-foreground dark:text-white/50 sm:hidden">Sonnet</span>
+                    <ChevronDown className="size-2.5 sm:size-3 text-muted-foreground/60 dark:text-white/30 shrink-0" />
                   </div>
                 </div>
                 
                 <div className="flex items-center gap-2">
                   {/* Send Button */}
-                  <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-foreground dark:bg-white text-background dark:text-black text-sm font-medium">
+                  <button className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-foreground dark:bg-white text-background dark:text-black text-xs sm:text-sm font-medium">
                     Send
-                    <ArrowUp className="size-3.5" />
+                    <ArrowUp className="size-3 sm:size-3.5" />
                   </button>
                 </div>
               </div>
@@ -253,7 +254,7 @@ export function AgentWorkflowDemo({ className }: AgentWorkflowDemoProps) {
         {/* Right: Agent Workflow */}
         <div className="flex-1 flex flex-col bg-muted/20 dark:bg-white/[0.01] overflow-hidden">
           {/* Header - Linear-style */}
-          <div className="px-6 py-4 border-b border-border/30 dark:border-white/[0.04] flex items-center justify-between flex-shrink-0">
+          <div className="px-4 sm:px-6 py-3 sm:py-4 border-b border-border/30 dark:border-white/[0.04] flex items-center justify-between flex-shrink-0">
             <div className="flex items-center gap-2">
               <Sparkles className="size-4 text-muted-foreground dark:text-white/50" />
               <span className="text-sm font-medium text-foreground dark:text-white">ProductOS Agents</span>
@@ -266,8 +267,8 @@ export function AgentWorkflowDemo({ className }: AgentWorkflowDemoProps) {
           </div>
           
           {/* Agent Cards - Linear-style monochrome */}
-          <div className="flex-1 p-3 overflow-hidden">
-            <div className="space-y-2 h-full">
+          <div className="flex-1 p-2 sm:p-3 overflow-hidden">
+            <div className="space-y-1.5 sm:space-y-2 h-full">
               {agents.map((agent, index) => {
                 const state = getAgentState(agent.id, index)
                 const Icon = agent.icon
@@ -276,7 +277,7 @@ export function AgentWorkflowDemo({ className }: AgentWorkflowDemoProps) {
                   <div
                     key={agent.id}
                     className={cn(
-                      "p-2.5 rounded-xl border transition-all duration-300 h-[64px] flex items-center",
+                      "p-2 sm:p-2.5 rounded-lg sm:rounded-xl border transition-all duration-300 h-[52px] sm:h-[64px] flex items-center",
                       state === "complete" && "bg-emerald-500/5 dark:bg-white/[0.02] border-emerald-500/20",
                       state === "active" && "bg-muted/50 dark:bg-white/[0.03] border-border/50 dark:border-white/[0.08]",
                       state === "pending" && "bg-muted/20 dark:bg-white/[0.01] border-border/30 dark:border-white/[0.04] opacity-40"
@@ -284,25 +285,25 @@ export function AgentWorkflowDemo({ className }: AgentWorkflowDemoProps) {
                   >
                     {/* Agent Icon - monochrome with status colors */}
                     <div className={cn(
-                      "w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mr-3",
+                      "w-7 h-7 sm:w-9 sm:h-9 rounded-md sm:rounded-lg flex items-center justify-center flex-shrink-0 mr-2 sm:mr-3",
                       state === "complete" && "bg-emerald-500/10",
                       state === "active" && "bg-muted dark:bg-white/[0.06]",
                       state === "pending" && "bg-muted/50 dark:bg-white/[0.03]"
                     )}>
                       {state === "active" ? (
-                        <Loader2 className="size-4 animate-spin text-foreground/70 dark:text-white/70" />
+                        <Loader2 className="size-3.5 sm:size-4 animate-spin text-foreground/70 dark:text-white/70" />
                       ) : state === "complete" ? (
-                        <Check className="size-4 text-emerald-500 dark:text-emerald-400" />
+                        <Check className="size-3.5 sm:size-4 text-emerald-500 dark:text-emerald-400" />
                       ) : (
-                        <Icon className="size-4 text-muted-foreground/50 dark:text-white/30" />
+                        <Icon className="size-3.5 sm:size-4 text-muted-foreground/50 dark:text-white/30" />
                       )}
                     </div>
                     
                     {/* Agent Content */}
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
                         <span className={cn(
-                          "text-sm font-medium",
+                          "text-xs sm:text-sm font-medium",
                           state === "active" && "text-foreground dark:text-white",
                           state === "complete" && "text-foreground/90 dark:text-white/90",
                           state === "pending" && "text-muted-foreground dark:text-white/40"
@@ -310,16 +311,16 @@ export function AgentWorkflowDemo({ className }: AgentWorkflowDemoProps) {
                           {agent.name}
                         </span>
                         {state === "active" && (
-                          <span className="text-xs text-muted-foreground dark:text-white/50">
+                          <span className="text-[10px] sm:text-xs text-muted-foreground dark:text-white/50 hidden sm:inline">
                             {agent.status}
                           </span>
                         )}
                       </div>
                       
                       {state === "complete" && (
-                        <div className="flex items-center gap-2 mt-0.5">
-                          <span className="text-xs text-muted-foreground dark:text-white/50">{agent.result}</span>
-                          <span className="text-xs text-emerald-600 dark:text-emerald-400/80 font-medium">{agent.metric}</span>
+                        <div className="flex items-center gap-1.5 sm:gap-2 mt-0.5">
+                          <span className="text-[10px] sm:text-xs text-muted-foreground dark:text-white/50 truncate max-w-[120px] sm:max-w-none">{agent.result}</span>
+                          <span className="text-[10px] sm:text-xs text-emerald-600 dark:text-emerald-400/80 font-medium hidden sm:inline">{agent.metric}</span>
                         </div>
                       )}
                       
