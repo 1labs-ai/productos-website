@@ -90,13 +90,14 @@ export default function LinearInspiredHomepage() {
         
         {/* Content container with Linear-style spacing */}
         <div className="relative z-10 max-w-[1436px] mx-auto px-6 lg:px-[50px]">
-          {/* Hero Grid - Left: Content, Right: CTAs (Linear-style) */}
-          <div className="grid lg:grid-cols-[1fr,auto] gap-8 lg:gap-16 items-start mb-12">
+          {/* Hero Grid - Left: Content, Right: CTA link (Linear-style) */}
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-16 mb-12">
             {/* Left side - Badge, Headline, Supporting text */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              className="flex-1"
             >
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 dark:border-white/10 bg-card/50 dark:bg-white/[0.03] mb-6">
@@ -119,39 +120,33 @@ export default function LinearInspiredHomepage() {
                 </span>
               </h1>
 
-              {/* Supporting paragraph */}
-              <p className="text-lg lg:text-xl text-muted-foreground max-w-2xl">
-                Five AI agents that research, document, design, and code your product — so you can ship without a dev team.
+              {/* Supporting paragraph - single line */}
+              <p className="text-lg text-muted-foreground whitespace-nowrap">
+                Five AI agents that research, document, design, and code your product.
               </p>
             </motion.div>
 
-            {/* Right side - CTAs */}
+            {/* Right side - Link-style CTAs */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.15 }}
-              className="flex flex-col gap-3 lg:pt-8"
+              className="flex flex-col items-start lg:items-end gap-4 lg:pt-6"
             >
-              <Button
-                size="lg"
-                className="bg-foreground text-background hover:bg-foreground/90 rounded-md px-6 h-11 text-sm font-medium w-full lg:w-auto"
-                asChild
+              <Link 
+                href="/early-access"
+                className="inline-flex items-center gap-2 text-foreground hover:text-foreground/80 font-medium transition-colors group"
               >
-                <Link href="/early-access">
-                  Request Early Access
-                  <ArrowRight className="ml-2 size-4" />
-                </Link>
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="rounded-md px-6 h-11 text-sm font-medium border-border/60 hover:bg-card w-full lg:w-auto"
-                asChild
+                Request Early Access
+                <ArrowRight className="size-4 group-hover:translate-x-0.5 transition-transform" />
+              </Link>
+              <Link 
+                href="#features"
+                className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground font-medium transition-colors group"
               >
-                <Link href="#features">
-                  See How It Works
-                </Link>
-              </Button>
+                See How It Works
+                <ArrowRight className="size-4 group-hover:translate-x-0.5 transition-transform" />
+              </Link>
             </motion.div>
           </div>
 
