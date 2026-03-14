@@ -122,8 +122,8 @@ export const FounderNetwork = ({ className }: FounderNetworkProps) => {
               transition={{ delay: 0.8 + i * 0.2, type: "spring", stiffness: 100 }}
             >
               <div className="group relative">
-                <div className="w-10 h-10 rounded-xl border border-foreground/10 dark:border-white/10 bg-foreground/[0.02] dark:bg-white/[0.02] flex items-center justify-center text-foreground/30 dark:text-white/30 group-hover:text-foreground dark:group-hover:text-white group-hover:border-foreground/30 dark:group-hover:border-white/30 transition-all duration-500">
-                  <role.icon size={16} strokeWidth={1} />
+                <div className="w-10 h-10 rounded-xl border border-foreground/20 dark:border-white/20 bg-foreground/[0.03] dark:bg-white/[0.03] flex items-center justify-center text-foreground/50 dark:text-white/50 group-hover:text-foreground dark:group-hover:text-white group-hover:border-foreground/40 dark:group-hover:border-white/40 transition-all duration-500">
+                  <role.icon size={18} strokeWidth={1.5} />
                 </div>
                 
                 {/* Corner Accents */}
@@ -131,7 +131,7 @@ export const FounderNetwork = ({ className }: FounderNetworkProps) => {
                 <div className="absolute -bottom-0.5 -right-0.5 w-1.5 h-1.5 border-b border-r border-foreground/20 dark:border-white/20" />
               </div>
               
-              <span className="text-[6px] font-mono uppercase tracking-[0.2em] text-foreground/20 dark:text-white/20">
+              <span className="text-[10px] font-mono uppercase tracking-[0.15em] text-foreground/50 dark:text-white/50">
                 {role.label}
               </span>
             </motion.div>
