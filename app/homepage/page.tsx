@@ -30,6 +30,7 @@ import { WorkflowNodesIcon, GrowthGraphIcon, NetworkHubIcon } from "@/components
 import { IsometricAgentsVisual } from "@/components/isometric-agents-visual"
 import { AgentCubesIllustration, SpeedBarsIllustration, LayeredCubeIllustration } from "@/components/linear-illustrations"
 import { CursorStyleIDE } from "@/components/sections/production-ready/variants/cursor-style-ide"
+import { AnimatedStats } from "@/components/homepage/animated-stats"
 
 // Section animation wrapper
 function AnimatedSection({ children, className, delay = 0 }: { children: React.ReactNode, className?: string, delay?: number }) {
@@ -386,35 +387,8 @@ export default function LinearInspiredHomepage() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-24">
-        <div className="max-w-[1436px] mx-auto px-6 lg:px-[50px]">
-          <AnimatedSection className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-medium mb-4" style={{ lineHeight: 1, letterSpacing: '-0.022em' }}>
-              The numbers speak.<br />
-              <span className="text-muted-foreground">ProductOS delivers.</span>
-            </h2>
-          </AnimatedSection>
-
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              { value: "3-12", label: "Days to ship", suffix: "days" },
-              { value: "80", label: "Less development cost", suffix: "%" },
-              { value: "5", label: "AI agents working together", suffix: "" },
-              { value: "∞", label: "Ideas you can build", suffix: "" },
-            ].map((stat, i) => (
-              <AnimatedSection key={stat.label} delay={i * 0.1}>
-                <div className="text-center p-6 rounded-xl bg-card/50 border border-border/30">
-                  <div className="text-4xl sm:text-5xl font-bold text-foreground mb-2">
-                    {stat.value}<span className="text-2xl text-muted-foreground">{stat.suffix}</span>
-                  </div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Stats Section - with count-up animation */}
+      <AnimatedStats />
 
       {/* Testimonials */}
       <section className="py-24 bg-card/30">
