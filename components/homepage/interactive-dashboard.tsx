@@ -212,13 +212,13 @@ function StartingScreen({ onStartProject }: { onStartProject: (idea: string) => 
 // Product Preview Component
 function ProductPreview() {
   return (
-    <div className="h-full flex flex-col bg-[#0c0c0d] rounded-lg overflow-hidden border border-white/[0.06]">
-      <div className="flex items-center justify-between px-3 py-2 border-b border-white/[0.04] bg-white/[0.02]">
+    <div className="h-full flex flex-col bg-card dark:bg-[#0c0c0d] rounded-lg overflow-hidden border border-border/50 dark:border-white/[0.06]">
+      <div className="flex items-center justify-between px-3 py-2 border-b border-border/30 dark:border-white/[0.04] bg-muted/30 dark:bg-white/[0.02]">
         <div className="flex items-center gap-2">
           <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-violet-500/30 to-purple-500/30 flex items-center justify-center">
-            <Bot className="w-3.5 h-3.5 text-white/60" />
+            <Bot className="w-3.5 h-3.5 text-muted-foreground dark:text-white/60" />
           </div>
-          <span className="text-xs font-semibold text-white">VoiceAI Studio</span>
+          <span className="text-xs font-semibold text-foreground dark:text-white">VoiceAI Studio</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 rounded-full bg-emerald-500" />
@@ -237,18 +237,18 @@ function ProductPreview() {
               className={cn(
                 "p-2 rounded-lg border transition-all",
                 voice.selected 
-                  ? "bg-white/[0.06] border-white/[0.12]" 
-                  : "bg-white/[0.02] border-white/[0.04] hover:border-white/[0.08]"
+                  ? "bg-muted dark:bg-white/[0.06] border-border dark:border-white/[0.12]" 
+                  : "bg-muted/30 dark:bg-white/[0.02] border-border/30 dark:border-white/[0.04] hover:border-border dark:hover:border-white/[0.08]"
               )}
             >
-              <div className={cn("w-6 h-6 rounded-full mb-1.5", voice.selected ? "bg-gradient-to-br from-violet-500/40 to-purple-500/40" : "bg-white/10")} />
-              <div className="text-[10px] font-medium text-white">{voice.name}</div>
-              <div className="text-[8px] text-white/40">{voice.accent}</div>
+              <div className={cn("w-6 h-6 rounded-full mb-1.5", voice.selected ? "bg-gradient-to-br from-violet-500/40 to-purple-500/40" : "bg-muted dark:bg-white/10")} />
+              <div className="text-[10px] font-medium text-foreground dark:text-white">{voice.name}</div>
+              <div className="text-[8px] text-muted-foreground dark:text-white/40">{voice.accent}</div>
             </div>
           ))}
         </div>
 
-        <div className="flex-1 rounded-lg bg-white/[0.02] border border-white/[0.04] p-3 flex items-center justify-center">
+        <div className="flex-1 rounded-lg bg-muted/30 dark:bg-white/[0.02] border border-border/30 dark:border-white/[0.04] p-3 flex items-center justify-center">
           <div className="flex items-center gap-0.5 h-10">
             {[...Array(32)].map((_, i) => (
               <motion.div
@@ -268,21 +268,21 @@ function ProductPreview() {
         </div>
 
         <div className="flex items-center justify-center gap-3">
-          <button className="w-8 h-8 rounded-full bg-white/[0.04] flex items-center justify-center hover:bg-white/[0.06] transition-colors">
-            <Download className="w-3.5 h-3.5 text-white/50" />
+          <button className="w-8 h-8 rounded-full bg-muted dark:bg-white/[0.04] flex items-center justify-center hover:bg-muted/80 dark:hover:bg-white/[0.06] transition-colors">
+            <Download className="w-3.5 h-3.5 text-muted-foreground dark:text-white/50" />
           </button>
           <button className="w-10 h-10 rounded-full bg-gradient-to-r from-violet-500 to-purple-500 flex items-center justify-center hover:opacity-90 transition-opacity">
             <Play className="w-4 h-4 text-white ml-0.5" />
           </button>
-          <button className="w-8 h-8 rounded-full bg-white/[0.04] flex items-center justify-center hover:bg-white/[0.06] transition-colors">
-            <Share2 className="w-3.5 h-3.5 text-white/50" />
+          <button className="w-8 h-8 rounded-full bg-muted dark:bg-white/[0.04] flex items-center justify-center hover:bg-muted/80 dark:hover:bg-white/[0.06] transition-colors">
+            <Share2 className="w-3.5 h-3.5 text-muted-foreground dark:text-white/50" />
           </button>
         </div>
 
-        <div className="flex items-center gap-2 p-2 rounded-lg bg-white/[0.02] border border-white/[0.04]">
-          <Mic className="w-4 h-4 text-white/40" />
-          <span className="flex-1 text-[10px] text-white/30">Type or speak your text...</span>
-          <Send className="w-4 h-4 text-white/40" />
+        <div className="flex items-center gap-2 p-2 rounded-lg bg-muted/30 dark:bg-white/[0.02] border border-border/30 dark:border-white/[0.04]">
+          <Mic className="w-4 h-4 text-muted-foreground dark:text-white/40" />
+          <span className="flex-1 text-[10px] text-muted-foreground dark:text-white/30">Type or speak your text...</span>
+          <Send className="w-4 h-4 text-muted-foreground dark:text-white/40" />
         </div>
       </div>
     </div>
@@ -742,42 +742,42 @@ export function InteractiveDashboard() {
                         transition={{ delay: 0 * 0.08 }}
                         className="rounded-lg border border-purple-500/20 bg-gradient-to-br from-purple-500/5 to-transparent overflow-hidden group hover:border-purple-500/40 transition-colors cursor-pointer"
                       >
-                        <div className="p-2 bg-[#0c0c0d] h-full flex flex-col">
-                          <div className="flex items-center gap-1.5 mb-1.5 pb-1.5 border-b border-white/[0.04]">
+                        <div className="p-2 bg-card dark:bg-[#0c0c0d] h-full flex flex-col">
+                          <div className="flex items-center gap-1.5 mb-1.5 pb-1.5 border-b border-border/30 dark:border-white/[0.04]">
                             <div className="flex gap-0.5">
-                              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30 dark:bg-white/20" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30 dark:bg-white/20" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30 dark:bg-white/20" />
                             </div>
                             <div className="flex-1" />
-                            <Home className="w-2.5 h-2.5 text-white/50" />
+                            <Home className="w-2.5 h-2.5 text-muted-foreground dark:text-white/50" />
                           </div>
                           <div className="flex-1 space-y-1.5">
-                            <div className="text-[8px] font-semibold text-white/80">Welcome back!</div>
+                            <div className="text-[8px] font-semibold text-foreground/80 dark:text-white/80">Welcome back!</div>
                             <div className="grid grid-cols-3 gap-1">
                               <div className="p-1 rounded bg-violet-500/10 border border-violet-500/20">
-                                <div className="text-[7px] text-violet-400 font-bold">12</div>
-                                <div className="text-[5px] text-white/40">Voices</div>
+                                <div className="text-[7px] text-violet-600 dark:text-violet-400 font-bold">12</div>
+                                <div className="text-[5px] text-muted-foreground dark:text-white/40">Voices</div>
                               </div>
                               <div className="p-1 rounded bg-emerald-500/10 border border-emerald-500/20">
-                                <div className="text-[7px] text-emerald-400 font-bold">48</div>
-                                <div className="text-[5px] text-white/40">Projects</div>
+                                <div className="text-[7px] text-emerald-600 dark:text-emerald-400 font-bold">48</div>
+                                <div className="text-[5px] text-muted-foreground dark:text-white/40">Projects</div>
                               </div>
                               <div className="p-1 rounded bg-sky-500/10 border border-sky-500/20">
-                                <div className="text-[7px] text-sky-400 font-bold">2.4h</div>
-                                <div className="text-[5px] text-white/40">Audio</div>
+                                <div className="text-[7px] text-sky-600 dark:text-sky-400 font-bold">2.4h</div>
+                                <div className="text-[5px] text-muted-foreground dark:text-white/40">Audio</div>
                               </div>
                             </div>
-                            <div className="h-8 w-full bg-white/[0.03] rounded flex items-end gap-0.5 p-1">
+                            <div className="h-8 w-full bg-muted/50 dark:bg-white/[0.03] rounded flex items-end gap-0.5 p-1">
                               {[40, 65, 45, 80, 55, 70, 90].map((h, i) => (
                                 <div key={i} className="flex-1 bg-gradient-to-t from-violet-500/50 to-violet-400/20 rounded-t" style={{ height: `${h}%` }} />
                               ))}
                             </div>
                           </div>
                         </div>
-                        <div className="px-2 py-1 bg-white/[0.02] border-t border-white/[0.04] flex items-center justify-between">
-                          <span className="text-[9px] font-medium text-white/70">Dashboard</span>
-                          <Check className="w-3 h-3 text-emerald-400" />
+                        <div className="px-2 py-1 bg-muted/30 dark:bg-white/[0.02] border-t border-border/30 dark:border-white/[0.04] flex items-center justify-between">
+                          <span className="text-[9px] font-medium text-foreground/70 dark:text-white/70">Dashboard</span>
+                          <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                         </div>
                       </motion.div>
 
@@ -788,23 +788,23 @@ export function InteractiveDashboard() {
                         transition={{ delay: 1 * 0.08 }}
                         className="rounded-lg border border-purple-500/20 bg-gradient-to-br from-purple-500/5 to-transparent overflow-hidden group hover:border-purple-500/40 transition-colors cursor-pointer"
                       >
-                        <div className="p-2 bg-[#0c0c0d] h-full flex flex-col">
-                          <div className="flex items-center gap-1.5 mb-1.5 pb-1.5 border-b border-white/[0.04]">
+                        <div className="p-2 bg-card dark:bg-[#0c0c0d] h-full flex flex-col">
+                          <div className="flex items-center gap-1.5 mb-1.5 pb-1.5 border-b border-border/30 dark:border-white/[0.04]">
                             <div className="flex gap-0.5">
-                              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30 dark:bg-white/20" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30 dark:bg-white/20" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30 dark:bg-white/20" />
                             </div>
                             <div className="flex-1" />
-                            <Mic className="w-2.5 h-2.5 text-white/50" />
+                            <Mic className="w-2.5 h-2.5 text-muted-foreground dark:text-white/50" />
                           </div>
                           <div className="flex-1 space-y-1">
                             <div className="flex items-center gap-1">
-                              <div className="h-4 flex-1 bg-white/[0.04] rounded px-1 flex items-center">
-                                <Search className="w-2 h-2 text-white/30" />
+                              <div className="h-4 flex-1 bg-muted/50 dark:bg-white/[0.04] rounded px-1 flex items-center">
+                                <Search className="w-2 h-2 text-muted-foreground dark:text-white/30" />
                               </div>
                               <div className="h-4 w-4 bg-violet-500/20 rounded flex items-center justify-center">
-                                <Plus className="w-2 h-2 text-violet-400" />
+                                <Plus className="w-2 h-2 text-violet-600 dark:text-violet-400" />
                               </div>
                             </div>
                             <div className="space-y-0.5">
@@ -813,21 +813,21 @@ export function InteractiveDashboard() {
                                 { name: "James", accent: "UK", active: false },
                                 { name: "Aria", accent: "AU", active: false },
                               ].map((voice) => (
-                                <div key={voice.name} className={cn("flex items-center gap-1 p-1 rounded", voice.active ? "bg-violet-500/10 border border-violet-500/20" : "bg-white/[0.02]")}>
-                                  <div className={cn("w-3 h-3 rounded-full", voice.active ? "bg-gradient-to-br from-violet-400 to-purple-500" : "bg-white/10")} />
+                                <div key={voice.name} className={cn("flex items-center gap-1 p-1 rounded", voice.active ? "bg-violet-500/10 border border-violet-500/20" : "bg-muted/30 dark:bg-white/[0.02]")}>
+                                  <div className={cn("w-3 h-3 rounded-full", voice.active ? "bg-gradient-to-br from-violet-400 to-purple-500" : "bg-muted dark:bg-white/10")} />
                                   <div className="flex-1">
-                                    <div className="text-[6px] text-white/80 font-medium">{voice.name}</div>
-                                    <div className="text-[5px] text-white/40">{voice.accent}</div>
+                                    <div className="text-[6px] text-foreground/80 dark:text-white/80 font-medium">{voice.name}</div>
+                                    <div className="text-[5px] text-muted-foreground dark:text-white/40">{voice.accent}</div>
                                   </div>
-                                  <Play className="w-2 h-2 text-white/40" />
+                                  <Play className="w-2 h-2 text-muted-foreground dark:text-white/40" />
                                 </div>
                               ))}
                             </div>
                           </div>
                         </div>
-                        <div className="px-2 py-1 bg-white/[0.02] border-t border-white/[0.04] flex items-center justify-between">
-                          <span className="text-[9px] font-medium text-white/70">Voice Library</span>
-                          <Check className="w-3 h-3 text-emerald-400" />
+                        <div className="px-2 py-1 bg-muted/30 dark:bg-white/[0.02] border-t border-border/30 dark:border-white/[0.04] flex items-center justify-between">
+                          <span className="text-[9px] font-medium text-foreground/70 dark:text-white/70">Voice Library</span>
+                          <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                         </div>
                       </motion.div>
 
@@ -838,18 +838,18 @@ export function InteractiveDashboard() {
                         transition={{ delay: 2 * 0.08 }}
                         className="rounded-lg border border-purple-500/20 bg-gradient-to-br from-purple-500/5 to-transparent overflow-hidden group hover:border-purple-500/40 transition-colors cursor-pointer"
                       >
-                        <div className="p-2 bg-[#0c0c0d] h-full flex flex-col">
-                          <div className="flex items-center gap-1.5 mb-1.5 pb-1.5 border-b border-white/[0.04]">
+                        <div className="p-2 bg-card dark:bg-[#0c0c0d] h-full flex flex-col">
+                          <div className="flex items-center gap-1.5 mb-1.5 pb-1.5 border-b border-border/30 dark:border-white/[0.04]">
                             <div className="flex gap-0.5">
-                              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30 dark:bg-white/20" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30 dark:bg-white/20" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30 dark:bg-white/20" />
                             </div>
                             <div className="flex-1" />
-                            <Video className="w-2.5 h-2.5 text-white/50" />
+                            <Video className="w-2.5 h-2.5 text-muted-foreground dark:text-white/50" />
                           </div>
                           <div className="flex-1 space-y-1">
-                            <div className="h-8 w-full bg-white/[0.02] rounded border border-white/[0.04] flex items-center justify-center px-1">
+                            <div className="h-8 w-full bg-muted/30 dark:bg-white/[0.02] rounded border border-border/30 dark:border-white/[0.04] flex items-center justify-center px-1">
                               <div className="flex items-center gap-0.5 h-5">
                                 {[...Array(24)].map((_, i) => (
                                   <div key={i} className="w-0.5 bg-gradient-to-t from-violet-500/60 to-purple-400/40 rounded-full" style={{ height: `${Math.random() * 100}%` }} />
@@ -857,25 +857,25 @@ export function InteractiveDashboard() {
                               </div>
                             </div>
                             <div className="flex items-center justify-center gap-2 py-1">
-                              <div className="w-4 h-4 rounded-full bg-white/[0.04] flex items-center justify-center">
-                                <Download className="w-2 h-2 text-white/40" />
+                              <div className="w-4 h-4 rounded-full bg-muted dark:bg-white/[0.04] flex items-center justify-center">
+                                <Download className="w-2 h-2 text-muted-foreground dark:text-white/40" />
                               </div>
                               <div className="w-5 h-5 rounded-full bg-gradient-to-r from-violet-500 to-purple-500 flex items-center justify-center">
                                 <Play className="w-2 h-2 text-white ml-0.5" />
                               </div>
-                              <div className="w-4 h-4 rounded-full bg-white/[0.04] flex items-center justify-center">
-                                <Share2 className="w-2 h-2 text-white/40" />
+                              <div className="w-4 h-4 rounded-full bg-muted dark:bg-white/[0.04] flex items-center justify-center">
+                                <Share2 className="w-2 h-2 text-muted-foreground dark:text-white/40" />
                               </div>
                             </div>
-                            <div className="h-4 w-full bg-white/[0.03] rounded border border-white/[0.04] flex items-center px-1 gap-1">
-                              <Mic className="w-2 h-2 text-white/30" />
-                              <span className="text-[5px] text-white/30">Type your script...</span>
+                            <div className="h-4 w-full bg-muted/50 dark:bg-white/[0.03] rounded border border-border/30 dark:border-white/[0.04] flex items-center px-1 gap-1">
+                              <Mic className="w-2 h-2 text-muted-foreground dark:text-white/30" />
+                              <span className="text-[5px] text-muted-foreground dark:text-white/30">Type your script...</span>
                             </div>
                           </div>
                         </div>
-                        <div className="px-2 py-1 bg-white/[0.02] border-t border-white/[0.04] flex items-center justify-between">
-                          <span className="text-[9px] font-medium text-white/70">Studio</span>
-                          <Check className="w-3 h-3 text-emerald-400" />
+                        <div className="px-2 py-1 bg-muted/30 dark:bg-white/[0.02] border-t border-border/30 dark:border-white/[0.04] flex items-center justify-between">
+                          <span className="text-[9px] font-medium text-foreground/70 dark:text-white/70">Studio</span>
+                          <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                         </div>
                       </motion.div>
 
@@ -886,20 +886,20 @@ export function InteractiveDashboard() {
                         transition={{ delay: 3 * 0.08 }}
                         className="rounded-lg border border-purple-500/20 bg-gradient-to-br from-purple-500/5 to-transparent overflow-hidden group hover:border-purple-500/40 transition-colors cursor-pointer"
                       >
-                        <div className="p-2 bg-[#0c0c0d] h-full flex flex-col">
-                          <div className="flex items-center gap-1.5 mb-1.5 pb-1.5 border-b border-white/[0.04]">
+                        <div className="p-2 bg-card dark:bg-[#0c0c0d] h-full flex flex-col">
+                          <div className="flex items-center gap-1.5 mb-1.5 pb-1.5 border-b border-border/30 dark:border-white/[0.04]">
                             <div className="flex gap-0.5">
-                              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30 dark:bg-white/20" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30 dark:bg-white/20" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30 dark:bg-white/20" />
                             </div>
                             <div className="flex-1" />
-                            <Layers className="w-2.5 h-2.5 text-white/50" />
+                            <Layers className="w-2.5 h-2.5 text-muted-foreground dark:text-white/50" />
                           </div>
                           <div className="flex-1 space-y-1">
                             <div className="flex items-center justify-between">
-                              <div className="text-[7px] font-semibold text-white/70">Recent Projects</div>
-                              <div className="text-[5px] text-violet-400">View all →</div>
+                              <div className="text-[7px] font-semibold text-foreground/70 dark:text-white/70">Recent Projects</div>
+                              <div className="text-[5px] text-violet-600 dark:text-violet-400">View all →</div>
                             </div>
                             <div className="space-y-0.5">
                               {[
@@ -907,18 +907,18 @@ export function InteractiveDashboard() {
                                 { name: "Podcast Intro", status: "active", color: "violet" },
                                 { name: "YouTube Ad", status: "draft", color: "white" },
                               ].map((proj) => (
-                                <div key={proj.name} className="flex items-center gap-1 p-1 rounded bg-white/[0.02] border border-white/[0.04]">
-                                  <div className={cn("w-1 h-1 rounded-full", proj.status === "done" ? "bg-emerald-400" : proj.status === "active" ? "bg-violet-400" : "bg-white/30")} />
-                                  <span className="text-[6px] text-white/70 flex-1">{proj.name}</span>
-                                  <span className={cn("text-[5px]", proj.status === "done" ? "text-emerald-400" : proj.status === "active" ? "text-violet-400" : "text-white/30")}>{proj.status}</span>
+                                <div key={proj.name} className="flex items-center gap-1 p-1 rounded bg-muted/30 dark:bg-white/[0.02] border border-border/30 dark:border-white/[0.04]">
+                                  <div className={cn("w-1 h-1 rounded-full", proj.status === "done" ? "bg-emerald-500 dark:bg-emerald-400" : proj.status === "active" ? "bg-violet-500 dark:bg-violet-400" : "bg-muted-foreground/30 dark:bg-white/30")} />
+                                  <span className="text-[6px] text-foreground/70 dark:text-white/70 flex-1">{proj.name}</span>
+                                  <span className={cn("text-[5px]", proj.status === "done" ? "text-emerald-600 dark:text-emerald-400" : proj.status === "active" ? "text-violet-600 dark:text-violet-400" : "text-muted-foreground dark:text-white/30")}>{proj.status}</span>
                                 </div>
                               ))}
                             </div>
                           </div>
                         </div>
-                        <div className="px-2 py-1 bg-white/[0.02] border-t border-white/[0.04] flex items-center justify-between">
-                          <span className="text-[9px] font-medium text-white/70">Projects</span>
-                          <Check className="w-3 h-3 text-emerald-400" />
+                        <div className="px-2 py-1 bg-muted/30 dark:bg-white/[0.02] border-t border-border/30 dark:border-white/[0.04] flex items-center justify-between">
+                          <span className="text-[9px] font-medium text-foreground/70 dark:text-white/70">Projects</span>
+                          <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                         </div>
                       </motion.div>
 
@@ -929,28 +929,28 @@ export function InteractiveDashboard() {
                         transition={{ delay: 4 * 0.08 }}
                         className="rounded-lg border border-purple-500/20 bg-gradient-to-br from-purple-500/5 to-transparent overflow-hidden group hover:border-purple-500/40 transition-colors cursor-pointer"
                       >
-                        <div className="p-2 bg-[#0c0c0d] h-full flex flex-col">
-                          <div className="flex items-center gap-1.5 mb-1.5 pb-1.5 border-b border-white/[0.04]">
+                        <div className="p-2 bg-card dark:bg-[#0c0c0d] h-full flex flex-col">
+                          <div className="flex items-center gap-1.5 mb-1.5 pb-1.5 border-b border-border/30 dark:border-white/[0.04]">
                             <div className="flex gap-0.5">
-                              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30 dark:bg-white/20" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30 dark:bg-white/20" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30 dark:bg-white/20" />
                             </div>
                             <div className="flex-1" />
-                            <BarChart3 className="w-2.5 h-2.5 text-white/50" />
+                            <BarChart3 className="w-2.5 h-2.5 text-muted-foreground dark:text-white/50" />
                           </div>
                           <div className="flex-1 space-y-1">
                             <div className="grid grid-cols-2 gap-1">
-                              <div className="p-1 rounded bg-white/[0.03] border border-white/[0.04]">
-                                <div className="text-[8px] font-bold text-emerald-400">↑ 24%</div>
-                                <div className="text-[5px] text-white/40">Usage</div>
+                              <div className="p-1 rounded bg-muted/50 dark:bg-white/[0.03] border border-border/30 dark:border-white/[0.04]">
+                                <div className="text-[8px] font-bold text-emerald-600 dark:text-emerald-400">↑ 24%</div>
+                                <div className="text-[5px] text-muted-foreground dark:text-white/40">Usage</div>
                               </div>
-                              <div className="p-1 rounded bg-white/[0.03] border border-white/[0.04]">
-                                <div className="text-[8px] font-bold text-white/80">1,247</div>
-                                <div className="text-[5px] text-white/40">Generations</div>
+                              <div className="p-1 rounded bg-muted/50 dark:bg-white/[0.03] border border-border/30 dark:border-white/[0.04]">
+                                <div className="text-[8px] font-bold text-foreground/80 dark:text-white/80">1,247</div>
+                                <div className="text-[5px] text-muted-foreground dark:text-white/40">Generations</div>
                               </div>
                             </div>
-                            <div className="h-8 w-full bg-white/[0.02] rounded border border-white/[0.04] p-1">
+                            <div className="h-8 w-full bg-muted/30 dark:bg-white/[0.02] rounded border border-border/30 dark:border-white/[0.04] p-1">
                               <div className="h-full flex items-end gap-0.5">
                                 {[20, 35, 28, 45, 38, 55, 48, 65, 58, 72].map((h, i) => (
                                   <div key={i} className="flex-1 rounded-t" style={{ height: `${h}%`, background: `linear-gradient(to top, rgb(16, 185, 129, 0.5), rgb(16, 185, 129, 0.2))` }} />
@@ -959,9 +959,9 @@ export function InteractiveDashboard() {
                             </div>
                           </div>
                         </div>
-                        <div className="px-2 py-1 bg-white/[0.02] border-t border-white/[0.04] flex items-center justify-between">
-                          <span className="text-[9px] font-medium text-white/70">Analytics</span>
-                          <Check className="w-3 h-3 text-emerald-400" />
+                        <div className="px-2 py-1 bg-muted/30 dark:bg-white/[0.02] border-t border-border/30 dark:border-white/[0.04] flex items-center justify-between">
+                          <span className="text-[9px] font-medium text-foreground/70 dark:text-white/70">Analytics</span>
+                          <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                         </div>
                       </motion.div>
 
@@ -972,22 +972,22 @@ export function InteractiveDashboard() {
                         transition={{ delay: 5 * 0.08 }}
                         className="rounded-lg border border-purple-500/20 bg-gradient-to-br from-purple-500/5 to-transparent overflow-hidden group hover:border-purple-500/40 transition-colors cursor-pointer"
                       >
-                        <div className="p-2 bg-[#0c0c0d] h-full flex flex-col">
-                          <div className="flex items-center gap-1.5 mb-1.5 pb-1.5 border-b border-white/[0.04]">
+                        <div className="p-2 bg-card dark:bg-[#0c0c0d] h-full flex flex-col">
+                          <div className="flex items-center gap-1.5 mb-1.5 pb-1.5 border-b border-border/30 dark:border-white/[0.04]">
                             <div className="flex gap-0.5">
-                              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30 dark:bg-white/20" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30 dark:bg-white/20" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30 dark:bg-white/20" />
                             </div>
                             <div className="flex-1" />
-                            <Settings className="w-2.5 h-2.5 text-white/50" />
+                            <Settings className="w-2.5 h-2.5 text-muted-foreground dark:text-white/50" />
                           </div>
                           <div className="flex-1 space-y-1">
-                            <div className="flex items-center gap-1.5 p-1 rounded bg-white/[0.02]">
+                            <div className="flex items-center gap-1.5 p-1 rounded bg-muted/30 dark:bg-white/[0.02]">
                               <div className="w-4 h-4 rounded-full bg-gradient-to-br from-violet-400 to-purple-500 flex items-center justify-center text-[6px] font-bold text-white">A</div>
                               <div>
-                                <div className="text-[6px] font-medium text-white/80">Ariv Singh</div>
-                                <div className="text-[5px] text-white/40">Pro Plan</div>
+                                <div className="text-[6px] font-medium text-foreground/80 dark:text-white/80">Ariv Singh</div>
+                                <div className="text-[5px] text-muted-foreground dark:text-white/40">Pro Plan</div>
                               </div>
                             </div>
                             <div className="space-y-0.5">
@@ -996,17 +996,17 @@ export function InteractiveDashboard() {
                                 { label: "Language", value: "EN" },
                                 { label: "Auto-save", value: "On" },
                               ].map((setting) => (
-                                <div key={setting.label} className="flex items-center justify-between p-1 rounded bg-white/[0.02] border border-white/[0.04]">
-                                  <span className="text-[5px] text-white/50">{setting.label}</span>
-                                  <span className="text-[5px] text-white/70 font-medium">{setting.value}</span>
+                                <div key={setting.label} className="flex items-center justify-between p-1 rounded bg-muted/30 dark:bg-white/[0.02] border border-border/30 dark:border-white/[0.04]">
+                                  <span className="text-[5px] text-muted-foreground dark:text-white/50">{setting.label}</span>
+                                  <span className="text-[5px] text-foreground/70 dark:text-white/70 font-medium">{setting.value}</span>
                                 </div>
                               ))}
                             </div>
                           </div>
                         </div>
-                        <div className="px-2 py-1 bg-white/[0.02] border-t border-white/[0.04] flex items-center justify-between">
-                          <span className="text-[9px] font-medium text-white/70">Settings</span>
-                          <Check className="w-3 h-3 text-emerald-400" />
+                        <div className="px-2 py-1 bg-muted/30 dark:bg-white/[0.02] border-t border-border/30 dark:border-white/[0.04] flex items-center justify-between">
+                          <span className="text-[9px] font-medium text-foreground/70 dark:text-white/70">Settings</span>
+                          <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                         </div>
                       </motion.div>
                     </div>
