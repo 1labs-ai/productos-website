@@ -90,65 +90,65 @@ export default function LinearInspiredHomepage() {
         
         {/* Content container with Linear-style spacing */}
         <div className="relative z-10 max-w-[1436px] mx-auto px-6 lg:px-[50px]">
-          {/* Hero Grid - Left: Content, Right: CTA link (Linear-style) */}
-          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-16 mb-12">
-            {/* Left side - Badge, Headline, Supporting text */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="flex-1"
-            >
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 dark:border-white/10 bg-card/50 dark:bg-white/[0.03] mb-6">
-                <Sparkles className="w-4 h-4 text-amber-500" />
-                <span className="text-sm text-foreground/80 dark:text-white/70">AI-Native Product Development</span>
-              </div>
-              
-              <h1 className="mb-6">
-                <span 
-                  className="block text-4xl sm:text-5xl lg:text-[64px] font-medium text-foreground"
-                  style={{ lineHeight: 1.05, letterSpacing: '-0.022em' }}
-                >
-                  From idea to production
-                </span>
-                <span 
-                  className="block text-4xl sm:text-5xl lg:text-[64px] font-medium text-foreground/40"
-                  style={{ lineHeight: 1.05, letterSpacing: '-0.022em' }}
-                >
-                  in days, not months
-                </span>
-              </h1>
+          {/* Hero Content - Linear-style layout */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-12"
+          >
+            {/* Badge - Simple text like Linear */}
+            <div className="inline-flex items-center gap-2 mb-6">
+              <Sparkles className="w-4 h-4 text-amber-500" />
+              <span className="text-sm text-muted-foreground font-medium">AI-Native Product Development</span>
+            </div>
+            
+            <h1 className="mb-6">
+              <span 
+                className="block text-4xl sm:text-5xl lg:text-[64px] font-medium text-foreground"
+                style={{ lineHeight: 1.05, letterSpacing: '-0.022em' }}
+              >
+                From idea to production
+              </span>
+              <span 
+                className="block text-4xl sm:text-5xl lg:text-[64px] font-medium text-foreground/40"
+                style={{ lineHeight: 1.05, letterSpacing: '-0.022em' }}
+              >
+                in days, not months
+              </span>
+            </h1>
 
-              {/* Supporting paragraph - single line */}
-              <p className="text-lg text-muted-foreground whitespace-nowrap">
+            {/* Paragraph + CTAs inline - Linear style */}
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 lg:gap-8">
+              {/* Supporting paragraph */}
+              <p className="text-lg text-muted-foreground">
                 Five AI agents that research, document, design, and code your product.
               </p>
-            </motion.div>
 
-            {/* Right side - Link-style CTAs */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              className="flex flex-col items-start lg:items-end gap-4 lg:pt-6"
-            >
-              <Link 
-                href="/early-access"
-                className="inline-flex items-center gap-2 text-foreground hover:text-foreground/80 font-medium transition-colors group"
+              {/* Link-style CTAs - inline on desktop */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.15 }}
+                className="flex items-center gap-6 shrink-0"
               >
-                Request Early Access
-                <ArrowRight className="size-4 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-              <Link 
-                href="#features"
-                className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground font-medium transition-colors group"
-              >
-                See How It Works
-                <ArrowRight className="size-4 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-            </motion.div>
-          </div>
+                <Link 
+                  href="/early-access"
+                  className="inline-flex items-center gap-2 text-foreground hover:text-foreground/80 font-medium transition-colors group"
+                >
+                  Request Early Access
+                  <ArrowRight className="size-4 group-hover:translate-x-0.5 transition-transform" />
+                </Link>
+                <Link 
+                  href="#features"
+                  className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground font-medium transition-colors group"
+                >
+                  See How It Works
+                  <ArrowRight className="size-4 group-hover:translate-x-0.5 transition-transform" />
+                </Link>
+              </motion.div>
+            </div>
+          </motion.div>
 
           {/* Product Dashboard UI - Interactive */}
           <motion.div
