@@ -5,10 +5,10 @@ import { useRef, useEffect, useState } from "react"
 
 // Stats data
 const stats = [
-  { value: 12, prefix: "3-", label: "From idea to launch", suffix: " days", isRange: true },
-  { value: 80, prefix: "", label: "Less development cost", suffix: "%", isRange: false },
-  { value: 5, prefix: "", label: "Specialized AI agents", suffix: "", isRange: false },
-  { value: 100, prefix: "", label: "Products you can launch", suffix: "+", isRange: false },
+  { value: 12, prefix: "3-", label: "Days to ship", suffix: "", isRange: true },
+  { value: 80, prefix: "", label: "Cost reduction", suffix: "%", isRange: false },
+  { value: 5, prefix: "", label: "AI agents", suffix: "", isRange: false },
+  { value: 100, prefix: "", label: "Products launched", suffix: "+", isRange: false },
 ]
 
 // Animated number counter
@@ -77,9 +77,10 @@ function StatCard({
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="h-full"
     >
       <motion.div 
-        className="group relative text-center p-8 rounded-2xl bg-gradient-to-b from-card/50 to-card/20 border border-border/30 overflow-hidden cursor-default"
+        className="group relative text-center p-8 rounded-2xl bg-gradient-to-b from-card/50 to-card/20 border border-border/30 overflow-hidden cursor-default h-full flex flex-col justify-center min-h-[160px]"
         whileHover={{ 
           y: -4,
           scale: 1.02,
@@ -170,7 +171,7 @@ export function AnimatedStats() {
         </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid md:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid md:grid-cols-4 gap-6 lg:gap-8 items-stretch">
           {stats.map((stat, i) => (
             <StatCard key={stat.label} stat={stat} index={i} />
           ))}
