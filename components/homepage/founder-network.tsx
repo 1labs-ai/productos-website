@@ -11,17 +11,24 @@ interface FounderNetworkProps {
 export const FounderNetwork = ({ className }: FounderNetworkProps) => {
   const roles = [
     { id: 'pm', icon: ClipboardList, label: 'PM', x: -90, y: -50 },
-    { id: 'research', icon: Search, label: 'Researcher', x: 90, y: -50 },
-    { id: 'design', icon: Palette, label: 'Designer', x: -90, y: 50 },
-    { id: 'eng', icon: Code2, label: 'Engineer', x: 90, y: 50 },
+    { id: 'research', icon: Search, label: 'RESEARCHER', x: 90, y: -50 },
+    { id: 'design', icon: Palette, label: 'DESIGNER', x: -90, y: 50 },
+    { id: 'eng', icon: Code2, label: 'ENGINEER', x: 90, y: 50 },
   ]
 
   return (
     <div className={cn("relative w-full flex items-center justify-center", className)}>
       {/* Container */}
-      <div className="relative w-[300px] h-[220px] flex items-center justify-center">
+      <div className="relative w-[300px] h-[220px] flex flex-col items-center justify-center">
         
-        {/* SVG for Organic Connections */}
+        {/* Header Label */}
+        <div className="absolute top-0 left-0 right-0 flex justify-center">
+          <span className="text-[8px] font-mono uppercase tracking-[0.2em] text-foreground/30 dark:text-white/30">
+            FIG 0.3 / NEURAL FLOW
+          </span>
+        </div>
+        
+        {/* SVG for Connections and Concentric Rings */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 300 220">
           <defs>
             <filter id="glow-neural">
@@ -31,13 +38,45 @@ export const FounderNetwork = ({ className }: FounderNetworkProps) => {
                 <feMergeNode in="SourceGraphic"/>
               </feMerge>
             </filter>
-            <linearGradient id="line-grad-founder" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" className="[stop-color:rgb(var(--foreground)/0)] dark:[stop-color:rgba(255,255,255,0)]" />
-              <stop offset="50%" className="[stop-color:rgb(var(--foreground)/0.2)] dark:[stop-color:rgba(255,255,255,0.2)]" />
-              <stop offset="100%" className="[stop-color:rgb(var(--foreground)/0)] dark:[stop-color:rgba(255,255,255,0)]" />
-            </linearGradient>
           </defs>
           
+          {/* Concentric Rings around center */}
+          {[45, 55, 65].map((r, i) => (
+            <circle
+              key={`ring-${i}`}
+              cx="150"
+              cy="110"
+              r={r}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="0.5"
+              className="text-foreground/10 dark:text-white/10"
+              strokeDasharray={i === 2 ? "4 4" : "none"}
+            />
+          ))}
+          
+          {/* Tick marks on outer ring */}
+          {Array.from({ length: 36 }).map((_, i) => {
+            const angle = (i * 10 * Math.PI) / 180
+            const x1 = 150 + Math.cos(angle) * 62
+            const y1 = 110 + Math.sin(angle) * 62
+            const x2 = 150 + Math.cos(angle) * 68
+            const y2 = 110 + Math.sin(angle) * 68
+            return (
+              <line
+                key={`tick-${i}`}
+                x1={x1}
+                y1={y1}
+                x2={x2}
+                y2={y2}
+                stroke="currentColor"
+                strokeWidth="0.5"
+                className="text-foreground/15 dark:text-white/15"
+              />
+            )
+          })}
+          
+          {/* Connection lines to role nodes */}
           {roles.map((role, i) => {
             const x2 = 150 + role.x
             const y2 = 110 + role.y
@@ -57,10 +96,18 @@ export const FounderNetwork = ({ className }: FounderNetworkProps) => {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="1"
-                  className="text-foreground/15 dark:text-white/15"
+                  className="text-foreground/20 dark:text-white/20"
                   initial={{ pathLength: 0, opacity: 0 }}
                   animate={{ pathLength: 1, opacity: 1 }}
                   transition={{ duration: 2, delay: i * 0.3 }}
+                />
+                
+                {/* Small dot at connection point on outer ring */}
+                <circle
+                  cx={150 + role.x * 0.45}
+                  cy={110 + role.y * 0.45}
+                  r="2"
+                  className="fill-foreground/30 dark:fill-white/30"
                 />
                 
                 {/* Flowing Data Particles */}
@@ -93,17 +140,10 @@ export const FounderNetwork = ({ className }: FounderNetworkProps) => {
           
           {/* Center Founder Node */}
           <div className="relative z-30">
-            <div className="w-16 h-16 rounded-full border border-foreground/10 dark:border-white/10 flex items-center justify-center bg-background dark:bg-[#0A0A0A] shadow-[0_0_30px_rgba(0,0,0,0.1)] dark:shadow-[0_0_30px_rgba(255,255,255,0.03)]">
-              <div className="w-11 h-11 rounded-full border border-foreground/5 dark:border-white/5 flex items-center justify-center text-foreground/70 dark:text-white/70">
-                <User size={22} strokeWidth={1} />
+            <div className="w-16 h-16 rounded-full border border-foreground/15 dark:border-white/15 flex items-center justify-center bg-background dark:bg-[#0A0A0A] shadow-[0_0_30px_rgba(0,0,0,0.1)] dark:shadow-[0_0_30px_rgba(255,255,255,0.03)]">
+              <div className="w-11 h-11 rounded-full border border-foreground/10 dark:border-white/10 flex items-center justify-center text-foreground/70 dark:text-white/70">
+                <User size={22} strokeWidth={1.5} />
               </div>
-              
-              {/* Orbiting Ring */}
-              <motion.div 
-                className="absolute inset-[-8px] rounded-full border border-foreground/5 dark:border-white/5 border-dashed"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              />
             </div>
           </div>
 
@@ -111,7 +151,7 @@ export const FounderNetwork = ({ className }: FounderNetworkProps) => {
           {roles.map((role, i) => (
             <motion.div
               key={role.id}
-              className="absolute z-20 flex flex-col items-center gap-2"
+              className="absolute z-20 flex flex-col items-center gap-1.5"
               style={{ 
                 left: `calc(50% + ${role.x}px)`, 
                 top: `calc(50% + ${role.y}px)`,
@@ -122,16 +162,16 @@ export const FounderNetwork = ({ className }: FounderNetworkProps) => {
               transition={{ delay: 0.8 + i * 0.2, type: "spring", stiffness: 100 }}
             >
               <div className="group relative">
-                <div className="w-10 h-10 rounded-xl border border-foreground/20 dark:border-white/20 bg-foreground/[0.03] dark:bg-white/[0.03] flex items-center justify-center text-foreground/50 dark:text-white/50 group-hover:text-foreground dark:group-hover:text-white group-hover:border-foreground/40 dark:group-hover:border-white/40 transition-all duration-500">
+                <div className="w-11 h-11 rounded-xl border border-foreground/20 dark:border-white/20 bg-background dark:bg-[#0A0A0A] flex items-center justify-center text-foreground/60 dark:text-white/60 group-hover:text-foreground dark:group-hover:text-white group-hover:border-foreground/40 dark:group-hover:border-white/40 transition-all duration-500">
                   <role.icon size={18} strokeWidth={1.5} />
                 </div>
                 
                 {/* Corner Accents */}
-                <div className="absolute -top-0.5 -left-0.5 w-1.5 h-1.5 border-t border-l border-foreground/20 dark:border-white/20" />
-                <div className="absolute -bottom-0.5 -right-0.5 w-1.5 h-1.5 border-b border-r border-foreground/20 dark:border-white/20" />
+                <div className="absolute -top-1 -left-1 w-2 h-2 border-t border-l border-foreground/30 dark:border-white/30" />
+                <div className="absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-foreground/30 dark:border-white/30" />
               </div>
               
-              <span className="text-[10px] font-mono uppercase tracking-[0.15em] text-foreground/50 dark:text-white/50">
+              <span className="text-[9px] font-mono uppercase tracking-[0.15em] text-foreground/40 dark:text-white/40">
                 {role.label}
               </span>
             </motion.div>
