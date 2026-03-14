@@ -8,6 +8,16 @@ import { AnimatedCodeFlow } from "@/components/sections/production-ready/variant
 import { TerminalDeploy } from "@/components/sections/production-ready/variants/terminal-deploy"
 import { FloatingCodeCards } from "@/components/sections/production-ready/variants/floating-code-cards"
 import { AgentCodeStream } from "@/components/sections/production-ready/variants/agent-code-stream"
+import { LiveInfraMetrics } from "@/components/sections/production-ready/variants/live-infra-metrics"
+import { CICDPipeline } from "@/components/sections/production-ready/variants/ci-cd-pipeline"
+import { MultiCloudDeploy } from "@/components/sections/production-ready/variants/multi-cloud-deploy"
+import { TestCoverageMatrix } from "@/components/sections/production-ready/variants/test-coverage-matrix"
+import { DatabaseSchemaGen } from "@/components/sections/production-ready/variants/database-schema-gen"
+import { APIEndpointGenerator } from "@/components/sections/production-ready/variants/api-endpoint-generator"
+import { SecurityScanner } from "@/components/sections/production-ready/variants/security-scanner"
+import { PerformanceLighthouse } from "@/components/sections/production-ready/variants/performance-lighthouse"
+import { DockerContainerBuild } from "@/components/sections/production-ready/variants/docker-container-build"
+import { AuthFlowGenerator } from "@/components/sections/production-ready/variants/auth-flow-generator"
 
 export default function DashboardTestPage() {
   return (
@@ -90,6 +100,146 @@ export default function DashboardTestPage() {
               </p>
             </div>
             <AgentCodeStream />
+          </section>
+
+          {/* Variant E: Live Infrastructure Metrics */}
+          <section className="mb-20">
+            <div className="mb-8 pb-4 border-b border-border/50">
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-violet-500/10 text-violet-400 text-sm font-medium mb-3">
+                Variant E
+              </span>
+              <h2 className="text-2xl font-semibold text-foreground">Live Infrastructure Metrics</h2>
+              <p className="text-muted-foreground mt-2">
+                Real-time monitoring dashboard with uptime, latency, and edge deployments.
+              </p>
+            </div>
+            <LiveInfraMetrics />
+          </section>
+
+          {/* Variant F: CI/CD Pipeline */}
+          <section className="mb-20">
+            <div className="mb-8 pb-4 border-b border-border/50">
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-violet-500/10 text-violet-400 text-sm font-medium mb-3">
+                Variant F
+              </span>
+              <h2 className="text-2xl font-semibold text-foreground">CI/CD Pipeline</h2>
+              <p className="text-muted-foreground mt-2">
+                GitHub Actions-style pipeline visualization with stage progress.
+              </p>
+            </div>
+            <CICDPipeline />
+          </section>
+
+          {/* Variant G: Multi-Cloud Deploy */}
+          <section className="mb-20">
+            <div className="mb-8 pb-4 border-b border-border/50">
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-violet-500/10 text-violet-400 text-sm font-medium mb-3">
+                Variant G
+              </span>
+              <h2 className="text-2xl font-semibold text-foreground">Multi-Cloud Deploy</h2>
+              <p className="text-muted-foreground mt-2">
+                Deploy to Vercel, Netlify, AWS, and Cloudflare with one click.
+              </p>
+            </div>
+            <MultiCloudDeploy />
+          </section>
+
+          {/* Variant H: Test Coverage Matrix */}
+          <section className="mb-20">
+            <div className="mb-8 pb-4 border-b border-border/50">
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-violet-500/10 text-violet-400 text-sm font-medium mb-3">
+                Variant H
+              </span>
+              <h2 className="text-2xl font-semibold text-foreground">Test Coverage Matrix</h2>
+              <p className="text-muted-foreground mt-2">
+                Auto-generated test suites with real-time coverage tracking.
+              </p>
+            </div>
+            <TestCoverageMatrix />
+          </section>
+
+          {/* Variant I: Database Schema Generator */}
+          <section className="mb-20">
+            <div className="mb-8 pb-4 border-b border-border/50">
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-violet-500/10 text-violet-400 text-sm font-medium mb-3">
+                Variant I
+              </span>
+              <h2 className="text-2xl font-semibold text-foreground">Database Schema Generator</h2>
+              <p className="text-muted-foreground mt-2">
+                Prisma schema generation with auto-migration to cloud database.
+              </p>
+            </div>
+            <DatabaseSchemaGen />
+          </section>
+
+          {/* Variant J: API Endpoint Generator */}
+          <section className="mb-20">
+            <div className="mb-8 pb-4 border-b border-border/50">
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-violet-500/10 text-violet-400 text-sm font-medium mb-3">
+                Variant J
+              </span>
+              <h2 className="text-2xl font-semibold text-foreground">API Endpoint Generator</h2>
+              <p className="text-muted-foreground mt-2">
+                Auto-generated REST APIs with OpenAPI spec and TypeScript types.
+              </p>
+            </div>
+            <APIEndpointGenerator />
+          </section>
+
+          {/* Variant K: Security Scanner */}
+          <section className="mb-20">
+            <div className="mb-8 pb-4 border-b border-border/50">
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-violet-500/10 text-violet-400 text-sm font-medium mb-3">
+                Variant K
+              </span>
+              <h2 className="text-2xl font-semibold text-foreground">Security Scanner</h2>
+              <p className="text-muted-foreground mt-2">
+                Automated security audits with OWASP compliance checks.
+              </p>
+            </div>
+            <SecurityScanner />
+          </section>
+
+          {/* Variant L: Performance Lighthouse */}
+          <section className="mb-20">
+            <div className="mb-8 pb-4 border-b border-border/50">
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-violet-500/10 text-violet-400 text-sm font-medium mb-3">
+                Variant L
+              </span>
+              <h2 className="text-2xl font-semibold text-foreground">Performance Lighthouse</h2>
+              <p className="text-muted-foreground mt-2">
+                Lighthouse scores with Core Web Vitals optimization built-in.
+              </p>
+            </div>
+            <PerformanceLighthouse />
+          </section>
+
+          {/* Variant M: Docker Container Build */}
+          <section className="mb-20">
+            <div className="mb-8 pb-4 border-b border-border/50">
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-violet-500/10 text-violet-400 text-sm font-medium mb-3">
+                Variant M
+              </span>
+              <h2 className="text-2xl font-semibold text-foreground">Docker Container Build</h2>
+              <p className="text-muted-foreground mt-2">
+                Auto-generated Dockerfile with optimized multi-stage builds.
+              </p>
+            </div>
+            <DockerContainerBuild />
+          </section>
+
+          {/* Variant N: Auth Flow Generator */}
+          <section className="mb-20">
+            <div className="mb-8 pb-4 border-b border-border/50">
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-violet-500/10 text-violet-400 text-sm font-medium mb-3">
+                Variant N
+              </span>
+              <h2 className="text-2xl font-semibold text-foreground">Auth Flow Generator</h2>
+              <p className="text-muted-foreground mt-2">
+                Complete auth system with JWT, OAuth, MFA, and RBAC pre-configured.
+              </p>
+            </div>
+            <AuthFlowGenerator />
           </section>
         </div>
 
